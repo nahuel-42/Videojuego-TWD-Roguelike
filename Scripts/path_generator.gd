@@ -1,13 +1,13 @@
 extends Object
 class_name PathGenerator
 
-var _grid_length:int
+var _grid_width:int
 var _grid_height:int
 
 var _path: Array[Vector2i]
 
-func _init(length:int, height:int):
-	_grid_length = length
+func _init(width:int, height:int):
+	_grid_width = width
 	_grid_height = height
 
 func generate_path():
@@ -17,10 +17,10 @@ func generate_path():
 	var y = int(_grid_height/2)
 	_path.append(Vector2i(x,y))
 	var step = 2
-	while x < _grid_length:
+	while x < _grid_width:
 		var direction:int = randi_range(0,2)
 		for i in range(step):
-			if direction == 0 or x == _grid_length-1 and not _path.has(Vector2i(x+1, y)):
+			if direction == 0 or x == _grid_width-1 and not _path.has(Vector2i(x+1, y)):
 				x += 1
 			#elif direction == 3 and not _path.has(Vector2i(x-1, y)):
 				#x -= 1
