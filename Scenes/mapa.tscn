@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg2tgamorj7n"]
+
+[ext_resource type="Texture2D" uid="uid://bdbcwp4fowovm" path="res://Assets/Caminos.png" id="1_40qdk"]
+[ext_resource type="Script" path="res://Scenes/path_renderer.gd" id="2_2h51y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bctxm"]
+texture = ExtResource("1_40qdk")
+texture_region_size = Vector2i(32, 32)
+2:6/size_in_atlas = Vector2i(2, 2)
+2:6/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4rir8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_bctxm")
+
+[node name="Mapa" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_4rir8")
+format = 2
+script = ExtResource("2_2h51y")
