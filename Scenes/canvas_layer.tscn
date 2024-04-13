@@ -32,7 +32,7 @@ m_cardsAmount = 10
 m_cardOffsetPosition = 0.0
 m_cardLoadSpeed = 50.0
 
-[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels")]
+[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_hideBoardRef", "m_boardRef")]
 layout_mode = 3
 anchor_left = 0.3
 anchor_top = 0.8
@@ -44,6 +44,8 @@ script = ExtResource("2_5iud0")
 m_cardMovement = NodePath("Node")
 m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
 m_locationSpeed = 20.0
+m_hideBoardRef = NodePath("Control")
+m_boardRef = NodePath("Board")
 
 [node name="Board" type="GridContainer" parent="BoardCards"]
 layout_mode = 1
