@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu4llgofcfinr"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
+[ext_resource type="PackedScene" uid="uid://d35oapfixrkeo" path="res://Scenes/_card.tscn" id="2_bk1d8"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -177.0
+offset_right = 133.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_akigf")
+
+[node name="TopSideCard" parent="." instance=ExtResource("2_bk1d8")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = null
+
+[node name="BottomSideCard" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
