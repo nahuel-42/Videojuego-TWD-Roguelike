@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu4llgofcfinr"]
+[gd_scene load_steps=3 format=3 uid="uid://crqhywu1a32fj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
-[ext_resource type="PackedScene" uid="uid://d35oapfixrkeo" path="res://Scenes/_card.tscn" id="2_bk1d8"]
+[ext_resource type="Texture2D" uid="uid://be87rey68bqh" path="res://icon.svg" id="2_1r5qo"]
 
-[node name="Card" type="Control"]
-layout_mode = 3
+[node name="Card" type="Panel"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,18 +17,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_akigf")
 
-[node name="TopSideCard" parent="." instance=ExtResource("2_bk1d8")]
+[node name="TopSideCard" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-script = null
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 200)
+
+[node name="name" type="Label" parent="TopSideCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.05
+anchor_right = 0.8
+anchor_bottom = 0.15
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nombre"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="card" type="TextureRect" parent="TopSideCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.18
+anchor_right = 0.9
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1r5qo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="attack" type="Label" parent="TopSideCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.7
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ataque"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="defense" type="Label" parent="TopSideCard"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 0.8
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "Defensa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BottomSideCard" type="Panel" parent="."]
 layout_mode = 1
@@ -38,3 +88,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Collision" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="Collision" to="." method="_on_panel_gui_input"]
