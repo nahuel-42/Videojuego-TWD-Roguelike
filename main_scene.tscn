@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdh1547kpfhej"]
+
+[ext_resource type="PackedScene" uid="uid://bcoxy8n1ndylt" path="res://prefabs/enemies_spawner.tscn" id="1_p4onw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemiesSpawner" parent="." instance=ExtResource("1_p4onw")]

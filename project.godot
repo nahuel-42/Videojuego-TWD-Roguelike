@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="TWD-RL-DB"
+config/name="enemigos_torres_td"
+run/main_scene="res://main_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
