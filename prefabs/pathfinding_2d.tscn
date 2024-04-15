@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://df6fnandt3a2h"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_m8qm0"]
+vertices = PackedVector2Array(33, 122, 20, 55, 93, 55, 137, 121, 204, 52, 205, 202, 136, 282, 206, 282, 1108, 318, 1109, 382, 622, 380, 615, 318, 535, 380, 535, 277, 615, 199)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 3, 5, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 12, 13), PackedInt32Array(14, 11, 13), PackedInt32Array(5, 14, 13, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(93, 45, 214, 42, 215, 192, 626, 189, 625, 308, 1118, 308, 1120, 393, 622, 390, 525, 391, 525, 287, 206, 292, 126, 293, 127, 131, 25, 133, 8, 45)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Pathfinding2D" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(1.08448, 1.11953)
+navigation_polygon = SubResource("NavigationPolygon_m8qm0")

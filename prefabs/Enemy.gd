@@ -1,17 +1,35 @@
 extends CharacterBody2D
 
 
-@export var speed = 20
-var path_follow
+var speed = 300
+var acceleration = 7
+var target
+
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
-	path_follow = get_parent()
+	get_tree().get_nodes_in_group("target")[0].connect("body_entered", reach_target)
+	velocity = Vector2.ZERO
+	target = get_parent().get_parent().get_node("Target")
 
-func _process(delta):
+func _physics_process(delta):
 	move(delta)
+		
 	
 
 func move(delta):
-	path_follow.set_progress(path_follow.get_progress() + speed*delta)
-	if path_follow.get_progress_ratio() == 1:
+	var direction = Vector3()
+	
+	nav.target_position = target.position
+	
+	direction = nav.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	velocity = velocity.lerp(direction * speed, acceleration * delta)
+	
+	move_and_slide()
+
+func reach_target(body):
+	if body == self:
 		queue_free()
+		print("Un enemigo ha escapado")

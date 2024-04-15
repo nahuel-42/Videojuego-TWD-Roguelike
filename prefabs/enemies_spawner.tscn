@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcoxy8n1ndylt"]
+[gd_scene load_steps=3 format=3 uid="uid://5wawy3eu27qx"]
 
 [ext_resource type="Script" path="res://prefabs/enemies_spawner.gd" id="1_av5ij"]
 
-[sub_resource type="Curve2D" id="Curve2D_3x8nj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 181, 62, 0, 0, 0, 0, 208, 156, 0, 0, 0, 0, 434, 204, 0, 0, 0, 0, 465, 335, 0, 0, 0, 0, 747, 317, 0, 0, 0, 0, 756, 489, 0, 0, 0, 0, 1040, 461, 0, 0, 0, 0, 1082, 604)
-}
-point_count = 8
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bwnx"]
+radius = 182.617
 
-[node name="EnemiesSpawner" type="Path2D"]
-curve = SubResource("Curve2D_3x8nj")
+[node name="EnemiesSpawner" type="Node2D"]
+position = Vector2(0, 2)
 
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(181, 62)
-rotation = 1.29109
-loop = false
+[node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("1_av5ij")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="timeout" from="Timer" to="PathFollow2D" method="_on_timer_timeout"]
+[node name="Target" type="Area2D" parent="." groups=["target"]]
+position = Vector2(1243, 311)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
+shape = SubResource("CircleShape2D_8bwnx")
+
+[connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
