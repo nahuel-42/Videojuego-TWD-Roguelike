@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdh1547kpfhej"]
+[gd_scene load_steps=4 format=3 uid="uid://cdh1547kpfhej"]
 
 [ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://prefabs/enemies_spawner.tscn" id="1_p4onw"]
 [ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://prefabs/pathfinding_2d.tscn" id="2_pf0jw"]
+[ext_resource type="PackedScene" uid="uid://bp82nvs2t4q36" path="res://prefabs/tower.tscn" id="3_f4uwh"]
 
 [node name="Main" type="Node2D"]
 
@@ -47,3 +48,6 @@ offset_top = 223.0
 offset_right = 621.0
 offset_bottom = 263.0
 scale = Vector2(2.31832, 5.14137)
+
+[node name="Tower" parent="." instance=ExtResource("3_f4uwh")]
+position = Vector2(481, 388)
