@@ -4,19 +4,22 @@
 [ext_resource type="Script" path="res://prefabs/tower.gd" id="1_y1aix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
-radius = 786.293
+radius = 448.018
 
 [node name="Tower" type="Sprite2D"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_54o8m")
 script = ExtResource("1_y1aix")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 position = Vector2(44, 12)
 shape = SubResource("CircleShape2D_kj5wf")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Range" to="." method="add_enemy"]
 [connection signal="body_exited" from="Range" to="." method="delete_enemy"]

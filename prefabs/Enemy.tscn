@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://djfcafwry77v" path="res://icon.svg" id="1_p2fo4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8obi"]
-radius = 32.0
+radius = 45.0999
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_4k5hc")
@@ -17,3 +17,4 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_p2fo4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

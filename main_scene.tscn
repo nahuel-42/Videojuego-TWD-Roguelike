@@ -15,39 +15,39 @@ position = Vector2(66, 89)
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Terrain"]
-offset_left = 19.0
-offset_top = 60.0
-offset_right = 59.0
-offset_bottom = 100.0
-scale = Vector2(5.12, 2.08)
+offset_left = 25.0
+offset_top = 102.0
+offset_right = 65.0
+offset_bottom = 142.0
+scale = Vector2(5.01525, 0.515718)
 
 [node name="ColorRect2" type="ColorRect" parent="Terrain"]
-offset_left = 146.0
-offset_top = 60.0
-offset_right = 186.0
-offset_bottom = 100.0
-scale = Vector2(1.98228, 6.51074)
+offset_left = 171.0
+offset_top = 100.0
+offset_right = 211.0
+offset_bottom = 140.0
+scale = Vector2(1.49145, 4.08157)
 
 [node name="ColorRect3" type="ColorRect" parent="Terrain"]
-offset_left = 145.0
-offset_top = 223.0
-offset_right = 185.0
-offset_bottom = 263.0
-scale = Vector2(13.1288, 2.4997)
+offset_left = 184.0
+offset_top = 222.0
+offset_right = 224.0
+offset_bottom = 262.0
+scale = Vector2(11.0104, 0.95023)
 
 [node name="ColorRect5" type="ColorRect" parent="Terrain"]
 offset_left = 578.0
 offset_top = 355.0
 offset_right = 618.0
 offset_bottom = 395.0
-scale = Vector2(15.6867, 1.88889)
+scale = Vector2(15.6478, 0.725154)
 
 [node name="ColorRect4" type="ColorRect" parent="Terrain"]
 offset_left = 581.0
 offset_top = 223.0
 offset_right = 621.0
 offset_bottom = 263.0
-scale = Vector2(2.31832, 5.14137)
+scale = Vector2(1.14741, 3.93146)
 
 [node name="Tower" parent="." instance=ExtResource("3_f4uwh")]
-position = Vector2(481, 388)
+position = Vector2(512, 327)
