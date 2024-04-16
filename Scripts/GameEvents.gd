@@ -17,7 +17,7 @@ static var e_onLoadDiscard = []
 static func OnLoadDiscard_AddListener(call):
 	e_onLoadDiscard.append(call)
 	
-static func OnLoadDiscard_Call(cardsList):
+static func OnLoadDiscard_Call(cardsList): #aca se deberia trabajar la creación de las cartas
 	for f in e_onLoadDiscard:
 		f.call(cardsList)
 ############################################################
