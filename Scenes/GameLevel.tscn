@@ -23,6 +23,7 @@ script = ExtResource("3_33855")
 m_collider = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetector"]
+position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_shrms")
 disabled = true
 
@@ -73,7 +74,6 @@ texture = ExtResource("3_wtay7")
 flip_v = true
 
 [node name="Slot4" type="Area2D" parent="World" node_paths=PackedStringArray("m_sprite2D")]
-visible = false
 position = Vector2(-77, 105)
 script = ExtResource("3_pj6dk")
 m_sprite2D = NodePath("Sprite2D")
@@ -86,7 +86,6 @@ texture = ExtResource("3_wtay7")
 flip_v = true
 
 [node name="Slot5" type="Area2D" parent="World" node_paths=PackedStringArray("m_sprite2D")]
-visible = false
 position = Vector2(-252, 104)
 script = ExtResource("3_pj6dk")
 m_sprite2D = NodePath("Sprite2D")

@@ -38,6 +38,7 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	var index = m_slotList.find(area)
 	if (index >= 0):
+		area.UnSelected()
 		m_slotList.remove_at(index)
 	if (m_slotSelected == area):
 		m_slotSelected = null

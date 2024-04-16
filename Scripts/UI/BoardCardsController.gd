@@ -1,22 +1,14 @@
-extends Node
+extends BaseDeck
 
 @export var m_cardMovement : Node
 @export var m_cardsAmount : int = 5
 @export var m_panels: Array[Panel] = []
 @export var m_locationSpeed : float = 10.0
-@export var m_hideBoardRef : Control = null
-@export var m_boardRef : Control = null
 
-var f_state = null
-var m_cardsList = []
-var m_hide:bool = true
 
 func _ready():
+	super._ready()
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
-
-func _process(delta):
-	if (f_state != null):
-		f_state.call(delta)
 
 #STATES
 func State_CardsLocation(delta):
@@ -51,12 +43,3 @@ func LoadBoard(cardsList):
 func GetInputEvent(card, event):
 	m_cardMovement.GetInputEvent(card, event)
 
-func _on_button_hide_board_cards_button_down():
-	if (m_hide==false):
-		m_boardRef.anchor_top=0
-		m_boardRef.anchor_bottom=1
-		m_hide=true
-	else:
-		m_boardRef.anchor_top=m_hideBoardRef.anchor_top
-		m_boardRef.anchor_bottom=m_hideBoardRef.anchor_bottom
-		m_hide=false
