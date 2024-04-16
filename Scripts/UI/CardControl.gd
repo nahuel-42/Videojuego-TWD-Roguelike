@@ -4,9 +4,6 @@ extends Node
 
 var e_inputEvent = null
 
-func _ready():
-	pass
-
 func SetInputEvent(inputEvent):
 	e_inputEvent = inputEvent
 	

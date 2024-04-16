@@ -9,8 +9,9 @@ var m_backSpeed : float = 5
 func _process(delta):
 	if (m_cardSelected != null):
 		MoveCardSelected()
+		GameEvents.OnUpadteSlotDetectorPosition.Call(m_cardSelected.global_position)	
+	UpdateCardsUnSelected(delta)
 	
-	UpdateCardsUnSelected(delta)		
 	
 func GetInputEvent(card, event):
 	if event is InputEventMouseButton:
@@ -21,9 +22,11 @@ func GetInputEvent(card, event):
 			if (m_cardSelected != null):
 				m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
 			m_cardSelected = card
+			GameEvents.OnSetActiveSlotDetector.Call(true)
 		else:
 			m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
 			m_cardSelected = null
+			GameEvents.OnSetActiveSlotDetector.Call(false)
 			
 func MoveCardSelected():
 	var mousePosition = get_viewport().get_mouse_position()

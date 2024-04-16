@@ -11,7 +11,6 @@ script/source = "extends Node
 func _ready():
 	pass
 
-
 func _process(delta):
 	pass
 "
@@ -44,6 +43,11 @@ script = ExtResource("2_5iud0")
 m_cardMovement = NodePath("Node")
 m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
 m_locationSpeed = 20.0
+<<<<<<< Updated upstream
+=======
+m_hideBoardRef = NodePath("HideBoard")
+m_boardRef = NodePath("Board")
+>>>>>>> Stashed changes
 
 [node name="Board" type="GridContainer" parent="BoardCards"]
 layout_mode = 1
@@ -82,6 +86,15 @@ size_flags_vertical = 3
 [node name="Node" type="Node" parent="BoardCards"]
 script = ExtResource("3_1uow5")
 
+<<<<<<< Updated upstream
+=======
+[node name="HideBoard" type="Control" parent="BoardCards"]
+layout_mode = 1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.75
+
+>>>>>>> Stashed changes
 [node name="DiscardCards" type="Control" parent="."]
 layout_mode = 3
 anchor_left = 0.9

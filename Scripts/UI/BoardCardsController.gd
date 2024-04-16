@@ -11,7 +11,7 @@ var m_cardsList = []
 
 
 func _ready():
-	GameEvents.OnLoadBoard_AddListener(LoadBoard)
+	GameEvents.OnLoadBoard.AddListener(LoadBoard)
 
 func _process(delta):
 	if (f_state != null):
@@ -38,7 +38,7 @@ func State_CardsLocation(delta):
 func LoadBoard(cardsList):
 	for c in m_cardsList:
 		c.SetInputEvent(null)	
-	GameEvents.OnLoadDiscard_Call(m_cardsList)
+	GameEvents.OnLoadDiscard.Call(m_cardsList)
 	
 	m_cardsList = cardsList	
 	for i in range(len(m_cardsList)):
