@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfuuqao2omga7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
+[ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
+[ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
+[ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_amc43"]
+
+[sub_resource type="GDScript" id="GDScript_4flth"]
+script/source = "extends Node
+
+func _ready():
+	pass
+
+func _process(delta):
+	pass
+"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = SubResource("GDScript_4flth")
+
+[node name="DeckCards" type="Control" parent="."]
+layout_mode = 3
+anchor_top = 0.8
+anchor_right = 0.1
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_lax77")
+m_cardPrefab = "res://Scenes/card.tscn"
+m_cardsAmount = 10
+m_cardOffsetPosition = 0.0
+m_cardLoadSpeed = 50.0
+
+[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_hideBoardRef", "m_boardRef")]
+layout_mode = 3
+anchor_left = 0.3
+anchor_top = 0.8
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5iud0")
+m_cardMovement = NodePath("Node")
+m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
+m_locationSpeed = 20.0
+m_hideBoardRef = NodePath("HideBoard")
+m_boardRef = NodePath("Board")
+
+[node name="Board" type="GridContainer" parent="BoardCards"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Panel1" type="Panel" parent="BoardCards/Board"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel2" type="Panel" parent="BoardCards/Board"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel3" type="Panel" parent="BoardCards/Board"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel4" type="Panel" parent="BoardCards/Board"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel5" type="Panel" parent="BoardCards/Board"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Node" type="Node" parent="BoardCards"]
+script = ExtResource("3_1uow5")
+
+[node name="HideBoard" type="Control" parent="BoardCards"]
+layout_mode = 1
+anchor_top = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.75
+
+[node name="DiscardCards" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.9
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_amc43")
+m_cardOffsetPosition = 5.0
+m_cardLoadSpeed = 50.0
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.0728426, 0.0728426, 0.0728426, 0.392157)
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.01
+anchor_right = 0.6
+anchor_bottom = 0.2
+
+[node name="Button" type="Button" parent="Panel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.45
+text = "Start"
+
+[node name="Button2" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.55
+anchor_right = 0.9
+anchor_bottom = 0.9
+text = "Load Board"
+
+[node name="ButtonHideBoardCards" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.85
+anchor_right = 0.25
+anchor_bottom = 0.95
+text = "Hide board
+cards"
+
+[connection signal="button_up" from="Panel/Button" to="DeckCards" method="_on_button_button_up"]
+[connection signal="button_up" from="Panel/Button2" to="DeckCards" method="_on_button_2_button_up"]
+[connection signal="button_down" from="ButtonHideBoardCards" to="BoardCards" method="_on_button_hide_board_cards_button_down"]
