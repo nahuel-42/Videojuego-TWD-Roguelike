@@ -36,9 +36,10 @@ func get_current_waypoint_index():
 
 func reach_target(body):
 	if body == self:
-		queue_free()
+		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
+		visible = false
 		print("Un enemigo ha escapado")
 		
 func take_damage():
 	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-	#visible = false
+	visible = false

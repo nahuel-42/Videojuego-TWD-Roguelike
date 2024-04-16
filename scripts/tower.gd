@@ -1,6 +1,8 @@
 extends Node2D
 
-var range
+var range = 600
+var collision_shape : CollisionShape2D
+var radius : Line2D
 var fire_rate = 1
 var cooldown = 0
 var damage
@@ -11,8 +13,16 @@ var current_target
 
 var enemies_in_range = []
 
+func _ready():
+	collision_shape = $Range/CollisionShape2D
+	collision_shape.shape.radius = range
+	draw_radius()
+
 func _process(delta):
+	
 	if cooldown > 0:
+		if cooldown < fire_rate/1.5:
+			modulate = Color(1, 1, 1)
 		cooldown -= delta
 		return
 	
@@ -22,6 +32,19 @@ func _process(delta):
 		cooldown = fire_rate
 	
 	set_new_target()
+	
+func draw_radius():
+	var circle_points = []
+	radius = $Radius
+	var segments = 32  # Número de segmentos para aproximar el círculo
+	
+	for i in range(segments + 1):
+		var angle = i * (2 * PI / segments)
+		var x = range * cos(angle)
+		var y = range * sin(angle)
+		circle_points.append(Vector2(x, y))
+	
+	radius.points = circle_points
 	
 # Función para detectar cuando un objeto entra en el área
 func add_enemy(body):
@@ -34,7 +57,8 @@ func delete_enemy(body):
 		enemies_in_range.erase(body)
 
 func shoot(target):
-	# TODO: Hacer las demás cosas como ver la probabilidad de acierto, etc.
+	# TODO: Hacer las demás cosas como ver la probabilidad de acierto, animación, etc.
+	modulate = Color(1, 0, 0)
 	target.take_damage()
 	
 func set_new_target():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5wawy3eu27qx"]
 
-[ext_resource type="Script" path="res://prefabs/enemies_spawner.gd" id="1_av5ij"]
+[ext_resource type="Script" path="res://scripts/enemies_spawner.gd" id="1_rqod4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8bwnx"]
 radius = 182.617
@@ -9,7 +9,7 @@ radius = 182.617
 position = Vector2(0, 2)
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("1_av5ij")
+script = ExtResource("1_rqod4")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
