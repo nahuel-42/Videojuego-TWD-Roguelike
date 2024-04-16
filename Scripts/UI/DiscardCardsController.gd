@@ -2,7 +2,7 @@ extends BaseDeck
 
 func _ready():
 	super._ready()
-	GameEvents.OnLoadDiscard_AddListener(LoadDiscard)
+	GameEvents.OnLoadDiscard.AddListener(LoadDiscard)
 
 func LoadDiscard(cards):
 	for c in cards:
