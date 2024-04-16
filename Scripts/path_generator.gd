@@ -1,4 +1,4 @@
-extends Object
+extends Node
 class_name PathGenerator
 
 var _grid_width:int
@@ -10,28 +10,25 @@ func _init(width:int, height:int):
 	_grid_width = width
 	_grid_height = height
 
-func generate_path():
-	_path.clear()
+func _ready():
+	var tile_size = get_tileset().tile_size
+	var tilemap_size = get_used_rect().end - get_used_rect().position
+	map_rect = Rect2i(Vector2i(), tilemap_size)
 	
-	var x = 0
-	var y = int(_grid_height/2)
-	_path.append(Vector2i(x,y))
-	var step = 2
-	while x < _grid_width:
-		var direction:int = randi_range(0,2)
-		for i in range(step):
-			if direction == 0 or x == _grid_width-1 and not _path.has(Vector2i(x+1, y)):
-				x += 1
-			#elif direction == 3 and not _path.has(Vector2i(x-1, y)):
-				#x -= 1
-			elif direction == 1 and y < _grid_height-2 and not _path.has(Vector2i(x,y+1)):
-				y += 1
-			elif direction == 2 and y > 1 and not _path.has(Vector2i(x,y-1)):
-				y -= 1
-			if not _path.has(Vector2i(x,y)):
-				_path.append(Vector2i(x,y))
-		
-	return _path
+	astar.region = map_rect
+	astar.cell_size = tile_size
+	astar.offset = tile_size * 0.5
+	astar.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar.update()
+	
+	for i in tilemap_size.x:
+		for j in tilemap_size.y:
+			var coordinates = Vector2i(i, j)
+			var tile_data = get_cell_tile_data(0, coordinates)
+			if tile_data and tile_data.get_custom_data('name') == "wall":
+				astar.set_point_solid(coordinates)
 
 func get_tile_score(tile:Vector2i) -> int:
 	var score:int = 0
