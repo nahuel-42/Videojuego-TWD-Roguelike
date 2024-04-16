@@ -6,10 +6,10 @@ extends Node
 @export var m_locationSpeed : float = 10.0
 @export var m_hideBoardRef : Control = null
 @export var m_boardRef : Control = null
+
 var f_state = null
 var m_cardsList = []
 var m_hide:bool = true
-
 
 func _ready():
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
@@ -19,7 +19,6 @@ func _process(delta):
 		f_state.call(delta)
 
 #STATES
-
 func State_CardsLocation(delta):
 	var ending = false
 	for i in range(len(m_cardsList)):
@@ -33,7 +32,6 @@ func State_CardsLocation(delta):
 				ending = true
 	if (ending):
 			f_state = null
-
 #END
 
 func LoadBoard(cardsList):
@@ -41,11 +39,12 @@ func LoadBoard(cardsList):
 		c.SetInputEvent(null)	
 	GameEvents.OnLoadDiscard.Call(m_cardsList)
 	
-	m_cardsList = cardsList	
+	m_cardsList = cardsList
 	for i in range(len(m_cardsList)):
 		var p = m_panels[i]
 		var c = m_cardsList[i]
 		c.SetInputEvent(GetInputEvent)
+		c.SetSide(true)
 		
 	f_state = State_CardsLocation
 

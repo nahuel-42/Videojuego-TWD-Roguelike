@@ -18,7 +18,6 @@ func _physics_process(delta):
 		FindCloseArea()
 	else:
 		CheckCloseArea()
-	print(m_slotSelected)
 
 func UpdatePosition(ui_position : Vector2):
 	global_position = get_viewport_transform().affine_inverse() * ui_position
