@@ -15,21 +15,25 @@ enum TileType {
 
 var textures = {
 	TileType.PASTO: {
+		"layer": 0,
 		"source": 1,
 		"atlas": Vector2i(0, 0),
 		"alternative": 0 
 	},
 	TileType.CAMINO: {
+		"layer": 1,
 		"source": 1,
 		"atlas": Vector2i(0, 4),
 		"alternative": 0 
 	},
 	TileType.OBSTACULO: {
+		"layer": 2,
 		"source": 2,
 		"atlas": Vector2i(1, 6),
 		"alternative": 0 
 	},
 	TileType.CASTILLO: {
+		"layer": 2,
 		"source": 3,
 		"atlas": Vector2i(3, 1),
 		"alternative": 0 
@@ -47,11 +51,12 @@ func _ready():
 	height = viewport_size.y / CELL_DIMENSION
 	width = viewport_size.x / CELL_DIMENSION
 	
+	var grass_texture = textures[TileType.PASTO]
 	for i in range(width):
 		map.append([])
 		for j in range(height):
 			map[i].append(TileType.PASTO)
-			set_cell(0, Vector2i(i,j), textures[TileType.PASTO].source, textures[TileType.PASTO].atlas)
+			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
 
 	setup_astar()
 	var initial_pos = Vector2i(0, height/2)
@@ -59,6 +64,7 @@ func _ready():
 	var initial_obstacle_size = 3
 	var initial_pos_offset = initial_pos - Vector2i(1, 1)
 	var target_pos_offset = target_pos - Vector2i(1, 1)
+	var castle_texture = textures[TileType.CASTILLO]
 	
 	var generated = false
 	var tries = 0
@@ -69,7 +75,7 @@ func _ready():
 		obstacles = []
 		obstacles.append(Rect2i(initial_pos_offset, Vector2i(initial_obstacle_size, initial_obstacle_size)))
 		obstacles.append(Rect2i(target_pos_offset, Vector2i(initial_obstacle_size, initial_obstacle_size)))
-		set_cell(0, initial_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
+		set_cell(castle_texture.layer, initial_pos, castle_texture.source, castle_texture.atlas)
 		set_cell(0, target_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
 		tries+=1
 		generate_obstacles(90, 3, 6)
@@ -82,15 +88,17 @@ func _ready():
 		if tries > 5000:
 			break
 	
+	var path_texture = textures[TileType.CAMINO]
 	for cell in path:
 		map[cell.x][cell.y] = TileType.CAMINO
-		set_cell(0, cell, textures[TileType.CAMINO].source, textures[TileType.CAMINO].atlas)
+		set_cell(path_texture.layer, cell, path_texture.source, path_texture.atlas)
 	print(tries)
 
 func clear_map():
+	var grass_texture = textures[TileType.PASTO]
 	for i in range(width):
 		for j in range(height):
-			set_cell(0, Vector2i(i,j), textures[TileType.PASTO].source, textures[TileType.PASTO].atlas)
+			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
 			
 func generate_target():
 	var side = randi_range(1,3)
@@ -109,6 +117,7 @@ func generate_target():
 	return Vector2i(pos_x, pos_y)
 
 func generate_obstacles(n, size_min, size_max):
+	var obstacle_texture = textures[TileType.OBSTACULO]
 	for k in range(n):
 		var size = randi_range(size_min, size_max)
 		var pos_x = randi_range(0, width-1)
@@ -124,7 +133,7 @@ func generate_obstacles(n, size_min, size_max):
 			obstacles.append(rect)
 			astar.fill_solid_region(rect)
 			for i in range(pos_y, pos_y + size):
-				set_cell(0, Vector2i(pos_x, i), textures[TileType.OBSTACULO].source, textures[TileType.OBSTACULO].atlas)
+				set_cell(obstacle_texture.layer, Vector2i(pos_x, i), obstacle_texture.source, obstacle_texture.atlas)
 
 func setup_astar():
 		var tile_size = get_tileset().tile_size

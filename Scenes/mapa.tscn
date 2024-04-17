@@ -286,4 +286,13 @@ sources/3 = SubResource("TileSetAtlasSource_0demd")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4rir8")
 format = 2
+layer_0/name = "Pasto"
+layer_0/navigation_enabled = false
+layer_1/name = "Camino"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Elementos"
+layer_2/z_index = 2
+layer_2/navigation_enabled = false
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("2_2h51y")
