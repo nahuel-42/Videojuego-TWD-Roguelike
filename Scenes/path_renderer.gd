@@ -60,13 +60,11 @@ func _ready():
 	var initial_pos_offset = initial_pos - Vector2i(1, 1)
 	var target_pos_offset = target_pos - Vector2i(1, 1)
 	
-	set_cell(0, initial_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
-	set_cell(0, target_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
-	
 	var generated = false
 	var tries = 0
 	var path
 	while not generated:
+		astar.fill_solid_region(astar.region, false)
 		clear_map()
 		obstacles = []
 		obstacles.append(Rect2i(initial_pos_offset, Vector2i(initial_obstacle_size, initial_obstacle_size)))
@@ -74,11 +72,11 @@ func _ready():
 		set_cell(0, initial_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
 		set_cell(0, target_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
 		tries+=1
-		generate_obstacles(60, 3, 6)
+		generate_obstacles(90, 3, 6)
+		print("Obstaculos: ", len(obstacles))
 		
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
-		if astar.is_dirty():
-			print("Sucio")
+
 		if len(path) > 0:
 			generated = true
 		if tries > 5000:
@@ -133,6 +131,7 @@ func setup_astar():
 		var tilemap_size = get_used_rect().end - get_used_rect().position
 		map_rect = Rect2i(Vector2i(), tilemap_size)
 
+		astar.clear()
 		astar.region = map_rect
 		astar.cell_size = tile_size
 		astar.offset = tile_size * 0.5
