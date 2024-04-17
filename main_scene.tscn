@@ -58,4 +58,5 @@ color = Color(0.443137, 0.443137, 0.443137, 1)
 position = Vector2(512, 333)
 
 [node name="Slot2" parent="." instance=ExtResource("3_88iop")]
+process_mode = 4
 position = Vector2(762, 303)

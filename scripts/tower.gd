@@ -1,11 +1,26 @@
 extends Node2D
 
+var inner_tower : Node2D = null:
+	set(value):
+		if inner_tower == null:
+			print("seteando inners ", value)
+			inner_tower = value
+		else:
+			inner_tower.inner_tower = value
 var range = 600
 var collision_shape : CollisionShape2D
 var radius : Line2D
 var fire_rate = 1
 var cooldown = 0
-var damage
+
+var meta_damage = 100
+var damage: int:
+	get:
+		if inner_tower == null:
+			return meta_damage
+		else:
+			print("intenado devolver daamge")
+			return inner_tower.damage + meta_damage
 
 var bullet_prefab
 var bullet_speed
@@ -13,17 +28,19 @@ var current_target
 
 var enemies_in_range = []
 
+		
+
 func _ready():
 	collision_shape = $Range/CollisionShape2D
 	collision_shape.shape.radius = range
 	draw_radius()
 
 func _process(delta):
-	
 	if cooldown > 0:
 		if cooldown < fire_rate/1.5:
 			modulate = Color(1, 1, 1)
 		cooldown -= delta
+		print("haria un daño de", damage)
 		return
 	
 	
@@ -77,3 +94,4 @@ func set_new_target():
 		if enemy.get_current_waypoint_index() > first_enemy.get_current_waypoint_index() or (enemy.get_current_waypoint_index() == first_enemy.get_current_waypoint_index() and enemy_distance_left < first_enemy_distance_left):
 			first_enemy = enemy;
 	current_target = first_enemy
+	
