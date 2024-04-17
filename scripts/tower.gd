@@ -3,7 +3,7 @@ extends Node2D
 var inner_tower : Node2D = null:
 	set(value):
 		if inner_tower == null:
-			print("seteando inners ", value)
+			#print("seteando inners ", value)
 			inner_tower = value
 		else:
 			inner_tower.inner_tower = value
@@ -13,13 +13,13 @@ var radius : Line2D
 var fire_rate = 1
 var cooldown = 0
 
-var meta_damage = 100
+var meta_damage = 1
 var damage: int:
 	get:
 		if inner_tower == null:
 			return meta_damage
 		else:
-			print("intenado devolver daamge")
+			#print("intenado devolver daamge")
 			return inner_tower.damage + meta_damage
 
 var bullet_prefab
@@ -40,7 +40,7 @@ func _process(delta):
 		if cooldown < fire_rate/1.5:
 			modulate = Color(1, 1, 1)
 		cooldown -= delta
-		print("haria un daño de", damage)
+		#print("haria un daño de", damage)
 		return
 	
 	
@@ -76,7 +76,7 @@ func delete_enemy(body):
 func shoot(target):
 	# TODO: Hacer las demás cosas como ver la probabilidad de acierto, animación, etc.
 	modulate = Color(1, 0, 0)
-	target.take_damage()
+	target.take_damage(damage)
 	
 func set_new_target():
 	var first_enemy = null

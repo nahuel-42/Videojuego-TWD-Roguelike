@@ -4,13 +4,14 @@ extends CharacterBody2D
 var speed = 300
 var acceleration = 7
 var target
+var health = 3
 
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
-	get_tree().get_nodes_in_group("target")[0].connect("body_entered", reach_target)
+	target = Parameters.target
+	target.connect("body_entered", reach_target)
 	velocity = Vector2.ZERO
-	target = get_parent().get_parent().get_node("Target")
 	nav.target_position = target.position
 	
 func _physics_process(delta):
@@ -40,6 +41,10 @@ func reach_target(body):
 		visible = false
 		print("Un enemigo ha escapado")
 		
-func take_damage():
+func take_damage(damage):
+	health -= damage
+	if health > 0:
+		return
+		
 	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
 	visible = false

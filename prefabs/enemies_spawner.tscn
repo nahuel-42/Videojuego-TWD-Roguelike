@@ -1,24 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://5wawy3eu27qx"]
+[gd_scene load_steps=2 format=3 uid="uid://5wawy3eu27qx"]
 
 [ext_resource type="Script" path="res://scripts/enemies_spawner.gd" id="1_rqod4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8bwnx"]
-radius = 182.617
-
 [node name="EnemiesSpawner" type="Node2D"]
 position = Vector2(0, 2)
+script = ExtResource("1_rqod4")
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("1_rqod4")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="Target" type="Area2D" parent="." groups=["target"]]
-position = Vector2(1243, 311)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
-shape = SubResource("CircleShape2D_8bwnx")
-
-[connection signal="timeout" from="Timer" to="Enemies" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

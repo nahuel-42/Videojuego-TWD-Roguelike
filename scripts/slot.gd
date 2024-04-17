@@ -40,4 +40,4 @@ func upgrade_tower():
 	var decorator_prefab = load(DAMAGE_DECORATOR)
 	var decorator_instance = decorator_prefab.instantiate()
 	get_child(3).set("inner_tower",decorator_instance) 
-	print("no exploto")
+	#print("no exploto")
