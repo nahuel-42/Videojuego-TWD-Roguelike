@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/slot.gd" id="1_u27ub"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o46pt"]
+radius = 77.7946
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7unyk"]
 
@@ -21,3 +22,5 @@ texture = SubResource("PlaceholderTexture2D_7unyk")
 
 [node name="TowerPoint" type="Node2D" parent="."]
 position = Vector2(-7, -34)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_click"]

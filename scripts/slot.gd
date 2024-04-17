@@ -2,6 +2,7 @@ extends Node2D
 
 enum Type {
 	TOWER,
+	SPAWNER,
 	PASSIVE
 }
 
@@ -16,7 +17,6 @@ func _ready():
 	tower_point = $TowerPoint
 	type = Type.TOWER
 	# Este método debería invocarlo la carta, pasando por parámetro el correspondiente prefab
-	create_tower(load(TOWER_PREFAB_PATH))
 	
 func _process(delta):
 	if Input.is_action_just_released("upgrade_tower"):
@@ -31,6 +31,7 @@ func apply_card():
 func delete():
 	pass
 	
+# -------------- type TOWER -------------------------
 func create_tower(tower_prefab):
 	child = tower_prefab.instantiate()
 	add_child(child)
@@ -41,3 +42,11 @@ func upgrade_tower():
 	var decorator_instance = decorator_prefab.instantiate()
 	get_child(3).set("inner_tower",decorator_instance) 
 	#print("no exploto")
+
+
+func _on_click(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if child == null:
+			create_tower(load(TOWER_PREFAB_PATH))
+		else:
+			upgrade_tower()
