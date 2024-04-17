@@ -1,40 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdh1547kpfhej"]
+[gd_scene load_steps=6 format=3 uid="uid://cdh1547kpfhej"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_jsw53"]
 [ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://prefabs/enemies_spawner.tscn" id="1_p4onw"]
 [ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://prefabs/pathfinding_2d.tscn" id="2_pf0jw"]
 [ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://prefabs/slot.tscn" id="3_88iop"]
-[ext_resource type="Texture2D" uid="uid://cta3yphed26c4" path="res://sprites/Heroes/Knight/Death/Death-Sheet.png" id="5_ih6ly"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ldg8w"]
 radius = 182.617
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uybl7"]
-texture = ExtResource("5_ih6ly")
-0:0/0 = 0
-1:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-14:1/0 = 0
-15:1/0 = 0
-16:1/0 = 0
-17:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_qoh24"]
-sources/0 = SubResource("TileSetAtlasSource_uybl7")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jsw53")
@@ -101,12 +73,3 @@ position = Vector2(512, 333)
 
 [node name="Slot2" parent="." instance=ExtResource("3_88iop")]
 position = Vector2(762, 303)
-
-[node name="TileMap" type="TileMap" parent="."]
-position = Vector2(1072, 201)
-tile_set = SubResource("TileSet_qoh24")
-format = 2
-layer_0/tile_data = PackedInt32Array(-4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -5, 0, 0)
-
-[node name="EnemiesSpawner3" parent="." instance=ExtResource("1_p4onw")]
-position = Vector2(1003, 195)
