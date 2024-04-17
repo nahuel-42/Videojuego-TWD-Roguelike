@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://6qs0hvfom5jd"]
+
+[ext_resource type="Script" path="res://scripts/spawner_slot.gd" id="1_rypjb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2318"]
+radius = 77.7946
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q26gq"]
+
+[node name="SpawnerSlot" type="Node2D"]
+script = ExtResource("1_rypjb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i2318")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 1.19209e-07)
+scale = Vector2(72.044, 70)
+texture = SubResource("PlaceholderTexture2D_q26gq")
+
+[node name="SpawnerPoint" type="Node2D" parent="."]
+position = Vector2(-7, -34)

@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://db6ppnl0i0t5g"]
 
-[ext_resource type="Script" path="res://scripts/slot.gd" id="1_u27ub"]
+[ext_resource type="Script" path="res://scripts/tower_slot.gd" id="1_087fb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o46pt"]
 radius = 77.7946
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7unyk"]
 
-[node name="Slot" type="Node2D"]
-script = ExtResource("1_u27ub")
+[node name="TowerSlot" type="Node2D"]
+script = ExtResource("1_087fb")
 
 [node name="Area2D" type="Area2D" parent="."]
 
