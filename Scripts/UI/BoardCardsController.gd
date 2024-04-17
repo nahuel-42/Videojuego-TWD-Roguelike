@@ -9,6 +9,7 @@ extends BaseDeck
 func _ready():
 	super._ready()
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
+	print(GlobalCards.CollectionCard)
 
 #STATES
 func State_CardsLocation(delta):

@@ -15,4 +15,3 @@ func _init(id, cardName, description, sprite, cost, active, type, range, damage,
 
 func use():
 	print("Se usa ActiveCard")
-	

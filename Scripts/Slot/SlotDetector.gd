@@ -56,6 +56,7 @@ func CheckCloseArea():
 		m_slotSelected.UnSelected()
 		m_slotSelected = newSlot
 		m_slotSelected.OnSelected()
+		m_slotSelected.apply_card(cards)#diccionary
 		
 func FindCloseArea():
 	var newSlot = null

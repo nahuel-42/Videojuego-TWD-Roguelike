@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_amc43"]
-[ext_resource type="Script" path="res://Scenes/ControlBars.gd" id="5_cued4"]
+[ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
 script/source = "extends Node
@@ -36,6 +36,7 @@ m_mainRef = NodePath("Deck")
 
 [node name="Deck" type="Control" parent="DeckCards"]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -125,6 +126,7 @@ anchor_bottom = 1.75
 
 [node name="Discard" type="Control" parent="DiscardCards"]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -177,6 +179,7 @@ ManaBar = NodePath("ManaBar")
 
 [node name="HealthBar" type="ProgressBar" parent="Bars"]
 modulate = Color(0.94902, 0, 0, 1)
+layout_mode = 0
 offset_right = 221.0
 offset_bottom = 27.0
 step = 1.0
@@ -185,6 +188,7 @@ show_percentage = false
 
 [node name="ManaBar" type="ProgressBar" parent="Bars"]
 modulate = Color(0, 0, 1, 1)
+layout_mode = 0
 offset_left = 1.0
 offset_top = 33.0
 offset_right = 222.0
