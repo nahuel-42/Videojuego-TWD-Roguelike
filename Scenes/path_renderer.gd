@@ -62,21 +62,14 @@ func _ready():
 	var initial_pos = Vector2i(0, height/2)
 	var target_pos = generate_target()
 	var initial_obstacle_size = 3
-	var initial_pos_offset = initial_pos - Vector2i(1, 1)
-	var target_pos_offset = target_pos - Vector2i(1, 1)
-	var castle_texture = textures[TileType.CASTILLO]
+
 	
 	var generated = false
 	var tries = 0
 	var path
 	while not generated:
 		astar.fill_solid_region(astar.region, false)
-		clear_map()
-		obstacles = []
-		obstacles.append(Rect2i(initial_pos_offset, Vector2i(initial_obstacle_size, initial_obstacle_size)))
-		obstacles.append(Rect2i(target_pos_offset, Vector2i(initial_obstacle_size, initial_obstacle_size)))
-		set_cell(castle_texture.layer, initial_pos, castle_texture.source, castle_texture.atlas)
-		set_cell(0, target_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
+		clear_obstacles(initial_pos, target_pos, initial_obstacle_size)
 		tries+=1
 		generate_obstacles(90, 3, 6)
 		print("Obstaculos: ", len(obstacles))
@@ -94,11 +87,16 @@ func _ready():
 		set_cell(path_texture.layer, cell, path_texture.source, path_texture.atlas)
 	print(tries)
 
-func clear_map():
-	var grass_texture = textures[TileType.PASTO]
-	for i in range(width):
-		for j in range(height):
-			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
+func clear_obstacles(initial_pos, target_pos, size):	
+	var initial_pos_offset = initial_pos - Vector2i(1, 1)
+	var target_pos_offset = target_pos - Vector2i(1, 1)
+	var castle_texture = textures[TileType.CASTILLO]		
+	clear_layer(textures[TileType.OBSTACULO].layer)
+	obstacles = []
+	obstacles.append(Rect2i(initial_pos_offset, Vector2i(size, size)))
+	obstacles.append(Rect2i(target_pos_offset, Vector2i(size, size)))
+	set_cell(castle_texture.layer, initial_pos, castle_texture.source, castle_texture.atlas)
+	set_cell(0, target_pos, textures[TileType.CASTILLO].source, textures[TileType.CASTILLO].atlas)
 			
 func generate_target():
 	var side = randi_range(1,3)
