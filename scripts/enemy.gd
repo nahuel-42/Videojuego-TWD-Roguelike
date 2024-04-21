@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-var speed = 300
-var acceleration = 7
+var speed = 150
+var acceleration = 5
 var target
 var health = 3
-
+@onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
@@ -13,6 +13,7 @@ func _ready():
 	target.connect("body_entered", reach_target)
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
+	animation.play("run")
 	
 func _physics_process(delta):
 	move(delta)

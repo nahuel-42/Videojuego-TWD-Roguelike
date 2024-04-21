@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpovrapg6s11k"
-path="res://.godot/imported/Tower.png-fbc02495eb0488c0bca454b4efa3a39b.ctex"
+uid="uid://c76ko6hf48xos"
+path="res://.godot/imported/Attack-Sheet.png-b2add6c1386c628fbcac897df3e2bcd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Tower.png"
-dest_files=["res://.godot/imported/Tower.png-fbc02495eb0488c0bca454b4efa3a39b.ctex"]
+source_file="res://sprites/Heroes/Wizzard/Attack/Attack-Sheet.png"
+dest_files=["res://.godot/imported/Attack-Sheet.png-b2add6c1386c628fbcac897df3e2bcd0.ctex"]
 
 [params]
 

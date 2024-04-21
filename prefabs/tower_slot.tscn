@@ -21,6 +21,6 @@ scale = Vector2(72.044, 70)
 texture = SubResource("PlaceholderTexture2D_7unyk")
 
 [node name="TowerPoint" type="Node2D" parent="."]
-position = Vector2(-7, -34)
+position = Vector2(0, -15)
 
 [connection signal="input_event" from="Area2D" to="." method="_on_click"]

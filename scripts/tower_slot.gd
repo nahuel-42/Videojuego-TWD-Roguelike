@@ -1,13 +1,12 @@
 extends "res://scripts/slot.gd"
 
-const TOWER_PREFAB_PATH = "res://prefabs/tower.tscn"
-
 func _ready():
 	tower_point = $TowerPoint
 
 func apply_card(card):
 	if child == null:
-		create_tower(load(TOWER_PREFAB_PATH)) # Setear parametros de la torre segun card
+		# Ver si conviene pasarle a create_tower el prefab y las estadísticas con la torre.
+		create_tower(load(card.prefab_path)) # Setear parametros de la torre segun card
 	else:
 		if card.type == "upgrade":
 			upgrade_tower()

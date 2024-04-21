@@ -7,7 +7,7 @@ var inner_tower : Node2D = null:
 			inner_tower = value
 		else:
 			inner_tower.inner_tower = value
-var range = 600
+var range = 150 / scale.x
 var collision_shape : CollisionShape2D
 var radius : Line2D
 var fire_rate = 1
@@ -27,12 +27,13 @@ var bullet_speed
 var current_target
 
 var enemies_in_range = []
-
-		
+var animation
 
 func _ready():
 	collision_shape = $Range/CollisionShape2D
 	collision_shape.shape.radius = range
+	animation = $Animation
+	animation.play("idle")
 	draw_radius()
 
 func _process(delta):
@@ -53,6 +54,7 @@ func _process(delta):
 func draw_radius():
 	var circle_points = []
 	radius = $Radius
+	radius.width = 1
 	var segments = 32  # Número de segmentos para aproximar el círculo
 	
 	for i in range(segments + 1):
