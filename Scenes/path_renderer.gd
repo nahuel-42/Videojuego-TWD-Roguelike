@@ -61,19 +61,11 @@ func _ready():
 	height = viewport_size.y * 2 / CELL_DIMENSION
 	width = viewport_size.x * 5 / CELL_DIMENSION
 	
+	#textures
 	var grass_texture = textures[TileType.PASTO]
-	for i in range(width):
-		map.append([])
-		for j in range(height):
-			map[i].append(TileType.PASTO)
-			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
-	#Generate path
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, 5, height / 2 - 1)
-	path_generator.generate_path()
-	var path = path_generator.get_path()
+	var border_texture = textures[TileType.BORDE]
 	
 	#Generate border
-	var border_texture = textures[TileType.BORDE]
 	for j in range(-padding, height+padding):
 		for i in range(-padding,-padding+padding):
 			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
@@ -85,18 +77,23 @@ func _ready():
 		for j in range(height,height+padding):
 			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
 		
-	
+	#Generate grass
 	for i in range(width):
 		map.append([])
 		for j in range(height):
 			map[i].append(TileType.PASTO)
 			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
 	
+	
 	setup_astar()
 	var initial_pos = Vector2i(0, height/2)
 	var target_pos = generate_target()
 	var initial_obstacle_size = 3
 
+	#Generate path
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, 5, height / 2 - 1)
+	path_generator.generate_path()
+	var path = path_generator.get_path()
 	
 	var generated = false
 	var tries = 0
@@ -115,10 +112,11 @@ func _ready():
 			break
 	#
 	var path_texture = textures[TileType.CAMINO]
+
 	for cell in path:
 		map[cell.x][cell.y] = TileType.CAMINO
 		set_cell(path_texture.layer, cell, path_texture.source, path_texture.atlas)
-	print(tries)
+	print("Intentos de generacion: ",+tries)
 
 func clear_obstacles(initial_pos, target_pos, size):	
 	var initial_pos_offset = initial_pos - Vector2i(1, 1)
@@ -170,7 +168,7 @@ func generate_obstacles(n, size_min, size_max):
 
 func setup_astar():
 		var tile_size = get_tileset().tile_size
-		var tilemap_size = get_used_rect().end - get_used_rect().position
+		var tilemap_size = Vector2i(width, height)
 		map_rect = Rect2i(Vector2i(), tilemap_size)
 
 		astar.clear()

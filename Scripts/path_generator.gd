@@ -45,6 +45,8 @@ func generate_path():
 		generate_obstacles(n_obstacles, min_size_obstacles, max_size_obstacles)
 				
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
+		
+		
 
 		if len(path) > 0:
 			generated = true
