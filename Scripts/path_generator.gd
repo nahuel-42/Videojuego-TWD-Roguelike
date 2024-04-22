@@ -20,7 +20,7 @@ var obstacles = []
 var castle_size = 3
 
 func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_obstacles:int, min_size_obstacles:int, max_size_obstacles:int):
-	print("hola")
+	
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
@@ -30,13 +30,14 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_o
 	self.max_size_obstacles = max_size_obstacles
 
 func generate_path():
-	print("hola2")
 	setup_astar()
 	var initial_pos = Vector2i(0, height/2)
 	var target_pos = generate_target()
 	
 	var generated = false
 	var tries = 0
+	print("Ancho: ", +width)
+	print("Alto: ", +height)
 	while not generated:
 		astar.fill_solid_region(astar.region, false)
 		clear_obstacles(initial_pos, target_pos, castle_size)
@@ -49,8 +50,6 @@ func generate_path():
 			generated = true
 		if tries > 5000:
 			break
-	print(path)
-	print(tries)
 
 func get_path() -> Array[Vector2i]:
 	return path
