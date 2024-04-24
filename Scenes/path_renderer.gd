@@ -21,7 +21,7 @@ var textures = {
 	TileType.PASTO: {
 		"layer": 0,
 		"source": 1,
-		"atlas": Vector2i(0, 0),
+		"atlas": Rect2i(Vector2i(0,0),Vector2i(7,3)),
 		"alternative": 0 
 	},
 	TileType.CAMINO: {
@@ -111,9 +111,11 @@ func generate_target():
 
 func render_grass(width: int, height: int):
 	var grass_texture = textures[TileType.PASTO]
+	var rand
 	for i in range(width):
 		for j in range(height):
-			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
+			rand = Vector2i(randi_range(grass_texture.atlas.position.x,grass_texture.atlas.end.x),randi_range(grass_texture.atlas.position.y,grass_texture.atlas.end.y))
+			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, rand)
 
 func render_border(padding: int):
 	var border_texture = textures[TileType.BORDE]
