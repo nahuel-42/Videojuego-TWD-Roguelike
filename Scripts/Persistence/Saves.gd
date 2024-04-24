@@ -16,6 +16,6 @@ static func save_game(path, dictionary):
 static func load_game(path, dictionary):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if (file != null):
-		#print(file.get_line())
-		return true
-	return false
+		var data = JSON.parse_string(file.get_line())
+		return data
+	return null

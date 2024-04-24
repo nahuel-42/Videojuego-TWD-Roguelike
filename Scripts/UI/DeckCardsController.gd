@@ -1,7 +1,6 @@
 extends BaseDeck
 
-func CreateCards(deck):
-	
+func CreateCards(deck):	
 	for i in deck:
 		var instance = CardFactory.createCard(i)
 		#el diccionario aca serian las cartas del juegador (gameDeck)
