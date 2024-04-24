@@ -24,19 +24,19 @@ var textures = {
 	TileType.CAMINO: {
 		"layer": 1,
 		"source": 1,
-		"atlas": Vector2i(0, 4),
+		"atlas": Rect2i(0,4,1,3),
 		"alternative": 0 
 	},
 	TileType.OBSTACULO: {
 		"layer": 2,
 		"source": 2,
-		"atlas": Vector2i(1, 6),
+		"atlas":Rect2i(1,6,0,0),
 		"alternative": 0 
 	},
 	TileType.CASTILLO: {
 		"layer": 2,
 		"source": 3,
-		"atlas": Vector2i(3, 1),
+		"atlas": Rect2i(3,1,0,0),
 		"alternative": 0 
 	},
 	TileType.BORDE: {
@@ -75,9 +75,18 @@ func _ready():
 	
 	render_border(padding)
 
+	render_path()
+	#for pos in map:
+		#var texture = textures[map[pos]]
+		#set_cell(texture.layer, pos, texture.source, texture.atlas)
+
+func render_path():
+	var rand
+
 	for pos in map:
 		var texture = textures[map[pos]]
-		set_cell(texture.layer, pos, texture.source, texture.atlas)
+		rand = Vector2i(randi_range(texture.atlas.position.x,texture.atlas.end.x),randi_range(texture.atlas.position.y,texture.atlas.end.y))
+		set_cell(texture.layer, pos, texture.source, rand)
 
 func generate_target():
 	var side = randi_range(1,3)
