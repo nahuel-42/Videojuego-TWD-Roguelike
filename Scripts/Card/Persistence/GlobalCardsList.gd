@@ -1,8 +1,10 @@
 class_name GlobalCards
 extends Node
 
-#Tower: (id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition):
-#ActiveCard: id, type, cardName, description, sprite, cost, active, range, damage, attackSpeed, presition):
+# SpellCard: id, cardName, description, sprite, cost
+# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
+# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
+# PowerUpCard: id, cardName, description, sprite, cost, active, type
 
 static var CollectionCard = [
 	################# TOWERS ####################
@@ -12,3 +14,5 @@ static var CollectionCard = [
 	################# Spell ####################
 	################# Camp ####################
 ]
+
+static var FireCards = [0,0,1,1]

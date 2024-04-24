@@ -1,12 +1,14 @@
 extends BaseDeck
 
-@export var m_cardPrefab : String
+@export var m_cardScene : String
 @export var m_cardsAmount : int = 5
 
 func CreateCards(amount):
-	var scene = load(m_cardPrefab)
+	var scene = load(m_cardScene)
 	
 	for i in range(amount):
+		#el diccionario aca serian las cartas del juegador (gameDeck)
+		#var card = CardFactory.CreateCards(gameDeck[i]) 
 		var instance = scene.instantiate()
 		AddCards(instance)
 

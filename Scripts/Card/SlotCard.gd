@@ -7,11 +7,10 @@ class_name SlotCard
 @export var m_active : bool = false
 @export var m_type: String = String()
 
+#func _init(id, cardName, description, sprite, cost, active, type):
+#	super._init(id, cardName, description, sprite, cost)
+#	m_active = active
+#	m_type = type
 
-func _init(id, cardName, description, sprite, cost, active, type):
-	super._init(id, cardName, description, sprite, cost)
-	m_active = active
-	m_type = type
-
-func use():
+func use(param):
 	print("se usa una slotCard")

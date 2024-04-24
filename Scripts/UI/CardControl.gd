@@ -4,10 +4,13 @@ extends Node
 @export var m_bottom : Panel = null
 @export var m_ID : int = 0
 
+var m_baseCard : BaseCard = null
 var e_inputEvent = null
-
 var m_side : bool = true
 
+func _init(baseCard):
+	m_baseCard = baseCard
+	
 func _ready():
 	SetSide(false)
 
@@ -24,3 +27,6 @@ func SetSide(side : bool):
 	
 	m_top.set_visible(side)
 	m_bottom.set_visible(!side)
+
+func use(param):
+	m_baseCard.use(param)
