@@ -1,4 +1,4 @@
-class_name Event
+class_name Action
 
 var e_event = []
 

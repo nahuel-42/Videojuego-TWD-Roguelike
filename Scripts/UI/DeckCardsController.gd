@@ -1,7 +1,5 @@
 extends BaseDeck
 
-@export var m_cardsAmount : int = 5
-
 func CreateCards(deck):
 	
 	for i in deck:
@@ -15,7 +13,7 @@ func _on_button_button_up():
 	CardsManager.InitUserSave()
 	var deck = CardsManager.CreateReferenceDeck(0)
 	CreateCards(deck)
-	RestartCardIndex(m_cardsAmount)
+	RestartCardIndex(len(deck))
 	f_state = State_LoadCards
 
 func _on_button_2_button_up():	

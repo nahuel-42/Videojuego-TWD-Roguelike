@@ -6,10 +6,7 @@ func glow_slot():
 	m_sprite2D.flip_v = false
 
 func unglow_slot():
-	pass
+	m_sprite2D.flip_v = true
 
 func apply_card(dictionary):
-	pass
-	
-func UnSelected():
-	m_sprite2D.flip_v = true
+	print(dictionary)

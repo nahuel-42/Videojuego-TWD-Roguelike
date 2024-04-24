@@ -6,13 +6,16 @@ var m_cardSelected = null
 var m_relativePosition : Vector2
 var m_backSpeed : float = 5
 
+var m_slotDetector : SlotDetector = null
+
+func _ready():
+	m_slotDetector = GameEvents.OnGetSlotDetector.Call(null)
+
 func _process(delta):
 	if (m_cardSelected != null):
 		MoveCardSelected()
-		GameEvents.OnUpadteSlotDetectorPosition.Call(m_cardSelected.global_position)	
 	UpdateCardsUnSelected(delta)
-	
-	
+
 func GetInputEvent(card, event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -20,18 +23,21 @@ func GetInputEvent(card, event):
 			if (m_cardSelected != null):
 				m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
 			m_cardSelected = card
-			GameEvents.OnSetActiveSlotDetector.Call(true)
+			m_slotDetector.SetActive(true)
 		else:
-			m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
+			if (!m_slotDetector.ApplyCard(m_cardSelected)):
+				m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])			
 			m_cardSelected = null
-			GameEvents.OnSetActiveSlotDetector.Call(false)
-			
+			m_slotDetector.SetActive(false)
+
 func MoveCardSelected():
 	var mousePosition = get_viewport().get_mouse_position()
 	var mov = mousePosition - m_relativePosition 
 	m_relativePosition = mousePosition
 	m_cardSelected.global_position += mov
 	
+	m_slotDetector.UpdatePosition(m_cardSelected.global_position)	
+
 func UpdateCardsUnSelected(delta):
 	var i = 0
 	while i < len(m_cardUnSelected):

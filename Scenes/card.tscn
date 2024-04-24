@@ -88,6 +88,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(150, 200)
 
 [node name="TextureRect" type="TextureRect" parent="BottomSideCard"]
 layout_mode = 1
@@ -100,13 +101,14 @@ texture = ExtResource("3_s28en")
 expand_mode = 1
 
 [node name="Collision" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(150, 200)
 
 [connection signal="gui_input" from="Collision" to="." method="_on_panel_gui_input"]

@@ -1,15 +1,14 @@
 extends BaseDeck
 
 @export var m_cardMovement : Node
-@export var m_cardsAmount : int = 5
 @export var m_panels: Array[Panel] = []
 @export var m_locationSpeed : float = 10.0
 
+var m_cardsAmount : int = 0
 
 func _ready():
 	super._ready()
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
-	print(GlobalCards.CollectionCard)
 
 #STATES
 func State_CardsLocation(delta):
@@ -33,7 +32,8 @@ func LoadBoard(cardsList):
 	GameEvents.OnLoadDiscard.Call(m_cardsList)
 	
 	m_cardsList = cardsList
-	for i in range(len(m_cardsList)):
+	m_cardsAmount = len(m_cardsList)
+	for i in range(m_cardsAmount):
 		var p = m_panels[i]
 		var c = m_cardsList[i]
 		c.SetInputEvent(GetInputEvent)
@@ -43,4 +43,3 @@ func LoadBoard(cardsList):
 
 func GetInputEvent(card, event):
 	m_cardMovement.GetInputEvent(card, event)
-

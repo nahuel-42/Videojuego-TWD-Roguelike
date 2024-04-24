@@ -1,17 +1,24 @@
 class_name SlotDetector
 extends Node2D
 
-@export var m_collider : CollisionShape2D = null
+@export var m_size : float = 100.0
+@export var m_collider : Node2D = null
+@export var m_sprite : Node2D = null
 
 var m_slotSelected = null
 var m_slotList = []
 
+var m_offset : Vector2 = Vector2.ZERO
+
+func _init():
+	GameEvents.OnGetSlotDetector.AddListener(GetDetSlotDetector)
+
 func _ready():
-	GameEvents.OnUpadteSlotDetectorPosition.AddListener(UpdatePosition)
-	GameEvents.OnSetActiveSlotDetector.AddListener(SetActive)
-	
+	m_collider.scale = Vector2.ONE * m_size;
+	m_sprite.scale = Vector2.ONE * m_size;
+	m_offset = Vector2.ONE * m_size / 2.0
+
 	SetActive(false)
-	#self.set_visible(false)
 	
 func _physics_process(delta):
 	if (m_slotSelected == null):
@@ -19,18 +26,33 @@ func _physics_process(delta):
 	else:
 		CheckCloseArea()
 
+######Events######
+func GetDetSlotDetector(param):
+	return self
+######End######
+
+######Public######
 func UpdatePosition(ui_position : Vector2):
-	global_position = get_viewport_transform().affine_inverse() * ui_position
+	global_position = get_viewport_transform().affine_inverse() * ui_position + m_offset
 
 func SetActive(value : bool):
 	#self.set_visible(value)
-	#m_collider.disabled = !value
+	m_collider.disabled = !value
 	if (value == false):
 		m_slotList.clear()
 		if (m_slotSelected != null):
-			m_slotSelected.UnSelected()
+			m_slotSelected.unglow_slot()
 			m_slotSelected = null
 
+func ApplyCard(card):
+	if (m_slotSelected != null):
+		card.use([m_slotSelected])
+		SetActive(false)
+		return true
+	return false
+######End######
+
+######Collider######
 func _on_area_entered(area):
 	if (!m_slotList.has(area)):
 		m_slotList.append(area)
@@ -38,10 +60,12 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	var index = m_slotList.find(area)
 	if (index >= 0):
-		area.UnSelected()
+		if (m_slotSelected != null):
+			m_slotSelected.unglow_slot()
 		m_slotList.remove_at(index)
 	if (m_slotSelected == area):
 		m_slotSelected = null
+######End######
 
 func CheckCloseArea():
 	var d1 = global_position.distance_to(m_slotSelected.global_position)
@@ -53,9 +77,9 @@ func CheckCloseArea():
 				d1 = d2
 				newSlot = a
 	if (newSlot != null):
-		m_slotSelected.UnSelected()
+		m_slotSelected.unglow_slot()
 		m_slotSelected = newSlot
-		m_slotSelected.OnSelected()
+		m_slotSelected.glow_slot()
 		#m_slotSelected.apply_card(cards)#diccionary
 		
 func FindCloseArea():
@@ -72,4 +96,5 @@ func FindCloseArea():
 				newSlot = a
 	if (newSlot != null):
 		m_slotSelected = newSlot
-		m_slotSelected.OnSelected()
+		m_slotSelected.glow_slot()
+	
