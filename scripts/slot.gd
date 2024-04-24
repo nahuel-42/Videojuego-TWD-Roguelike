@@ -14,13 +14,10 @@ func unglow_slot():
 func apply_card(card):
 	pass
 
-# Propiedades de Card de tipo tower: type, prefab_path
-const TOWER1_PREFAB_PATH = "res://prefabs/archer_tower.tscn"
-const TOWER2_PREFAB_PATH = "res://prefabs/area_tower.tscn"
 # Función provisional para probar interacción con slots. Mergear con grupo de mazos y UI
 func _on_click(viewport, event, shape_idx):
 	var card = {}
 	if event is InputEventMouseButton and event.pressed:
 		card["type"] = "upgrade" if child != null else "tower"
-		card["prefab_path"] = TOWER1_PREFAB_PATH if event.button_index == MOUSE_BUTTON_LEFT else TOWER2_PREFAB_PATH
+		card["id"] = "t1" if event.button_index == MOUSE_BUTTON_LEFT else "t2"
 		apply_card(card)
