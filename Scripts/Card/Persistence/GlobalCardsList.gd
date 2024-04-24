@@ -8,8 +8,8 @@ extends Node
 
 static var CollectionCard = [
 	################# TOWERS ####################
-	{"id":0, "type": "tower", "cardName" : "Fire Tower", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
-	{"id":1, "type": "tower", "cardName" : "Fire Tower2", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
+	{"id":0, "type": "tower", "cardName" : "Fire Tower", "desc":"Data", "sprite":"res://Assets/Fire1.png", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
+	{"id":1, "type": "tower", "cardName" : "Fire Tower2", "desc":"Data", "sprite":"res://Assets/Fire2.png", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
 	{"id":2, "type": "tower", "cardName" : "Fire Tower3", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 0, 'path':'res://X.tscn'}
 	################# Activate Card ####################
 	################# POWER ####################

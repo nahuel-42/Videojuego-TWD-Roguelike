@@ -5,13 +5,17 @@ extends Node
 @export var m_ID : int = 0
 @export var m_textureRect : TextureRect = null
 
+
 var m_baseCard : BaseCard = null
 var e_inputEvent = null
 var m_side : bool = true
 
 func Init(baseCard):
 	m_baseCard = baseCard
-	m_textureRect.texture = m_baseCard.m_refCard["sprite"]
+	#seteo de propiedades en texture y labels
+	get_node("TopSideCard/TextureRect").texture = load(m_baseCard.m_refCard["sprite"])
+	get_node('TopSideCard/name').text = m_baseCard.m_refCard["cardName"]	
+	#probablemente haya que crear cuatro estructuras de cartas, para que pueda mostrar los atributos que corresponden. 
 	
 func _ready():
 	SetSide(false)
