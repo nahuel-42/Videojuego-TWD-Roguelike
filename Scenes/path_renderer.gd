@@ -11,9 +11,12 @@ enum TileType {
 	TORRE,
 	OBSTACULO,
 	CASTILLO,
-	BORDE
+	BORDE,
+	SLOT
 }
 
+# TODO: hacer diccionario de layers (cambiar que layer sea layers.decoracion, por ejemplo o sea digamos)
+# TODO: cambiar a ingles
 var textures = {
 	TileType.PASTO: {
 		"layer": 0,
@@ -45,6 +48,12 @@ var textures = {
 		"atlas": Vector2i(7, 1),
 		"alternative": 0 
 	},
+	TileType.SLOT: {
+		"layer": 2,
+		"source": 3,
+		"atlas": Vector2i(3, 5),
+		"alternative": 0 
+	}
 }
 
 var map = {}
@@ -72,12 +81,17 @@ func _ready():
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO
+
+	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
 	
-	render_border(padding)
+	for slot in slots:
+		map[slot] = TileType.SLOT
 
 	for pos in map:
 		var texture = textures[map[pos]]
 		set_cell(texture.layer, pos, texture.source, texture.atlas)
+		
+	render_border(padding)
 
 func generate_target():
 	var side = randi_range(1,3)
