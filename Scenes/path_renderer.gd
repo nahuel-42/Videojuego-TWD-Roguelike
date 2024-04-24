@@ -45,13 +45,13 @@ var textures = {
 	TileType.BORDE: {
 		"layer": 0,
 		"source": 3,
-		"atlas": Vector2i(7, 1),
+		"atlas": Rect2i(7,1,0,0),
 		"alternative": 0 
 	},
 	TileType.SLOT: {
 		"layer": 2,
 		"source": 3,
-		"atlas": Vector2i(3, 5),
+		"atlas": Rect2i(3,5,0,0),
 		"alternative": 0 
 	}
 }
@@ -93,10 +93,12 @@ func _ready():
 		#set_cell(texture.layer, pos, texture.source, texture.atlas)
 
 func render_path():
-	var rand
+	var rand : Vector2i
 
 	for pos in map:
 		var texture = textures[map[pos]]
+		print(texture.atlas.size)
+		rand.x = randi_range(texture.atlas.position.x,texture.atlas.end.x)
 		rand = Vector2i(randi_range(texture.atlas.position.x,texture.atlas.end.x),randi_range(texture.atlas.position.y,texture.atlas.end.y))
 		set_cell(texture.layer, pos, texture.source, rand)
 
