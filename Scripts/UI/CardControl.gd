@@ -3,13 +3,15 @@ extends Node
 @export var m_top : Panel = null
 @export var m_bottom : Panel = null
 @export var m_ID : int = 0
+@export var m_textureRect : TextureRect = null
 
 var m_baseCard : BaseCard = null
 var e_inputEvent = null
 var m_side : bool = true
 
-func _init(baseCard):
+func Init(baseCard):
 	m_baseCard = baseCard
+	m_textureRect.texture = m_baseCard.m_refCard["sprite"]
 	
 func _ready():
 	SetSide(false)

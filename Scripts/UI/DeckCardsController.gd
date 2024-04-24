@@ -1,19 +1,20 @@
 extends BaseDeck
 
-@export var m_cardScene : String
 @export var m_cardsAmount : int = 5
 
-func CreateCards(amount):
-	var scene = load(m_cardScene)
+func CreateCards(deck):
 	
-	for i in range(amount):
+	for i in deck:
+		var instance = CardFactory.createCard(i)
 		#el diccionario aca serian las cartas del juegador (gameDeck)
 		#var card = CardFactory.CreateCards(gameDeck[i]) 
-		var instance = scene.instantiate()
 		AddCards(instance)
 
 func _on_button_button_up():
-	CreateCards(m_cardsAmount)
+	#por ahora se crea solo fuego
+	CardsManager.InitUserSave()
+	var deck = CardsManager.CreateReferenceDeck(0)
+	CreateCards(deck)
 	RestartCardIndex(m_cardsAmount)
 	f_state = State_LoadCards
 

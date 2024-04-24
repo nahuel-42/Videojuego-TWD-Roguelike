@@ -24,7 +24,7 @@ func UpdatePosition(ui_position : Vector2):
 
 func SetActive(value : bool):
 	#self.set_visible(value)
-	m_collider.disabled = !value
+	#m_collider.disabled = !value
 	if (value == false):
 		m_slotList.clear()
 		if (m_slotSelected != null):
@@ -56,7 +56,7 @@ func CheckCloseArea():
 		m_slotSelected.UnSelected()
 		m_slotSelected = newSlot
 		m_slotSelected.OnSelected()
-		m_slotSelected.apply_card(cards)#diccionary
+		#m_slotSelected.apply_card(cards)#diccionary
 		
 func FindCloseArea():
 	var newSlot = null
