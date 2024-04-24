@@ -47,7 +47,7 @@ var textures = {
 	},
 }
 
-var map = []
+var map = {}
 
 # Configuration
 var padding = 3
@@ -58,42 +58,26 @@ func _ready():
 	height = viewport_size.y * 2 / CELL_DIMENSION
 	width = viewport_size.x * 5 / CELL_DIMENSION
 	
-	#textures
-	var grass_texture = textures[TileType.PASTO]
-		
-	#Generate grass
-	for i in range(width):
-		map.append([])
-		for j in range(height):
-			map[i].append(TileType.PASTO)
-			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
+	render_grass(width, height)
 	
 	var initial_pos = Vector2i(0, height / 2)
 	var target_pos = generate_target()
+	
+	map[initial_pos] = TileType.CASTILLO
+	map[target_pos] = TileType.CASTILLO
+	
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, 5, height / 2 - 1)
 	path_generator.generate_path()
 	var path = path_generator.get_path()
 	
-	# Generate border
-	var border_texture = textures[TileType.BORDE]
-	for j in range(-padding, height+padding):
-		for i in range(-padding,-padding+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-		for i in range(width,width+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-	for i in range(0, width):
-		for j in range(-padding,0):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-		for j in range(height,height+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-
-	var path_texture = textures[TileType.CAMINO]
 	for cell in path:
-		map[cell.x][cell.y] = TileType.CAMINO
-		set_cell(path_texture.layer, cell, path_texture.source, path_texture.atlas)
-	var castle_texture = textures[TileType.CASTILLO]
-	set_cell(castle_texture.layer, initial_pos, castle_texture.source, castle_texture.atlas, castle_texture.alternative)
-	set_cell(castle_texture.layer, target_pos, castle_texture.source, castle_texture.atlas, castle_texture.alternative)
+		map[cell] = TileType.CAMINO
+	
+	render_border(padding)
+
+	for pos in map:
+		var texture = textures[map[pos]]
+		set_cell(texture.layer, pos, texture.source, texture.atlas)
 
 func generate_target():
 	var side = randi_range(1,3)
@@ -110,6 +94,25 @@ func generate_target():
 		pos_y = height - 1 
 	
 	return Vector2i(pos_x, pos_y)
+
+func render_grass(width: int, height: int):
+	var grass_texture = textures[TileType.PASTO]
+	for i in range(width):
+		for j in range(height):
+			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, grass_texture.atlas)
+
+func render_border(padding: int):
+	var border_texture = textures[TileType.BORDE]
+	for j in range(-padding, height+padding):
+		for i in range(-padding,-padding+padding):
+			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
+		for i in range(width,width+padding):
+			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
+	for i in range(0, width):
+		for j in range(-padding,0):
+			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
+		for j in range(height,height+padding):
+			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
