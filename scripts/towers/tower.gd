@@ -1,53 +1,57 @@
+class_name Tower
 extends Node2D
+
+var collision_shape : CollisionShape2D 
+@onready var animation = $Animation
 
 var inner_tower : Node2D = null:
 	set(value):
 		if inner_tower == null:
-			#print("seteando inners ", value)
 			inner_tower = value
 		else:
 			inner_tower.inner_tower = value
-var range = 150 / scale.x
-var collision_shape : CollisionShape2D
+var range: float
 var radius : Line2D
-var fire_rate = 1
+var attack_speed = 1
 var cooldown = 0
 
-var meta_damage = 1
-var damage: int:
-	get:
-		if inner_tower == null:
-			return meta_damage
-		else:
-			#print("intenado devolver daamge")
-			return inner_tower.damage + meta_damage
+var damage: int
+var accuracy: float
 
 var bullet_prefab
 var bullet_speed
 var current_target
 
 var enemies_in_range = []
-var animation
 
-func _ready():
+func load_stats(stats):
+	range = stats["range"] / scale.x
 	collision_shape = $Range/CollisionShape2D
 	collision_shape.shape.radius = range
-	animation = $Animation
+	attack_speed = stats["attackSpeed"]
+	damage = stats["damage"]
+	accuracy = stats["accuracy"]
+	
+func get_damage():
+	if inner_tower == null:
+		return damage
+	else:
+		return inner_tower.get_damage() + damage
+
+func _ready():
 	animation.play("idle")
 	draw_radius()
 
 func _process(delta):
 	if cooldown > 0:
-		if cooldown < fire_rate/1.5:
+		if cooldown < attack_speed/1.5:
 			modulate = Color(1, 1, 1)
 		cooldown -= delta
-		#print("haria un daño de", damage)
 		return
-	
 	
 	if current_target != null and current_target in enemies_in_range:
 		shoot(current_target)
-		cooldown = fire_rate
+		cooldown = attack_speed
 	
 	set_new_target()
 	
@@ -76,9 +80,7 @@ func delete_enemy(body):
 		enemies_in_range.erase(body)
 
 func shoot(target):
-	# TODO: Hacer las demás cosas como ver la probabilidad de acierto, animación, etc.
-	modulate = Color(1, 0, 0)
-	target.take_damage(damage)
+	pass
 	
 func set_new_target():
 	var first_enemy = null

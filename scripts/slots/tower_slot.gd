@@ -1,4 +1,4 @@
-extends "res://scripts/slot.gd"
+extends Slot
 
 const CARDS_PATH = "res://cards/"
 
@@ -14,22 +14,25 @@ func apply_card(card):
 		"delete":
 			delete_tower()
 
-func load_card(id):
-	var file = FileAccess.open(CARDS_PATH + id + ".json", FileAccess.READ)
-	var content = file.get_as_text()
-	return JSON.parse_string(content)
+func find_card(collection, id):
+	var col = GlobalCardsList.CollectionCard[collection]
+	for card in col:
+		if card["id"] == id:
+			return card
+	return {}
 
 func create_tower(id):
-	var json = load_card(id)
-	var prefab = load(json["prefab"])
+	var stats = find_card("towers", id)
+	var prefab = load(stats["path"])
 	child = prefab.instantiate()
+	child.load_stats(stats)
 	add_child(child)
 	child.position = tower_point.position
 
 func upgrade_tower(id):
 	var decorator_prefab = load(DAMAGE_DECORATOR)
 	var decorator_instance = decorator_prefab.instantiate()
-	get_child(3).set("inner_tower",decorator_instance) 
+	child.set("inner_tower",decorator_instance) 
 
 func delete_tower():
 	pass

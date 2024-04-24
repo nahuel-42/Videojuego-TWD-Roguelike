@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 
-var speed = 150
+var speed = 125
 var acceleration = 5
 var target
 var health = 3
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+
+var cooldown = 0.5
 
 func _ready():
 	target = Parameters.target
@@ -14,7 +16,14 @@ func _ready():
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
 	animation.play("run")
+
+func _process(delta):
+	if cooldown > 0:
+		cooldown -= delta
+		return
 	
+	modulate = Color(1, 1, 1)
+
 func _physics_process(delta):
 	move(delta)
 		
@@ -42,7 +51,12 @@ func reach_target(body):
 		visible = false
 		print("Un enemigo ha escapado")
 		
+func freeze():
+	pass
+		
 func take_damage(damage):
+	cooldown = 0.5
+	modulate = Color(1, 0, 0)
 	health -= damage
 	if health > 0:
 		return

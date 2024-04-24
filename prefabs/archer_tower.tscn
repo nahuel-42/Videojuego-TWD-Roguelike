@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp82nvs2t4q36"]
 
 [ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_4kx5g"]
-[ext_resource type="Script" path="res://scripts/tower.gd" id="2_gflyw"]
+[ext_resource type="Script" path="res://scripts/towers/archer_tower.gd" id="2_4pt5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293
@@ -32,12 +32,12 @@ _data = {
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_4kx5g")
 hframes = 4
-script = ExtResource("2_gflyw")
+script = ExtResource("2_4pt5c")
 
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
-position = Vector2(44, 12)
+position = Vector2(0, 12)
 shape = SubResource("CircleShape2D_kj5wf")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
