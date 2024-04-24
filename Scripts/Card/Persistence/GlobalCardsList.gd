@@ -8,7 +8,7 @@ extends Node
 
 static var CollectionCard = [
 	################# TOWERS ####################
-	[{"id":0, "type": "tower", "cardName" : "Fire Tower 1", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1}]
+	[{"id":0, "type": "tower", "cardName" : "Fire Tower", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "presition": 0.1, "unlocked": 0, 'path':'res://X.tscn'}]
 	################# Activate Card ####################
 	################# POWER ####################
 	################# Spell ####################
@@ -16,3 +16,9 @@ static var CollectionCard = [
 ]
 
 static var FireCards = [0,0,1,1]
+static var IceCards = [0,0,1,1]
+
+
+static var UnlockedCards = [0, 0, 0, 0, 0, 0, 0]
+
+
