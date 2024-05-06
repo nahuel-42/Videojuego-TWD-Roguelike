@@ -74,8 +74,8 @@ func _ready():
 	
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
-	
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, 5, height / 2 - 1)
+	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, obstacle_generator)
 	path_generator.generate_path()
 	var path = path_generator.get_path()
 	
@@ -88,16 +88,12 @@ func _ready():
 		map[slot] = TileType.SLOT
 
 	render_path()
-	#for pos in map:
-		#var texture = textures[map[pos]]
-		#set_cell(texture.layer, pos, texture.source, texture.atlas)
 
 func render_path():
 	var rand : Vector2i
 
 	for pos in map:
 		var texture = textures[map[pos]]
-		print(texture.atlas.size)
 		rand.x = randi_range(texture.atlas.position.x,texture.atlas.end.x)
 		rand = Vector2i(randi_range(texture.atlas.position.x,texture.atlas.end.x),randi_range(texture.atlas.position.y,texture.atlas.end.y))
 		set_cell(texture.layer, pos, texture.source, rand)

@@ -10,29 +10,28 @@ var initial_pos:Vector2i
 var target_pos:Vector2i
 
 var n_obstacles
-var min_size_obstacles
-var max_size_obstacles
 
 var path: Array[Vector2i]
 
 var astar = AStarGrid2D.new()
 var map_rect = Rect2i()
+var obstacle_generator:ObstacleGenerator
 var obstacles = []
 
 # Configuration
 var castle_size = 3
 
 # TODO: Config Class
-func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, min_size_obstacles:int, max_size_obstacles:int):
+func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, obstacle_generator:ObstacleGenerator):
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
 	self.tilemap_size = tilemap_size
 	self.n_obstacles = n_obstacles
-	self.min_size_obstacles = min_size_obstacles
-	self.max_size_obstacles = max_size_obstacles
 	self.initial_pos = initial_pos
 	self.target_pos = target_pos
+	# TODO: dependency injection??
+	self.obstacle_generator = obstacle_generator
 
 func generate_path():
 	setup_astar()
@@ -43,7 +42,10 @@ func generate_path():
 		astar.fill_solid_region(astar.region, false)
 		clear_obstacles(initial_pos, target_pos, castle_size)
 		tries+=1
-		generate_obstacles(n_obstacles, min_size_obstacles, max_size_obstacles)
+		obstacles = obstacle_generator.generate_obstacles(n_obstacles)
+		
+		for obstacle in obstacles:
+			astar.fill_solid_region(obstacle)
 		
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
 
