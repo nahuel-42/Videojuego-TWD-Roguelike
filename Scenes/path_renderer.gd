@@ -75,17 +75,22 @@ func _ready():
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
 	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, obstacle_generator)
-	path_generator.generate_path()
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
+	path_generator.generate_path(initial_pos, target_pos)
 	var path = path_generator.get_path()
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO
 
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
-	
 	for slot in slots:
 		map[slot] = TileType.SLOT
+	
+	var forks = ForkGenerator.new(width, height, obstacle_generator, path_generator).generate_forks(path, slots, 3, 3, 3)
+	for fork in forks:
+		for cell in fork:
+			map[cell] = TileType.CASTILLO
+
 
 	render_path()
 

@@ -7,9 +7,9 @@ var height:int
 var min_size:int
 var max_size:int
 
-var initial_obstacles: Array
+var initial_obstacles: Array[Rect2i]
 
-func _init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Array = []):
+func _init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Array[Rect2i] = []):
 	self.width = width
 	self.height = height
 	self.min_size = min_size

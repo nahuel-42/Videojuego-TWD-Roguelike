@@ -22,18 +22,16 @@ var obstacles = []
 var castle_size = 3
 
 # TODO: Config Class
-func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, obstacle_generator:ObstacleGenerator):
+func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_obstacles:int, obstacle_generator:ObstacleGenerator):
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
 	self.tilemap_size = tilemap_size
 	self.n_obstacles = n_obstacles
-	self.initial_pos = initial_pos
-	self.target_pos = target_pos
 	# TODO: dependency injection??
 	self.obstacle_generator = obstacle_generator
 
-func generate_path():
+func generate_path(initial_pos:Vector2i, target_pos:Vector2i):
 	setup_astar()
 	
 	var generated = false
@@ -54,6 +52,8 @@ func generate_path():
 		if tries > 5000:
 			break
 	print("Tries: ", tries)
+	
+	# TODO: Devolver path cuando lo genera
 
 func get_path() -> Array[Vector2i]:
 	return path
