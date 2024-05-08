@@ -31,7 +31,10 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_o
 	# TODO: dependency injection??
 	self.obstacle_generator = obstacle_generator
 
-func generate_path(initial_pos:Vector2i, target_pos:Vector2i):
+func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
+	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
+	var min_distance = curvature * distance
+	
 	setup_astar()
 	
 	var generated = false
@@ -47,7 +50,7 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i):
 		
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
 
-		if len(path) > 0:
+		if len(path) > min_distance:
 			generated = true
 		if tries > 5000:
 			break

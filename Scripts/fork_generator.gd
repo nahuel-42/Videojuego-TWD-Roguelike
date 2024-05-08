@@ -32,7 +32,7 @@ func generate_forks(path:Array[Vector2i], obstacles:Array[Vector2i], n:int, padd
 			
 			if target_pos not in path and target_pos not in obstacles:
 				found = true
-				path_generator.generate_path(path_position, target_pos)
+				path_generator.generate_path(path_position, target_pos, 2.0)
 				var fork = path_generator.get_path()
 				forks.append(fork)
 				obstacle_generator.initial_obstacles.append_array(fork)

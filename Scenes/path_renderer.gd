@@ -74,9 +74,11 @@ func _ready():
 	
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
+	
 	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
-	path_generator.generate_path(initial_pos, target_pos)
+	path_generator.generate_path(initial_pos, target_pos, 2.0)
+
 	var path = path_generator.get_path()
 	
 	for cell in path:
