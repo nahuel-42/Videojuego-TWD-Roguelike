@@ -13,6 +13,12 @@ var obstacle_generator:ObstacleGenerator
 var path_generator:PathGenerator
 var max_tries = 10
 
+# TODO:
+# - Arreglar la forma de los forks
+# - Sacar los obstaculos para generar los forks
+# - Alejar los forks del camino o hacer que la direccion se aleje del camino
+# - Revisar que se agrega a obstacles generator
+
 func _init(width:int, height:int, min_sections:int, max_sections:int, min_distance:int, max_distance:int, path_generator:PathGenerator):
 	self.width = width
 	self.height = height
