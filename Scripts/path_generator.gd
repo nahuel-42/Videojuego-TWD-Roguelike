@@ -10,8 +10,6 @@ var initial_pos:Vector2i
 var target_pos:Vector2i
 
 var n_obstacles
-var min_size_obstacles
-var max_size_obstacles
 
 var path: Array[Vector2i]
 
@@ -19,28 +17,27 @@ var min_distance: float
 
 var astar = AStarGrid2D.new()
 var map_rect = Rect2i()
+var obstacle_generator:ObstacleGenerator
 var obstacles = []
 
 # Configuration
 var castle_size = 3
 
 # TODO: Config Class
-func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, min_size_obstacles:int, max_size_obstacles:int, curvature: float):
+func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_obstacles:int, obstacle_generator:ObstacleGenerator):
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
 	self.tilemap_size = tilemap_size
 	self.n_obstacles = n_obstacles
-	self.min_size_obstacles = min_size_obstacles
-	self.max_size_obstacles = max_size_obstacles
-	self.initial_pos = initial_pos
-	self.target_pos = target_pos
-	
-	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
-	self.min_distance = curvature * distance
 
-# TODO: generar camino por tramos, para no descartar todo el camino por un solo tramo
-func generate_path():
+	# TODO: dependency injection??
+	self.obstacle_generator = obstacle_generator
+
+func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
+	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
+	var min_distance = curvature * distance
+
 	setup_astar()
 	
 	var generated = false
@@ -49,7 +46,10 @@ func generate_path():
 		astar.fill_solid_region(astar.region, false)
 		clear_obstacles(initial_pos, target_pos, castle_size)
 		tries+=1
-		generate_obstacles(n_obstacles, min_size_obstacles, max_size_obstacles)
+		obstacles = obstacle_generator.generate_obstacles(n_obstacles)
+		
+		for obstacle in obstacles:
+			astar.fill_solid_region(obstacle)
 		
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
 
@@ -58,6 +58,8 @@ func generate_path():
 		if tries > 5000:
 			break
 	print("Tries: ", tries)
+	
+	# TODO: Devolver path cuando lo genera
 
 func get_path() -> Array[Vector2i]:
 	return path

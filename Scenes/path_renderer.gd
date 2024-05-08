@@ -27,31 +27,31 @@ var textures = {
 	TileType.CAMINO: {
 		"layer": 1,
 		"source": 1,
-		"atlas": Vector2i(0, 4),
+		"atlas": Rect2i(0,4,1,3),
 		"alternative": 0 
 	},
 	TileType.OBSTACULO: {
 		"layer": 2,
 		"source": 2,
-		"atlas": Vector2i(1, 6),
+		"atlas":Rect2i(1,6,0,0),
 		"alternative": 0 
 	},
 	TileType.CASTILLO: {
 		"layer": 2,
 		"source": 3,
-		"atlas": Vector2i(3, 1),
+		"atlas": Rect2i(3,1,0,0),
 		"alternative": 0 
 	},
 	TileType.BORDE: {
 		"layer": 0,
 		"source": 3,
-		"atlas": Vector2i(7, 1),
-		"alternative": 0
+		"atlas": Rect2i(7,1,0,0),
+		"alternative": 0 
 	},
 	TileType.SLOT: {
 		"layer": 2,
 		"source": 3,
-		"atlas": Vector2i(3, 5),
+		"atlas": Rect2i(3,5,0,0),
 		"alternative": 0 
 	}
 }
@@ -75,23 +75,35 @@ func _ready():
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
 	
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, 5, height / 2 - 1, 2.0)
-	path_generator.generate_path()
+	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
+	path_generator.generate_path(initial_pos, target_pos, 2.0)
+
 	var path = path_generator.get_path()
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO
 
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
-	
 	for slot in slots:
 		map[slot] = TileType.SLOT
+	
+	var forks = ForkGenerator.new(width, height, obstacle_generator, path_generator).generate_forks(path, slots, 3, 3, 3)
+	for fork in forks:
+		for cell in fork:
+			map[cell] = TileType.CASTILLO
+
+
+	render_path()
+
+func render_path():
+	var rand : Vector2i
 
 	for pos in map:
 		var texture = textures[map[pos]]
-		set_cell(texture.layer, pos, texture.source, texture.atlas)
-		
-	render_border(padding)
+		rand.x = randi_range(texture.atlas.position.x,texture.atlas.end.x)
+		rand = Vector2i(randi_range(texture.atlas.position.x,texture.atlas.end.x),randi_range(texture.atlas.position.y,texture.atlas.end.y))
+		set_cell(texture.layer, pos, texture.source, rand)
 
 func generate_target():
 	var side = randi_range(1,3)
