@@ -17,8 +17,8 @@ func _init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:
 	self.initial_obstacles = initial_obstacles
 	
 	
-func generate_obstacles(n: int) -> Array:
-	var obstacles = []
+func generate_obstacles(n: int) -> Array[Rect2i]:
+	var obstacles: Array[Rect2i] = []
 	obstacles.append_array(initial_obstacles)
 	var n_obstacles = 0
 	while n_obstacles < n:
@@ -37,3 +37,6 @@ func generate_obstacles(n: int) -> Array:
 			n_obstacles += 1
 			
 	return obstacles
+
+func add_obstacles(obstacles: Array[Rect2i]):
+	initial_obstacles.append_array(obstacles)

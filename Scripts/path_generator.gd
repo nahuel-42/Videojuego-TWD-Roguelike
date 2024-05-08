@@ -18,7 +18,6 @@ var min_distance: float
 var astar = AStarGrid2D.new()
 var map_rect = Rect2i()
 var obstacle_generator:ObstacleGenerator
-var obstacles = []
 
 # Configuration
 var castle_size = 3
@@ -34,7 +33,9 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_o
 	# TODO: dependency injection??
 	self.obstacle_generator = obstacle_generator
 
+# Precondicion: el camino es alcanzable
 func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
+	print("Generating path")
 	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
 	var min_distance = curvature * distance
 
@@ -43,20 +44,25 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 	var generated = false
 	var tries = 0
 	while not generated:
+		# TODO: podria ser un metodo que genere los obstaculos
 		astar.fill_solid_region(astar.region, false)
-		clear_obstacles(initial_pos, target_pos, castle_size)
 		tries+=1
-		obstacles = obstacle_generator.generate_obstacles(n_obstacles)
+		var obstacles = obstacle_generator.generate_obstacles(n_obstacles)
 		
 		for obstacle in obstacles:
 			astar.fill_solid_region(obstacle)
 		
-		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
+		path = astar.get_id_path(initial_pos, target_pos)
 
 		if len(path) > min_distance:
 			generated = true
 		if tries > 5000:
 			break
+	var path_obstacles: Array[Rect2i] = []
+	for pos in path:
+		path_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
+	obstacle_generator.add_obstacles(path_obstacles)
+	path = path.slice(1, -1)
 	print("Tries: ", tries)
 	
 	# TODO: Devolver path cuando lo genera
@@ -76,27 +82,12 @@ func setup_astar():
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar.update()
 	
-func generate_obstacles(n, size_min, size_max):
-	var n_obstacles = 0
-	while n_obstacles < n:
-		var size = randi_range(size_min, size_max)
-		var pos_x = randi_range(0, width-1)
-		var pos_y = randi_range(0, height - size)
-		var pos = Vector2i(pos_x, pos_y)
-		var collided = false
-		var rect = Rect2i(pos, Vector2i(1, size))
-		for obstacle in obstacles:
-			if obstacle.intersects(rect):
-				collided = true
-				break
-		if !collided:
-			obstacles.append(rect)
-			astar.fill_solid_region(rect)
-			n_obstacles += 1
+func is_reachable(initial_pos: Vector2i, target_pos:Vector2i) -> bool:
+	astar.fill_solid_region(astar.region, false)
+	for obstacle in obstacle_generator.initial_obstacles:
+			astar.fill_solid_region(obstacle)
+			
+	path = astar.get_id_path(initial_pos, target_pos)
+	
+	return len(path) > 0
 
-func clear_obstacles(initial_pos, target_pos, size):	
-	var initial_pos_offset = initial_pos - Vector2i(1, 1)
-	var target_pos_offset = target_pos - Vector2i(1, 1)
-	obstacles = []
-	obstacles.append(Rect2i(initial_pos_offset, Vector2i(size, size)))
-	obstacles.append(Rect2i(target_pos_offset, Vector2i(size, size)))
