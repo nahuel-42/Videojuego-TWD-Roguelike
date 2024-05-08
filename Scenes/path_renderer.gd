@@ -46,7 +46,7 @@ var textures = {
 		"layer": 0,
 		"source": 3,
 		"atlas": Vector2i(7, 1),
-		"alternative": 0 
+		"alternative": 0
 	},
 	TileType.SLOT: {
 		"layer": 2,
@@ -75,7 +75,7 @@ func _ready():
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
 	
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, 5, height / 2 - 1)
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, initial_pos, target_pos, 150, 5, height / 2 - 1, 2.0)
 	path_generator.generate_path()
 	var path = path_generator.get_path()
 	

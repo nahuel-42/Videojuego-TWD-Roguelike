@@ -15,6 +15,8 @@ var max_size_obstacles
 
 var path: Array[Vector2i]
 
+var min_distance: float
+
 var astar = AStarGrid2D.new()
 var map_rect = Rect2i()
 var obstacles = []
@@ -23,7 +25,7 @@ var obstacles = []
 var castle_size = 3
 
 # TODO: Config Class
-func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, min_size_obstacles:int, max_size_obstacles:int):
+func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, initial_pos:Vector2i, target_pos:Vector2i, n_obstacles:int, min_size_obstacles:int, max_size_obstacles:int, curvature: float):
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
@@ -33,7 +35,11 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, ini
 	self.max_size_obstacles = max_size_obstacles
 	self.initial_pos = initial_pos
 	self.target_pos = target_pos
+	
+	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
+	self.min_distance = curvature * distance
 
+# TODO: generar camino por tramos, para no descartar todo el camino por un solo tramo
 func generate_path():
 	setup_astar()
 	
@@ -47,7 +53,7 @@ func generate_path():
 		
 		path = astar.get_id_path(initial_pos, target_pos).slice(1, -1)
 
-		if len(path) > 0:
+		if len(path) > min_distance:
 			generated = true
 		if tries > 5000:
 			break
