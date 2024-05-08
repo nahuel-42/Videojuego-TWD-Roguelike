@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ckkwlf5xmt146"]
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="fireCards" type="Button" parent="."]
+offset_left = 188.0
+offset_top = 41.0
+offset_right = 648.0
+offset_bottom = 187.0
+text = "Start Fire Cards"
+
+[node name="iceCards" type="Button" parent="."]
+offset_left = 320.0
+offset_top = 225.0
+offset_right = 515.0
+offset_bottom = 364.0
+text = "Start Ice Cards"

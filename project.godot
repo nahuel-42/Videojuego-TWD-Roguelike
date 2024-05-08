@@ -10,8 +10,13 @@ config_version=5
 
 [application]
 
+<<<<<<< HEAD
 config/name="enemigos_torres_td"
 run/main_scene="res://main_scene.tscn"
+=======
+config/name="TWD-RL-DB"
+run/main_scene="res://Scenes/GameLevel.tscn"
+>>>>>>> origin/Cartas
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
