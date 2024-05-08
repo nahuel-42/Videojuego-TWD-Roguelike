@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://08ntlwd3t4w8"]
 
-[ext_resource type="Script" path="res://scripts/towers/upgrades/damage_decorator.gd" id="1_xuxsb"]
+[ext_resource type="Script" path="res://Scripts/towers/upgrades/damage_decorator.gd" id="1_xuxsb"]
 
 [node name="DamageDecorator" type="Node2D"]
 script = ExtResource("1_xuxsb")

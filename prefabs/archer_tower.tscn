@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp82nvs2t4q36"]
 
-[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_4kx5g"]
-[ext_resource type="Script" path="res://scripts/towers/archer_tower.gd" id="2_4pt5c"]
+[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_4kx5g"]
+[ext_resource type="Script" path="res://Scripts/towers/archer_tower.gd" id="2_4pt5c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293

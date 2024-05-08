@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpaqq0omxsn8i"]
 
-[ext_resource type="Texture2D" uid="uid://c76ko6hf48xos" path="res://sprites/Heroes/Wizzard/Attack/Attack-Sheet.png" id="1_0mxks"]
-[ext_resource type="Texture2D" uid="uid://dqnpe28lwanok" path="res://sprites/Heroes/Wizzard/Idle/Idle-Sheet.png" id="1_m3h6m"]
-[ext_resource type="Script" path="res://scripts/towers/area_tower.gd" id="2_v0pbo"]
+[ext_resource type="Texture2D" uid="uid://c76ko6hf48xos" path="res://Assets/Sprites/Heroes/Wizzard/Attack/Attack-Sheet.png" id="1_0mxks"]
+[ext_resource type="Texture2D" uid="uid://dqnpe28lwanok" path="res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png" id="1_m3h6m"]
+[ext_resource type="Script" path="res://Scripts/towers/area_tower.gd" id="2_v0pbo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293

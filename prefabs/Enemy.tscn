@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ehelf3ddccdt"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_sa2bx"]
-[ext_resource type="Texture2D" uid="uid://cp53m1kw3k6vd" path="res://sprites/Enemy/Orc Crew/Orc/Run/Run-Sheet.png" id="2_x7g8n"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_sa2bx"]
+[ext_resource type="Texture2D" uid="uid://cp53m1kw3k6vd" path="res://Assets/Sprites/Enemy/Orc Crew/Orc/Run/Run-Sheet.png" id="2_x7g8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8obi"]
 radius = 15.5242

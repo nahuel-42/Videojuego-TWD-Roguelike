@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5wawy3eu27qx"]
 
-[ext_resource type="Script" path="res://scripts/enemies_spawner.gd" id="1_rqod4"]
+[ext_resource type="Script" path="res://Scripts/enemies_spawner.gd" id="1_rqod4"]
 
 [node name="EnemiesSpawner" type="Node2D"]
 position = Vector2(0, 2)

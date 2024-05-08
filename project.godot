@@ -10,20 +10,15 @@ config_version=5
 
 [application]
 
-<<<<<<< HEAD
 config/name="enemigos_torres_td"
-run/main_scene="res://main_scene.tscn"
-=======
-config/name="TWD-RL-DB"
-run/main_scene="res://Scenes/GameLevel.tscn"
->>>>>>> origin/Cartas
+run/main_scene="res://towers_main_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Parameters="*res://scripts/Parameters.gd"
-GlobalCardsList="*res://scripts/GlobalCardsList.gd"
+Parameters="*res://Scripts/Parameters.gd"
+GlobalCardsList="*res://Scripts/Card/Persistence/GlobalCardsList.gd"
 
 [input]
 

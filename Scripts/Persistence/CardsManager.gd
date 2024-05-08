@@ -8,18 +8,11 @@ static var m_user_save_path = "user_save"
 static func InitUserSave():
 	m_user_save = Save.load_game(m_user_save_path, m_user_save)
 	if (m_user_save == null):
-		var collectionCard = GlobalCards.CollectionCard
-		var value	
-		for c in collectionCard:
-			if (c["unlocked"]== 1):
-				value = true
-			else:
-				value = false
-			m_user_save.append(value)			
+		m_user_save = GlobalCardsList.get_unlocked_cards()			
 		Save.save_game(m_user_save_path, m_user_save)
 
 static func CreateReferenceDeck(id : int):
-	var typeDeck = GlobalCards.TypeDeckCards[id]
+	var typeDeck = GlobalCardsList.TypeDeckCards[id]
 	var referenceDeck = []
 	
 	for t in typeDeck:
