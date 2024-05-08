@@ -84,11 +84,12 @@ func _ready():
 	for cell in path:
 		map[cell] = TileType.CAMINO
 
+	# TODO: Agregar los slots como initial_obstacles en obstacle_generator
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
 	for slot in slots:
 		map[slot] = TileType.SLOT
 	
-	var forks = ForkGenerator.new(width, height, obstacle_generator, path_generator).generate_forks(path, slots, 3, 3, 3)
+	var forks = ForkGenerator.new(width, height, 2, 3, 3, 4, path_generator).generate_forks(path, slots, 3, 3)
 	for fork in forks:
 		for cell in fork:
 			map[cell] = TileType.CASTILLO

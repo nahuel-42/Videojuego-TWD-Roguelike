@@ -35,7 +35,6 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_o
 
 # Precondicion: el camino es alcanzable
 func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
-	print("Generating path")
 	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
 	var min_distance = curvature * distance
 
