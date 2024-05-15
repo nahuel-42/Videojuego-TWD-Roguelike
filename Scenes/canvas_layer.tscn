@@ -27,7 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lax77")
-m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 50.0
 m_hideCards = NodePath("HideDeck")
 m_mainRef = NodePath("Deck")
@@ -46,7 +45,7 @@ anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
-[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_hideCards", "m_mainRef")]
+[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.3
 anchor_top = 0.8
@@ -58,6 +57,7 @@ script = ExtResource("2_5iud0")
 m_cardMovement = NodePath("Node")
 m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
 m_locationSpeed = 20.0
+m_cardsInGameReference = NodePath("CardsInGame")
 m_hideCards = NodePath("HideBoard")
 m_mainRef = NodePath("Board")
 
@@ -104,6 +104,15 @@ anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
+[node name="CardsInGame" type="Control" parent="BoardCards"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -345.6
+offset_top = -518.4
+offset_right = -305.6
+offset_bottom = -478.4
+
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.9
@@ -111,6 +120,7 @@ anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
+m_cardLoadSpeed = 50.0
 m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
 

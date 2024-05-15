@@ -13,6 +13,9 @@ var m_refCard : Dictionary = {}
 func _init(id, refDoc):
 	m_idCard = id
 	m_refCard = refDoc
+func GetID():
+	return m_idCard
+
 #func _init(id, cardName, description, sprite, cost):
 #	m_ID = id
 #	m_cardName = cardName

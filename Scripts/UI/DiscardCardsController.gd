@@ -7,6 +7,7 @@ func _ready():
 func LoadDiscard(cards):
 	for c in cards:
 		AddCards(c)
+		c.SetVisible(true)
 		
 	RestartCardIndex(len(cards))
 	f_state = State_LoadCards

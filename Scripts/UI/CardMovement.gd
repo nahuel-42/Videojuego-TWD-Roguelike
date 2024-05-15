@@ -16,6 +16,9 @@ func _process(delta):
 		MoveCardSelected()
 	UpdateCardsUnSelected(delta)
 
+func GetCardSelected():
+	return m_cardSelected
+
 func GetInputEvent(card, event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

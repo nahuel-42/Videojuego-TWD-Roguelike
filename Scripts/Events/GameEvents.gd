@@ -8,3 +8,5 @@ static var OnLoadDiscard = Action.new()
 ############################################################
 static var OnGetSlotDetector = Func.new()
 ############################################################
+static var OnAddCardsInGame = Action.new()
+static var OnSwapCardsInGame = Action.new()

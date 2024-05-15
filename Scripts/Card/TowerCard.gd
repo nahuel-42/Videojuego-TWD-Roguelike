@@ -8,5 +8,9 @@ class_name TowerCard
 func use(param):
 	var slot = param[0]
 	print("Se usa TowerCard")
-	slot.apply_card(m_idCard)
+	var id = slot.apply_card(m_idCard)
+	if (id == -1):
+		GameEvents.OnAddCardsInGame.Call([id])
+	else:
+		GameEvents.OnSwapCardsInGame.Call([id])
 	#se usa la carta y se colocan en un array del mapa

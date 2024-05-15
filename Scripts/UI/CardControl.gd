@@ -20,6 +20,9 @@ func Init(baseCard):
 func _ready():
 	SetSide(false)
 
+func GetID():
+	return m_baseCard.GetID()
+
 func SetInputEvent(inputEvent):
 	e_inputEvent = inputEvent
 	
@@ -37,3 +40,6 @@ func use(param):
 	m_baseCard.use(param)
 	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
 	visible = false
+
+func SetVisible(value):
+	visible = value
