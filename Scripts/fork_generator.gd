@@ -19,11 +19,9 @@ var max_tries = 10
 # - Alejar los forks del camino o hacer que la direccion se aleje del camino
 # - Revisar que se agrega a obstacles generator
 
-func _init(width:int, height:int, min_sections:int, max_sections:int, min_distance:int, max_distance:int, path_generator:PathGenerator):
+func _init(width:int, height:int, min_distance:int, max_distance:int, path_generator:PathGenerator):
 	self.width = width
 	self.height = height
-	self.min_sections = min_sections
-	self.max_sections = max_sections
 	self.min_distance = min_distance
 	self.max_distance = max_distance
 	self.obstacle_generator = path_generator.obstacle_generator
@@ -31,53 +29,46 @@ func _init(width:int, height:int, min_sections:int, max_sections:int, min_distan
 	
 func generate_forks(path:Array[Vector2i], obstacles:Array[Vector2i], n:int, padding:int) -> Array[Array]:
 	print("Generating forking paths")
-	var start = padding - 1 # inclusive
-	var end = len(path) - padding # exclusive
-	
 	var forks: Array[Array] = []
-	
-	for i in range(n):
-		var sections = randi_range(min_sections, max_sections)
-		var path_index = randi_range(start, end)
-		var initial_pos = path[path_index]
+	var i=0
+	var minimum_length= 10
+	while i<=n:
+		var target_pos = Vector2i(randi_range(0, width),randi_range(0, height)) 
+		
 		var fork: Array[Vector2i] = []
-		for j in range(sections):
-			var found = false
-			var tries = 0
-			var target_pos
-			while not found and tries < max_tries:
-				target_pos = generate_target(initial_pos, min_distance, max_distance)
-				
-				if target_pos not in path and target_pos not in obstacles and path_generator.is_reachable(initial_pos, target_pos):
-					found = true
-					path_generator.generate_path(initial_pos, target_pos, 1.0)
-					var section = path_generator.get_path()
-					fork.append_array(section)
-					fork.append(target_pos)
-					var fork_obstacles: Array[Rect2i] = []
-					for pos in section:
-						fork_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
-					obstacle_generator.add_obstacles(fork_obstacles)
-					initial_pos = target_pos
-				tries += 1
-		forks.append(fork)
+		var initial_pos
+		initial_pos = generate_target_in_the_main_way(target_pos,path)
+		
+		if target_pos not in path and target_pos not in obstacles and path_generator.is_reachable(initial_pos, target_pos):
+			
+			path_generator.generate_path(initial_pos, target_pos, 1.0)
+			var section = path_generator.get_path()
+			if len(section)>= minimum_length:
+				fork.append_array(section)
+				fork.append(target_pos)
+				var fork_obstacles: Array[Rect2i] = []
+				for pos in section:
+					fork_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
+				obstacle_generator.add_obstacles(fork_obstacles)
+				i+=1
+				forks.append(fork)
 
 	print("Forks generados: ", len(forks))
-	
 	return forks
 
-func generate_target(initial_point: Vector2i, min_radius: float, max_radius: float) -> Vector2i:
-	# Step 1: Generate a random angle between 0 and 2π
-	var angle = randf() * 2.0 * PI
+func generate_target_in_the_main_way(initial_point: Vector2i, path:Array[Vector2i]) -> Vector2i:
+	
+	var padding=10
+	var n = padding 
+	var min_distance=999
+	var min_node= path[n]
+	var distance
+	var incremento=5
 
-	# Step 2: Generate a random radius within the specified range
-	# We use sqrt to ensure uniform distribution of points within the circle
-	var u = randf()
-	var radius = sqrt(u * (max_radius * max_radius - min_radius * min_radius) + min_radius * min_radius)
-
-	# Step 3: Convert polar coordinates (radius, angle) to Cartesian coordinates (x, y)
-	var x = radius * cos(angle)
-	var y = radius * sin(angle)
-
-	# Step 4: Adjust x and y by the initial point's coordinates and convert to integer
-	return Vector2i(round(initial_point.x + x), round(initial_point.y + y))
+	while (n<= len(path)-padding):
+		distance=Vector2(initial_point).distance_to(path[n]) 
+		if distance <= min_distance:
+			min_node= path[n]
+			min_distance= distance
+		n+=10
+	return min_node

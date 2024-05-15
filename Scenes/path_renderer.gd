@@ -89,12 +89,14 @@ func _ready():
 	for slot in slots:
 		map[slot] = TileType.SLOT
 	
-	var forks = ForkGenerator.new(width, height, 2, 3, 3, 4, path_generator).generate_forks(path, slots, 3, 3)
+	var forks = ForkGenerator.new(width, height, 2, 3, path_generator).generate_forks(path, slots, 10, 11)
+	
 	for fork in forks:
 		for cell in fork:
-			map[cell] = TileType.CASTILLO
-
-
+			map[cell] = TileType.CAMINO
+		map[fork[-1]] = TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+	
+	render_border(7)
 	render_path()
 
 func render_path():
@@ -131,18 +133,18 @@ func render_grass(width: int, height: int):
 			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, rand)
 
 func render_border(padding: int):
-	var border_texture = textures[TileType.BORDE]
-	for j in range(-padding, height+padding):
-		for i in range(-padding,-padding+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-		for i in range(width,width+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-	for i in range(0, width):
-		for j in range(-padding,0):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
-		for j in range(height,height+padding):
-			set_cell(border_texture.layer, Vector2i(i,j), border_texture.source, border_texture.atlas)
+	var border_texture = textures[TileType.PASTO]
+	print(border_texture)
+	for p in range(1, padding + 1):
+		if p==5:
+			border_texture = textures[TileType.BORDE]
+		for j in range(-p, height + p):
+			set_cell(border_texture.layer, Vector2i(-p, j), border_texture.source, border_texture.atlas.position)
+			set_cell(border_texture.layer, Vector2i(width + p - 1, j), border_texture.source, border_texture.atlas.position)
+		
+		for i in range(-p, width + p):
+			set_cell(border_texture.layer, Vector2i(i, -p), border_texture.source, border_texture.atlas.position)
+			set_cell(border_texture.layer, Vector2i(i, height + p - 1), border_texture.source, border_texture.atlas.position)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

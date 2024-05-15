@@ -52,7 +52,7 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 			astar.fill_solid_region(obstacle)
 		
 		path = astar.get_id_path(initial_pos, target_pos)
-
+	
 		if len(path) > min_distance:
 			generated = true
 		if tries > 5000:
@@ -62,8 +62,8 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 		path_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
 	obstacle_generator.add_obstacles(path_obstacles)
 	path = path.slice(1, -1)
-	print("Tries: ", tries)
 	
+		
 	# TODO: Devolver path cuando lo genera
 
 func get_path() -> Array[Vector2i]:
