@@ -1,11 +1,24 @@
-extends Node
+class_name AreaAttackMethod
+extends OneTargetAttackMethod
 
+@onready var area_cs : CollisionShape2D = $"../Area2D/CollisionShape2D"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _onready():
+	area_cs.disabled = true
 
+func fire():
+	if current_target != null and current_target in enemies_in_range:
+		modulate = Color(1, 0, 0)
+		area_cs.global_position = current_target.global_position
+		hit_main_target()
+		cooldown = attack_speed
+		
+	set_new_target()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# Llamar al finalizar la animación de ataque.
+func hit_main_target():
+	area_cs.disabled = false
+	
+func hit_targets(body):
+	body.take_damage(damage)
+

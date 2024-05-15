@@ -33,6 +33,7 @@ _data = {
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_k8ikl")
 hframes = 4
+frame = 3
 script = ExtResource("2_rqxjt")
 
 [node name="Range" type="Area2D" parent="."]
