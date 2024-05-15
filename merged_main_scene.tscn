@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://cm0csiu5dvov2"]
+
+[ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="1_ask7j"]
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_t7ukt"]
+[ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="2_ftlw2"]
+[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://prefabs/enemies_spawner.tscn" id="3_qqdcf"]
+[ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://prefabs/pathfinding_2d.tscn" id="4_6ovdq"]
+[ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://prefabs/tower_slot.tscn" id="5_vscvd"]
+[ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://prefabs/target.tscn" id="7_prn2v"]
+
+[node name="MergedMainScene" type="Node2D"]
+script = ExtResource("1_t7ukt")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_ask7j")]
+
+[node name="SlotDetector" parent="." instance=ExtResource("2_ftlw2")]
+
+[node name="EnemiesSpawner" parent="." instance=ExtResource("3_qqdcf")]
+position = Vector2(208, 466)
+
+[node name="Pathfinding2D" parent="." instance=ExtResource("4_6ovdq")]
+
+[node name="TowerSlot" parent="." instance=ExtResource("5_vscvd")]
+position = Vector2(495, 341)
+
+[node name="TowerSlot2" parent="." instance=ExtResource("5_vscvd")]
+position = Vector2(734, 300)
+
+[node name="Terrain" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Terrain"]
+offset_left = 25.0
+offset_top = 102.0
+offset_right = 65.0
+offset_bottom = 142.0
+scale = Vector2(5.01525, 0.515718)
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Terrain"]
+offset_left = 171.0
+offset_top = 100.0
+offset_right = 211.0
+offset_bottom = 140.0
+scale = Vector2(1.49145, 9.08157)
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Terrain"]
+offset_left = 184.0
+offset_top = 222.0
+offset_right = 224.0
+offset_bottom = 262.0
+scale = Vector2(11.0104, 0.95023)
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Terrain"]
+offset_left = 578.0
+offset_top = 355.0
+offset_right = 618.0
+offset_bottom = 395.0
+scale = Vector2(15.6478, 0.725154)
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Terrain"]
+offset_left = 581.0
+offset_top = 223.0
+offset_right = 621.0
+offset_bottom = 263.0
+scale = Vector2(1.14741, 3.93146)
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="Target" parent="." instance=ExtResource("7_prn2v")]

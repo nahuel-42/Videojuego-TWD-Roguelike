@@ -1,15 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://s10uengvc5fg"]
+[gd_scene load_steps=7 format=3 uid="uid://s10uengvc5fg"]
 
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="1_5bqx8"]
+[ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="2_i185h"]
 [ext_resource type="Script" path="res://Scripts/Camera/CameraControl.gd" id="2_idfwl"]
-[ext_resource type="Script" path="res://Scripts/Slot/SlotDetector.gd" id="3_33855"]
 [ext_resource type="Script" path="res://Scripts/Slot/SlotControl.gd" id="3_pj6dk"]
-[ext_resource type="Texture2D" uid="uid://be87rey68bqh" path="res://icon.svg" id="3_wtay7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7u6n"]
-size = Vector2(1, 1)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_sikk0"]
+[ext_resource type="Texture2D" uid="uid://djfcafwry77v" path="res://icon.svg" id="3_wtay7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xfya"]
 
@@ -17,21 +12,7 @@ size = Vector2(1, 1)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("1_5bqx8")]
 
-[node name="SlotDetector" type="Area2D" parent="." node_paths=PackedStringArray("m_collider", "m_sprite")]
-script = ExtResource("3_33855")
-m_size = 200.0
-m_collider = NodePath("CollisionShape2D")
-m_sprite = NodePath("Sprite2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetector"]
-scale = Vector2(100, 100)
-shape = SubResource("RectangleShape2D_i7u6n")
-disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="SlotDetector"]
-modulate = Color(1, 1, 1, 0.392157)
-self_modulate = Color(1, 1, 1, 0.392157)
-texture = SubResource("CanvasTexture_sikk0")
+[node name="SlotDetector" parent="." instance=ExtResource("2_i185h")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_idfwl")
@@ -99,6 +80,3 @@ shape = SubResource("RectangleShape2D_1xfya")
 [node name="Sprite2D" type="Sprite2D" parent="World/Slot5"]
 texture = ExtResource("3_wtay7")
 flip_v = true
-
-[connection signal="area_entered" from="SlotDetector" to="SlotDetector" method="_on_area_entered"]
-[connection signal="area_exited" from="SlotDetector" to="SlotDetector" method="_on_area_exited"]

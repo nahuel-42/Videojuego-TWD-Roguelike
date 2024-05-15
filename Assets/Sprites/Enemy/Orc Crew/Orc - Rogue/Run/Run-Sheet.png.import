@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5t453pq2p35j"
-path="res://.godot/imported/Fire1.png-dbe991ed310746ef9c18ebc2e3c35441.ctex"
+uid="uid://bhmnf6a75qyqd"
+path="res://.godot/imported/Run-Sheet.png-01f0f10025cb55dba8627ed4a45de139.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fire1.png"
-dest_files=["res://.godot/imported/Fire1.png-dbe991ed310746ef9c18ebc2e3c35441.ctex"]
+source_file="res://Assets/Sprites/Enemy/Orc Crew/Orc - Rogue/Run/Run-Sheet.png"
+dest_files=["res://.godot/imported/Run-Sheet.png-01f0f10025cb55dba8627ed4a45de139.ctex"]
 
 [params]
 

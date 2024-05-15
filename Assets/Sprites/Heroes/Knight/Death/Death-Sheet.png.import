@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvrjiakynrl2w"
-path="res://.godot/imported/Fire2.png-52354b99f18c84f926a3ad27c7b145e4.ctex"
+uid="uid://cta3yphed26c4"
+path="res://.godot/imported/Death-Sheet.png-9e80078ecd3231ba9802c2f617a5ad5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Fire2.png"
-dest_files=["res://.godot/imported/Fire2.png-52354b99f18c84f926a3ad27c7b145e4.ctex"]
+source_file="res://Assets/Sprites/Heroes/Knight/Death/Death-Sheet.png"
+dest_files=["res://.godot/imported/Death-Sheet.png-9e80078ecd3231ba9802c2f617a5ad5b.ctex"]
 
 [params]
 

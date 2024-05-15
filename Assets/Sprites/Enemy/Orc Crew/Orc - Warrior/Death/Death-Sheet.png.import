@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ye3tu87ydg5w"
-path="res://.godot/imported/Dorso.png-e55f9efe702cd3cf2d590a9168b21714.ctex"
+uid="uid://dxhexa5sjt7d6"
+path="res://.godot/imported/Death-Sheet.png-da49a214c967f04adf999c28ace4ee71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Dorso.png"
-dest_files=["res://.godot/imported/Dorso.png-e55f9efe702cd3cf2d590a9168b21714.ctex"]
+source_file="res://Assets/Sprites/Enemy/Orc Crew/Orc - Warrior/Death/Death-Sheet.png"
+dest_files=["res://.godot/imported/Death-Sheet.png-da49a214c967f04adf999c28ace4ee71.ctex"]
 
 [params]
 

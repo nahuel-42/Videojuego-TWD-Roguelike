@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cseixfyy3b285"
-path="res://.godot/imported/CartaDadaVuelta.png-dd43f37ab4b76cba3deed0c2be4e6ff9.ctex"
+uid="uid://bvrjiakynrl2w"
+path="res://.godot/imported/Fire2.png-31bd4487f8e4520d146ced7909bf07d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CartaDadaVuelta.png"
-dest_files=["res://.godot/imported/CartaDadaVuelta.png-dd43f37ab4b76cba3deed0c2be4e6ff9.ctex"]
+source_file="res://Assets/Sprites/Fire2.png"
+dest_files=["res://.godot/imported/Fire2.png-31bd4487f8e4520d146ced7909bf07d0.ctex"]
 
 [params]
 

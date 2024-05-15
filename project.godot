@@ -10,10 +10,22 @@ config_version=5
 
 [application]
 
-config/name="TWD-RL-DB"
-run/main_scene="res://Scenes/GameLevel.tscn"
+config/name="enemigos_torres_td"
+run/main_scene="res://towers_main_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Parameters="*res://Scripts/Parameters.gd"
+GlobalCardsList="*res://Scripts/Card/Persistence/GlobalCardsList.gd"
+
+[input]
+
+upgrade_tower={
+"deadzone": 0.5,
+"events": []
+}
 
 [rendering]
 

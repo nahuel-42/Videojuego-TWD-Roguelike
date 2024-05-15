@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ao53s0o8ouk"
-path="res://.godot/imported/CartaFrente.png-9e51a4d1d873645a7dde33b830bef204.ctex"
+uid="uid://cvvcmyc8htbpk"
+path="res://.godot/imported/Idle-Sheet.png-b6a0de09284cedb3c7237a9710ab7596.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CartaFrente.png"
-dest_files=["res://.godot/imported/CartaFrente.png-9e51a4d1d873645a7dde33b830bef204.ctex"]
+source_file="res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png"
+dest_files=["res://.godot/imported/Idle-Sheet.png-b6a0de09284cedb3c7237a9710ab7596.ctex"]
 
 [params]
 

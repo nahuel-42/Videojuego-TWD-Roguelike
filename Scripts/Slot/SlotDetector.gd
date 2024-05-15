@@ -2,7 +2,7 @@ class_name SlotDetector
 extends Node2D
 
 @export var m_size : float = 100.0
-@export var m_collider : Node2D = null
+@export var m_collider : Node2D = null 
 @export var m_sprite : Node2D = null
 
 var m_slotSelected = null
@@ -14,6 +14,8 @@ func _init():
 	GameEvents.OnGetSlotDetector.AddListener(GetDetSlotDetector)
 
 func _ready():
+	m_collider = $CollisionShape2D
+	m_sprite = $Sprite2D
 	m_collider.scale = Vector2.ONE * m_size;
 	m_sprite.scale = Vector2.ONE * m_size;
 	m_offset = Vector2.ONE * m_size / 2.0
