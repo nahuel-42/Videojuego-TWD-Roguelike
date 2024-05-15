@@ -23,8 +23,8 @@ func create_tower(id):
 	var stats = GlobalCardsList.find_card(id)
 	var prefab = load(stats["path"])
 	child = prefab.instantiate()
-	child.load_stats(stats)
 	add_child(child)
+	child.load_stats(stats)
 	child.position = tower_point.position
 
 func upgrade_tower(id):

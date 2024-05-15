@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpaqq0omxsn8i"]
+[gd_scene load_steps=9 format=3 uid="uid://cpaqq0omxsn8i"]
 
-[ext_resource type="Texture2D" uid="uid://c76ko6hf48xos" path="res://Assets/Sprites/Heroes/Wizzard/Attack/Attack-Sheet.png" id="1_0mxks"]
-[ext_resource type="Texture2D" uid="uid://dqnpe28lwanok" path="res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png" id="1_m3h6m"]
-[ext_resource type="Script" path="res://Scripts/towers/area_tower.gd" id="2_v0pbo"]
+[ext_resource type="Texture2D" uid="uid://c76ko6hf48xos" path="res://Assets/Sprites/Heroes/Wizzard/Attack/Attack-Sheet.png" id="1_4uoww"]
+[ext_resource type="Script" path="res://Scripts/towers/tower.gd" id="2_1kl2x"]
+[ext_resource type="Script" path="res://Scripts/towers/attacks/all_in_range_attack.gd" id="2_fqnvh"]
+[ext_resource type="Texture2D" uid="uid://dqnpe28lwanok" path="res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png" id="3_2k4n3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293
@@ -32,7 +33,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_0mxks")]
+"values": [ExtResource("1_4uoww")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -73,7 +74,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_m3h6m")]
+"values": [ExtResource("3_2k4n3")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -94,11 +95,11 @@ _data = {
 "idle": SubResource("Animation_wpe7l")
 }
 
-[node name="AreaTower" type="Sprite2D"]
+[node name="AllInRangeTower" type="Sprite2D"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_0mxks")
+texture = ExtResource("1_4uoww")
 hframes = 6
-script = ExtResource("2_v0pbo")
+script = ExtResource("2_1kl2x")
 
 [node name="Range" type="Area2D" parent="."]
 
@@ -114,5 +115,9 @@ libraries = {
 "": SubResource("AnimationLibrary_sq1x1")
 }
 
-[connection signal="body_entered" from="Range" to="." method="add_enemy"]
-[connection signal="body_exited" from="Range" to="." method="delete_enemy"]
+[node name="AttackMethod" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_fqnvh")
+
+[connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
+[connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
