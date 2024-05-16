@@ -1,6 +1,6 @@
 extends Node2D
 
-const ENEMY_PREFAB_PATH = "res://prefabs/enemy.tscn"
+const ENEMY_PREFAB_PATH = "res://Prefabs/Enemies/Enemy.tscn"
 
 var last_enemy_index
 var enemies = []
@@ -16,6 +16,7 @@ func load_enemies():
 	last_enemy_index = 0
 	for i in range(10):  # Agrega 10 enemigos de ejemplo
 		var enemy_instance = prefab.instantiate()
+		enemy_instance.add_to_group("Beast" if i % 2 == 0 else "Soldier")
 		
 		enemies_node.add_child(enemy_instance)
 		enemies.append(enemy_instance)

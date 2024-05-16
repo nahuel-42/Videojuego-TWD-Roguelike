@@ -8,12 +8,13 @@ extends Node
 
 var CollectionCard = [
 	################# TOWERS ####################
-	{"id":0, "type": "tower", "cardName" : "One target tower", "desc":"Data", "sprite": "res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png", "cost":100, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/one_target_tower.tscn'},
-	{"id":1, "type": "tower", "cardName" : "All in range Tower", "desc":"Data", "sprite": "res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/all_in_range_tower.tscn'},
-	{"id":2, "type": "tower", "cardName" : "Area Tower", "desc":"Data", "sprite": "res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':"res://prefabs/area_tower.tscn"},
-	{"id":3, "type": "tower", "cardName" : "Fire Tower", "desc":"Data", "sprite":"res://Assets/Fire1.png", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
-	{"id":4, "type": "tower", "cardName" : "Fire Tower2", "desc":"Data", "sprite":"res://Assets/Fire2.png", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://X.tscn'},
-	{"id":5, "type": "tower", "cardName" : "Fire Tower3", "desc":"Data", "sprite":"url1", "cost":100, "range": 20, "damage":20, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 0, 'path':'res://X.tscn'}
+	{"id":0, "type": "tower", "cardName" : "One target tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/One_target_tower.png", "cost":100, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
+	{"id":1, "type": "tower", "cardName" : "All in range Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/All_in_range_tower.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
+	{"id":2, "type": "tower", "cardName" : "Area Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/Area_tower.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':"res://Prefabs/Towers/area_tower.tscn"},
+	################# SPECIALITIES ####################
+	{"id": 3, "type": "speciality", "cardName": "Hunter class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Hunter.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
+	{"id": 4, "type": "speciality", "cardName": "War class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/War.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/War.tscn"},
+	{"id": 5, "type": "speciality", "cardName": "Mercenary class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Mercenary.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Mercenary.tscn"}
 	################# Activate Card ####################
 	################# POWER ####################
 	################# Spell ####################
@@ -23,7 +24,7 @@ var CollectionCard = [
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
-	[0,1,1,2],
+	[0,1,2,3,4],
 	[0,2,1,1]
 ]
 	

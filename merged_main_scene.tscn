@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="1_ask7j"]
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_t7ukt"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="2_ftlw2"]
-[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://prefabs/enemies_spawner.tscn" id="3_qqdcf"]
-[ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://prefabs/pathfinding_2d.tscn" id="4_6ovdq"]
-[ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://prefabs/tower_slot.tscn" id="5_vscvd"]
-[ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://prefabs/target.tscn" id="7_prn2v"]
+[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://Prefabs/Enemies/enemies_spawner.tscn" id="3_qqdcf"]
+[ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://Prefabs/Enemies/pathfinding_2d.tscn" id="4_6ovdq"]
+[ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://Prefabs/Slots/tower_slot.tscn" id="5_vscvd"]
+[ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/Enemies/target.tscn" id="7_prn2v"]
 
 [node name="MergedMainScene" type="Node2D"]
 script = ExtResource("1_t7ukt")

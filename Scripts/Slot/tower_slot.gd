@@ -15,6 +15,9 @@ func apply_card(card):
 			current_card_id = card.id
 		"upgrade":
 			upgrade_tower(card.id)
+		"speciality":
+			if child != null:
+				set_speciality(card.id)
 		"delete":
 			delete_tower()
 	return previous_card_id
@@ -27,10 +30,14 @@ func create_tower(id):
 	child.load_stats(stats)
 	child.position = tower_point.position
 
+func set_speciality(id):
+	var stats = GlobalCardsList.find_card(id)
+	var prefab = load(stats["path"])
+	speciality = prefab.instantiate()
+	child.set_speciality(speciality)
+
 func upgrade_tower(id):
-	var decorator_prefab = load(DAMAGE_DECORATOR)
-	var decorator_instance = decorator_prefab.instantiate()
-	child.set("inner_tower",decorator_instance) 
+	pass
 
 func delete_tower():
 	pass

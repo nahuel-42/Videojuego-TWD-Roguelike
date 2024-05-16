@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp82nvs2t4q36"]
+[gd_scene load_steps=8 format=3 uid="uid://cpaqq0omxsn8i"]
 
-[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_k8ikl"]
-[ext_resource type="Script" path="res://Scripts/Towers/Attacks/one_target_attack.gd" id="2_etsr7"]
-[ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_rqxjt"]
-[ext_resource type="Script" path="res://Scripts/Towers/Specialities/speciality.gd" id="4_fa36g"]
+[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_146v5"]
+[ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_1kl2x"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attacks/all_in_range_attack.gd" id="2_fqnvh"]
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="5_x4a1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293
@@ -30,12 +30,13 @@ _data = {
 "idle": SubResource("Animation_jdn2m")
 }
 
-[node name="OneTargetTower" type="Sprite2D"]
+[node name="AllInRangeTower" type="Sprite2D"]
+modulate = Color(0, 0.164706, 1, 1)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_k8ikl")
+texture = ExtResource("1_146v5")
 hframes = 4
 frame = 3
-script = ExtResource("2_rqxjt")
+script = ExtResource("2_1kl2x")
 
 [node name="Range" type="Area2D" parent="."]
 
@@ -46,17 +47,17 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Radius" type="Line2D" parent="."]
 
+[node name="AttackMethod" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_fqnvh")
+
+[node name="Speciality" type="Node2D" parent="."]
+script = ExtResource("5_x4a1w")
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_82oli")
 }
-
-[node name="AttackMethod" type="Node2D" parent="."]
-scale = Vector2(1.5, 1.5)
-script = ExtResource("2_etsr7")
-
-[node name="Speciality" type="Node2D" parent="."]
-script = ExtResource("4_fa36g")
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]

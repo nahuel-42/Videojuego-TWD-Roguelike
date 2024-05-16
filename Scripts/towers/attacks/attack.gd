@@ -18,7 +18,7 @@ func load_stats(stats):
 	attack_speed = stats["attackSpeed"]
 	damage = stats["damage"]
 	accuracy = stats["accuracy"]
-	
+
 
 func get_damage():
 	return damage
@@ -26,10 +26,11 @@ func get_damage():
 func get_range():
 	return range
 
+@onready var color = get_parent().modulate
 func perform(delta):
 	if cooldown > 0:
 		if cooldown < attack_speed/1.5:
-			modulate = Color(1, 1, 1)
+			get_parent().modulate = color
 		cooldown -= delta
 		return
 	
@@ -47,3 +48,8 @@ func delete_enemy(body):
 
 func fire():
 	pass
+	
+func set_speciality(speciality):
+	self.speciality.queue_free()
+	self.speciality = speciality
+	print("Nueva especialidad: " + str(self.speciality))

@@ -8,7 +8,7 @@ func _onready():
 
 func fire():
 	if current_target != null and current_target in enemies_in_range:
-		modulate = Color(1, 0, 0)
+		get_parent().modulate = Color(1, 0, 0)
 		area_cs.global_position = current_target.global_position
 		hit_main_target()
 		cooldown = attack_speed

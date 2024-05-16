@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c46qaf73qn60o"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/Hunter/Hunter.gd" id="1_eck17"]
+
+[node name="Hunter" type="Node2D"]
+script = ExtResource("1_eck17")

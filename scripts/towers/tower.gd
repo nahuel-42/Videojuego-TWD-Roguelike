@@ -19,7 +19,10 @@ func get_damage():
 
 func _process(delta):
 	attack_method.perform(delta)
-	
+
+func set_speciality(speciality):
+	add_child(speciality)
+	attack_method.set_speciality(speciality)
 
 func draw_radius():
 	var circle_points = []
