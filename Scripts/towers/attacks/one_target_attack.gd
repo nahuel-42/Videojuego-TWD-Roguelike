@@ -7,7 +7,7 @@ func fire():
 	# TODO: Hacer las demás cosas como ver la probabilidad de acierto, animación, etc.
 	if current_target != null and current_target in enemies_in_range:
 		modulate = Color(1, 0, 0)
-		current_target.take_damage(get_damage())
+		speciality.act(current_target, damage)
 		cooldown = attack_speed
 		
 	set_new_target()

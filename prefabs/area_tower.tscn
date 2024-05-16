@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsdbs6fokunev"]
+[gd_scene load_steps=11 format=3 uid="uid://bsdbs6fokunev"]
 
 [ext_resource type="Texture2D" uid="uid://b5sokfcahjfb7" path="res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png" id="1_bj5qb"]
-[ext_resource type="Script" path="res://Scripts/towers/tower.gd" id="2_dltw3"]
-[ext_resource type="Script" path="res://Scripts/towers/attacks/area_attack.gd" id="4_o26pw"]
+[ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_dltw3"]
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/speciality.gd" id="4_ho5oj"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attacks/area_attack.gd" id="4_o26pw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 392.966
@@ -81,6 +82,9 @@ script = ExtResource("4_o26pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d3f3a")
+
+[node name="Speciality" type="Node2D" parent="."]
+script = ExtResource("4_ho5oj")
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]

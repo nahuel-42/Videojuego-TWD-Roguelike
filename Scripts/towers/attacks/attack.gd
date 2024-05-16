@@ -1,12 +1,13 @@
 class_name AttackMethod 
 extends Node2D
 
+@onready var speciality : Speciality = $"../Speciality"
+
 var collision_shape : CollisionShape2D
 var enemies_in_range = []
 var range: float
 var attack_speed = 1
 var cooldown = 0
-
 var damage: int
 var accuracy: float
 

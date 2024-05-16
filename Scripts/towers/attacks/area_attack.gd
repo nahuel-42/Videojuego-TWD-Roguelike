@@ -15,10 +15,10 @@ func fire():
 		
 	set_new_target()
 
-# Llamar al finalizar la animación de ataque.
+# TODO: Llamar al finalizar la animación de ataque.
 func hit_main_target():
 	area_cs.disabled = false
 	
 func hit_targets(body):
-	body.take_damage(damage)
+	speciality.act(body, damage)
 

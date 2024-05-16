@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpaqq0omxsn8i"]
+[gd_scene load_steps=10 format=3 uid="uid://cpaqq0omxsn8i"]
 
 [ext_resource type="Texture2D" uid="uid://c76ko6hf48xos" path="res://Assets/Sprites/Heroes/Wizzard/Attack/Attack-Sheet.png" id="1_4uoww"]
-[ext_resource type="Script" path="res://Scripts/towers/tower.gd" id="2_1kl2x"]
-[ext_resource type="Script" path="res://Scripts/towers/attacks/all_in_range_attack.gd" id="2_fqnvh"]
+[ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_1kl2x"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attacks/all_in_range_attack.gd" id="2_fqnvh"]
 [ext_resource type="Texture2D" uid="uid://dqnpe28lwanok" path="res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png" id="3_2k4n3"]
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/speciality.gd" id="5_x4a1w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 786.293
@@ -118,6 +119,9 @@ libraries = {
 [node name="AttackMethod" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_fqnvh")
+
+[node name="Speciality" type="Node2D" parent="."]
+script = ExtResource("5_x4a1w")
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]

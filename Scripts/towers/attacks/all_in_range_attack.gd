@@ -7,5 +7,5 @@ func fire():
 	if len(enemies_in_range) != 0:
 		cooldown = attack_speed
 	for enemy in enemies_in_range:
-		enemy.take_damage(get_damage())
-		enemy.freeze()
+		speciality.act(enemy, damage)
+		
