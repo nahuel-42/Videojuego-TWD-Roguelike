@@ -1,8 +1,9 @@
 extends TileMap
 
 var CELL_DIMENSION = 32
+var ASPECT_RATIO = 16.0 / 9.0
+var width = 200
 var height
-var width
 
 enum TileType {
 	PASTO,
@@ -64,8 +65,7 @@ var padding = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var viewport_size = get_viewport().size
-	height = viewport_size.y * 2 / CELL_DIMENSION
-	width = viewport_size.x * 5 / CELL_DIMENSION
+	height = width / ASPECT_RATIO
 	
 	render_grass(width, height)
 	
