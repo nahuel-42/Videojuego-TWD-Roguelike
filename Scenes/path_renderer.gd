@@ -4,6 +4,8 @@ var CELL_DIMENSION = 32
 var ASPECT_RATIO = 16.0 / 9.0
 var width = 200
 var height
+var last_target_pos = null
+var map
 
 enum TileType {
 	PASTO,
@@ -57,8 +59,6 @@ var textures = {
 	}
 }
 
-var map = {}
-
 # Configuration
 var padding = 3
 
@@ -67,11 +67,16 @@ func _ready():
 	var viewport_size = get_viewport().size
 	height = width / ASPECT_RATIO
 	
-	render_grass(width, height)
-	
-	var initial_pos = Vector2i(0, height / 2)
+	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
 	
+	setup_level(initial_pos, target_pos)
+
+func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
+	clear()
+	last_target_pos = target_pos
+	render_grass(width, height)
+	map = {}
 	map[initial_pos] = TileType.CASTILLO
 	map[target_pos] = TileType.CASTILLO
 	
@@ -147,4 +152,17 @@ func render_border(padding: int):
 			set_cell(border_texture.layer, Vector2i(i, height + p - 1), border_texture.source, border_texture.atlas.position)
 
 func _process(delta):
-	pass
+	if Input.is_action_just_released("regenerate_level"):
+		print("regenerating level")
+		var initial_pos = get_initial_pos()
+		var target_pos = generate_target()
+		setup_level(initial_pos, target_pos)
+
+func get_initial_pos():
+	if last_target_pos == null:
+		return Vector2i(0, height / 2)
+	elif last_target_pos.x == width - 1:
+		return Vector2i(0, last_target_pos.y)
+	else:
+		return Vector2i(width - last_target_pos.x, height - last_target_pos.y - 1)
+	
