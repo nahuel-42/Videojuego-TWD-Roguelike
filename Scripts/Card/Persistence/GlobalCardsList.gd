@@ -11,10 +11,12 @@ var CollectionCard = [
 	{"id":0, "type": "tower", "cardName" : "One target tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/One_target_tower.png", "cost":100, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
 	{"id":1, "type": "tower", "cardName" : "All in range Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/All_in_range_tower.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
 	{"id":2, "type": "tower", "cardName" : "Area Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/Area_tower.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':"res://Prefabs/Towers/area_tower.tscn"},
-	################# SPECIALITIES ####################
-	{"id": 3, "type": "speciality", "cardName": "Hunter class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Hunter.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
-	{"id": 4, "type": "speciality", "cardName": "War class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/War.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/War.tscn"},
-	{"id": 5, "type": "speciality", "cardName": "Mercenary class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Mercenary.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Mercenary.tscn"}
+	################# CLASSES ####################
+	{"id": 3, "type": "class", "cardName": "Hunter class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Hunter.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
+	{"id": 4, "type": "class", "cardName": "War class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/War.png", "texture": "res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/War.tscn"},
+	{"id": 5, "type": "class", "cardName": "Mercenary class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Mercenary.png", "texture": "res://Assets/Sprites/Enemy/Skeleton Crew/Skeleton - Mage/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Mercenary.tscn"},
+	################# SPECIALITY ####################
+	{"id": 6, "type": "speciality", "cardName": "Speciality", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Speciality.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
 	################# Activate Card ####################
 	################# POWER ####################
 	################# Spell ####################

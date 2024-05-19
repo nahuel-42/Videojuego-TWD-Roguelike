@@ -15,9 +15,9 @@ func apply_card(card):
 			current_card_id = card.id
 		"upgrade":
 			upgrade_tower(card.id)
-		"speciality":
+		"class":
 			if child != null:
-				set_speciality(card.id)
+				set_class(card.id)
 		"delete":
 			delete_tower()
 	return previous_card_id
@@ -30,11 +30,14 @@ func create_tower(id):
 	child.load_stats(stats)
 	child.position = tower_point.position
 
-func set_speciality(id):
+func set_class(id):
 	var stats = GlobalCardsList.find_card(id)
 	var prefab = load(stats["path"])
 	speciality = prefab.instantiate()
-	child.set_speciality(speciality)
+	child.set_speciality(speciality, stats["texture"])
+
+# TODO: Al momento de setear la especialidad de tier 2, que permita elegir entre los 3 posibles para esa clase.
+# Luego, se deben modificar las stats base (damage, attackSpeed, etc) de la torre sobre la que se aplica la mejora.
 
 func upgrade_tower(id):
 	pass

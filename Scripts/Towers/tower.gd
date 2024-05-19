@@ -2,6 +2,7 @@ class_name Tower
 extends Node2D
 
 @onready var animation = $Animation
+@onready var sprite : Sprite2D = $Sprite2D
 
 var radius : Line2D
 var attack_method : AttackMethod 
@@ -20,8 +21,9 @@ func get_damage():
 func _process(delta):
 	attack_method.perform(delta)
 
-func set_speciality(speciality):
+func set_speciality(speciality, texture):
 	add_child(speciality)
+	sprite.texture = load(texture)
 	attack_method.set_speciality(speciality)
 
 func draw_radius():

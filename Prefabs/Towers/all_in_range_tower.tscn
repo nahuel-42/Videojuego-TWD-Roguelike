@@ -30,12 +30,9 @@ _data = {
 "idle": SubResource("Animation_jdn2m")
 }
 
-[node name="AllInRangeTower" type="Sprite2D"]
-modulate = Color(0, 0.164706, 1, 1)
+[node name="AllInRangeTower" type="Node2D"]
+modulate = Color(0, 0.721569, 1, 1)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_146v5")
-hframes = 4
-frame = 3
 script = ExtResource("2_1kl2x")
 
 [node name="Range" type="Area2D" parent="."]
@@ -58,6 +55,10 @@ script = ExtResource("5_x4a1w")
 libraries = {
 "": SubResource("AnimationLibrary_82oli")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_146v5")
+hframes = 4
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
