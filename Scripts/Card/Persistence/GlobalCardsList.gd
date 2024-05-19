@@ -1,4 +1,4 @@
-class_name GlobalCards
+#class_name GlobalCards
 extends Node
 
 # SpellCard: id, cardName, description, sprite, cost
