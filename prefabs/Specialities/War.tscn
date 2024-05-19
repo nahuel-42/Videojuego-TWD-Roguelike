@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cykyfhe4joegq"]
-
-[ext_resource type="Script" path="res://Scripts/Towers/Specialities/War/War.gd" id="1_hnvfb"]
-
-[node name="War" type="Node2D"]
-script = ExtResource("1_hnvfb")
