@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsdbs6fokunev"]
+
+[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_ukt6c"]
+[ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_8s340"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attacks/area_attack.gd" id="3_dqije"]
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="4_x0kyj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
+radius = 392.966
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3f3a"]
+radius = 49.3514
+
+[sub_resource type="Animation" id="Animation_jdn2m"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82oli"]
+_data = {
+"idle": SubResource("Animation_jdn2m")
+}
+
+[node name="AreaTower" type="Sprite2D"]
+modulate = Color(0.388235, 1, 0.0705882, 1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ukt6c")
+hframes = 4
+frame = 3
+script = ExtResource("2_8s340")
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+position = Vector2(0, 12)
+shape = SubResource("CircleShape2D_kj5wf")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Radius" type="Line2D" parent="."]
+
+[node name="AttackMethod" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_dqije")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d3f3a")
+
+[node name="Speciality" type="Node2D" parent="."]
+script = ExtResource("4_x0kyj")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_82oli")
+}
+
+[connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
+[connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
+[connection signal="body_entered" from="Area2D" to="AttackMethod" method="hit_targets"]
