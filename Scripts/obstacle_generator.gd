@@ -36,7 +36,12 @@ func generate_obstacles(n: int) -> Array[Rect2i]:
 			obstacles.append(rect)
 			n_obstacles += 1
 			
+	
 	return obstacles
 
+	
+func get_initial_obstacles():
+	return self.initial_obstacles
+	
 func add_obstacles(obstacles: Array[Rect2i]):
 	initial_obstacles.append_array(obstacles)

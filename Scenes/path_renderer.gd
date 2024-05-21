@@ -94,6 +94,11 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	for slot in slots:
 		map[slot] = TileType.SLOT
 	
+	
+	#revisar donde colocar las 3 lineas de abajo
+	obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
+	path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
+	
 	var forks = ForkGenerator.new(width, height, 2, 3, path_generator).generate_forks(path, slots, 10, 11)
 	
 	for fork in forks:

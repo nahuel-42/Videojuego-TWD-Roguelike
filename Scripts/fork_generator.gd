@@ -32,15 +32,23 @@ func generate_forks(path:Array[Vector2i], obstacles:Array[Vector2i], n:int, padd
 	var forks: Array[Array] = []
 	var i=0
 	var minimum_length= 10
+	var total_target=[]
+	var minimum_distance_each = 30
 	while i<=n:
 		var target_pos = Vector2i(randi_range(0, width),randi_range(0, height)) 
-		
 		var fork: Array[Vector2i] = []
 		var initial_pos
+		var distance=0
+		var not_far_enough=false
 		initial_pos = generate_target_in_the_main_way(target_pos,path)
-		
-		if target_pos not in path and target_pos not in obstacles and path_generator.is_reachable(initial_pos, target_pos):
-			
+		path_generator.setup_astar()
+		#valida que la distancia entre los nodos no este a menos de minimum_distance_each celdas
+		for j in range(len(total_target)):
+			distance=Vector2(target_pos).distance_to(total_target[j])
+			if distance<minimum_distance_each:
+				not_far_enough=true
+			 
+		if target_pos not in path and target_pos not in obstacles and path_generator.is_reachable(initial_pos, target_pos) and !not_far_enough:
 			path_generator.generate_path(initial_pos, target_pos, 1.0)
 			var section = path_generator.get_path()
 			if len(section)>= minimum_length:
@@ -51,6 +59,7 @@ func generate_forks(path:Array[Vector2i], obstacles:Array[Vector2i], n:int, padd
 					fork_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
 				obstacle_generator.add_obstacles(fork_obstacles)
 				i+=1
+				total_target.append(target_pos)
 				forks.append(fork)
 
 	print("Forks generados: ", len(forks))
@@ -63,12 +72,12 @@ func generate_target_in_the_main_way(initial_point: Vector2i, path:Array[Vector2
 	var min_distance=999
 	var min_node= path[n]
 	var distance
-	var incremento=5
+	var incremento=2
 
 	while (n<= len(path)-padding):
 		distance=Vector2(initial_point).distance_to(path[n]) 
 		if distance <= min_distance:
 			min_node= path[n]
 			min_distance= distance
-		n+=10
+		n+=incremento
 	return min_node

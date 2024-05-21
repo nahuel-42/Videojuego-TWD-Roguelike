@@ -15,7 +15,7 @@ var path: Array[Vector2i]
 
 var min_distance: float
 
-var astar = AStarGrid2D.new()
+var astar 
 var map_rect = Rect2i()
 var obstacle_generator:ObstacleGenerator
 
@@ -39,7 +39,6 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 	var min_distance = curvature * distance
 
 	setup_astar()
-	
 	var generated = false
 	var tries = 0
 	while not generated:
@@ -52,12 +51,13 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 			astar.fill_solid_region(obstacle)
 		
 		path = astar.get_id_path(initial_pos, target_pos)
-	
+				
 		if len(path) > min_distance:
 			generated = true
 		if tries > 5000:
 			break
 	var path_obstacles: Array[Rect2i] = []
+	
 	for pos in path:
 		path_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
 	obstacle_generator.add_obstacles(path_obstacles)
@@ -70,6 +70,7 @@ func get_path() -> Array[Vector2i]:
 	return path
 
 func setup_astar():
+	astar = AStarGrid2D.new()
 	map_rect = Rect2i(Vector2i(), tilemap_size)
 
 	astar.clear()
@@ -85,7 +86,6 @@ func is_reachable(initial_pos: Vector2i, target_pos:Vector2i) -> bool:
 	astar.fill_solid_region(astar.region, false)
 	for obstacle in obstacle_generator.initial_obstacles:
 			astar.fill_solid_region(obstacle)
-			
 	path = astar.get_id_path(initial_pos, target_pos)
 	
 	return len(path) > 0
