@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://j3fta0i4johd"]
-
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Magician.gd" id="1_e1g2b"]
-
-[node name="Magician" type="CharacterBody2D"]
-script = ExtResource("1_e1g2b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

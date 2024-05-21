@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://j3fta0i4johd"]
+
+[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Wizzard.gd" id="1_3mu6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_115jq"]
+
+[node name="Wizzard" type="CharacterBody2D"]
+script = ExtResource("1_3mu6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_115jq")
