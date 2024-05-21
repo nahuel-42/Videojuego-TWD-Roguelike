@@ -1,6 +1,9 @@
 extends Enemy
 class_name EnemyWolf
 
+#TODO: mas velocidad que el promedio y que la probabilidad de acierto disminuya con el
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

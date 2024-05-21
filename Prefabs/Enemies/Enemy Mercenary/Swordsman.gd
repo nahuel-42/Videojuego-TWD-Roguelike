@@ -1,6 +1,9 @@
 extends Enemy
 class_name EnemySwordsman
 
+#TODO: es como el lobo, la probabilidad de acierto disminuye con el y tiene mas velocidad que el promedio
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

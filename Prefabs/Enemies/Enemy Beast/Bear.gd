@@ -1,6 +1,9 @@
 extends Enemy
 class_name EnemyBear
 
+#TODO: menos velocidad mas vida
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

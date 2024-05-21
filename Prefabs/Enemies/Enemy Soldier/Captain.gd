@@ -1,6 +1,9 @@
 extends Enemy
 class_name EnemyCaptain
 
+#TODO: solo ser dañado si la torre es de tipo especialista en guerra
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

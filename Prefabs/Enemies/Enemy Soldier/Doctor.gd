@@ -1,6 +1,8 @@
 extends Enemy
 class_name EnemyDoctor
 
+#TODO: curar enemigos que estan en rango
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

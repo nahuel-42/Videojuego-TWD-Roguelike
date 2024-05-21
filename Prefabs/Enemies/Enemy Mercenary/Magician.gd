@@ -1,6 +1,8 @@
 extends Enemy
 class_name EnemyMagician
 
+#TODO: bajar la cadencia de disparo de torres cercanas
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

@@ -1,6 +1,9 @@
 extends Enemy
 class_name EnemyDrake
 
+#TODO: solo le puede causar daño el tipo de torre cazadores de bestias, en caso contrario evitar damage
+
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

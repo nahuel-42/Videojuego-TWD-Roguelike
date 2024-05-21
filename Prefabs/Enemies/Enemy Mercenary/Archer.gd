@@ -1,6 +1,8 @@
 extends Enemy
 class_name EnemyArcher
 
+#TODO: puede disparar con rango al castillo aliado
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 

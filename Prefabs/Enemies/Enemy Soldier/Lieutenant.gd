@@ -1,6 +1,7 @@
 extends Enemy
 class_name EnemyLieutenant
 
+#TODO: hacer que aumente la velocidad de los aliados cercanos
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
