@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://edjxgunwehcm"]
+
+[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Engineer.gd" id="1_5u67n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44h8r"]
+
+[node name="Engineer" type="CharacterBody2D"]
+script = ExtResource("1_5u67n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_44h8r")

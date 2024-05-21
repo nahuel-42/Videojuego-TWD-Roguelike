@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c75eglh2fx37x"]
+
+[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Archer.gd" id="1_l5wt2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ii4q"]
+
+[node name="Archer" type="CharacterBody2D"]
+script = ExtResource("1_l5wt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3ii4q")

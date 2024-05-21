@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhbk86m1op31u"]
+
+[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Beast/Wolf.gd" id="1_4d66i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_adl2u"]
+
+[node name="Wolf" type="CharacterBody2D"]
+script = ExtResource("1_4d66i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_adl2u")

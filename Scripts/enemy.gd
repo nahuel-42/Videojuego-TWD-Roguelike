@@ -1,10 +1,11 @@
 extends CharacterBody2D
+class_name Enemy
 
-var speed = 125
+var speed = 125 
 var acceleration = 5
 var target
 var health = 3
-var damage_to_health = 1
+var damage_to_health = 1 #deberian especificarse en cada hijo todos los atributos
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : ProgressBar = $HealthBar
