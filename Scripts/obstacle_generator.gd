@@ -36,7 +36,6 @@ func generate_obstacles(n: int) -> Array[Rect2i]:
 			obstacles.append(rect)
 			n_obstacles += 1
 			
-	
 	return obstacles
 
 	

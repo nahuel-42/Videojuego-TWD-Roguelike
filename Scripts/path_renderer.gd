@@ -3,6 +3,7 @@ extends TileMap
 @export var slot_scene : PackedScene #!
 @export var chest_scene : PackedScene
 @export var camp_scene : PackedScene
+@export var castle_scene : PackedScene
 
 @export var seedName : String = ""
 var seed : int
@@ -40,6 +41,12 @@ var textures = {
 		"source": 1,
 		"atlas": Rect2i(0,4,1,3),
 		"alternative": 0 
+	},
+	TileType.CAMPAMENTO: {
+		"layer" : 2,
+		"source" : 3,
+		"atlas" : Rect2i(5,3,0,0),
+		"alternative" : 0
 	},
 	TileType.OBSTACULO: {
 		"layer": 2,
@@ -98,8 +105,12 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	last_target_pos = target_pos
 	render_grass(width, height)
 	map = {}
-	map[initial_pos] = TileType.CASTILLO
-	map[target_pos] = TileType.CASTILLO
+	var start_castle = castle_scene.instantiate()
+	var target_castle = castle_scene.instantiate()
+	start_castle._setup(TileType.CASTILLO,initial_pos)
+	target_castle._setup(TileType.CASTILLO,target_pos)
+	map[initial_pos] = start_castle
+	map[target_pos] = target_castle
 	
 	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
@@ -131,7 +142,8 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		new_chest._setup(TileType.CHEST,fork[-1])
 		var new_camp = camp_scene.instantiate() #!
 		new_camp._setup(TileType.CAMPAMENTO,fork[-1])
-		map[fork[-1]] = new_chest#TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+		#TODO: decidir criterio de eleccion campamento/cofre
+		map[fork[-1]] = new_camp#TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
 	
 	render_border(7)
 	render_path()

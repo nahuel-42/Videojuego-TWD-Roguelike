@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cc78h2judq52q"]
 
-[ext_resource type="Script" path="res://Scenes/camp.gd" id="1_4c2tk"]
+[ext_resource type="Script" path="res://camp.gd" id="1_4c2tk"]
 
 [node name="Camp" type="Node"]
 script = ExtResource("1_4c2tk")
