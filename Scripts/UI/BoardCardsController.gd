@@ -6,6 +6,7 @@ extends BaseDeck
 
 @export var m_cardsInGameReference : Node
 
+var m_cardsListInGame = []
 var m_cardsAmount : int = 0
 
 func _ready():
@@ -56,16 +57,22 @@ func AddCardsInGame(param):
 		UI_funcs.LocateCard(m_cardsInGameReference, card)
 	else:
 		print("Error card selected")
+	
+	m_cardsListInGame.append(card)
+	
+	var index = m_cardsList.find(card)
+	m_cardsList.remove_at(index)
 
 func SwapCardsInGame(param):
 	var i = 0
 	var id = param[0]
-	var count = len(m_cardsList)
-	while (i < count && m_cardsList[i].GetID() != id ):
+	var count = len(m_cardsListInGame)
+	while (i < count && m_cardsListInGame[i].GetID() != id ):
 		i += 1
 			
 	if (i<count):
-		GameEvents.OnLoadDiscard.Call([m_cardsList[i]])
+		GameEvents.OnLoadDiscard.Call([m_cardsListInGame[i]])
+		m_cardsListInGame.remove_at(i)
 	else:
 		print("Error Swap")
 	GameEvents.OnAddCardsInGame.Call([-1])

@@ -39,6 +39,7 @@ func UpdatePosition(ui_position : Vector2):
 
 func SetActive(value : bool):
 	#self.set_visible(value)
+	visible = false
 	m_collider.disabled = !value
 	if (value == false):
 		m_slotList.clear()
