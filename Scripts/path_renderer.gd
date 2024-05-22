@@ -112,11 +112,12 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	map[initial_pos] = start_castle
 	map[target_pos] = target_castle
 	
-	var obstacle_generator = ObstacleGenerator.new(width, height,5, height / 2 - 1)
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
+	ObstacleGenerator.init(width, height,5, height / 2 - 1)
+	
+	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
 	path_generator.generate_path(initial_pos, target_pos, 2.0)
-
 	var path = path_generator.get_path()
+	ObstacleGenerator.add_obstacles(path)
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO
@@ -127,25 +128,31 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		var new_slot = slot_scene.instantiate() #!
 		new_slot._setup(TileType.SLOT,slot)
 		map[slot] = new_slot #ahora tiene un objeto, el valor del diccionario #TileType.SLOT
+	ObstacleGenerator.add_obstacles(slots)
 	
-	
-	#revisar donde colocar las 3 lineas de abajo
-	obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
-	path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
-	
-	var forks = ForkGenerator.new(width, height, 2, 3, path_generator).generate_forks(path, slots, 10, 11)
-	
-	for fork in forks:
+	var fork_generator = ForkGenerator.new(width, height, 2, 3, path_generator)
+	var n_forks = 11
+	for i in range(n_forks):
+		var fork = fork_generator.generate_fork(path, 10)
 		for cell in fork:
 			map[cell] = TileType.CAMINO
-		var new_chest = chest_scene.instantiate() #!
-		new_chest._setup(TileType.CHEST,fork[-1])
-		var new_camp = camp_scene.instantiate() #!
-		new_camp._setup(TileType.CAMPAMENTO,fork[-1])
-		#TODO: decidir criterio de eleccion campamento/cofre
-		map[fork[-1]] = new_camp#TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+		
+		# TODO: elegir un criterio mejor para elegir los campamentos / cofres
+		var element
+		if i < n_forks / 2:
+			element = chest_scene.instantiate()
+			element._setup(TileType.CHEST,fork[-1])
+		else:
+			element = camp_scene.instantiate()
+			element._setup(TileType.CAMPAMENTO,fork[-1])
+			
+		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+		ObstacleGenerator.add_obstacles(fork)
 	
-	render_border(7)
+	##revisar donde colocar las 3 lineas de abajo
+	#obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
+	#path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
+	#render_border(7)
 	render_path()
 
 func render_path():

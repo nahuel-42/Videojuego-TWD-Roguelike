@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://donkc3gmpd173" path="res://Scenes/chest.tscn" id="3_5kemi"]
 [ext_resource type="PackedScene" uid="uid://cc78h2judq52q" path="res://Scenes/camp.tscn" id="4_77i7b"]
 [ext_resource type="PackedScene" uid="uid://e5w5mucsra4b" path="res://Scenes/slot.tscn" id="5_rywi6"]
-[ext_resource type="PackedScene" uid="uid://c528xxytk038h" path="res://Scenes/castle.tscn" id="6_58qis"]
+[ext_resource type="PackedScene" path="res://Scenes/castle.tscn" id="6_58qis"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_s7dnp"]
 
 [node name="Mapa" type="Node"]

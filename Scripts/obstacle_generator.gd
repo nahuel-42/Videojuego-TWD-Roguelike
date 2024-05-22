@@ -1,5 +1,4 @@
-extends Object
-class_name ObstacleGenerator
+extends Node
 
 var width:int
 var height:int
@@ -9,7 +8,7 @@ var max_size:int
 
 var initial_obstacles: Array[Rect2i]
 
-func _init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Array[Rect2i] = []):
+func init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Array[Rect2i] = []):
 	self.width = width
 	self.height = height
 	self.min_size = min_size
@@ -42,8 +41,9 @@ func generate_obstacles(n: int) -> Array[Rect2i]:
 func get_initial_obstacles():
 	return self.initial_obstacles
 	
-func add_obstacles(obstacles: Array[Rect2i]):
-	initial_obstacles.append_array(obstacles)
+func add_obstacles(obstacles: Array[Vector2i]):
+	for obstacle in obstacles:
+		initial_obstacles.append(Rect2i(obstacle, Vector2i(1,1)))
 
 func set_seed(seed : int):
 	seed(seed)

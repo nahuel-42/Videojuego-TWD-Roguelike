@@ -17,21 +17,17 @@ var min_distance: float
 
 var astar 
 var map_rect = Rect2i()
-var obstacle_generator:ObstacleGenerator
 
 # Configuration
 var castle_size = 3
 
 # TODO: Config Class
-func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_obstacles:int, obstacle_generator:ObstacleGenerator):
+func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_obstacles:int):
 	self.width = width
 	self.height = height
 	self.tile_size = tile_size
 	self.tilemap_size = tilemap_size
 	self.n_obstacles = n_obstacles
-
-	# TODO: dependency injection??
-	self.obstacle_generator = obstacle_generator
 
 # Precondicion: el camino es alcanzable
 func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
@@ -45,7 +41,7 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 		# TODO: podria ser un metodo que genere los obstaculos
 		astar.fill_solid_region(astar.region, false)
 		tries+=1
-		var obstacles = obstacle_generator.generate_obstacles(n_obstacles)
+		var obstacles = ObstacleGenerator.generate_obstacles(n_obstacles)
 		
 		for obstacle in obstacles:
 			astar.fill_solid_region(obstacle)
@@ -56,11 +52,7 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 			generated = true
 		if tries > 5000:
 			break
-	var path_obstacles: Array[Rect2i] = []
 	
-	for pos in path:
-		path_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
-	obstacle_generator.add_obstacles(path_obstacles)
 	path = path.slice(1, -1)
 	
 		
@@ -84,7 +76,7 @@ func setup_astar():
 	
 func is_reachable(initial_pos: Vector2i, target_pos:Vector2i) -> bool:
 	astar.fill_solid_region(astar.region, false)
-	for obstacle in obstacle_generator.initial_obstacles:
+	for obstacle in ObstacleGenerator.initial_obstacles:
 			astar.fill_solid_region(obstacle)
 	path = astar.get_id_path(initial_pos, target_pos)
 	

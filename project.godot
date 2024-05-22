@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/mapa.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ObstacleGenerator="*res://Scripts/obstacle_generator.gd"
+
 [input]
 
 wheel_up={
