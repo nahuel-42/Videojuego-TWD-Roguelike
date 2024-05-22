@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://crqhywu1a32fj"]
+[gd_scene load_steps=5 format=3 uid="uid://crqhywu1a32fj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
 [ext_resource type="Texture2D" uid="uid://c36ba5trr7pr6" path="res://Assets/Sprites/Frente.png" id="2_iulx8"]
 [ext_resource type="Texture2D" uid="uid://ye3tu87ydg5w" path="res://Assets/Sprites/Dorso.png" id="3_s28en"]
+
+[sub_resource type="FontVariation" id="FontVariation_lfe6d"]
 
 [node name="Card" type="Panel" node_paths=PackedStringArray("m_top", "m_bottom")]
 anchors_preset = 8
@@ -42,18 +44,20 @@ expand_mode = 1
 [node name="name" type="Label" parent="TopSideCard"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.117
-anchor_top = 0.075
-anchor_right = 0.69
-anchor_bottom = 0.135
-offset_left = -0.100002
-offset_right = -1.52588e-05
+anchor_left = 0.11
+anchor_top = 0.072
+anchor_right = 0.887
+anchor_bottom = 0.137
+offset_top = 0.199999
+offset_right = -0.100006
+offset_bottom = 0.199997
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_lfe6d")
 text = "Nombre"
 horizontal_alignment = 1
 vertical_alignment = 1
-clip_text = true
 
 [node name="damage" type="Label" parent="TopSideCard"]
 layout_mode = 1
@@ -68,6 +72,7 @@ offset_right = 0.100006
 offset_bottom = 0.199997
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 10
 text = "Ataque"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -113,11 +118,13 @@ horizontal_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.727
-anchor_top = 0.075
+anchor_top = 0.185
 anchor_right = 0.887
-anchor_bottom = 0.135
+anchor_bottom = 0.245
 offset_left = -0.100021
 offset_right = -0.100006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
 text = "Cost"
 horizontal_alignment = 1
 
