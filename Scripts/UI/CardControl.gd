@@ -9,12 +9,19 @@ extends Panel
 var m_baseCard : BaseCard = null
 var e_inputEvent = null
 var m_side : bool = true
-
+var path = 'res://Assets/Sprites/Frente.png'
 func Init(baseCard):
 	m_baseCard = baseCard
 	#seteo de propiedades en texture y labels
-	get_node("TopSideCard/TextureRect").texture = load(m_baseCard.m_refCard["sprite"])
-	get_node('TopSideCard/name').text = m_baseCard.m_refCard["cardName"]	
+	get_node("TopSideCard/TextureRect").texture = load(path) #load(m_baseCard.m_refCard["sprite"])
+	get_node("TopSideCard/Figure").texture = load(m_baseCard.m_refCard["sprite"])
+	get_node("TopSideCard/name").text = m_baseCard.m_refCard["cardName"]	
+	get_node("TopSideCard/damage").text = str(m_baseCard.m_refCard["damage"])
+	get_node("TopSideCard/attackSpeed").text = str(m_baseCard.m_refCard["attackSpeed"])
+	get_node("TopSideCard/range").text = str(m_baseCard.m_refCard["range"])
+	get_node("TopSideCard/cost").text = str(m_baseCard.m_refCard["cost"])
+	
+	
 	#probablemente haya que crear cuatro estructuras de cartas, para que pueda mostrar los atributos que corresponden. 
 	
 func _ready():

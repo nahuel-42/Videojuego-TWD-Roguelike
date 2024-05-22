@@ -8,8 +8,8 @@ extends Node
 
 var CollectionCard = [
 	################# TOWERS ####################
-	{"id":0, "type": "tower", "cardName" : "Fire Archer Tower", "desc":"", "sprite": "res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/archer_tower.tscn'},
-	{"id":1, "type": "tower", "cardName" : "Fire Area Tower", "desc":"", "sprite": "res://Assets/Sprites/Heroes/Wizzard/Idle/Idle-Sheet.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/area_tower.tscn'},
+	{"id":0, "type": "tower", "cardName" : "Fire Archer Tower", "desc":"", "sprite": "res://Assets/Sprites/Rogue.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/archer_tower.tscn'},
+	{"id":1, "type": "tower", "cardName" : "Fire Area Tower", "desc":"", "sprite": "res://Assets/Sprites/Wizard.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://prefabs/area_tower.tscn'},
 	{"id":2, "type": "tower", "cardName" : "Fire Bomb Tower", "desc":"", "sprite": "", "cost":100, "range": 150, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':''},
 	{"id":3, "type": "tower", "cardName" : "Ice Archer Tower", "desc":"", "sprite": "", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':''},
 	{"id":4, "type": "tower", "cardName" : "Ice Area Tower", "desc":"", "sprite": "", "cost":100, "range": 150, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':''},

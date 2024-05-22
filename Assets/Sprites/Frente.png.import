@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ao53s0o8ouk"
-path="res://.godot/imported/CartaFrente.png-c6d83849f465987c20749e744b05c081.ctex"
+uid="uid://c36ba5trr7pr6"
+path="res://.godot/imported/Frente.png-d486d6e7c456be4f44d2edbc02da0d76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CartaFrente.png"
-dest_files=["res://.godot/imported/CartaFrente.png-c6d83849f465987c20749e744b05c081.ctex"]
+source_file="res://Assets/Sprites/Frente.png"
+dest_files=["res://.godot/imported/Frente.png-d486d6e7c456be4f44d2edbc02da0d76.ctex"]
 
 [params]
 
