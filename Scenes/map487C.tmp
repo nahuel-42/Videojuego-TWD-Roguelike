@@ -25,7 +25,7 @@ script = ExtResource("2_2h51y")
 slot_scene = ExtResource("5_rywi6")
 chest_scene = ExtResource("3_5kemi")
 camp_scene = ExtResource("4_77i7b")
-seedName = "prueba"
+seedName = "a"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.1, 0.1)

@@ -1,5 +1,12 @@
 extends TileMap
 
+@export var slot_scene : PackedScene #!
+@export var chest_scene : PackedScene
+@export var camp_scene : PackedScene
+
+@export var seedName : String = ""
+var seed : int
+
 var CELL_DIMENSION = 32
 var ASPECT_RATIO = 16.0 / 9.0
 var width = 200
@@ -15,7 +22,8 @@ enum TileType {
 	OBSTACULO,
 	CASTILLO,
 	BORDE,
-	SLOT
+	SLOT,
+	CHEST
 }
 
 # TODO: hacer diccionario de layers (cambiar que layer sea layers.decoracion, por ejemplo o sea digamos)
@@ -56,6 +64,12 @@ var textures = {
 		"source": 3,
 		"atlas": Rect2i(3,5,0,0),
 		"alternative": 0 
+	},
+	TileType.CHEST: {
+		"layer" : 2,
+		"source" : 3,
+		"atlas": Rect2i(3,1,0,0),
+		"alternative" : 0
 	}
 }
 
@@ -69,6 +83,13 @@ func _ready():
 	
 	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
+	
+	if seedName:
+		self.seed = hash(seedName)
+	else:
+		self.seed = randi()
+	seed(self.seed)
+	print("La seed es ",self.seed)
 	
 	setup_level(initial_pos, target_pos)
 
@@ -92,7 +113,9 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	# TODO: Agregar los slots como initial_obstacles en obstacle_generator
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
 	for slot in slots:
-		map[slot] = TileType.SLOT
+		var new_slot = slot_scene.instantiate() #!
+		new_slot._setup(TileType.SLOT,slot)
+		map[slot] = new_slot #ahora tiene un objeto, el valor del diccionario #TileType.SLOT
 	
 	
 	#revisar donde colocar las 3 lineas de abajo
@@ -104,7 +127,11 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	for fork in forks:
 		for cell in fork:
 			map[cell] = TileType.CAMINO
-		map[fork[-1]] = TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+		var new_chest = chest_scene.instantiate() #!
+		new_chest._setup(TileType.CHEST,fork[-1])
+		var new_camp = camp_scene.instantiate() #!
+		new_camp._setup(TileType.CAMPAMENTO,fork[-1])
+		map[fork[-1]] = new_chest#TileType.SLOT #EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
 	
 	render_border(7)
 	render_path()
@@ -113,7 +140,13 @@ func render_path():
 	var rand : Vector2i
 
 	for pos in map:
-		var texture = textures[map[pos]]
+		var texture #= textures[map[pos]]
+		if (not map[pos] is int):
+			texture = map[pos].texture
+			texture = textures[texture]
+		else:
+			texture = textures[map[pos]]
+		
 		rand.x = randi_range(texture.atlas.position.x,texture.atlas.end.x)
 		rand = Vector2i(randi_range(texture.atlas.position.x,texture.atlas.end.x),randi_range(texture.atlas.position.y,texture.atlas.end.y))
 		set_cell(texture.layer, pos, texture.source, rand)

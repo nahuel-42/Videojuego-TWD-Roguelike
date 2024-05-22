@@ -45,3 +45,6 @@ func get_initial_obstacles():
 	
 func add_obstacles(obstacles: Array[Rect2i]):
 	initial_obstacles.append_array(obstacles)
+
+func set_seed(seed : int):
+	seed(seed)

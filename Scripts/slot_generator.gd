@@ -58,3 +58,4 @@ func is_near_slots(slot: Vector2i, slots: Array[Vector2i], min_distance: float):
 
 func is_in_map(pos: Vector2i):
 	return pos.x >= 0 and pos.x < self.width and pos.y >= 0 and pos.y < self.height
+
