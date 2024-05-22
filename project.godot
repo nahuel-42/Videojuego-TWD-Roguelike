@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Parameters="*res://Scripts/Parameters.gd"
 GlobalCardsList="*res://Scripts/Card/Persistence/GlobalCardsList.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 upgrade_tower={

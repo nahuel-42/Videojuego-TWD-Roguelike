@@ -24,8 +24,8 @@ var CollectionCard = [
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
-	[0,0,1,1,1,2],
-	[0,2,1,1]
+	[0,0,1,1,1,2],#fireDeck
+	[0,2,1,1] #iceDeck
 ]
 	
 func find_card(id):
