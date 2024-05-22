@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhbk86m1op31u"]
 
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Beast/Wolf.gd" id="1_4d66i"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Wolf.gd" id="1_4d66i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_adl2u"]
 

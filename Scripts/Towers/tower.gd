@@ -41,5 +41,8 @@ func draw_radius():
 	
 	radius.points = circle_points
 	
+func upgrade(damage, range, attack_speed, accuracy):
+	attack_method.upgrade(damage, range, attack_speed, accuracy)
+	draw_radius()
 
 	

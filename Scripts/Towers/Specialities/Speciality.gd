@@ -4,7 +4,9 @@ extends Node2D
 const GROUPS = {
 	BEAST = "Beast",
 	SOLDIER = "Soldier",
-	MERCENARY = "Mercenary"
+	MERCENARY = "Mercenary",
+	DRAKE = "Drake",
+	CAPTAIN = "Captain"
 }
 
 func apply_effects(enemy):

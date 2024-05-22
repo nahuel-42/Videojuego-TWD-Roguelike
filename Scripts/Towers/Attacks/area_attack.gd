@@ -11,7 +11,7 @@ func fire():
 		get_parent().modulate = Color(1, 0, 0)
 		area_cs.global_position = current_target.global_position
 		hit_main_target()
-		cooldown = attack_speed
+		cooldown = 1 / get_attack_speed()
 		
 	set_new_target()
 
@@ -20,5 +20,5 @@ func hit_main_target():
 	area_cs.disabled = false
 	
 func hit_targets(body):
-	speciality.act(body, damage)
+	speciality.act(body, get_damage())
 

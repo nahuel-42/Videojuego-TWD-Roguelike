@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c75eglh2fx37x"]
 
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Archer.gd" id="1_l5wt2"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Mercenaries/Archer.gd" id="1_l5wt2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ii4q"]
 

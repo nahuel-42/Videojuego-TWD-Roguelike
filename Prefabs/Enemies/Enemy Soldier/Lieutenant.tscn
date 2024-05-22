@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5whtvxiauhd2"]
 
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Soldier/Lieutenant.gd" id="1_ge2qc"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Lieutenant.gd" id="1_ge2qc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ljxtm"]
 

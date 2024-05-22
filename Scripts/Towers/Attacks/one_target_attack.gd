@@ -8,8 +8,9 @@ func fire():
 	if current_target != null and current_target in enemies_in_range:
 		color = modulate
 		get_parent().modulate = Color(1, 0, 0)
-		speciality.act(current_target, damage)
-		cooldown = attack_speed
+		speciality.act(current_target, get_damage())
+		#current_target.start_bleeding()
+		cooldown = 1 / get_attack_speed()
 		
 	set_new_target()
 

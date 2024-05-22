@@ -40,7 +40,8 @@ func set_class(id):
 # Luego, se deben modificar las stats base (damage, attackSpeed, etc) de la torre sobre la que se aplica la mejora.
 
 func upgrade_tower(id):
-	pass
+	var stats = GlobalCardsList.find_card(id)
+	child.upgrade(stats["damage"], stats["range"], stats["attack_speed"], stats["accuracy"])
 
 func delete_tower():
 	pass

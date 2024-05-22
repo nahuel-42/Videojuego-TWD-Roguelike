@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dird4go8tf2pp"]
 
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Beast/Bear.gd" id="1_ex1nb"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Bear.gd" id="1_ex1nb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jut3o"]
 

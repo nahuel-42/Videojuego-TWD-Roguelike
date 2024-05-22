@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://edjxgunwehcm"]
 
-[ext_resource type="Script" path="res://Prefabs/Enemies/Enemy Mercenary/Engineer.gd" id="1_5u67n"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Mercenaries/Engineer.gd" id="1_5u67n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_44h8r"]
 
