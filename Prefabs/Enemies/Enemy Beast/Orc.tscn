@@ -1,8 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://dird4go8tf2pp"]
+[gd_scene load_steps=7 format=3 uid="uid://dird4go8tf2pp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Orc.gd" id="1_rkave"]
+[ext_resource type="Texture2D" uid="uid://c8duptoo62vfw" path="res://Assets/Sprites/Enemies/Orc/Walk.png" id="2_qytpe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jut3o"]
+
+[sub_resource type="Animation" id="Animation_10e1a"]
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_o0mcn"]
+resource_name = "Walk"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a12sm"]
+_data = {
+"RESET": SubResource("Animation_10e1a"),
+"Walk": SubResource("Animation_o0mcn")
+}
 
 [node name="Orc" type="CharacterBody2D"]
 script = ExtResource("1_rkave")
@@ -11,5 +51,10 @@ script = ExtResource("1_rkave")
 shape = SubResource("CircleShape2D_jut3o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qytpe")
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a12sm")
+}

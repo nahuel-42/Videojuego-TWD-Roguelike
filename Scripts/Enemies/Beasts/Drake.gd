@@ -8,3 +8,6 @@ extends Beast
 
 #func init_stats():
 #	pass
+
+func set_group():
+	add_to_group(Parameters.GROUPS.DRAKE)

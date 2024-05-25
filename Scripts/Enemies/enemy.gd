@@ -17,14 +17,6 @@ var bleeding_damage = 1
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : ProgressBar = $HealthBar
 
-const GROUPS = {
-	BEAST = "Beast",
-	SOLDIER = "Soldier",
-	MERCENARY = "Mercenary",
-	DRAKE = "Drake",
-	CAPTAIN = "Captain"
-}
-
 var cooldown = 0.5
 
 func set_group():

@@ -10,6 +10,7 @@ var attack_method : AttackMethod
 func _ready():
 	attack_method = $AttackMethod
 	animation.play("idle")
+	#add_to_group()
 
 func load_stats(stats):
 	attack_method.load_stats(stats)
