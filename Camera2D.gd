@@ -7,6 +7,9 @@ const CAM_SPEED : float = 1.1
 var previous_pos : Vector2 = Vector2.ZERO
 var move_cam : bool = false
 
+func _ready():
+	zoom = Vector2(1, 1)  
+	
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:

@@ -7,7 +7,7 @@ extends TileMap
 
 @export var seedName : String = ""
 var seed : int
-
+var camera2D
 var CELL_DIMENSION = 32
 var ASPECT_RATIO = 16.0 / 9.0
 var width = 200
@@ -87,9 +87,12 @@ var padding = 3
 func _ready():
 	var viewport_size = get_viewport().size
 	height = width / ASPECT_RATIO
-	
+	camera2D = $Camera2D
 	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
+	
+	print(initial_pos)
+	camera2D.position= Vector2i(camera2D.get_viewport_rect().size.y/2 + 32, initial_pos.y*32)
 	
 	if seedName:
 		self.seed = hash(seedName)
@@ -152,7 +155,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	##revisar donde colocar las 3 lineas de abajo
 	#obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
 	#path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
-	#render_border(7)
+	render_border(7)
 	render_path()
 
 func render_path():
