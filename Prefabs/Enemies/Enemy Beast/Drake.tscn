@@ -1,11 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3e7jtsluty0i"]
+[gd_scene load_steps=7 format=3 uid="uid://b3e7jtsluty0i"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Drake.gd" id="1_fushe"]
+[ext_resource type="Texture2D" uid="uid://o87mx2qr0ufu" path="res://Assets/Sprites/Enemies/Drake/Dragon.png" id="2_seo2r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lgla"]
 
-[node name="Beast" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_t6xwo"]
+resource_name = "Fly"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_7misg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jjir"]
+_data = {
+"Fly": SubResource("Animation_t6xwo"),
+"RESET": SubResource("Animation_7misg")
+}
+
+[node name="Drake" type="CharacterBody2D"]
 script = ExtResource("1_fushe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7lgla")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_seo2r")
+hframes = 3
+
+[node name="AnimationDrake" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6jjir")
+}

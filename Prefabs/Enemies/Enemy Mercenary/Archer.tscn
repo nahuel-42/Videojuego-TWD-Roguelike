@@ -1,11 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://c75eglh2fx37x"]
+[gd_scene load_steps=7 format=3 uid="uid://c75eglh2fx37x"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Mercenaries/Archer.gd" id="1_l5wt2"]
+[ext_resource type="Texture2D" uid="uid://docmeahfy08e7" path="res://Assets/Sprites/Enemies/Archer/Walk.png" id="2_3acba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ii4q"]
+
+[sub_resource type="Animation" id="Animation_ahubr"]
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0.3, 0.7, 1.1, 1.5, 1.9, 2.3, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_3x1f0"]
+resource_name = "Walk"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xaccx"]
+_data = {
+"RESET": SubResource("Animation_ahubr"),
+"Walk": SubResource("Animation_3x1f0")
+}
 
 [node name="Archer" type="CharacterBody2D"]
 script = ExtResource("1_l5wt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ii4q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3acba")
+hframes = 8
+
+[node name="AnimationArcher" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xaccx")
+}

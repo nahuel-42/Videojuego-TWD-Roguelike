@@ -1,11 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca4qg66lwhx72"]
+[gd_scene load_steps=8 format=3 uid="uid://ca4qg66lwhx72"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Doctor.gd" id="1_hu2q6"]
+[ext_resource type="Texture2D" uid="uid://cuf26rhit6c42" path="res://Assets/Sprites/Enemies/Doctor/Sprite Doctor.png" id="2_353y1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p66wp"]
+
+[sub_resource type="Animation" id="Animation_ej87i"]
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_vaghg"]
+resource_name = "Walk"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sry4x"]
+_data = {
+"RESET": SubResource("Animation_ej87i"),
+"Walk": SubResource("Animation_vaghg")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqoiv"]
 
 [node name="Doctor" type="CharacterBody2D"]
 script = ExtResource("1_hu2q6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p66wp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_353y1")
+hframes = 9
+
+[node name="AnimationDoctor" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sry4x")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xqoiv")
