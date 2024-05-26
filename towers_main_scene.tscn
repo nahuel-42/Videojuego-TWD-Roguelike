@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b705l"]
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="2_7gssl"]
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/Enemies/target.tscn" id="2_8fg1b"]
-[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://Prefabs/Enemies/enemies_spawner.tscn" id="2_t3tbo"]
+[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://Prefabs/Spawners/BeastSpawner.tscn" id="2_t3tbo"]
 [ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://Prefabs/Enemies/pathfinding_2d.tscn" id="3_hjq7x"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="3_ouevk"]
 [ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://Prefabs/Slots/tower_slot.tscn" id="4_b6p43"]
@@ -70,3 +70,16 @@ scale = Vector2(1.14741, 3.93146)
 color = Color(0.443137, 0.443137, 0.443137, 1)
 
 [node name="Target" parent="." instance=ExtResource("2_8fg1b")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1030.0
+offset_top = 36.0
+offset_right = 1106.0
+offset_bottom = 90.0
+text = "Empezar
+wave"
+
+[node name="BeastSpawner" parent="." instance=ExtResource("2_t3tbo")]
+position = Vector2(6, 95)
+
+[connection signal="pressed" from="Button" to="." method="_on_start_wave_button_pressed"]

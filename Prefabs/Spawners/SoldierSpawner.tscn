@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1fflapq4c1vq"]
+
+[ext_resource type="Script" path="res://Scripts/Spawners/SoldierSpawner.gd" id="1_ppw3i"]
+[ext_resource type="Texture2D" uid="uid://cw67hgn6logha" path="res://Assets/Sprites/Spawners/SoldierSpawner.png" id="2_nduri"]
+
+[node name="SoldierSpawner" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_ppw3i")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_nduri")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

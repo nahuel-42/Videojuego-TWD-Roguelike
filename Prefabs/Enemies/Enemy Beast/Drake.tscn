@@ -8,6 +8,7 @@
 [sub_resource type="Animation" id="Animation_t6xwo"]
 resource_name = "Fly"
 length = 1.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,7 +53,21 @@ shape = SubResource("CircleShape2D_7lgla")
 texture = ExtResource("2_seo2r")
 hframes = 3
 
-[node name="AnimationDrake" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_6jjir")
 }
+autoplay = "Fly"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.94902, 0, 0, 1)
+offset_left = -18.0
+offset_top = -36.0
+offset_right = 18.0
+offset_bottom = -27.0
+step = 1.0
+value = 100.0
+show_percentage = false

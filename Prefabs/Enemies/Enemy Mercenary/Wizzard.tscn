@@ -9,3 +9,16 @@ script = ExtResource("1_3mu6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_115jq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.94902, 0, 0, 1)
+offset_left = -18.0
+offset_top = -36.0
+offset_right = 18.0
+offset_bottom = -27.0
+step = 1.0
+value = 100.0
+show_percentage = false

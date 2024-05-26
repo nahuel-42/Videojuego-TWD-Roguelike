@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5wawy3eu27qx"]
+
+[ext_resource type="Script" path="res://Scripts/Spawners/BeastSpawner.gd" id="1_biotc"]
+[ext_resource type="Texture2D" uid="uid://blekhgxcqxua3" path="res://Assets/Sprites/Spawners/BeastSpawner.png" id="2_frnkx"]
+
+[node name="BeastSpawner" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_biotc")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_frnkx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c13h4rwyps1ut"]
+
+[ext_resource type="Script" path="res://Scripts/Spawners/MercenarySpawner.gd" id="1_y7h3e"]
+[ext_resource type="Texture2D" uid="uid://b1ijdm2okupe1" path="res://Assets/Sprites/Spawners/MercenarySpawner.png" id="2_fd33f"]
+
+[node name="MercenarySpawner" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_y7h3e")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fd33f")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
