@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6oii6pq5ubrd"]
+
+[ext_resource type="Script" path="res://Scripts/spell_detector.gd" id="1_jdy04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m2p"]
+
+[node name="SpellDetector" type="Node2D"]
+script = ExtResource("1_jdy04")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v5m2p")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

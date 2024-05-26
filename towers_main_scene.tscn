@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdh1547kpfhej"]
+[gd_scene load_steps=9 format=3 uid="uid://cdh1547kpfhej"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b705l"]
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="2_7gssl"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://df6fnandt3a2h" path="res://Prefabs/Enemies/pathfinding_2d.tscn" id="3_hjq7x"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="3_ouevk"]
 [ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://Prefabs/Slots/tower_slot.tscn" id="4_b6p43"]
+[ext_resource type="Script" path="res://Scripts/spell_detector.gd" id="8_k68x5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_b705l")
@@ -68,6 +69,10 @@ offset_right = 621.0
 offset_bottom = 263.0
 scale = Vector2(1.14741, 3.93146)
 color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="SpellDetector" type="Node2D" parent="."]
+position = Vector2(576, 160)
+script = ExtResource("8_k68x5")
 
 [node name="Target" parent="." instance=ExtResource("2_8fg1b")]
 

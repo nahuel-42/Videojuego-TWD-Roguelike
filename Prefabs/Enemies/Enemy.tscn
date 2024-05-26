@@ -38,7 +38,6 @@ position = Vector2(0, -25)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_x7g8n")
 hframes = 6
-frame = 2
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
