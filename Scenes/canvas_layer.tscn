@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=10 format=3 uid="uid://bfuuqao2omga7"]
 
+[ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_cieb2"]
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetector.gd" id="5_jd3hf"]
+[ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="7_y252a"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
 script/source = "extends Node
@@ -18,6 +21,117 @@ func _process(delta):
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = SubResource("GDScript_4flth")
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.4
+anchor_top = 0.01
+anchor_right = 0.6
+anchor_bottom = 0.3
+
+[node name="Background" type="Panel" parent="Debug"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Debug"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.3
+offset_right = 1.52588e-05
+text = "Start Fire
+"
+
+[node name="Button2" type="Button" parent="Debug"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.65
+offset_right = 1.52588e-05
+text = "Load Board"
+
+[node name="Label" type="Label" parent="Debug"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.95
+text = "WASD mover camara"
+
+[node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
+layout_mode = 3
+anchor_left = 0.8
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.3
+script = ExtResource("1_7hbfa")
+m_hideCards = NodePath("HidePassives")
+m_mainRef = NodePath("MainPassives")
+
+[node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
+visible = false
+z_index = -1
+script = ExtResource("5_jd3hf")
+m_background = NodePath("../MainPassives/Background")
+m_panels = [NodePath("../MainPassives/Panel2"), NodePath("../MainPassives/Panel3")]
+m_colorEnd = Color(0.780392, 0.780392, 0, 1)
+m_speedColor = 4.0
+
+[node name="MainPassives" type="Control" parent="Passives"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="Passives/MainPassives"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="Passives/MainPassives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07
+anchor_top = 0.11
+anchor_right = 0.42
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel3" type="Panel" parent="Passives/MainPassives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.57
+anchor_top = 0.11
+anchor_right = 0.92
+anchor_bottom = 0.88
+offset_left = -3.05176e-05
+offset_right = -3.05176e-05
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HidePassives" type="Control" parent="Passives"]
+layout_mode = 1
+anchor_left = 0.75
+anchor_right = 1.75
+anchor_bottom = 1.0
 
 [node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -46,7 +160,16 @@ anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
-[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_hideCards", "m_mainRef")]
+[node name="ShowPop" type="Button" parent="DeckCards"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.3
 anchor_top = 0.8
@@ -55,9 +178,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iud0")
-m_cardMovement = NodePath("Node")
+m_cardMovement = NodePath("CardMovement")
 m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
 m_locationSpeed = 20.0
+m_cardsInGameReference = NodePath("CardsInGame")
+m_cardOffsetPosition = 5.0
 m_hideCards = NodePath("HideBoard")
 m_mainRef = NodePath("Board")
 
@@ -95,7 +220,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Node" type="Node" parent="BoardCards"]
+[node name="CardMovement" type="Control" parent="BoardCards"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("3_1uow5")
 
 [node name="HideBoard" type="Control" parent="BoardCards"]
@@ -104,6 +233,15 @@ anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
+[node name="CardsInGame" type="Control" parent="BoardCards"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -345.6
+offset_top = -518.4
+offset_right = -305.6
+offset_bottom = -478.4
+
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.9
@@ -111,6 +249,10 @@ anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
+
+m_cardOffsetPosition = 5.0
+m_cardLoadSpeed = 50.0
+>>>>>>> origin/Cartas
 m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
 
@@ -128,33 +270,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="."]
-modulate = Color(0.0728426, 0.0728426, 0.0728426, 0.392157)
-anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.01
-anchor_right = 0.6
-anchor_bottom = 0.2
-
-[node name="Button" type="Button" parent="Panel"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="ShowPop" type="Button" parent="DiscardCards"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.45
-text = "Start Fire
-"
-
-[node name="Button2" type="Button" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.55
-anchor_right = 0.9
-anchor_bottom = 0.9
-text = "Load Board"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ButtonHideBoardCards" type="Button" parent="."]
 anchors_preset = -1
@@ -194,22 +317,87 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="HealthMana" type="Button" parent="Bars"]
+[node name="PopupCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]
+visible = false
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+script = ExtResource("7_y252a")
+m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
+m_separation = Vector2(10, 10)
+
+[node name="background1" type="Panel" parent="PopupCards"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background2" type="Panel" parent="PopupCards"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.037
-anchor_top = 0.114
-anchor_right = 0.154
-anchor_bottom = 0.171
-offset_left = 41.52
-offset_top = 69.44
-offset_right = 138.84
-offset_bottom = 98.16
-text = "recibir dano"
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="button_up" from="Panel/Button" to="DeckCards" method="_on_button_button_up"]
-[connection signal="button_up" from="Panel/Button2" to="DeckCards" method="_on_button_2_button_up"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PopupCards"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PopupCards/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(677, 342)
+render_target_update_mode = 0
+
+[node name="parent" type="Control" parent="PopupCards/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="exit" type="Button" parent="PopupCards"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+
+[node name="detect drag" type="Panel" parent="PopupCards"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_up" from="Debug/Button" to="DeckCards" method="_on_button_button_up"]
+[connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
+[connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
+[connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
+[connection signal="button_down" from="ButtonHideBoardCards" to="Passives" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="DeckCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="BoardCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="DiscardCards" method="_on_button_hide_board_cards_button_down"]
-[connection signal="button_down" from="Bars/HealthMana" to="Bars" method="_on_health_mana_button_down"]
+[connection signal="button_down" from="PopupCards/exit" to="PopupCards" method="_on_exit_button_down"]
+[connection signal="gui_input" from="PopupCards/detect drag" to="PopupCards" method="_on_detect_drag_gui_input"]

@@ -8,9 +8,9 @@ extends Node
 
 var CollectionCard = [
 	################# TOWERS ####################
-	{"id":0, "type": "tower", "cardName" : "One target tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/One_target_tower.png", "cost":100, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
-	{"id":1, "type": "tower", "cardName" : "All in range Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/All_in_range_tower.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
-	{"id":2, "type": "tower", "cardName" : "Area Tower", "desc":"Data", "sprite": "res://Assets/Sprites/TowerCards/Area_tower.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':"res://Prefabs/Towers/area_tower.tscn"},
+	{"id":0, "type": "tower", "cardName" : "One target tower", "desc":"Data", "sprite": "res://Assets/Sprites/Cards/Tower/FireArcherT.png", "cost":100, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
+	{"id":1, "type": "tower", "cardName" : "All in range Tower", "desc":"Data", "sprite": "res://Assets/Sprites/Cards/Tower/FireAreaT.png", "cost":100, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
+	{"id":2, "type": "tower", "cardName" : "Area Tower", "desc":"Data", "sprite": "res://Assets/Sprites/Cards/Tower/FireBombT.png", "cost":100, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':"res://Prefabs/Towers/area_tower.tscn"},
 	################# CLASSES ####################
 	{"id": 3, "type": "class", "cardName": "Hunter class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/Hunter.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
 	{"id": 4, "type": "class", "cardName": "War class", "desc": "Data", "sprite": "res://Assets/Sprites/SpecialitiesCards/War.png", "texture": "res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/War.tscn"},
@@ -26,10 +26,10 @@ var CollectionCard = [
 	################# Spell ####################
 	################# Camp ####################
 ]
-
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
+	#[11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],#para probar todas las cartas
 	[0,1,7,8,3],
 	[0,2,1,1]
 ]

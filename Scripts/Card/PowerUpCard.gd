@@ -5,5 +5,9 @@ class_name PowerUpCard
 #la defino cuando sepa donde va
 
 func use(param):
-	print("Se uso ActiveCard")
+	print("Se uso PowerCard")
+	#GameEvents.OnLoadDiscard(param)
 #por ahora, se agregan a los slots/torre y van a un array del mapa o algo similar
+
+func SetTypeDetector(cardMovement):
+	cardMovement.SetPowerDetector()

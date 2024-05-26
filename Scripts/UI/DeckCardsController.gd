@@ -20,3 +20,7 @@ func _on_button_2_button_up():
 	GameEvents.OnLoadBoard.Call(newList)
 	m_actualCardIndex = 0
 	f_state = State_LoadCards
+
+
+func _on_show_pop_button_down():
+	GameEvents.OnShowPopCards.Call(m_cardsList)

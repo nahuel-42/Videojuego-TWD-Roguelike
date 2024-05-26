@@ -6,37 +6,63 @@ var m_cardSelected = null
 var m_relativePosition : Vector2
 var m_backSpeed : float = 5
 
-var m_slotDetector : SlotDetector = null
+var m_detector : BasicDetector = null
+
+var m_sizeCard : Vector2 = Vector2.ZERO
 
 func _ready():
-	m_slotDetector = GameEvents.OnGetSlotDetector.Call(null)
+	pass
 
 func _process(delta):
 	if (m_cardSelected != null):
 		MoveCardSelected()
 	UpdateCardsUnSelected(delta)
 
+func GetCardSelected():
+	return m_cardSelected
+
+###############DETECTOR###############
+func SetSlotDetector():
+	m_detector = GameEvents.OnGetSlotDetector.Call(null)
+func SetPowerDetector():
+	m_detector = GameEvents.OnGetPowerDetector.Call(null)
+func SetPassiveDetector():
+	m_detector = GameEvents.OnGetPassiveDetector.Call(null)
+######################################
+
+###################INPUT##############
 func GetInputEvent(card, event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			m_relativePosition = card.global_position + Vector2.ONE*50
-			if (m_cardSelected != null):
-				m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
-			m_cardSelected = card
-			m_slotDetector.SetActive(true)
+			ClickPressed(card)
 		else:
-			if (!m_slotDetector.ApplyCard(m_cardSelected)):
-				m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])			
-			m_cardSelected = null
-			m_slotDetector.SetActive(false)
+			ClickUnPressed(card)
 
+func ClickPressed(card):
+	card.SetTypeDetector(self)
+	m_sizeCard = card.size / 2.0
+	m_relativePosition = card.global_position + m_sizeCard
+	
+	if (m_cardSelected != null):
+		m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
+	m_cardSelected = card
+	
+	m_detector.Start(card)
+	
+func ClickUnPressed(card):
+	if (!m_detector.ApplyCard(m_cardSelected)):
+		m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
+		
+	m_cardSelected = null
+	m_detector.Exit()
+######################################
 func MoveCardSelected():
 	var mousePosition = get_viewport().get_mouse_position()
 	var mov = mousePosition - m_relativePosition 
 	m_relativePosition = mousePosition
 	m_cardSelected.global_position += mov
 	
-	m_slotDetector.UpdatePosition(m_cardSelected.global_position)	
+	m_detector.UpdatePosition(m_cardSelected.global_position + m_sizeCard)
 
 func UpdateCardsUnSelected(delta):
 	var i = 0

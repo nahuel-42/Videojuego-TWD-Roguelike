@@ -45,5 +45,4 @@ func draw_radius():
 func upgrade(damage, range, attack_speed, accuracy):
 	attack_method.upgrade(damage, range, attack_speed, accuracy)
 	draw_radius()
-
 	

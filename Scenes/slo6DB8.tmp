@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsevkqk7cl15l"]
+
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/SlotDetector.gd" id="1_61rwx"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/PowerDetector.gd" id="2_113gb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7u6n"]
+size = Vector2(1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sikk0"]
+
+[node name="Detector" type="Node2D"]
+
+[node name="Slot" type="Area2D" parent="." node_paths=PackedStringArray("m_collider", "m_sprite")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_61rwx")
+m_collider = NodePath("CollisionShape2D")
+m_sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot"]
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_i7u6n")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Slot"]
+modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_sikk0")
+
+[node name="Power" type="Node2D" parent="." node_paths=PackedStringArray("m_circle")]
+script = ExtResource("2_113gb")
+m_circle = NodePath("Radius")
+m_radius = 20.0
+
+[node name="Radius" type="Line2D" parent="Power"]
+width = 1.0
+
+[connection signal="area_entered" from="Slot" to="Slot" method="_on_area_entered"]
+[connection signal="area_exited" from="Slot" to="Slot" method="_on_area_exited"]
