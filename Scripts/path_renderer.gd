@@ -118,9 +118,10 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	ObstacleGenerator.init(width, height,5, height / 2 - 1)
 	
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
-	path_generator.generate_path(initial_pos, target_pos, 2.0)
-	var path = path_generator.get_path()
+	var path = path_generator.generate_path(initial_pos, target_pos, 2.0)
 	ObstacleGenerator.add_obstacles(Utils.add_padding(path))
+	# Add castles to initial obstacles
+	ObstacleGenerator.add_obstacles([initial_pos, target_pos])	
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO

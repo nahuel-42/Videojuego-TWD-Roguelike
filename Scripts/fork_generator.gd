@@ -48,14 +48,13 @@ func generate_fork(path:Array[Vector2i], padding:int, min_length: int = 10, min_
 			ObstacleGenerator.add_obstacles([initial_pos - Vector2i(0,1)])
 			ObstacleGenerator.add_obstacles([initial_pos + Vector2i(0,1)])
 		
-	path_generator.generate_path(initial_pos, target_pos, 1.0)
+	fork = path_generator.generate_path(initial_pos, target_pos, 1.0)
+	fork.append(target_pos)
 	ObstacleGenerator.add_obstacles([initial_pos - Vector2i(1,0)])
 	ObstacleGenerator.add_obstacles([initial_pos + Vector2i(1,0)])
 	ObstacleGenerator.add_obstacles([initial_pos - Vector2i(0,1)])
 	ObstacleGenerator.add_obstacles([initial_pos + Vector2i(0,1)])
-	fork = path_generator.get_path()
-	fork.append(target_pos)
-	
+		
 	return fork
 	
 # TODO variable resultado para hacerlo mas legible

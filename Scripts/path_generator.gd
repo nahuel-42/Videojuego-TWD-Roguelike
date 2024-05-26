@@ -11,8 +11,6 @@ var target_pos:Vector2i
 
 var n_obstacles
 
-var path: Array[Vector2i]
-
 var min_distance: float
 
 var astar 
@@ -33,6 +31,7 @@ func _init(width:int, height:int, tile_size:Vector2i, tilemap_size:Vector2i, n_o
 func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 	var distance = abs(initial_pos.x - target_pos.x) + abs(initial_pos.y - target_pos.y)
 	var min_distance = curvature * distance
+	var path
 
 	setup_astar()
 	var generated = false
@@ -55,10 +54,6 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 	
 	path = path.slice(1, -1)
 	
-		
-	# TODO: Devolver path cuando lo genera
-
-func get_path() -> Array[Vector2i]:
 	return path
 
 func setup_astar():
@@ -78,7 +73,7 @@ func is_reachable(initial_pos: Vector2i, target_pos:Vector2i) -> bool:
 	astar.fill_solid_region(astar.region, false)
 	for obstacle in ObstacleGenerator.initial_obstacles:
 			astar.fill_solid_region(obstacle)
-	path = astar.get_id_path(initial_pos, target_pos)
+	var path = astar.get_id_path(initial_pos, target_pos)
 	
 	return len(path) > 0
 
