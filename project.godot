@@ -19,6 +19,7 @@ run/emulate_touch_from_mouse=true
 [autoload]
 
 ObstacleGenerator="*res://Scripts/obstacle_generator.gd"
+Utils="*res://Scripts/utils.gd"
 
 [input]
 

@@ -27,56 +27,32 @@ func _init(width:int, height:int, min_distance:int, max_distance:int, path_gener
 	self.path_generator = path_generator
 	self.targets = []
 	
-#func generate_forks(path:Array[Vector2i], obstacles:Array[Vector2i], n:int, padding:int) -> Array[Array]:
-	#print("Generating forking paths")
-	#var forks: Array[Array] = []
-	#var i=0
-	#var minimum_length= 10
-	#var total_target=[]
-	#var minimum_distance_each = 30
-	#while i<=n:
-		#var target_pos = Vector2i(randi_range(0, width),randi_range(0, height)) 
-		#var fork: Array[Vector2i] = []
-		#var initial_pos
-		#var distance=0
-		#var not_far_enough=false
-		#initial_pos = generate_target_in_the_main_way(target_pos,path)
-		#path_generator.setup_astar()
-		##valida que la distancia entre los nodos no este a menos de minimum_distance_each celdas
-		#for j in range(len(total_target)):
-			#distance=Vector2(target_pos).distance_to(total_target[j])
-			#if distance<minimum_distance_each:
-				#not_far_enough=true
-			 #
-		#if target_pos not in path and target_pos not in obstacles and path_generator.is_reachable(initial_pos, target_pos) and !not_far_enough:
-			#path_generator.generate_path(initial_pos, target_pos, 1.0)
-			#var section = path_generator.get_path()
-			#if len(section)>= minimum_length:
-				#fork.append_array(section)
-				#fork.append(target_pos)
-				#var fork_obstacles: Array[Rect2i] = []
-				#for pos in section:
-					#fork_obstacles.append(Rect2i(pos.x, pos.y, 1, 1))
-				#obstacle_generator.add_obstacles(fork_obstacles)
-				#i+=1
-				#total_target.append(target_pos)
-				#forks.append(fork)
-#
-	#print("Forks generados: ", len(forks))
-	#return forks
-	
 func generate_fork(path:Array[Vector2i], padding:int, min_length: int = 10, min_distance: int = 30) -> Array[Vector2i]:
 	var fork: Array[Vector2i] = []
 	var valid = false
 	var target_pos
 	var initial_pos
 	
+	# TODO: Quizas hay una forma mejor de hacerlo
 	while not valid:
 		target_pos = Vector2i(randi_range(0, width),randi_range(0, height)) 
 		initial_pos = generate_target_in_the_main_way(target_pos,path)
+		ObstacleGenerator.remove_obstacle(initial_pos - Vector2i(1,0))
+		ObstacleGenerator.remove_obstacle(initial_pos + Vector2i(1,0))
+		ObstacleGenerator.remove_obstacle(initial_pos - Vector2i(0,1))
+		ObstacleGenerator.remove_obstacle(initial_pos + Vector2i(0,1))
 		valid = is_fork_valid(initial_pos, target_pos, path, min_length)
+		if not valid:
+			ObstacleGenerator.add_obstacles([initial_pos - Vector2i(1,0)])
+			ObstacleGenerator.add_obstacles([initial_pos + Vector2i(1,0)])
+			ObstacleGenerator.add_obstacles([initial_pos - Vector2i(0,1)])
+			ObstacleGenerator.add_obstacles([initial_pos + Vector2i(0,1)])
 		
 	path_generator.generate_path(initial_pos, target_pos, 1.0)
+	ObstacleGenerator.add_obstacles([initial_pos - Vector2i(1,0)])
+	ObstacleGenerator.add_obstacles([initial_pos + Vector2i(1,0)])
+	ObstacleGenerator.add_obstacles([initial_pos - Vector2i(0,1)])
+	ObstacleGenerator.add_obstacles([initial_pos + Vector2i(0,1)])
 	fork = path_generator.get_path()
 	fork.append(target_pos)
 	

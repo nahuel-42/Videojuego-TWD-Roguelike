@@ -6,9 +6,10 @@ var height:int
 var min_size:int
 var max_size:int
 
-var initial_obstacles: Array[Rect2i]
+#var initial_obstacles: Array[Rect2i]
+var initial_obstacles: Dictionary # Rect2i: null
 
-func init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Array[Rect2i] = []):
+func init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:Dictionary = {}):
 	self.width = width
 	self.height = height
 	self.min_size = min_size
@@ -18,7 +19,7 @@ func init(width:int, height:int, min_size:int, max_size:int, initial_obstacles:A
 	
 func generate_obstacles(n: int) -> Array[Rect2i]:
 	var obstacles: Array[Rect2i] = []
-	obstacles.append_array(initial_obstacles)
+	obstacles.append_array(initial_obstacles.keys())
 	var n_obstacles = 0
 	while n_obstacles < n:
 		var size = randi_range(min_size, max_size)
@@ -43,7 +44,10 @@ func get_initial_obstacles():
 	
 func add_obstacles(obstacles: Array[Vector2i]):
 	for obstacle in obstacles:
-		initial_obstacles.append(Rect2i(obstacle, Vector2i(1,1)))
+		initial_obstacles[Rect2i(obstacle, Vector2i(1,1))] = null
+		
+func remove_obstacle(obstacle: Vector2i):
+	initial_obstacles.erase(Rect2i(obstacle, Vector2i(1,1)))
 
 func set_seed(seed : int):
 	seed(seed)

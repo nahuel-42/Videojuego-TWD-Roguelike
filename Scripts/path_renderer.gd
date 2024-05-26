@@ -120,7 +120,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
 	path_generator.generate_path(initial_pos, target_pos, 2.0)
 	var path = path_generator.get_path()
-	ObstacleGenerator.add_obstacles(path)
+	ObstacleGenerator.add_obstacles(Utils.add_padding(path))
 	
 	for cell in path:
 		map[cell] = TileType.CAMINO
@@ -150,7 +150,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 			element._setup(TileType.CAMPAMENTO,fork[-1])
 			
 		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
-		ObstacleGenerator.add_obstacles(fork)
+		ObstacleGenerator.add_obstacles(Utils.add_padding(fork))
 	
 	##revisar donde colocar las 3 lineas de abajo
 	#obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
