@@ -37,3 +37,6 @@ func use(param):
 func canBeUsed():
 	#chequea si hay la energia/mana/elixir necesario para usar la carta
 	pass
+	
+func SetTypeDetector(cardMovement):
+	print("Se define el tipo de detector")

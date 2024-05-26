@@ -1,4 +1,5 @@
 extends Panel
+class_name CardControl
 
 @export var m_top : Panel = null
 @export var m_bottom : Panel = null
@@ -46,7 +47,10 @@ func SetSide(side : bool):
 func use(param):
 	m_baseCard.use(param)
 	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-	SetVisible(false)
+	#SetVisible(false)
 
 func SetVisible(value):
 	visible = value
+	
+func SetTypeDetector(cardMovement):
+	m_baseCard.SetTypeDetector(cardMovement)

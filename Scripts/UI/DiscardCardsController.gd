@@ -11,3 +11,7 @@ func LoadDiscard(cards):
 		
 	RestartCardIndex(len(cards))
 	f_state = State_LoadCards
+
+
+func _on_show_pop_button_down():
+	GameEvents.OnShowPopCards.Call(m_cardsList)

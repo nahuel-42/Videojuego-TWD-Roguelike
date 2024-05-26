@@ -15,6 +15,7 @@ func _ready():
 	
 	GameEvents.OnAddCardsInGame.AddListener(AddCardsInGame)
 	GameEvents.OnSwapCardsInGame.AddListener(SwapCardsInGame)
+	GameEvents.OnRemoveBoardCards.AddListener(RemoveBoardCards)
 
 #STATES
 func State_CardsLocation(delta):
@@ -50,7 +51,7 @@ func LoadBoard(cardsList):
 func GetInputEvent(card, event):
 	m_cardMovement.GetInputEvent(card, event)
 
-#CardsInGame
+################CardsInGame################
 func AddCardsInGame(param):
 	var card = m_cardMovement.GetCardSelected()
 	if (card != null):
@@ -62,7 +63,7 @@ func AddCardsInGame(param):
 	
 	var index = m_cardsList.find(card)
 	m_cardsList.remove_at(index)
-
+	
 func SwapCardsInGame(param):
 	var i = 0
 	var id = param[0]
@@ -76,3 +77,11 @@ func SwapCardsInGame(param):
 	else:
 		print("Error Swap")
 	GameEvents.OnAddCardsInGame.Call([-1])
+	
+func RemoveBoardCards(param):
+	var list = param
+	for c in param:
+		var index = m_cardsList.find(c)
+		if (index >= 0):
+			m_cardsList.remove_at(index)
+###########################################

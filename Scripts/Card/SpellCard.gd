@@ -9,3 +9,6 @@ class_name SpellCard
 func use(param):
 	print("se usa SpellCard")
 	#Se usa y va al descarte
+
+func SetTypeDetector(cardMovement):
+	cardMovement.SetPowerDetector()

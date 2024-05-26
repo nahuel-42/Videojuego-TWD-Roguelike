@@ -14,3 +14,6 @@ func use(param):
 	else:
 		GameEvents.OnSwapCardsInGame.Call([id])
 	#se usa la carta y se colocan en un array del mapa
+
+func SetTypeDetector(cardMovement):
+	cardMovement.SetSlotDetector()

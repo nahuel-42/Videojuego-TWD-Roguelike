@@ -1,45 +1,42 @@
+extends BasicDetector
 class_name SlotDetector
-extends Node2D
 
-@export var m_size : float = 100.0
 @export var m_collider : Node2D = null 
 @export var m_sprite : Node2D = null
 
 var m_slotSelected = null
 var m_slotList = []
 
-var m_offset : Vector2 = Vector2.ZERO
-
 func _init():
-	GameEvents.OnGetSlotDetector.AddListener(GetDetSlotDetector)
-
+	GameEvents.OnGetSlotDetector.AddListener(GetSlotDetector)
+	
 func _ready():
+	super._ready()
 	m_collider = $CollisionShape2D
 	m_sprite = $Sprite2D
 	m_collider.scale = Vector2.ONE * m_size;
 	m_sprite.scale = Vector2.ONE * m_size;
-	m_offset = Vector2.ONE * m_size / 2.0
 
 	SetActive(false)
 	
-func _physics_process(delta):
+func Update(delta):
 	if (m_slotSelected == null):
 		FindCloseArea()
 	else:
 		CheckCloseArea()
 
 ######Events######
-func GetDetSlotDetector(param):
+func GetSlotDetector(param):
 	return self
 ######End######
 
 ######Public######
 func UpdatePosition(ui_position : Vector2):
-	global_position = get_viewport_transform().affine_inverse() * ui_position + m_offset
+	global_position = UItoWorld(ui_position)
 
 func SetActive(value : bool):
 	#self.set_visible(value)
-	visible = false
+	super.SetActive(value)
 	m_collider.disabled = !value
 	if (value == false):
 		m_slotList.clear()
@@ -47,10 +44,10 @@ func SetActive(value : bool):
 			m_slotSelected.unglow_slot()
 			m_slotSelected = null
 
-func ApplyCard(card):
+func ApplyCard(card : CardControl):
 	if (m_slotSelected != null):
 		card.use([m_slotSelected])
-		SetActive(false)
+		#SetActive(false)
 		return true
 	return false
 ######End######
@@ -84,7 +81,7 @@ func CheckCloseArea():
 		m_slotSelected = newSlot
 		m_slotSelected.glow_slot()
 		#m_slotSelected.apply_card(cards)#diccionary
-		
+
 func FindCloseArea():
 	var newSlot = null
 	var d1 = 0.0
@@ -100,4 +97,3 @@ func FindCloseArea():
 	if (newSlot != null):
 		m_slotSelected = newSlot
 		m_slotSelected.glow_slot()
-	

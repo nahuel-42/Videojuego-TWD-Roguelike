@@ -18,7 +18,7 @@ static func createCard(id):
 	var instance = scene.instantiate()		
 
 	var type = GlobalCardsList.CollectionCard[id]['type']
-	instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
+	#instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
 
 
 

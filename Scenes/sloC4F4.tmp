@@ -24,7 +24,6 @@ shape = SubResource("RectangleShape2D_i7u6n")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Slot"]
-visible = false
 modulate = Color(1, 1, 1, 0.392157)
 self_modulate = Color(1, 1, 1, 0.392157)
 scale = Vector2(100, 100)
@@ -33,6 +32,7 @@ texture = SubResource("CanvasTexture_sikk0")
 [node name="Power" type="Node2D" parent="." node_paths=PackedStringArray("m_circle")]
 script = ExtResource("2_113gb")
 m_circle = NodePath("Radius")
+m_radius = 20.0
 
 [node name="Radius" type="Line2D" parent="Power"]
 width = 1.0

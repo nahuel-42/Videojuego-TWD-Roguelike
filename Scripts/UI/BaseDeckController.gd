@@ -57,8 +57,8 @@ func RestartCardIndex(i : int):
 
 func _on_button_hide_board_cards_button_down():
 	if (m_hide==false):
-		m_mainRef.anchor_top=0
-		m_mainRef.anchor_bottom=1
+		m_mainRef.anchor_top=0.0
+		m_mainRef.anchor_bottom=1.0
 		m_mainRef.anchor_left = 0.0
 		m_mainRef.anchor_right = 1.0
 		m_hide=true

@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=9 format=3 uid="uid://bfuuqao2omga7"]
 
-[ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
@@ -67,32 +66,14 @@ anchor_right = 0.9
 anchor_bottom = 0.95
 text = "WASD mover camara"
 
-[node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
+[node name="Passives" type="Control" parent="."]
 layout_mode = 3
 anchor_left = 0.8
 anchor_top = 0.05
 anchor_right = 1.0
 anchor_bottom = 0.3
-script = ExtResource("1_7hbfa")
-m_hideCards = NodePath("HidePassives")
-m_mainRef = NodePath("MainPassives")
 
-[node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
-visible = false
-z_index = -1
-script = ExtResource("5_jd3hf")
-m_background = NodePath("../MainPassives/Background")
-m_panels = [NodePath("../MainPassives/Panel2"), NodePath("../MainPassives/Panel3")]
-m_colorEnd = Color(0.780392, 0.780392, 0, 1)
-m_speedColor = 4.0
-
-[node name="MainPassives" type="Control" parent="Passives"]
-layout_mode = 1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.52588e-05
-
-[node name="Background" type="Panel" parent="Passives/MainPassives"]
+[node name="Background" type="Panel" parent="Passives"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +81,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel2" type="Panel" parent="Passives/MainPassives"]
+[node name="Panel2" type="Panel" parent="Passives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.07
@@ -112,7 +93,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel3" type="Panel" parent="Passives/MainPassives"]
+[node name="Panel3" type="Panel" parent="Passives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.57
@@ -124,11 +105,14 @@ offset_right = -3.05176e-05
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HidePassives" type="Control" parent="Passives"]
-layout_mode = 1
-anchor_left = 0.75
-anchor_right = 1.75
-anchor_bottom = 1.0
+[node name="Control" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
+visible = false
+z_index = -1
+script = ExtResource("5_jd3hf")
+m_background = NodePath("../Background")
+m_panels = [NodePath("../Panel2"), NodePath("../Panel3")]
+m_colorEnd = Color(0.780392, 0.780392, 0, 1)
+m_speedColor = 4.0
 
 [node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -265,15 +249,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ShowPop" type="Button" parent="DiscardCards"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="ButtonHideBoardCards" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.15
@@ -313,7 +288,6 @@ value = 100.0
 show_percentage = false
 
 [node name="PopCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]
-visible = false
 layout_mode = 3
 anchor_left = 0.2
 anchor_top = 0.2
@@ -354,7 +328,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(677, 342)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="parent" type="Control" parent="PopCards/SubViewportContainer/SubViewport"]
 layout_mode = 3
@@ -388,8 +362,6 @@ grow_vertical = 2
 [connection signal="button_up" from="Debug/Button" to="DeckCards" method="_on_button_button_up"]
 [connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="ButtonHideBoardCards" to="Passives" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="DeckCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="BoardCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="ButtonHideBoardCards" to="DiscardCards" method="_on_button_hide_board_cards_button_down"]
