@@ -30,6 +30,12 @@ func State_CardsLocation(delta):
 			if (i == m_cardsAmount - 1):
 				ending = true
 	if (ending):
+		for i in range(len(m_cardsList)):
+			var p = m_panels[i]
+			var c = m_cardsList[i]
+			UI_funcs.SetParent(m_panels[i], m_cardsList[i])
+			m_cardsList[i].position = Vector2.ZERO
+			
 			f_state = null
 #END
 
