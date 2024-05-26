@@ -22,25 +22,17 @@ static func createCard(id):
 
 
 
-
 	if(type == 'spell'):
 		instance.Init(SpellCard.new(id, GlobalCardsList.CollectionCard[id]))
-
-# SpellCard: id, cardName, desc, sprite, cost
-# los mismos que la baseCard
-#		pass
+	# SpellCard: id, cardName, desc, sprite, cost
+	# los mismos que la baseCard
 	elif(type == 'passive'):
-# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
+	# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
 		instance.Init(PassiveCard.new(id, GlobalCardsList.CollectionCard[id]))
-
-#		pass
 	elif (type == 'powerUp'):
 	# PowerUpCard: id, cardName, description, sprite, cost, active, type
 		instance.Init(PowerUpCard.new(id, GlobalCardsList.CollectionCard[id]))
-
-#		pass
 	elif (type == 'tower'):
 	# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
 		instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
-#		pass
 	return instance
