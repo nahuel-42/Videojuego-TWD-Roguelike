@@ -3,6 +3,7 @@ extends Node
 
 @export var m_cardOffsetPosition : float = 10.0
 @export var m_cardLoadSpeed : float = 10.0
+@export var m_maxCardAmount : int = 20
 @export var m_hideCards: Control = null
 @export var m_mainRef: Control = null
 
@@ -41,7 +42,8 @@ func State_LoadCards(delta):
 		var card = m_cardsList[m_actualCardIndex]
 		
 		var a = card.position
-		var b = Vector2(0, - m_cardOffsetPosition * m_actualCardIndex)
+		var cardIndex = clamp(m_actualCardIndex, 0, m_maxCardAmount)
+		var b = Vector2(0, - m_cardOffsetPosition * cardIndex)
 		var t = delta * m_cardLoadSpeed
 		card.position = Mathf.Lerp(a, b, t)
 		

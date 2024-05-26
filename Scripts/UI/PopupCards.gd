@@ -15,6 +15,7 @@ func _init():
 func ShowCards(param):
 	if (len(param) > 0):
 		visible = true
+		m_gridContainer.position = Vector2.ZERO
 		clear_grid_container_children()
 		
 		var amount = len(param)
@@ -26,7 +27,7 @@ func ShowCards(param):
 		
 		var cardSize = Vector2(sizeX, sizeX * relationSize)
 		
-		m_height = -cardSize.y * (amount / m_columns - 2)
+		m_height = -cardSize.y * (amount / m_columns)
 		
 		var i : int = 0
 		var j : int = 0

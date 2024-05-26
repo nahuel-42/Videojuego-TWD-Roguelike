@@ -22,6 +22,7 @@ func GetPassiveDetector(param):
 ######BasicDetector######
 func Start(card : CardControl):
 	super.Start(card)
+	m_indexCollision = -1
 	m_colorTimer = 0.0
 
 func Exit():
@@ -55,6 +56,7 @@ func ApplyCard(card : CardControl):
 	if (m_indexCollision >= 0):
 		InsertCard(card, m_indexCollision)
 		card.use([null])
+		m_indexCollision = -1
 		return true
 	return false
 ######End######

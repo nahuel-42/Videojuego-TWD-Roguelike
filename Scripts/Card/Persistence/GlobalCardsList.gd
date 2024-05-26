@@ -37,11 +37,11 @@ var CollectionCard = [
 	{"id":17, "type": "powerUp", "cardName" : "Soldier", "desc":"", "sprite": "res://Assets/Sprites/Cards/Specialization/Soldier.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":18, "type": "powerUp", "cardName" : "Mercenary", "desc":"", "sprite": "res://Assets/Sprites/Cards/Specialization/Mercenary.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":19, "type": "powerUp", "cardName" : "Specialization", "desc":"", "sprite": "res://Assets/Sprites/Cards/Specialization/Specialization.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
-
+]
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
-	[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],#para probar todas las cartas
+	[11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],#para probar todas las cartas
 	[0,0,1,1,1,2],#fireDeck
 
 	[0,2,1,1] #iceDeck
