@@ -26,6 +26,7 @@ func init_stats():
 	pass
 
 func _ready():
+	z_index = 3
 	target = Parameters.target
 	health_bar.max_value = health
 	velocity = Vector2.ZERO
@@ -33,6 +34,7 @@ func _ready():
 	animation.play("run")
 	set_group()
 	init_stats()
+	scale /= 2
 
 func _process(delta):
 	if cooldown > 0:

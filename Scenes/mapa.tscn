@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=3 uid="uid://cg2tgamorj7n"]
+
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b8xhp"]
+[ext_resource type="TileSet" uid="uid://c5jcgj56i07ce" path="res://Assets/mapa.tres" id="1_ogef4"]
+[ext_resource type="Script" path="res://Scripts/Map/path_renderer.gd" id="2_2h51y"]
+[ext_resource type="PackedScene" uid="uid://donkc3gmpd173" path="res://Scenes/chest.tscn" id="3_5kemi"]
+[ext_resource type="PackedScene" uid="uid://db6ppnl0i0t5g" path="res://Prefabs/Slots/tower_slot.tscn" id="3_dk424"]
+[ext_resource type="PackedScene" uid="uid://5wawy3eu27qx" path="res://Prefabs/Spawners/BeastSpawner.tscn" id="5_8x1tk"]
+[ext_resource type="PackedScene" uid="uid://c528xxytk038h" path="res://Scenes/castle.tscn" id="6_58qis"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="6_s7dnp"]
+[ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="8_0iwi3"]
+[ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="9_hcxdh"]
+[ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
+
+[node name="Mapa" type="Node"]
+script = ExtResource("1_b8xhp")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_ogef4")
+format = 2
+layer_0/name = "Camino"
+layer_0/z_index = 1
+layer_1/name = "Pasto"
+layer_1/navigation_enabled = false
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Elementos"
+layer_2/z_index = 2
+layer_2/navigation_enabled = false
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("2_2h51y")
+slot_scene = ExtResource("3_dk424")
+chest_scene = ExtResource("3_5kemi")
+camp_scene = ExtResource("5_8x1tk")
+castle_scene = ExtResource("6_58qis")
+seedName = "prueba"
+
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
+zoom = Vector2(0.1, 0.1)
+script = ExtResource("6_s7dnp")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("8_0iwi3")]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1041.0
+offset_top = 556.0
+offset_right = 1090.0
+offset_bottom = 610.0
+scale = Vector2(0.905558, 1.13458)
+text = "Start
+wave"
+
+[node name="SlotDetector" parent="." instance=ExtResource("9_hcxdh")]
+
+[node name="Target" parent="." instance=ExtResource("10_ve2q4")]
+position = Vector2(997, 310)
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_start_wave_button_pressed"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://tfgknayb26ib"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/menuCarga.gd" id="1_bbfu5"]
+[ext_resource type="Texture2D" uid="uid://0pdpu7id4cjo" path="res://Assets/Menu/bar_front.png" id="2_k1iyq"]
+[ext_resource type="Texture2D" uid="uid://cchuypqody4yq" path="res://Assets/Menu/bar_back.png" id="3_2fq2r"]
+
+[sub_resource type="Animation" id="2"]
+resource_name = "cargando"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureProgress/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Cargando...", "Cargando", "Cargando.", "Cargando..", "Cargando..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcvh4"]
+_data = {
+"cargando": SubResource("2")
+}
+
+[node name="BackgroundLoad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bbfu5")
+
+[node name="TextureProgress" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -8.5
+offset_right = 80.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = ExtResource("2_k1iyq")
+texture_progress = ExtResource("3_2fq2r")
+
+[node name="Label" type="Label" parent="TextureProgress"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 69.5
+offset_right = 115.0
+offset_bottom = 92.5
+text = "Cargando..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureProgress"]
+libraries = {
+"": SubResource("AnimationLibrary_gcvh4")
+}
+autoplay = "cargando"
+
+[connection signal="value_changed" from="TextureProgress" to="." method="_on_texture_progress_value_changed"]

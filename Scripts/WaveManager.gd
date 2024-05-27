@@ -7,7 +7,7 @@ var wave_index = 0
 var total_waves = 5  # Número total de oleadas
 var spawners = []
 
-func _ready():
+func load_waves():
 	generate_waves(total_waves)
 
 func generate_waves(total_waves):

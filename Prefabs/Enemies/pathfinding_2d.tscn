@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://df6fnandt3a2h"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m8qm0"]
-vertices = PackedVector2Array(560, 316, 1106, 313, 1105, 333, 614, 331, 536, 331, 534, 209, 555, 201, 191, 200, 216, 209, 172, 102, 36, 101, 36, 92, 100, 93, 191, 95, 170, 411, 213, 411)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4), PackedInt32Array(0, 4, 5, 6), PackedInt32Array(7, 6, 5, 8), PackedInt32Array(9, 10, 11, 12, 13), PackedInt32Array(9, 13, 7, 14), PackedInt32Array(14, 7, 8, 15)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(99.5869, 83.0706, 201.018, 85.7503, 201.018, 190.258, 565.248, 192.045, 569.858, 306.379, 1116.66, 302.806, 1114.82, 343.894, 614.119, 341.215, 527.442, 342.108, 523.753, 218.842, 225.915, 218.842, 223.148, 421.606, 160.446, 420.712, 162.29, 111.654, 25.8188, 110.761, 26.7409, 82.1773)])
+vertices = PackedVector2Array(560, 316, 1106, 313, 1105, 333, 614, 331, 536, 331, 530, 233, 555, 201, 191, 200, 195, 231, 197, 421, 158, 421, 172, 102, 191, 95, 100, 93, 36, 101, 36, 92)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4), PackedInt32Array(0, 4, 5, 6), PackedInt32Array(7, 6, 5, 8), PackedInt32Array(8, 9, 10, 11, 7), PackedInt32Array(12, 7, 11), PackedInt32Array(13, 12, 11, 14, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(99.5869, 83.0706, 201.018, 85.7503, 201.018, 190.258, 565.248, 192.045, 569.858, 306.379, 1116.66, 302.806, 1114.82, 343.894, 614.119, 341.215, 527.442, 342.108, 520.987, 242.959, 239.746, 245.639, 281.241, 441.257, 147.536, 431.431, 162.29, 111.654, 25.8188, 110.761, 26.7409, 82.1773)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Pathfinding2D" type="Node2D"]

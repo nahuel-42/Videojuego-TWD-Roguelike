@@ -16,6 +16,7 @@ func _on_wave_completed():
 	WaveManager.start_next_wave()
 	
 func lose_health(body):
+	print(body)
 	health -= body.reach_target()
 	health_bar.value = health
 	if health <= 0:

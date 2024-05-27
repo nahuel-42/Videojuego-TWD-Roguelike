@@ -5,6 +5,7 @@ var current_card_id = -1
 
 func _ready():
 	tower_point = $TowerPoint
+	z_index = 2
 
 # Si existía una torre, devuelve su ID, sino devuelve -1.
 func apply_card(card):

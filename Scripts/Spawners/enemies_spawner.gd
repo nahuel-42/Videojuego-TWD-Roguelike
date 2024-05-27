@@ -12,6 +12,7 @@ var wave_completed_flag = false
 func _ready():
 	enemies_node = $Enemies
 	WaveManager.call_deferred("register_spawner", self)
+	z_index = 2
 
 func start_next_wave(enemy_count):
 	load_enemies(enemy_count)
@@ -54,3 +55,4 @@ func reset_enemies():
 
 func is_wave_completed():
 	return wave_completed_flag
+
