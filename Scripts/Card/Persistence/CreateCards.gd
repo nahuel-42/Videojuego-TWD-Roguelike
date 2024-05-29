@@ -18,6 +18,7 @@ static func createCard(id):
 	var instance = scene.instantiate()		
 
 	var type = GlobalCardsList.CollectionCard[id]['type']
+	#esta linea hay que reventarla
 	instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
 
 	#instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
@@ -31,10 +32,14 @@ static func createCard(id):
 	elif(type == 'passive'):
 	# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
 		instance.Init(PassiveCard.new(id, GlobalCardsList.CollectionCard[id]))
-	elif (type == 'powerUp'):
+	elif (type == 'upgrade'):
 	# PowerUpCard: id, cardName, description, sprite, cost, active, type
 		instance.Init(PowerUpCard.new(id, GlobalCardsList.CollectionCard[id]))
 	elif (type == 'tower'):
 	# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
 		instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
+	elif (type=='class'):
+		instance.Init(ClassCard.new(id, GlobalCardsList.CollectionCard[id]))
+	elif (type=='Speciality'):
+		instance.Init(SpecialityCard.new(id, GlobalCardsList.CollectionCard[id]))
 	return instance

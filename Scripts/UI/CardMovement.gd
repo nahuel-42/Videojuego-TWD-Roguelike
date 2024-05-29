@@ -28,6 +28,10 @@ func SetPowerDetector():
 	m_detector = GameEvents.OnGetPowerDetector.Call(null)
 func SetPassiveDetector():
 	m_detector = GameEvents.OnGetPassiveDetector.Call(null)
+func SetSpecialityDetector():
+	m_detector = GameEvents.OnGetSlotDetector.Call(null)
+func SetClassDetector():
+	m_detector = GameEvents.OnGetSlotDetector.Call(null)
 ######################################
 
 ###################INPUT##############
