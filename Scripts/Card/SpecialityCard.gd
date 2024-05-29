@@ -2,7 +2,7 @@ class_name SpecialityCard
 extends ActiveCard
 
 func use(param):
-	print("Se uso PowerCard")
+	print("Se uso SpecialityCard")
 	#GameEvents.OnLoadDiscard(param)
 #por ahora, se agregan a los slots/torre y van a un array del mapa o algo similar
 
