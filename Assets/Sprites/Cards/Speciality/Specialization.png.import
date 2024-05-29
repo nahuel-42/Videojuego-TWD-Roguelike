@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cixn84nyvv07h"
-path="res://.godot/imported/Hunter.png-dbf73b41a24660d058defbacfe7b2e1d.ctex"
+uid="uid://bovbfxgdv0sfd"
+path="res://.godot/imported/Specialization.png-ff5a8597f66eb387fcb3badabb63e88d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Hunter.png"
-dest_files=["res://.godot/imported/Hunter.png-dbf73b41a24660d058defbacfe7b2e1d.ctex"]
+source_file="res://Assets/Sprites/Cards/Speciality/Specialization.png"
+dest_files=["res://.godot/imported/Specialization.png-ff5a8597f66eb387fcb3badabb63e88d.ctex"]
 
 [params]
 

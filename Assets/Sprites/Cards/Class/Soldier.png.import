@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4asge0hquove"
-path="res://.godot/imported/FireArcherT.png-53e4d9704f066e49e49e95ee8dc8a565.ctex"
+uid="uid://c4dl6jsqxw3x0"
+path="res://.godot/imported/Soldier.png-e79a915a0af84327f3719ebfc74d7cee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Tower/FireArcherT.png"
-dest_files=["res://.godot/imported/FireArcherT.png-53e4d9704f066e49e49e95ee8dc8a565.ctex"]
+source_file="res://Assets/Sprites/Cards/Class/Soldier.png"
+dest_files=["res://.godot/imported/Soldier.png-e79a915a0af84327f3719ebfc74d7cee.ctex"]
 
 [params]
 

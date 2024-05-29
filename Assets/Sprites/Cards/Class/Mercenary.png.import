@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4dl6jsqxw3x0"
-path="res://.godot/imported/Soldier.png-6a2027844b9f7a839b28752018969fb9.ctex"
+uid="uid://c7p2ekklhb8ci"
+path="res://.godot/imported/Mercenary.png-3e219a14b842b9cbff238b0ff2c3448f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Soldier.png"
-dest_files=["res://.godot/imported/Soldier.png-6a2027844b9f7a839b28752018969fb9.ctex"]
+source_file="res://Assets/Sprites/Cards/Class/Mercenary.png"
+dest_files=["res://.godot/imported/Mercenary.png-3e219a14b842b9cbff238b0ff2c3448f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bovbfxgdv0sfd"
-path="res://.godot/imported/Specialization.png-dcab0cd7ea71cc6a0e0ed04d3660bc40.ctex"
+uid="uid://c4asge0hquove"
+path="res://.godot/imported/FireArrowT.png-94b85ecf312f971fa358321eae183909.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Specialization.png"
-dest_files=["res://.godot/imported/Specialization.png-dcab0cd7ea71cc6a0e0ed04d3660bc40.ctex"]
+source_file="res://Assets/Sprites/Cards/Tower/FireArrowT.png"
+dest_files=["res://.godot/imported/FireArrowT.png-94b85ecf312f971fa358321eae183909.ctex"]
 
 [params]
 

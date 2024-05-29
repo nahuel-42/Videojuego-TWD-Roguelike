@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7p2ekklhb8ci"
-path="res://.godot/imported/Mercenary.png-317cf873f7b6c181a44a802a3a651950.ctex"
+uid="uid://cixn84nyvv07h"
+path="res://.godot/imported/Hunter.png-7ada9d4c895e6989753dae673786e2bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Mercenary.png"
-dest_files=["res://.godot/imported/Mercenary.png-317cf873f7b6c181a44a802a3a651950.ctex"]
+source_file="res://Assets/Sprites/Cards/Class/Hunter.png"
+dest_files=["res://.godot/imported/Hunter.png-7ada9d4c895e6989753dae673786e2bd.ctex"]
 
 [params]
 
