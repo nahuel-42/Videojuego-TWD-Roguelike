@@ -27,7 +27,7 @@ layout_mode = 3
 anchor_left = 0.4
 anchor_top = 0.01
 anchor_right = 0.6
-anchor_bottom = 0.3
+anchor_bottom = 0.25
 
 [node name="Background" type="Panel" parent="Debug"]
 layout_mode = 1
@@ -43,7 +43,7 @@ anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.05
 anchor_right = 0.9
-anchor_bottom = 0.3
+anchor_bottom = 0.45
 offset_right = 1.52588e-05
 text = "Start Fire
 "
@@ -52,20 +52,11 @@ text = "Start Fire
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.4
-anchor_right = 0.9
-anchor_bottom = 0.65
-offset_right = 1.52588e-05
-text = "Load Board"
-
-[node name="Label" type="Label" parent="Debug"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.7
+anchor_top = 0.55
 anchor_right = 0.9
 anchor_bottom = 0.95
-text = "WASD mover camara"
+offset_right = 1.52588e-05
+text = "Load Board"
 
 [node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -143,6 +134,7 @@ grow_vertical = 2
 script = ExtResource("2_lax77")
 m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 50.0
+m_maxCardAmount = 10
 m_hideCards = NodePath("HideDeck")
 m_mainRef = NodePath("Deck")
 
@@ -242,7 +234,7 @@ offset_top = -518.4
 offset_right = -305.6
 offset_bottom = -478.4
 
-[node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_mainRef")]
+[node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.9
 anchor_top = 0.8
@@ -251,6 +243,8 @@ anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
 m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 50.0
+m_maxCardAmount = 10
+m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
 
 [node name="HideDiscard" type="Control" parent="DiscardCards"]
@@ -324,6 +318,7 @@ anchor_bottom = 0.8
 script = ExtResource("7_y252a")
 m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
 m_separation = Vector2(10, 10)
+m_speed = 2.0
 
 [node name="background1" type="Panel" parent="PopupCards"]
 layout_mode = 1

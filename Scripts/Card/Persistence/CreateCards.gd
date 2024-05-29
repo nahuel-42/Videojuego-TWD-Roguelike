@@ -19,7 +19,7 @@ static func createCard(id):
 
 	var type = GlobalCardsList.CollectionCard[id]['type']
 	#esta linea hay que reventarla
-	instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
+	#instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
 
 	#instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
 
@@ -40,6 +40,8 @@ static func createCard(id):
 		instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
 	elif (type=='class'):
 		instance.Init(ClassCard.new(id, GlobalCardsList.CollectionCard[id]))
-	elif (type=='Speciality'):
+	elif (type=='speciality'):
 		instance.Init(SpecialityCard.new(id, GlobalCardsList.CollectionCard[id]))
+	else: 
+		print("Error type card: "  + str(type))
 	return instance
