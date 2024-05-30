@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg2tgamorj7n"]
+[gd_scene load_steps=13 format=3 uid="uid://cg2tgamorj7n"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b8xhp"]
 [ext_resource type="TileSet" uid="uid://c5jcgj56i07ce" path="res://Assets/mapa.tres" id="1_ogef4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="8_0iwi3"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="9_hcxdh"]
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
+[ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://spell_detector.tscn" id="12_drqm8"]
 
 [node name="Mapa" type="Node"]
 script = ExtResource("1_b8xhp")
@@ -53,5 +54,7 @@ wave"
 
 [node name="Target" parent="." instance=ExtResource("10_ve2q4")]
 position = Vector2(997, 310)
+
+[node name="SpellDetector" parent="." instance=ExtResource("12_drqm8")]
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_start_wave_button_pressed"]
