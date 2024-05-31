@@ -23,11 +23,15 @@ func GetCardSelected():
 
 ###############DETECTOR###############
 func SetSlotDetector():
-	m_detector = GameEvents.OnGetSlotDetector.Call(null)
+	m_detector = GameEvents.OnGetSlotDetector.Call([2])
 func SetPowerDetector():
-	m_detector = GameEvents.OnGetPowerDetector.Call(null)
+	m_detector = GameEvents.OnGetPowerDetector.Call([5])
 func SetPassiveDetector():
-	m_detector = GameEvents.OnGetPassiveDetector.Call(null)
+	m_detector = GameEvents.OnGetPassiveDetector.Call([6])
+func SetSpecialityDetector():
+	m_detector = GameEvents.OnGetSlotDetector.Call([3])
+func SetClassDetector():
+	m_detector = GameEvents.OnGetSlotDetector.Call([4])
 ######################################
 
 ###################INPUT##############
