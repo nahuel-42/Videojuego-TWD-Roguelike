@@ -5,9 +5,9 @@ var display_height
 const LightTexture = preload("res://Assets/Map/Light.png")
 @onready var tilemap = $"../TileMap"
 
-var width = tilemap.width
-var height = tilemap.height
-var CELL_DIMENSION = tilemap.CELL_DIMENSION
+var width
+var height
+var CELL_DIMENSION
 
 var fogImage: Image
 var fogTexture: ImageTexture
@@ -17,6 +17,9 @@ var light_offset = Vector2(LightTexture.get_width()/2, LightTexture.get_height()
 var time_since_last_fog_update = 0
 
 func _ready():
+	width = tilemap.width
+	height = tilemap.height
+	CELL_DIMENSION = tilemap.CELL_DIMENSION
 	lightImage.resize(512, 512)
 	var display_width = width * CELL_DIMENSION
 	var display_height = height * CELL_DIMENSION
