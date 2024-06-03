@@ -88,7 +88,6 @@ var padding = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var viewport_size = get_viewport().size
 	height = width / ASPECT_RATIO
 	camera2D = $Camera2D
 	var initial_pos = get_initial_pos()
