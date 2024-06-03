@@ -16,6 +16,7 @@ var bleeding_damage = 1
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : ProgressBar = $HealthBar
+@onready var sprite : Sprite2D = $Sprite2D
 
 var cooldown = 0.5
 
@@ -54,6 +55,11 @@ func move(delta):
 	
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
+	
+	if direction.x > 0:
+		sprite.flip_h = false
+	elif direction.x < 0:
+		sprite.flip_h = true
 	
 	velocity = velocity.lerp(direction * speed, acceleration * delta)
 	
