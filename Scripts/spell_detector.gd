@@ -21,6 +21,7 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		var prefab = load(FIREBALL_PREFAB)
 		var spell = prefab.instantiate()
 		add_child(spell)
-		spell.load_stats(event.global_position, map.CELL_DIMENSION)
-		#print("Se clickeo en: " + str(event.global_position))
+		spell.load_stats(get_global_mouse_position(), map.CELL_DIMENSION)
+		print("Se clickeo en: " + str(event.global_position))
+		print("Se clickeo en (mouse): " + str(get_global_mouse_position()))
 
