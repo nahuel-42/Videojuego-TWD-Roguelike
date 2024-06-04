@@ -60,3 +60,6 @@ texture = ExtResource("1_jlvnm")
 hframes = 8
 vframes = 8
 frame = 1
+
+[connection signal="body_entered" from="." to="." method="add_enemy"]
+[connection signal="body_exited" from="." to="." method="delete_enemy"]
