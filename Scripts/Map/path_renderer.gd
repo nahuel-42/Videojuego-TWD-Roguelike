@@ -15,6 +15,7 @@ var CELL_DIMENSION = 32
 var ASPECT_RATIO = 16.0 / 9.0
 var width = 200
 var height
+var border = 7
 var last_target_pos = null
 var map
 
@@ -82,9 +83,6 @@ var textures = {
 		"alternative" : 0
 	}
 }
-
-# Configuration
-var padding = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -160,10 +158,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
 		ObstacleGenerator.add_obstacles(Utils.add_padding(fork))
 	
-	##revisar donde colocar las 3 lineas de abajo
-	#obstacle_generator = ObstacleGeneratorCuadrados.new(width, height,1, 1)
-	#path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
-	render_border(7)
+	render_border(border)
 	render_path()
 	WaveManager.load_waves()
 
@@ -216,12 +211,17 @@ func render_border(padding: int):
 			set_cell(border_texture.layer, Vector2i(i, -p), border_texture.source, border_texture.atlas.position)
 			set_cell(border_texture.layer, Vector2i(i, height + p - 1), border_texture.source, border_texture.atlas.position)
 
+var percentage = 0
 func _process(delta):
 	if Input.is_action_just_released("regenerate_level"):
 		print("regenerating level")
 		var initial_pos = get_initial_pos()
 		var target_pos = generate_target()
 		setup_level(initial_pos, target_pos)
+	elif Input.is_action_just_released("reveal_map"):
+		var fog = $"../Fog"
+		percentage += 0.1
+		fog.reveal_map(percentage)
 
 func get_initial_pos():
 	if last_target_pos == null:
