@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tl4ye0h65tt8"]
+[gd_scene load_steps=7 format=3 uid="uid://dmsh3s3fy0mux"]
 
 [ext_resource type="Texture2D" uid="uid://dtyr34oga774q" path="res://Assets/Sprites/fireball_0.png" id="1_jlvnm"]
 [ext_resource type="Script" path="res://Scripts/Spells/Fireball.gd" id="1_wva0s"]
@@ -41,7 +41,7 @@ _data = {
 "firing": SubResource("Animation_l3y7n")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k20f7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3iy3k"]
 radius = 86.3713
 
 [node name="Fireball" type="Area2D"]
@@ -53,13 +53,10 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_k20f7")
+shape = SubResource("CircleShape2D_3iy3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jlvnm")
 hframes = 8
 vframes = 8
 frame = 1
-
-[connection signal="body_entered" from="." to="." method="add_enemy"]
-[connection signal="body_exited" from="." to="." method="delete_enemy"]
