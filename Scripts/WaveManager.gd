@@ -4,16 +4,26 @@ signal wave_completed
 
 var wave_config = []
 var wave_index = 0
-var total_waves = 5  # Número total de oleadas
+var stage_index = 1
+var waves_per_stage = 5  # Número base de oleadas por stage
 var spawners = []
+var stage_text : RichTextLabel
+var wave_text : RichTextLabel
+
+func start_next_stage():
+	wave_config = []
+	wave_index = 0
+	load_waves()
+	start_next_wave()
 
 func load_waves():
-	generate_waves(total_waves)
+	print("Cargando waves del stage " + str(stage_index))
+	generate_waves(waves_per_stage + stage_index % 6) # Entre 5 y 10 waves por stage
 
-func generate_waves(total_waves):
-	for i in range(total_waves):
+func generate_waves(waves_per_stage):
+	for i in range(waves_per_stage):
 		var wave = {
-			"enemy_count": randi() % 15 + 5  # Genera entre 5 y 20 enemigos en total
+			"enemy_count": 1#5 + 2*stage_index + randi() % 15
 		}
 		print("Enemigos de wave numero " + str(i) + ": " + str(wave["enemy_count"]))
 		wave_config.append(wave)
@@ -23,13 +33,11 @@ func register_spawner(spawner):
 	spawners.append(spawner)
 
 func start_next_wave():
-	if wave_index < len(wave_config):
-		print("Comenzando wave numero " + str(wave_index))
-		var current_wave = wave_config[wave_index]
-		distribute_enemies(current_wave["enemy_count"])
-		wave_index += 1
-	else:
-		print("Todas las waves finalizaron")
+	wave_text.text = str(wave_index + 1)
+	print("Comenzando wave numero " + str(wave_index))
+	var current_wave = wave_config[wave_index]
+	distribute_enemies(current_wave["enemy_count"])
+	wave_index += 1
 
 func distribute_enemies(total_enemies):
 	if len(spawners) == 0:
@@ -46,12 +54,21 @@ func distribute_enemies(total_enemies):
 		spawner.start_next_wave(count)
 
 func _on_spawner_wave_completed():
-	print("WaveManager recibio la señal de wave finalizada")
 	if all_spawners_completed():
-		emit_signal("wave_completed")
+		if wave_index < len(wave_config):
+			start_next_wave()
+		else:
+			stage_index += 1
+			stage_text.text = str(stage_index)
+			emit_signal("wave_completed")
 
 func all_spawners_completed():
 	for spawner in spawners:
 		if not spawner.is_wave_completed():
 			return false
 	return true
+
+func set_texts(stage, wave):
+	stage_text = stage
+	wave_text = wave
+	stage_text.text = str(stage_index)

@@ -2,6 +2,10 @@ extends Node
 
 @onready var health = 10
 @onready var health_bar : ProgressBar = $CanvasLayer/Bars/HealthBar
+@onready var next_stage_button : Button = $WavesCanvas/NextStageButton
+@onready var stage_text : RichTextLabel = $WavesCanvas/StageNumber
+@onready var wave_text : RichTextLabel = $WavesCanvas/WaveNumber
+
 var target
 
 func _ready():
@@ -10,10 +14,10 @@ func _ready():
 	Parameters.target = target
 	target.connect("body_entered", lose_health)
 	WaveManager.connect("wave_completed", _on_wave_completed)
+	WaveManager.set_texts(stage_text, wave_text)
 
 func _on_wave_completed():
-	print("Todos los spawners finalizaron su wave")
-	WaveManager.start_next_wave()
+	next_stage_button.visible = true
 	
 func lose_health(body):
 	print(body)
@@ -27,5 +31,6 @@ func game_over():
 	health = 10
 	health_bar.value = health
 
-func _on_start_wave_button_pressed():
-	WaveManager.start_next_wave()
+func _on_start_stage_button_pressed():
+	WaveManager.start_next_stage()
+	next_stage_button.visible = false

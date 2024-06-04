@@ -41,15 +41,6 @@ script = ExtResource("6_s7dnp")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_0iwi3")]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 1041.0
-offset_top = 556.0
-offset_right = 1090.0
-offset_bottom = 610.0
-scale = Vector2(0.905558, 1.13458)
-text = "Start
-wave"
-
 [node name="SlotDetector" parent="." instance=ExtResource("9_hcxdh")]
 
 [node name="Target" parent="." instance=ExtResource("10_ve2q4")]
@@ -57,4 +48,41 @@ position = Vector2(997, 310)
 
 [node name="SpellDetector" parent="." instance=ExtResource("12_drqm8")]
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_start_wave_button_pressed"]
+[node name="WavesCanvas" type="CanvasLayer" parent="."]
+
+[node name="NextStageButton" type="Button" parent="WavesCanvas"]
+offset_left = 265.0
+offset_top = 74.0
+offset_right = 363.0
+offset_bottom = 128.0
+scale = Vector2(0.905558, 1.13458)
+text = "Next stage"
+
+[node name="Stage" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 8.0
+offset_right = 324.0
+offset_bottom = 41.0
+text = "Stage"
+
+[node name="StageNumber" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 317.0
+offset_top = 8.0
+offset_right = 373.0
+offset_bottom = 41.0
+text = "99"
+
+[node name="WaveNumber" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 317.0
+offset_top = 40.0
+offset_right = 373.0
+offset_bottom = 73.0
+
+[node name="Wave" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 39.0
+offset_right = 320.0
+offset_bottom = 72.0
+text = "Wave"
+
+[connection signal="pressed" from="WavesCanvas/NextStageButton" to="." method="_on_start_stage_button_pressed"]

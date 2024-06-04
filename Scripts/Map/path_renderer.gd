@@ -166,7 +166,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	#path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150, obstacle_generator)
 	render_border(7)
 	render_path()
-	WaveManager.load_waves()
+	#WaveManager.load_waves()
 
 func render_path():
 	var rand : Vector2i

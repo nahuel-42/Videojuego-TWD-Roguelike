@@ -22,5 +22,5 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		var spell = prefab.instantiate()
 		add_child(spell)
 		spell.load_stats(event.global_position, map.CELL_DIMENSION)
-		print("Se clickeo en: " + str(event.global_position))
+		#print("Se clickeo en: " + str(event.global_position))
 

@@ -3,6 +3,8 @@ extends Node2D
 
 signal wave_completed
 
+@onready var timer : Timer = $Timer
+
 var ENEMY_TYPES
 var enemies = []
 var enemies_node
@@ -11,14 +13,14 @@ var wave_completed_flag = false
 
 func _ready():
 	enemies_node = $Enemies
-	WaveManager.call_deferred("register_spawner", self)
+	WaveManager.call_deferred("register_spawner", self) # Hacer esto sólo si no está dentro de la fog
 	z_index = 2
 
 func start_next_wave(enemy_count):
 	load_enemies(enemy_count)
 	last_enemy_index = 0
 	wave_completed_flag = false
-	$Timer.start()
+	timer.start()
 
 func load_enemies(enemy_count):
 	enemies = []
@@ -43,15 +45,13 @@ func _on_timer_timeout():
 		enemies[last_enemy_index].visible = true
 		last_enemy_index += 1
 	else:
-		reset_enemies()
-
-func reset_enemies():
-	for enemy in enemies:
-		if enemy.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
-			return
-	print("Wave finalizada")
-	wave_completed_flag = true
-	emit_signal("wave_completed")
+		for enemy in enemies:
+			if enemy.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
+				return
+		print("Spawner " + str(self) + " terminó su wave.")
+		wave_completed_flag = true
+		emit_signal("wave_completed")
+		timer.stop()
 
 func is_wave_completed():
 	return wave_completed_flag
