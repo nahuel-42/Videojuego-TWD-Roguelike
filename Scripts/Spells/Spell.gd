@@ -20,7 +20,6 @@ func _ready():
 func _process(delta):
 	move(delta)
 	if(global_position.distance_to(destination) < 10):
-		print("BOOM!")
 		velocity = Vector2.ZERO
 		perform()
 		queue_free()
