@@ -4,6 +4,7 @@ extends Area2D
 var destination : Vector2
 var velocity : Vector2
 var damage : int = 10
+var speed : int = 200
 var enemies_in_range = []
 @onready var colision_shape : CollisionShape2D = $CollisionShape2D
 @onready var animation : AnimationPlayer = $Animation
@@ -13,6 +14,7 @@ var enemies_in_range = []
 func _ready():
 	connect("body_entered", add_enemy)
 	connect("body_exited", delete_enemy)
+	z_index = 5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,7 +28,7 @@ func _process(delta):
 func load_stats(animation_destination : Vector2, cell_dimension):
 	global_position = animation_destination - Vector2(2 * cell_dimension, 5 * cell_dimension)
 	destination = animation_destination
-	velocity = Vector2(2 * cell_dimension, 5 * cell_dimension).normalized() * 100
+	velocity = Vector2(2 * cell_dimension, 5 * cell_dimension).normalized() * speed
 	sprite.rotation = Vector2(1,0).angle_to(velocity)
 	sprite.flip_h = true
 
