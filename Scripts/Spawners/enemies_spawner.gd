@@ -24,6 +24,7 @@ func start_next_wave(enemy_count):
 
 func load_enemies(enemy_count):
 	enemies = []
+	#print("Spawner " + str(self) + " debe instanciar " + str(enemy_count) + " enemigos.")
 	for i in range(enemy_count):
 		var enemy_instance = instantiate_enemy()
 		enemies_node.add_child(enemy_instance)
@@ -48,7 +49,7 @@ func _on_timer_timeout():
 		for enemy in enemies:
 			if enemy.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
 				return
-		print("Spawner " + str(self) + " terminó su wave.")
+		#print("Spawner " + str(self) + " terminó su wave.")
 		wave_completed_flag = true
 		emit_signal("wave_completed")
 		timer.stop()

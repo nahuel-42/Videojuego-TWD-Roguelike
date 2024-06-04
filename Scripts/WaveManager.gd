@@ -23,7 +23,7 @@ func load_waves():
 func generate_waves(waves_per_stage):
 	for i in range(waves_per_stage):
 		var wave = {
-			"enemy_count": 1#5 + 2*stage_index + randi() % 15
+			"enemy_count": 5 + 2*stage_index + randi() % 15
 		}
 		print("Enemigos de wave numero " + str(i) + ": " + str(wave["enemy_count"]))
 		wave_config.append(wave)

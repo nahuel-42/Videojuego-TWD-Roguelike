@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		var prefab = load(FIREBALL_PREFAB)
 		var spell = prefab.instantiate()
 		add_child(spell)

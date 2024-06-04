@@ -56,7 +56,7 @@ offset_top = 74.0
 offset_right = 363.0
 offset_bottom = 128.0
 scale = Vector2(0.905558, 1.13458)
-text = "Next stage"
+text = "Start stage"
 
 [node name="Stage" type="RichTextLabel" parent="WavesCanvas"]
 offset_left = 268.0
