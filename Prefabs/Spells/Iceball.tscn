@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmsh3s3fy0mux"]
+[gd_scene load_steps=7 format=3 uid="uid://bx1jq4h0olqg3"]
 
-[ext_resource type="Texture2D" uid="uid://dtyr34oga774q" path="res://Assets/Sprites/Spells/fireball_0.png" id="1_jlvnm"]
-[ext_resource type="Script" path="res://Scripts/Spells/Fireball.gd" id="1_wva0s"]
+[ext_resource type="Script" path="res://Scripts/Spells/Iceball.gd" id="1_ojw13"]
+[ext_resource type="Texture2D" uid="uid://covif826wmorw" path="res://Assets/Sprites/Spells/iceball.png" id="2_2nrtq"]
 
 [sub_resource type="Animation" id="Animation_1jc0x"]
-length = 0.001
+length = 1.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,10 +13,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_l3y7n"]
@@ -44,8 +45,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_3iy3k"]
 radius = 86.3713
 
-[node name="Fireball" type="Area2D"]
-script = ExtResource("1_wva0s")
+[node name="Iceball" type="Area2D"]
+script = ExtResource("1_ojw13")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -56,7 +57,7 @@ libraries = {
 shape = SubResource("CircleShape2D_3iy3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jlvnm")
-hframes = 8
-vframes = 8
-frame = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2nrtq")
+hframes = 3
+vframes = 2

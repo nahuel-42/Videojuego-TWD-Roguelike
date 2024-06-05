@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://edjxgunwehcm"]
+[gd_scene load_steps=9 format=3 uid="uid://edjxgunwehcm"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Mercenaries/Engineer.gd" id="1_5u67n"]
 [ext_resource type="Texture2D" uid="uid://iu1qu3k38878" path="res://Assets/Sprites/Enemies/Engineer/Walk.png" id="2_h2o5u"]
@@ -38,9 +38,14 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_bjlfr"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jahk6"]
 _data = {
 "RESET": SubResource("Animation_dlw4w"),
+"Slow": SubResource("Animation_bjlfr"),
 "Walk": SubResource("Animation_l66lm")
 }
 

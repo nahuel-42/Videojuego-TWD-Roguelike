@@ -45,4 +45,4 @@ func upgrade_tower(id):
 	child.upgrade(stats["damage"], stats["range"], stats["attack_speed"], stats["accuracy"])
 
 func delete_tower():
-	pass
+	child.queue_free()

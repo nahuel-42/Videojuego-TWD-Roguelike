@@ -6,8 +6,6 @@ var cooldown_heal = 2 # TODO: cambiar esto pq estaria muy roto
 var amount_heal = 1
 var allies_in_range = []
 
-@onready var animation_doctor = $AnimationDoctor
-
 func perform(delta): #Ver como hacer esto despues
 	if cooldown_heal > 0:
 		

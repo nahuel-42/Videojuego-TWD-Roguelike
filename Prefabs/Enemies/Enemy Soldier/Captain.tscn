@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgc8ribt0m7te"]
+[gd_scene load_steps=8 format=3 uid="uid://dgc8ribt0m7te"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Captain.gd" id="1_ejk84"]
 [ext_resource type="Texture2D" uid="uid://ekt42uwnk4nt" path="res://Assets/Sprites/Enemies/Captain/Walk.png" id="2_cq5yt"]
@@ -38,9 +38,14 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_avgsu"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p7vde"]
 _data = {
 "RESET": SubResource("Animation_t424t"),
+"Slow": SubResource("Animation_avgsu"),
 "Walk": SubResource("Animation_iyowh")
 }
 
@@ -67,7 +72,7 @@ show_percentage = false
 texture = ExtResource("2_cq5yt")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_p7vde")
 }

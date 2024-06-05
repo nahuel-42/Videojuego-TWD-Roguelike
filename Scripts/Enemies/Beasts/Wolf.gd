@@ -2,8 +2,6 @@ extends Beast
 class_name EnemyWolf
 
 #TODO: la probabilidad de acierto disminuya con el
-@onready var animationWolf = $AnimationWolf
-
 
 func init_stats():
 	speed = 170

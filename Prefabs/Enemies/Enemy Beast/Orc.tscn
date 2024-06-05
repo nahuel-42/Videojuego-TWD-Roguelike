@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dird4go8tf2pp"]
+[gd_scene load_steps=8 format=3 uid="uid://dird4go8tf2pp"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Orc.gd" id="1_rkave"]
 [ext_resource type="Texture2D" uid="uid://c8duptoo62vfw" path="res://Assets/Sprites/Enemies/Orc/Walk.png" id="2_qytpe"]
@@ -39,9 +39,14 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_kmr7a"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a12sm"]
 _data = {
 "RESET": SubResource("Animation_10e1a"),
+"Slow": SubResource("Animation_kmr7a"),
 "Walk": SubResource("Animation_o0mcn")
 }
 

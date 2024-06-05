@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca4qg66lwhx72"]
+[gd_scene load_steps=9 format=3 uid="uid://ca4qg66lwhx72"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Doctor.gd" id="1_hu2q6"]
 [ext_resource type="Texture2D" uid="uid://cuf26rhit6c42" path="res://Assets/Sprites/Enemies/Doctor/Sprite Doctor.png" id="2_353y1"]
@@ -37,9 +37,14 @@ tracks/0/keys = {
 "values": [0, 1, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_k5vec"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sry4x"]
 _data = {
 "RESET": SubResource("Animation_ej87i"),
+"Slow": SubResource("Animation_k5vec"),
 "Walk": SubResource("Animation_vaghg")
 }
 
@@ -56,7 +61,7 @@ shape = SubResource("CircleShape2D_p66wp")
 texture = ExtResource("2_353y1")
 hframes = 9
 
-[node name="AnimationDoctor" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_sry4x")
 }

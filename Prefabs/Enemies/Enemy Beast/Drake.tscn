@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3e7jtsluty0i"]
+[gd_scene load_steps=8 format=3 uid="uid://b3e7jtsluty0i"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Drake.gd" id="1_fushe"]
 [ext_resource type="Texture2D" uid="uid://o87mx2qr0ufu" path="res://Assets/Sprites/Enemies/Drake/Dragon.png" id="2_seo2r"]
@@ -37,10 +37,15 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_2x8h8"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jjir"]
 _data = {
 "Fly": SubResource("Animation_t6xwo"),
-"RESET": SubResource("Animation_7misg")
+"RESET": SubResource("Animation_7misg"),
+"Slow": SubResource("Animation_2x8h8")
 }
 
 [node name="Drake" type="CharacterBody2D"]

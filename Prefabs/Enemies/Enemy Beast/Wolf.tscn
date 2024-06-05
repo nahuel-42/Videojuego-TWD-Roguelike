@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhbk86m1op31u"]
+[gd_scene load_steps=8 format=3 uid="uid://dhbk86m1op31u"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Wolf.gd" id="1_4d66i"]
 [ext_resource type="Texture2D" uid="uid://drctkjwuhvyct" path="res://Assets/Sprites/Enemies/Wolf/walk.png" id="2_ebmrn"]
@@ -38,9 +38,14 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_psbju"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eddcw"]
 _data = {
 "RESET": SubResource("Animation_hkw8b"),
+"Slow": SubResource("Animation_psbju"),
 "Walk": SubResource("Animation_bexqh")
 }
 

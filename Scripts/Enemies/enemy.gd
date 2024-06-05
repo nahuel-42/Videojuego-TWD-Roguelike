@@ -32,6 +32,7 @@ func _ready():
 	health_bar.max_value = health
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
+	animation.connect("animation_finished", effect_finished)
 	animation.play("run")
 	set_group()
 	init_stats()
@@ -42,7 +43,6 @@ func _process(delta):
 		cooldown -= delta
 		return
 	
-	modulate = Color(1, 1, 1)
 
 func _physics_process(delta):
 	if stunned:
@@ -85,7 +85,6 @@ func take_damage(damage):
 	if vulnerable:
 		damage *= 2
 	cooldown = 0.5
-	modulate = Color(1, 0, 0)
 	health -= damage
 	health_bar.value -= damage
 	if health > 0:
@@ -114,14 +113,15 @@ func terminate_bleeding():
 func start_slow():
 	if slowed:
 		return
-	
+	animation.play("Slow")
+	sprite.modulate = Color(0, 0, 1)	
 	speed /= 2
 	slowed = true
-	call_deferred("terminate_slow", 4)
 
 func terminate_slow():
 	slowed = false
 	speed *= 2
+	sprite.modulate = Color(1, 1, 1)
 
 func start_stun():
 	if stunned:
@@ -142,3 +142,8 @@ func start_vulnerable():
 
 func terminate_vulnerable():
 	vulnerable = false
+
+func effect_finished(animation_name):
+	match animation_name:
+		"Slow": terminate_slow()
+	
