@@ -11,9 +11,12 @@ var enemies_node
 var last_enemy_index = 0
 var stage_completed_flag = false
 
+func register_spawner():
+	WaveManager.register_spawner(self)
+
 func _ready():
 	enemies_node = $Enemies
-	WaveManager.call_deferred("register_spawner", self) # Hacer esto sólo si no está dentro de la fog
+	WaveManager.connect("activate_spawner", register_spawner)
 	z_index = 2
 
 func start_next_wave(enemy_count):

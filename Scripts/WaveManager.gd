@@ -2,9 +2,11 @@ extends Node
 
 signal wave_completed
 signal stage_completed
+signal activate_spawner
 
 var wave_config = []
 var wave_index = 0
+var stages = 5
 var stage_index = 1
 var waves_per_stage = 5  # Número base de oleadas por stage
 var spawners = []
@@ -12,12 +14,21 @@ var stage_text : RichTextLabel
 var wave_text : RichTextLabel
 
 var percentage
+var activation_percentage
 
+func is_active(x_pos: int):
+	return x_pos <= activation_percentage
+
+func activate_spawners():
+	emit_signal("activate_spawner")
+	
 func register_spawner(spawner):
-	spawner.connect("stage_completed", _on_spawner_stage_completed)
-	spawners.append(spawner)
+	if is_active(spawner.position.x):
+		spawner.connect("stage_completed", _on_spawner_stage_completed)
+		spawners.append(spawner)
 
 func start_next_stage():
+	activate_spawners()
 	wave_config = []
 	wave_index = 0
 	load_stage_config()

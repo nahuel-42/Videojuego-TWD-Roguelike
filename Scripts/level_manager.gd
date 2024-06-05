@@ -9,7 +9,6 @@ extends Node
 var width
 
 var target
-var percentage
 
 func _ready():
 	var tilemap = $TileMap
@@ -21,18 +20,20 @@ func _ready():
 	WaveManager.connect("wave_completed", _on_wave_completed)
 	WaveManager.connect("stage_completed", _on_stage_completed)
 	WaveManager.set_texts(stage_text, wave_text)
-	percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
-	fog.reveal_map(percentage)
+	WaveManager.percentage = (1.0 + WaveManager.stage_index) / WaveManager.stages
+	fog.reveal_map(WaveManager.percentage)
+	WaveManager.activation_percentage = (WaveManager.percentage + 1.0 / WaveManager.stages) * width
 
 func _on_wave_completed():
-	percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
-	fog.reveal_map(percentage)
+	pass
 
 func _on_stage_completed():
-	fog.reset()
-	percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
-	fog.reveal_map(percentage)
-	next_stage_button.visible = true
+	#fog.reset()
+	#WaveManager.percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
+	#fog.reveal_map(WaveManager.percentage)
+	#next_stage_button.visible = true
+	WaveManager.percentage = (1.0 + WaveManager.stage_index) / WaveManager.stages
+	fog.reveal_map(WaveManager.percentage)
 	
 func lose_health(body):
 	print(body)
@@ -51,8 +52,4 @@ func _on_start_stage_button_pressed():
 	next_stage_button.visible = false
 
 func is_revealed(x_pos: int):
-	return x_pos <= percentage * width
-
-func is_active(x_pos: int):
-	var activation_distance = 1.0 / WaveManager.waves_per_stage
-	return x_pos <= (percentage + activation_distance) * width
+	return x_pos <= WaveManager.percentage * width
