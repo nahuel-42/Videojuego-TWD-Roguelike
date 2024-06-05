@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4dl6jsqxw3x0"
-path="res://.godot/imported/Soldier.png-6a2027844b9f7a839b28752018969fb9.ctex"
+uid="uid://bovbfxgdv0sfd"
+path="res://.godot/imported/Specialization.png-ff5a8597f66eb387fcb3badabb63e88d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Soldier.png"
-dest_files=["res://.godot/imported/Soldier.png-6a2027844b9f7a839b28752018969fb9.ctex"]
+source_file="res://Assets/Sprites/Cards/Speciality/Specialization.png"
+dest_files=["res://.godot/imported/Specialization.png-ff5a8597f66eb387fcb3badabb63e88d.ctex"]
 
 [params]
 

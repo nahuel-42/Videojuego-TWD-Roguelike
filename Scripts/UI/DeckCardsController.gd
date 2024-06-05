@@ -23,4 +23,4 @@ func _on_button_2_button_up():
 
 
 func _on_show_pop_button_down():
-	GameEvents.OnShowPopCards.Call(m_cardsList)
+	GameEvents.OnShowPopCards.Call([m_cardsList, true, false])

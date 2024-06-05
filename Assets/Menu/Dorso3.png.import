@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4asge0hquove"
-path="res://.godot/imported/FireArcherT.png-53e4d9704f066e49e49e95ee8dc8a565.ctex"
+uid="uid://0r82ormwwrhc"
+path="res://.godot/imported/Dorso3.png-bb2f38befbcca71bcfc5973c7d39908c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Tower/FireArcherT.png"
-dest_files=["res://.godot/imported/FireArcherT.png-53e4d9704f066e49e49e95ee8dc8a565.ctex"]
+source_file="res://Assets/Menu/Dorso3.png"
+dest_files=["res://.godot/imported/Dorso3.png-bb2f38befbcca71bcfc5973c7d39908c.ctex"]
 
 [params]
 

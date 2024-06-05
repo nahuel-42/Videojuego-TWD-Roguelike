@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cixn84nyvv07h"
-path="res://.godot/imported/Hunter.png-dbf73b41a24660d058defbacfe7b2e1d.ctex"
+uid="uid://cma62aufhkhwi"
+path="res://.godot/imported/icono_casa.jpg-f36780b0b0a2655906f7314841e9ee3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Hunter.png"
-dest_files=["res://.godot/imported/Hunter.png-dbf73b41a24660d058defbacfe7b2e1d.ctex"]
+source_file="res://Assets/Menu/icono_casa.jpg"
+dest_files=["res://.godot/imported/icono_casa.jpg-f36780b0b0a2655906f7314841e9ee3a.ctex"]
 
 [params]
 

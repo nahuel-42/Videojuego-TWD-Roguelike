@@ -14,4 +14,4 @@ func LoadDiscard(cards):
 
 
 func _on_show_pop_button_down():
-	GameEvents.OnShowPopCards.Call(m_cardsList)
+	GameEvents.OnShowPopCards.Call([m_cardsList, false, true])

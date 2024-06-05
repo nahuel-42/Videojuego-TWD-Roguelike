@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7p2ekklhb8ci"
-path="res://.godot/imported/Mercenary.png-317cf873f7b6c181a44a802a3a651950.ctex"
+uid="uid://c4asge0hquove"
+path="res://.godot/imported/FireArrowT.png-94b85ecf312f971fa358321eae183909.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Specialization/Mercenary.png"
-dest_files=["res://.godot/imported/Mercenary.png-317cf873f7b6c181a44a802a3a651950.ctex"]
+source_file="res://Assets/Sprites/Cards/Tower/FireArrowT.png"
+dest_files=["res://.godot/imported/FireArrowT.png-94b85ecf312f971fa358321eae183909.ctex"]
 
 [params]
 

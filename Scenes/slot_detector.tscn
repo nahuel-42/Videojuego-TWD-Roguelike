@@ -10,13 +10,14 @@ size = Vector2(1, 1)
 
 [node name="Detector" type="Node2D"]
 
-[node name="Slot" type="Area2D" parent="." node_paths=PackedStringArray("m_collider", "m_sprite")]
+[node name="Slot" type="Area2D" parent="." node_paths=PackedStringArray("m_collider", "m_sprite", "m_collision")]
 visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_61rwx")
 m_collider = NodePath("CollisionShape2D")
 m_sprite = NodePath("Sprite2D")
+m_collision = NodePath(".")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slot"]
 scale = Vector2(100, 100)

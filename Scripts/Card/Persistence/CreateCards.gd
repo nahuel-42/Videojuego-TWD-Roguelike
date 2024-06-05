@@ -3,38 +3,27 @@ class_name CardFactory
 static var cardScene : String = 'res://Scenes/card.tscn'
 
 static func createCard(id):
-	var card: BaseCard = null
-#	var id = dict[0]
-#	var type = dict[1]
-#	var cardName = dict[2]
-#	var desc = dict[3]
-#	var sprite = dict[4] 
-#	var cost = dict[5]
 
 	var scene = load(cardScene)
-	
-	#el diccionario aca serian las cartas del juegador (gameDeck)
-	#var card = CardFactory.CreateCards(gameDeck[i]) 
+	var cardData = GlobalCardsList.find_card(id) #obtiene la linea a partir de la funcion, no accede a la collection directamente
 	var instance = scene.instantiate()		
-
-	var type = GlobalCardsList.CollectionCard[id]['type']
-	instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
-
-	#instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
-
-
+	var type = cardData.type
 
 	if(type == 'spell'):
-		instance.Init(SpellCard.new(id, GlobalCardsList.CollectionCard[id]))
-	# SpellCard: id, cardName, desc, sprite, cost
-	# los mismos que la baseCard
+		instance.Init(SpellCard.new(id, cardData))#GlobalCardsList.CollectionCard[id]))
 	elif(type == 'passive'):
 	# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
-		instance.Init(PassiveCard.new(id, GlobalCardsList.CollectionCard[id]))
-	elif (type == 'powerUp'):
+		instance.Init(PassiveCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+	elif (type == 'upgrade'):
 	# PowerUpCard: id, cardName, description, sprite, cost, active, type
-		instance.Init(PowerUpCard.new(id, GlobalCardsList.CollectionCard[id]))
+		instance.Init(PowerUpCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
 	elif (type == 'tower'):
 	# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
-		instance.Init(TowerCard.new(id, GlobalCardsList.CollectionCard[id]))
+		instance.Init(TowerCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+	elif (type=='class'):
+		instance.Init(ClassCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+	elif (type=='speciality'):
+		instance.Init(SpecialityCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+	else: 
+		print("Error type card: "  + str(type))
 	return instance

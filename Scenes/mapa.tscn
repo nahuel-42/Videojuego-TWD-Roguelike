@@ -15,6 +15,7 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_msvea"]
 blend_mode = 3
+[ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
 
 [node name="Mapa" type="Node"]
 script = ExtResource("1_b8xhp")
@@ -41,17 +42,11 @@ seedName = "prueba"
 [node name="Camera2D" type="Camera2D" parent="TileMap"]
 zoom = Vector2(0.1, 0.1)
 script = ExtResource("6_s7dnp")
+target = NodePath("TargetCamera")
+
+[node name="TargetCamera" type="Node2D" parent="TileMap/Camera2D"]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_0iwi3")]
-
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 1041.0
-offset_top = 556.0
-offset_right = 1090.0
-offset_bottom = 610.0
-scale = Vector2(0.905558, 1.13458)
-text = "Start
-wave"
 
 [node name="SlotDetector" parent="." instance=ExtResource("9_hcxdh")]
 
@@ -65,3 +60,43 @@ centered = false
 script = ExtResource("12_jt57u")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_start_wave_button_pressed"]
+[node name="SpellDetector" parent="." instance=ExtResource("12_drqm8")]
+
+[node name="WavesCanvas" type="CanvasLayer" parent="."]
+
+[node name="NextStageButton" type="Button" parent="WavesCanvas"]
+offset_left = 265.0
+offset_top = 74.0
+offset_right = 363.0
+offset_bottom = 128.0
+scale = Vector2(0.905558, 1.13458)
+text = "Start stage"
+
+[node name="Stage" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 8.0
+offset_right = 324.0
+offset_bottom = 41.0
+text = "Stage"
+
+[node name="StageNumber" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 317.0
+offset_top = 8.0
+offset_right = 373.0
+offset_bottom = 41.0
+text = "99"
+
+[node name="WaveNumber" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 317.0
+offset_top = 40.0
+offset_right = 373.0
+offset_bottom = 73.0
+
+[node name="Wave" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 39.0
+offset_right = 320.0
+offset_bottom = 72.0
+text = "Wave"
+
+[connection signal="pressed" from="WavesCanvas/NextStageButton" to="." method="_on_start_stage_button_pressed"]

@@ -3,6 +3,7 @@ class_name SlotDetector
 
 @export var m_collider : Node2D = null 
 @export var m_sprite : Node2D = null
+@export var m_collision : CollisionObject2D = null
 
 var m_slotSelected = null
 var m_slotList = []
@@ -27,6 +28,9 @@ func Update(delta):
 
 ######Events######
 func GetSlotDetector(param):
+	var layer = param[0]
+	m_collision.collision_layer = layer
+	m_collision.collision_mask = layer
 	return self
 ######End######
 

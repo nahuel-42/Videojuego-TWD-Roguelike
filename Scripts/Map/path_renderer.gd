@@ -18,6 +18,7 @@ var height
 var border = 7
 var last_target_pos = null
 var map
+var borderSize = 10
 
 enum TileType {
 	PASTO,
@@ -160,7 +161,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	
 	render_border(border)
 	render_path()
-	WaveManager.load_waves()
+	#WaveManager.load_waves()
 
 func render_path():
 	var rand : Vector2i
