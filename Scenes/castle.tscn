@@ -5,6 +5,8 @@
 
 [node name="Castle" type="Sprite2D"]
 z_index = 5
+position = Vector2(-300, -75)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_tkajn")
+flip_h = true
 script = ExtResource("1_mnktr")
