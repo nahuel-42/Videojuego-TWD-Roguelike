@@ -1,8 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgc8ribt0m7te"]
+[gd_scene load_steps=7 format=3 uid="uid://dgc8ribt0m7te"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Captain.gd" id="1_ejk84"]
+[ext_resource type="Texture2D" uid="uid://ekt42uwnk4nt" path="res://Assets/Sprites/Enemies/Captain/Walk.png" id="2_cq5yt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hd2ys"]
+
+[sub_resource type="Animation" id="Animation_t424t"]
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_iyowh"]
+resource_name = "Walk"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7vde"]
+_data = {
+"RESET": SubResource("Animation_t424t"),
+"Walk": SubResource("Animation_iyowh")
+}
 
 [node name="Captain" type="CharacterBody2D"]
 script = ExtResource("1_ejk84")
@@ -22,3 +62,12 @@ offset_bottom = -27.0
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cq5yt")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p7vde")
+}
