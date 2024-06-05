@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://g3uuf1e3g505"]
+[gd_scene load_steps=9 format=3 uid="uid://g3uuf1e3g505"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/scroll.gd" id="1_7a2m2"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_blp23"]
 [ext_resource type="Script" path="res://Scripts/Menu/menuMazos.gd" id="3_4eryu"]
+[ext_resource type="Texture2D" uid="uid://yq0jvol8adc8" path="res://Assets/Menu/icono_casa.png" id="3_7d5ey"]
 [ext_resource type="Texture2D" uid="uid://bfad6ieiv7342" path="res://Assets/Menu/Dorso2.png" id="4_aocer"]
+[ext_resource type="Texture2D" uid="uid://0r82ormwwrhc" path="res://Assets/Menu/Dorso3.png" id="6_i48ru"]
 [ext_resource type="Texture2D" uid="uid://fmm6th17j1bo" path="res://Assets/Menu/Boton.png" id="6_xwew7"]
 
 [sub_resource type="FontVariation" id="FontVariation_aduyc"]
@@ -22,6 +24,11 @@ size_flags_horizontal = 3
 texture = ExtResource("2_blp23")
 expand_mode = 1
 
+[node name="BotonAtras" type="TouchScreenButton" parent="TextureRect"]
+position = Vector2(32, 28.0001)
+scale = Vector2(0.0754491, 0.0668316)
+texture_normal = ExtResource("3_7d5ey")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
 layout_mode = 2
 offset_top = 4.0
@@ -32,6 +39,8 @@ mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/margin_top = 25
 
 [node name="Titulo" type="Label" parent="TextureRect/VBoxContainer/MarginContainer"]
@@ -40,6 +49,8 @@ size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontVariation_aduyc")
 theme_override_font_sizes/font_size = 41
 text = "Elegi tu mazo"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 450)
@@ -54,45 +65,26 @@ size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 1600
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 500
 theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 1600
+theme_override_constants/margin_right = 500
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_constants/separation = 100
-
-[node name="HBoxContainer2" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
-layout_mode = 2
-texture = ExtResource("4_aocer")
-
-[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(180, 70)
-layout_mode = 2
-color = Color(0.701961, 0.32549, 0.458824, 1)
-
-[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2/ColorRect"]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -35.0
-offset_right = 35.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 12
-text = "La pasiva es la siguiente
-"
 
 [node name="HBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Mazo de hielo"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -107,30 +99,268 @@ size_flags_vertical = 4
 [node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(180, 70)
 layout_mode = 2
-color = Color(0.701961, 0.32549, 0.458824, 1)
+color = Color(0.396078, 0.54902, 0.698039, 1)
 
 [node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/ColorRect"]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -35.0
-offset_right = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 12
-text = "La pasiva es la siguiente
+text = "Aumenta el tiempo de retardo 15%
 "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+[node name="HBoxContainer2" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="TextureRect/VBoxContainer/MarginContainer2"]
-position = Vector2(423, -126)
-scale = Vector2(1.22311, 0.865979)
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Mazo de fuego"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_aocer")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.811765, 0.25098, 0.164706, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Cada torre de fuego aumenta  su rango en 30%"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_i48ru")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.592157, 0.588235, 0.584314, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer4" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_i48ru")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.592157, 0.588235, 0.584314, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer5" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_i48ru")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.592157, 0.588235, 0.584314, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer6" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_i48ru")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer6/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.592157, 0.588235, 0.584314, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer6/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="HBoxContainer7" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_i48ru")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer7/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.592157, 0.588235, 0.584314, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer7/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 25
+
+[node name="BotonJugar" type="TouchScreenButton" parent="TextureRect/VBoxContainer/MarginContainer3"]
+position = Vector2(-139, -98)
+scale = Vector2(0.913846, 0.865979)
 texture_normal = ExtResource("6_xwew7")
 texture_pressed = ExtResource("6_xwew7")
 
-[connection signal="pressed" from="TextureRect/VBoxContainer/MarginContainer2/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="TextureRect/BotonAtras" to="." method="_on_boton_atras_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/MarginContainer3/BotonJugar" to="." method="_on_touch_screen_button_pressed"]

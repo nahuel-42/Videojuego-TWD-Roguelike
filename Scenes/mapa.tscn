@@ -38,6 +38,9 @@ seedName = "prueba"
 [node name="Camera2D" type="Camera2D" parent="TileMap"]
 zoom = Vector2(0.1, 0.1)
 script = ExtResource("6_s7dnp")
+target = NodePath("TargetCamera")
+
+[node name="TargetCamera" type="Node2D" parent="TileMap/Camera2D"]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("8_0iwi3")]
 

@@ -23,6 +23,8 @@ func _ready():
 	card_space = $BoxContainer/MarginContainer/HBoxContainer.get_theme_constant("separation")
 	card_nodes = $BoxContainer/MarginContainer/HBoxContainer.get_children()
 	#add_child(scroll_tween)
+	print(margin_r)
+	print(card_nodes)
 	get_h_scroll_bar().modulate.a = 0
 	call_deferred("_calculate_card_positions")
 	
