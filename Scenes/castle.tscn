@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c528xxytk038h"]
+[gd_scene load_steps=3 format=3 uid="uid://c528xxytk038h"]
 
 [ext_resource type="Script" path="res://Castle.gd" id="1_mnktr"]
+[ext_resource type="Texture2D" uid="uid://c130olnh7xgjk" path="res://Assets/Sprites/Castles/Castle.png" id="1_tkajn"]
 
-[node name="Castle" type="Node"]
+[node name="Castle" type="Sprite2D"]
+z_index = 5
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_tkajn")
 script = ExtResource("1_mnktr")

@@ -2,6 +2,7 @@ extends TileMap
 
 const SLOT_PATH = "res://Prefabs/Slots/tower_slot.tscn"
 const BEAST_SPAWNER_PATH = "res://Prefabs/Spawners/BeastSpawner.tscn"
+const CASTLE_PATH = "res://Scenes/castle.tscn"
 
 @export var slot_scene : PackedScene #!
 @export var chest_scene : PackedScene
@@ -113,10 +114,17 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	last_target_pos = target_pos
 	render_grass(width, height)
 	map = {}
-	var start_castle = castle_scene.instantiate()
-	var target_castle = castle_scene.instantiate()
-	start_castle._setup(TileType.CASTILLO,initial_pos)
-	target_castle._setup(TileType.CASTILLO,target_pos)
+	
+	var start_castle : Sprite2D = load(CASTLE_PATH).instantiate()
+	var target_castle : Sprite2D = load(CASTLE_PATH).instantiate()
+	start_castle.position  = initial_pos * CELL_DIMENSION
+	start_castle.offset.x = -700
+	target_castle.offset.x = 700
+	target_castle.position = target_pos * CELL_DIMENSION
+	add_child(start_castle)
+	add_child(target_castle)
+	start_castle.flip_h = true
+	
 	map[initial_pos] = start_castle
 	map[target_pos] = target_castle
 	
