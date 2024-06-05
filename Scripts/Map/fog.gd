@@ -22,10 +22,7 @@ func _ready():
 	display_height = (height + border * 2) * CELL_DIMENSION
 	var fog_image_width = display_width / CELL_DIMENSION
 	var fog_image_height = display_height / CELL_DIMENSION
-	fogImage = Image.create(display_width, display_height, false, Image.FORMAT_RGBAH)
-	fogImage.fill(Color.BLACK)
-	fogTexture = ImageTexture.create_from_image(fogImage)
-	texture = fogTexture
+	reset()
 	position -= Vector2(border, border) * CELL_DIMENSION
 
 # TODO: Optimizar
@@ -36,3 +33,9 @@ func reveal_map(percentage: float):
 	var light_rect = Rect2(Vector2.ZERO, lightImage.get_size())
 	fogImage.blend_rect(lightImage, light_rect, Vector2.ZERO)
 	fogTexture.update(fogImage)
+	
+func reset():
+	fogImage = Image.create(display_width, display_height, false, Image.FORMAT_RGBAH)
+	fogImage.fill(Color.BLACK)
+	fogTexture = ImageTexture.create_from_image(fogImage)
+	texture = fogTexture

@@ -1,6 +1,7 @@
 extends Node
 
 signal wave_completed
+signal stage_completed
 
 var wave_config = []
 var wave_index = 0
@@ -10,8 +11,10 @@ var spawners = []
 var stage_text : RichTextLabel
 var wave_text : RichTextLabel
 
+var percentage
+
 func register_spawner(spawner):
-	spawner.connect("wave_completed", _on_spawner_wave_completed)
+	spawner.connect("stage_completed", _on_spawner_stage_completed)
 	spawners.append(spawner)
 
 func start_next_stage():
@@ -48,19 +51,20 @@ func distribute_enemies(total_enemies):
 			extra_enemies -= 1
 		spawner.start_next_wave(count)
 
-func _on_spawner_wave_completed():
+func _on_spawner_stage_completed():
 	if all_spawners_completed():
 		if wave_index < len(wave_config):
+			emit_signal("wave_completed")
 			start_next_wave()
 		else:
 			stop_spawners()
 			stage_index += 1
 			stage_text.text = str(stage_index)
-			emit_signal("wave_completed")
+			emit_signal("stage_completed")
 
 func all_spawners_completed():
 	for spawner in spawners:
-		if not spawner.is_wave_completed():
+		if not spawner.is_stage_completed():
 			return false
 	return true
 	
