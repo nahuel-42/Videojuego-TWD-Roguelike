@@ -1,7 +1,7 @@
 class_name EnemiesSpawner
 extends Node2D
 
-signal wave_completed
+signal stage_completed
 
 @onready var timer : Timer = $Timer
 
@@ -9,7 +9,7 @@ var ENEMY_TYPES
 var enemies = []
 var enemies_node
 var last_enemy_index = 0
-var wave_completed_flag = false
+var stage_completed_flag = false
 
 func _ready():
 	enemies_node = $Enemies
@@ -18,7 +18,7 @@ func _ready():
 
 func start_next_wave(enemy_count):
 	last_enemy_index = 0
-	wave_completed_flag = false
+	stage_completed_flag = false
 	load_enemies(enemy_count)
 	timer.start()
 
@@ -49,14 +49,14 @@ func _on_timer_timeout():
 			if enemy.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
 				return
 		remove_disabled_enemies()
-		wave_completed_flag = true
-		emit_signal("wave_completed")
+		stage_completed_flag = true
+		emit_signal("stage_completed")
 
 func stop():
 	timer.stop()
 
-func is_wave_completed():
-	return wave_completed_flag
+func is_stage_completed():
+	return stage_completed_flag
 
 func remove_disabled_enemies():
 	var enemies_to_remove = []
