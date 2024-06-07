@@ -76,9 +76,9 @@ func _unhandled_input(event):
 			else:
 				move_cam = false
 		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			zoom_in()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			zoom_out()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			zoom_in()
 	elif event is InputEventMouseMotion and move_cam:
 		get_viewport().set_input_as_handled()
 		position += (previous_pos - event.position) * CAM_SPEED

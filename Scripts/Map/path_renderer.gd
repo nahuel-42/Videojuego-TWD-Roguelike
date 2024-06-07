@@ -148,10 +148,19 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		map[slot] = new_slot #ahora tiene un objeto, el valor del diccionario #TileType.SLOT
 	ObstacleGenerator.add_obstacles(slots)
 	
-	var fork_generator = ForkGenerator.new(width, height, 2, 3, path_generator)
-	var n_forks = 11
+	var castle_padding = 30
+	var n_forks = 15
+	# (path.size() - 2 * castle_padding) es la cantidad de tiles de donde puede salir un fork
+	# / n_forks es la distancia maxima entre el inicio de un fork y otro en el que se pueden generar todos los forks
+	# / 2 para calcular la distancia minima
+	var min_distance = ((path.size() - 2 * castle_padding) / n_forks) / 2
+	var min_fork_lenght = 5
+	var max_fork_lenght = 15
+	var fork_generator = ForkGenerator.new(width, height, min_distance, min_fork_lenght, max_fork_lenght, path_generator)
+	var forks_initial_pos: Array[Vector2i] = []
 	for i in range(n_forks):
-		var fork = fork_generator.generate_fork(path, 10)
+		var fork = fork_generator.generate_fork(path, forks_initial_pos, castle_padding)
+		forks_initial_pos.append(fork[0])
 		for cell in fork:
 			map[cell] = TileType.CAMINO
 		
