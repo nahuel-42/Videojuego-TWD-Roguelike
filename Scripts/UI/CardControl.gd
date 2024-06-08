@@ -17,32 +17,47 @@ func Init(baseCard):
 	#seteo de propiedades en texture y labels
 	get_node("TopSideCard/TextureRect").texture = load(pathF) #load(m_baseCard.m_refCard["sprite"])
 	get_node("BottomSideCard/TextureRect").texture = load(pathB) #load(m_baseCard.m_refCard["sprite"])
-	
 	get_node("TopSideCard/Figure").texture = load(m_baseCard.m_refCard["sprite"])
-	#get_node("TopSideCard/Figure").texture
 	get_node("TopSideCard/name").text = m_baseCard.m_refCard["cardName"]
 	get_node("TopSideCard/cost").text = str(m_baseCard.m_refCard["cost"])
 	var type = m_baseCard.m_refCard["type"]
-	#LO QUE SIGUE DEPENDE DE LO QUE MODIFIQUE CADA TIPO DE CARTA
-	#SI QUIEREN QUE APAREZCAN TODAS LAS ESTRUCTURAS IGUALES, EL IF ANIDADO SE VA
-	if(type == "tower"):	
-		get_node("TopSideCard/damage").text = str(m_baseCard.m_refCard["damage"])
-		get_node("TopSideCard/attackSpeed").text = str(m_baseCard.m_refCard["attackSpeed"])
-		get_node("TopSideCard/range").text = str(m_baseCard.m_refCard["range"])
-	elif (type == 'spell'):
-		get_node("TopSideCard/damage").text = str(m_baseCard.m_refCard["damage"])
-		get_node("TopSideCard/attackSpeed").text = str(m_baseCard.m_refCard["attackSpeed"])
-		get_node("TopSideCard/range").text = str(m_baseCard.m_refCard["range"])		
-	elif(type == 'passive'):
-		get_node("TopSideCard/damage").text = str(m_baseCard.m_refCard["damage"])
-		get_node("TopSideCard/attackSpeed").text = str(m_baseCard.m_refCard["attackSpeed"])
-		get_node("TopSideCard/range").text = str(m_baseCard.m_refCard["range"])
-	elif (type == 'powerUp'):
-		get_node("TopSideCard/damage").text = str(m_baseCard.m_refCard["damage"])
-		get_node("TopSideCard/attackSpeed").text = str(m_baseCard.m_refCard["attackSpeed"])
-		get_node("TopSideCard/range").text = str(m_baseCard.m_refCard["range"])
+
+	if(type == 'tower'|| type == 'spell'):
+		var damage = m_baseCard.m_refCard["damage"]
+		var range = m_baseCard.m_refCard["range"]
+		var accuracy = m_baseCard.m_refCard["accuracy"]
+		var attack = m_baseCard.m_refCard["attackSpeed"]
+		if(damage !=0):
+			get_node("TopSideCard/damage").text = str(damage)
+		if(attack != 0):
+			get_node("TopSideCard/attackSpeed").text = str(attack)
+		if(range != 0):
+			get_node("TopSideCard/range").text = str(range)
+		if(accuracy != 0):
+			accuracy*=100
+			get_node("TopSideCard/accuracy").text = str(accuracy)+'%'
+
+	if(type== 'upgrade'):
+		var damage = m_baseCard.m_refCard["damage"]
+		var range = m_baseCard.m_refCard["range"]
+		var accuracy = m_baseCard.m_refCard["accuracy"]
+		var attack = m_baseCard.m_refCard["attack_speed"]
+		if(damage !=0):
+			damage*=100
+			get_node("TopSideCard/damage").text = str(damage)+'%'
+		if(attack != 0):
+			attack*=100
+			get_node("TopSideCard/attackSpeed").text = str(attack)+'%'
+		if(range != 0):
+			range*=100
+			get_node("TopSideCard/range").text = str(range)+'%'
+		if(accuracy != 0):
+			accuracy*=100
+			get_node("TopSideCard/accuracy").text = str(accuracy)+'%'
+		
 	
-	#probablemente haya que crear cuatro estructuras de cartas, para que pueda mostrar los atributos que corresponden. 
+
+
 	
 func _ready():
 	SetSide(false)
