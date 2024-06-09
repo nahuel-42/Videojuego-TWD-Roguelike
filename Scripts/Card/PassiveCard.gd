@@ -11,6 +11,7 @@ class_name PassiveCard
 	
 func use(param):
 	print("se usa PassiveCard")
+	return false
 	#quedan en un array de pasivas en uso o algo similar
 
 func SetTypeDetector(cardMovement):

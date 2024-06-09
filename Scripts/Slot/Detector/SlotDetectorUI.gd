@@ -1,5 +1,5 @@
-extends BasicDetector
-class_name SlotDetector
+extends BasicDetectorUI
+class_name SlotDetectorUI
 
 @export var m_collider : Node2D = null 
 @export var m_sprite : Node2D = null
@@ -9,7 +9,7 @@ var m_slotSelected = null
 var m_slotList = []
 
 func _init():
-	GameEvents.OnGetSlotDetector.AddListener(GetSlotDetector)
+	GameEvents.OnGetSlotDetectorUI.AddListener(GetSlotDetector)
 	
 func _ready():
 	super._ready()

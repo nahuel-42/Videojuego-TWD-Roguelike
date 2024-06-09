@@ -1,5 +1,5 @@
-extends BasicDetector
-class_name PowerDetector
+class_name SpellDetectorUI
+extends BasicDetectorUI
 
 @export var m_circle : Node2D = null
 @export var m_hightLimit : float = 0.8
@@ -8,7 +8,7 @@ var m_apply : bool = false
 var m_sizeY : float = 0.0
 
 func _init():
-	GameEvents.OnGetPowerDetector.AddListener(GetPowerDetector)
+	GameEvents.OnGetSpellDetectorUI.AddListener(GetSpellDetector)
 
 func _ready():
 	m_sizeY = get_viewport_rect().size.y
@@ -27,7 +27,7 @@ func draw_radius(radius : float):
 	m_circle.points = circle_points
 	
 	
-func GetPowerDetector(param):
+func GetSpellDetector(param):
 	return self
 
 ######BasicDetector######
@@ -52,8 +52,8 @@ func UpdatePosition(ui_position : Vector2):
 func ApplyCard(card : CardControl):
 	if (m_apply):
 		card.use([global_position])
-		GameEvents.OnRemoveBoardCards.Call([card])
-		GameEvents.OnLoadDiscard.Call([card])
+		GameEvents.OnRemoveBoardCards.Call([[card]])
+		GameEvents.OnLoadDiscard.Call([[card]])
 		return true
 	return false
 ######End######

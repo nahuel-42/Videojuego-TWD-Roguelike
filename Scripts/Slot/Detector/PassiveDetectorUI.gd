@@ -1,5 +1,5 @@
-extends BasicDetector
-class_name PassiveDetector
+extends BasicDetectorUI
+class_name PassiveDetectorUI
 
 @export var m_background : CanvasItem = null
 @export var m_panels: Array[Panel] = []
@@ -14,7 +14,7 @@ var m_listCards = [null, null]
 var m_indexCollision : int = -1
 
 func _init():
-	GameEvents.OnGetPassiveDetector.AddListener(GetPassiveDetector)
+	GameEvents.OnGetPassiveDetectorUI.AddListener(GetPassiveDetector)
 	
 func GetPassiveDetector(param):
 	return self
@@ -63,8 +63,8 @@ func ApplyCard(card : CardControl):
 
 func InsertCard(card, index : int):
 	if (m_listCards[index] != null):
-		GameEvents.OnLoadDiscard.Call([m_listCards[index]])
-	GameEvents.OnRemoveBoardCards.Call([card])
+		GameEvents.OnLoadDiscard.Call([[m_listCards[index]]])
+	GameEvents.OnRemoveBoardCards.Call([[card]])
 	m_listCards[index] = card
 	UI_funcs.SetParent(m_panels[index], card)
 	card.position = Vector2.ZERO

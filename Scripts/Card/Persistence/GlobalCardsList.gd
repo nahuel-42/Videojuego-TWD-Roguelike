@@ -30,13 +30,15 @@ var CollectionCard = [
 	{"id":15, "type": "spell", "cardName" : "Tower removal", "desc":"", "sprite": "res://Assets/Sprites/Cards/Spells/TowerRemoval.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":16, "type": "spell", "cardName" : "Fireball", "desc":"", "sprite": "res://Assets/Sprites/Cards/Spells/Fireball.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":17, "type": "spell", "cardName" : "Iceball", "desc":"", "sprite": "res://Assets/Sprites/Cards/Spells/Iceball.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
+	################# Passives ####################
+	{"id":18, "type": "passive", "cardName" : "Iceball", "desc":"", "sprite": "res://Assets/Sprites/Cards/Spells/Iceball.png", "cost":0, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 ]
 
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
 	#[11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],#para probar todas las cartas
-	[0,1,7,8,3],
+	[0,1,7,8,3,14,18],
 	[0,2,1,1]
 ]
 	

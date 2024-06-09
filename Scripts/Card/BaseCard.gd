@@ -33,6 +33,7 @@ func _process(_delta):
 
 func use(param):
 	print("Se usa la carta base")
+	return false
 
 func canBeUsed():
 	#chequea si hay la energia/mana/elixir necesario para usar la carta

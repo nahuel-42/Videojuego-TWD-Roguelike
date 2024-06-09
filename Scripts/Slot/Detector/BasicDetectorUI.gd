@@ -1,5 +1,5 @@
 extends Node2D
-class_name BasicDetector
+class_name BasicDetectorUI
 
 var m_activated = false
 

@@ -3,6 +3,7 @@ extends ActiveCard
 
 func use(param):
 	print("Se uso ClassCard")
+	return false
 	#GameEvents.OnLoadDiscard(param)
 #por ahora, se agregan a los slots/torre y van a un array del mapa o algo similar
 

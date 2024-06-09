@@ -79,10 +79,11 @@ func SetSide(side : bool):
 	m_bottom.set_visible(!side)
 
 func use(param):
-	m_baseCard.use(param)
 	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
 	#visible = false
 	#SetVisible(false)
+	param.append(self)
+	return m_baseCard.use(param)
 
 func SetVisible(value):
 	visible = value

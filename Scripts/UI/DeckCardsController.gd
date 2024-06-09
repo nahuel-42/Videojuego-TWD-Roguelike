@@ -17,7 +17,7 @@ func _on_button_button_up():
 
 func _on_button_2_button_up():	
 	var newList = RemoveCards(5)
-	GameEvents.OnLoadBoard.Call(newList)
+	GameEvents.OnLoadBoard.Call([newList])
 	m_actualCardIndex = 0
 	f_state = State_LoadCards
 

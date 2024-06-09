@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsevkqk7cl15l"]
 
-[ext_resource type="Script" path="res://Scripts/Slot/Detector/SlotDetector.gd" id="1_61rwx"]
-[ext_resource type="Script" path="res://Scripts/Slot/Detector/PowerDetector.gd" id="2_113gb"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/SlotDetectorUI.gd" id="1_61rwx"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/SpellDetectorUI.gd" id="2_113gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i7u6n"]
 size = Vector2(1, 1)

@@ -6,16 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_cieb2"]
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
-[ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetector.gd" id="5_jd3hf"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetectorUI.gd" id="5_jd3hf"]
 [ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="7_y252a"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
 script/source = "extends Node
 
 func _ready():
-	pass
-
-func _process(delta):
 	pass
 "
 
@@ -126,8 +123,8 @@ anchor_bottom = 1.0
 
 [node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_top = 0.8
-anchor_right = 0.1
+anchor_top = 0.78
+anchor_right = 0.094
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -163,9 +160,9 @@ grow_vertical = 2
 
 [node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_left = 0.3
-anchor_top = 0.8
-anchor_right = 0.7
+anchor_left = 0.28
+anchor_top = 0.78
+anchor_right = 0.72
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -236,8 +233,8 @@ offset_bottom = -478.4
 
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_left = 0.9
-anchor_top = 0.8
+anchor_left = 0.906
+anchor_top = 0.78
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
