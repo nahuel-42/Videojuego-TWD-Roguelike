@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsdbs6fokunev"]
+[gd_scene load_steps=10 format=3 uid="uid://bsdbs6fokunev"]
 
-[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_ukt6c"]
 [ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_8s340"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/area_attack.gd" id="3_dqije"]
+[ext_resource type="Texture2D" uid="uid://bnh7yqmbriuwj" path="res://Assets/Sprites/Towers/TowerSlots.png" id="4_8tfeh"]
 [ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="4_x0kyj"]
+[ext_resource type="Texture2D" uid="uid://b3kibd7b5hq0f" path="res://Assets/Sprites/Towers/Area.png" id="5_6nl7l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
-radius = 392.966
+radius = 81.685
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3f3a"]
-radius = 49.3514
+radius = 25.3684
 
 [sub_resource type="Animation" id="Animation_jdn2m"]
 resource_name = "idle"
@@ -34,7 +35,6 @@ _data = {
 }
 
 [node name="AreaTower" type="Node2D"]
-modulate = Color(0.388235, 1, 0.0705882, 1)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_8s340")
 
@@ -64,9 +64,17 @@ libraries = {
 "": SubResource("AnimationLibrary_82oli")
 }
 
+[node name="Tower" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_8tfeh")
+hframes = 3
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ukt6c")
-hframes = 4
+position = Vector2(0.666667, -8.66667)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_6nl7l")
+hframes = 7
+vframes = 3
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]

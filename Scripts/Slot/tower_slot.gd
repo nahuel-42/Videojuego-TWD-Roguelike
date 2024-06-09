@@ -2,6 +2,7 @@ extends Slot
 
 #const CARDS_PATH = "res://cards/"
 var current_card_id = -1
+@onready var sprite : Sprite2D = $Area2D/Sprite2D 
 
 func _ready():
 	tower_point = $TowerPoint
@@ -14,6 +15,7 @@ func apply_card(card):
 		"tower": 
 			create_tower(card.id)
 			current_card_id = card.id
+			sprite.visible = false
 		"upgrade":
 			upgrade_tower(card.id)
 		"class":

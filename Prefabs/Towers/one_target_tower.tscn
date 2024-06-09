@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp82nvs2t4q36"]
+[gd_scene load_steps=9 format=3 uid="uid://bp82nvs2t4q36"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/one_target_attack.gd" id="2_etsr7"]
 [ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_rqxjt"]
 [ext_resource type="Texture2D" uid="uid://cyhc2vimtj36h" path="res://Assets/Sprites/Towers/SingleTarget.png" id="4_3jqlv"]
+[ext_resource type="Texture2D" uid="uid://bnh7yqmbriuwj" path="res://Assets/Sprites/Towers/TowerSlots.png" id="4_d4e7r"]
 [ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="4_fa36g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
-radius = 786.293
+radius = 127.962
 
 [sub_resource type="Animation" id="Animation_jdn2m"]
 resource_name = "idle"
@@ -55,7 +56,14 @@ script = ExtResource("2_etsr7")
 [node name="Speciality" type="Node2D" parent="."]
 script = ExtResource("4_fa36g")
 
+[node name="Tower" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_d4e7r")
+hframes = 3
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.33333, -9.33333)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_3jqlv")
 hframes = 6
 vframes = 7
