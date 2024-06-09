@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhbk86m1op31u"]
+[gd_scene load_steps=11 format=3 uid="uid://dhbk86m1op31u"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Wolf.gd" id="1_4d66i"]
 [ext_resource type="Texture2D" uid="uid://drctkjwuhvyct" path="res://Assets/Sprites/Enemies/Wolf/walk.png" id="2_ebmrn"]
@@ -24,6 +24,18 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_psbju"]
 resource_name = "Slow"
 length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6, 2.4, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
 [sub_resource type="Animation" id="Animation_bexqh"]
 resource_name = "Walk"
@@ -42,10 +54,63 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_bg8yq"]
+resource_name = "Bleed"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_snknn"]
+resource_name = "Vulnerable"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4, 4.4, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_j3e31"]
+resource_name = "Stun"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eddcw"]
 _data = {
+"Bleed": SubResource("Animation_bg8yq"),
 "RESET": SubResource("Animation_hkw8b"),
 "Slow": SubResource("Animation_psbju"),
+"Stun": SubResource("Animation_j3e31"),
+"Vulnerable": SubResource("Animation_snknn"),
 "Walk": SubResource("Animation_bexqh")
 }
 
