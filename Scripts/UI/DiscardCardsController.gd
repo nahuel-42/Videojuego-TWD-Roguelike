@@ -8,7 +8,7 @@ func LoadDiscard(param):
 	var cards = param[0]
 	for c in cards:
 		c.SetVisible(true)
-		AddCards(c, false)
+		AddCards(c, true)
 	#GameEvents.OnRemoveBoardCards.Call([cards])
 	RestartCardIndex(len(cards))
 	f_state = State_LoadCards
