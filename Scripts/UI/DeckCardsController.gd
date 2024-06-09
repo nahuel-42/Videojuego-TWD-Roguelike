@@ -1,5 +1,5 @@
 extends BaseDeck
-var cont:float=0.
+var cont:float=5.
 var aux:float=1.
 
 
