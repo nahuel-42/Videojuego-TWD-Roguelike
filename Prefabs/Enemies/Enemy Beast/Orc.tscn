@@ -21,6 +21,10 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_kmr7a"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="Animation" id="Animation_o0mcn"]
 resource_name = "Walk"
 length = 0.7
@@ -38,10 +42,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
-
-[sub_resource type="Animation" id="Animation_kmr7a"]
-resource_name = "Slow"
-length = 4.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a12sm"]
 _data = {

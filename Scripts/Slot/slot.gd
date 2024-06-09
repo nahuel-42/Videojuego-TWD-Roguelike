@@ -9,10 +9,10 @@ const DAMAGE_DECORATOR = "res://prefabs/damage_decorator.tscn"
 @export var m_sprite2D : Sprite2D = null
 
 func glow_slot():
-	m_sprite2D.flip_v = false
+	m_sprite2D.modulate = Color(128, 128, 128)
 
 func unglow_slot():
-	m_sprite2D.flip_v = true
+	m_sprite2D.modulate = Color(1, 1, 1)
 	
 func apply_card(card):
 	pass

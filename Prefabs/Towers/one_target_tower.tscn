@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp82nvs2t4q36"]
 
-[ext_resource type="Texture2D" uid="uid://bf24wyp6s11au" path="res://Assets/Sprites/Heroes/Rogue/Idle/Idle-Sheet.png" id="1_k8ikl"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/one_target_attack.gd" id="2_etsr7"]
 [ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_rqxjt"]
+[ext_resource type="Texture2D" uid="uid://cyhc2vimtj36h" path="res://Assets/Sprites/Towers/SingleTarget.png" id="4_3jqlv"]
 [ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="4_fa36g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
@@ -56,8 +56,9 @@ script = ExtResource("2_etsr7")
 script = ExtResource("4_fa36g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_k8ikl")
-hframes = 4
+texture = ExtResource("4_3jqlv")
+hframes = 6
+vframes = 7
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]

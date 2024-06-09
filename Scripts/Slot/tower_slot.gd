@@ -21,6 +21,7 @@ func apply_card(card):
 				set_class(card.id)
 		"delete":
 			delete_tower()
+			current_card_id = -1
 	return previous_card_id
 
 func create_tower(id):

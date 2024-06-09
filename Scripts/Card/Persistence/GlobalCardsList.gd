@@ -36,7 +36,7 @@ var CollectionCard = [
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
 	#[11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],#para probar todas las cartas
-	[0,1,7,8,3],
+	[0,1,2,8,3],
 	[0,2,1,1]
 ]
 	
