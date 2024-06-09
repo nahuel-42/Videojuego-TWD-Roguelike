@@ -146,4 +146,3 @@ func terminate_vulnerable():
 func effect_finished(animation_name):
 	match animation_name:
 		"Slow": terminate_slow()
-	
