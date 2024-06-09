@@ -98,8 +98,11 @@ func start_bleeding():
 		return
 		
 	bleeding = true
-	call_deferred("deal_bleeding_damage", 1)
-	call_deferred("terminate_bleeding", 5)
+	
+	animation.play("Bleed")
+	sprite.modulate = Color(1, 0, 0)
+	#call_deferred("deal_bleeding_damage", 1) #ver
+	#call_deferred("terminate_bleeding", 5)
 
 func deal_bleeding_damage():
 	print("bleeding")
@@ -114,7 +117,7 @@ func start_slow():
 	if slowed:
 		return
 	animation.play("Slow")
-	sprite.modulate = Color(0, 0, 1)	
+	sprite.modulate = Color(0, 0, 1)
 	speed /= 2
 	slowed = true
 
@@ -122,13 +125,15 @@ func terminate_slow():
 	slowed = false
 	speed *= 2
 	sprite.modulate = Color(1, 1, 1)
+	
 
 func start_stun():
 	if stunned:
 		return
 		
 	stunned = true
-	call_deferred("terminate_stun", 2)
+	animation.play("Stun")
+	sprite.modulate = Color(0, 1, 0)
 	
 func terminate_stun():
 	stunned = false
@@ -146,5 +151,6 @@ func terminate_vulnerable():
 func effect_finished(animation_name):
 	match animation_name:
 		"Slow": terminate_slow()
+		"Stun": terminate_stun()
 	
 	animation.play("Walk")
