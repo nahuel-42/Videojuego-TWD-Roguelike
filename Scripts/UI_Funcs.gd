@@ -3,12 +3,12 @@ extends RefCounted
 
 static func SetParent(parent, node: Control, keepPosition = false):
 	var pos = node.global_position
-	if (node.get_parent() != null):		
+	if (node.get_parent() != null):
 		node.get_parent().remove_child(node)
 	if (parent != node.get_parent()):
 		parent.add_child(node)
 	if (keepPosition):
-		node.position = pos
+		node.global_position = pos
 
 static func LocateCard(parent, node : Control, keepPosition = false):
 	SetParent(parent, node, keepPosition)

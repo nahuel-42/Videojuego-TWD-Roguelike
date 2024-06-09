@@ -50,9 +50,8 @@ func SetActive(value : bool):
 
 func ApplyCard(card : CardControl):
 	if (m_slotSelected != null):
-		card.use([m_slotSelected])
 		#SetActive(false)
-		return true
+		return card.use([m_slotSelected])
 	return false
 ######End######
 

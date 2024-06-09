@@ -66,7 +66,6 @@ m_hideCards = NodePath("HidePassives")
 m_mainRef = NodePath("MainPassives")
 
 [node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
-visible = false
 z_index = -1
 script = ExtResource("5_jd3hf")
 m_background = NodePath("../MainPassives/Background")
@@ -301,8 +300,9 @@ offset_left = 1.0
 offset_top = 33.0
 offset_right = 222.0
 offset_bottom = 60.0
-step = 1.0
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 1.0
 show_percentage = false
 
 [node name="PopupCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]
