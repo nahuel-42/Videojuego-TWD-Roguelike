@@ -22,10 +22,16 @@ func _process(delta):
 	if (f_state != null):
 		f_state.call(delta)
 	
-func AddCards(card):
+func AddCards(card : CardControl, keepPosition : bool = false):
+	print("__________________________________")
+	print(card.global_position)
 	m_cardsList.append(card)
-	UI_funcs.LocateCard(m_mainRef, card)
-	card.position -= Vector2(0, m_screenSize.y + 100)
+	print(card.global_position)
+	UI_funcs.LocateCard(m_mainRef, card, keepPosition)
+	print(card.global_position)
+	if (!keepPosition):
+		card.position -= Vector2(0, m_screenSize.y + 100)
+	print(card.global_position)
 	
 func RemoveCards(amount):
 	var list = []

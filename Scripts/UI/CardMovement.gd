@@ -45,7 +45,7 @@ func SetPassiveDetector():
 func SetSpecialityDetector():
 	m_detector = GameEvents.OnGetSlotDetectorUI.Call([2])
 func SetClassDetector():
-	m_detector = GameEvents.OnGetSlotDetectorUI.Call([4])
+	m_detector = GameEvents.OnGetSlotDetectorUI.Call([2])
 ######################################
 
 ###################INPUT##############

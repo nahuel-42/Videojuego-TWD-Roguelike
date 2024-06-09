@@ -10,8 +10,8 @@ static func SetParent(parent, node: Control, keepPosition = false):
 	if (keepPosition):
 		node.position = pos
 
-static func LocateCard(parent, node : Control):
-	SetParent(parent, node)
+static func LocateCard(parent, node : Control, keepPosition = false):
+	SetParent(parent, node, keepPosition)
 	node.set_anchors_preset(Control.PRESET_FULL_RECT)
 	node.anchor_left = 0.0
 	node.anchor_right = 1.0
