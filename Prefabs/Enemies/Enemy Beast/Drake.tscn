@@ -5,10 +5,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lgla"]
 
-[sub_resource type="Animation" id="Animation_t6xwo"]
-resource_name = "Fly"
-length = 1.1
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_a4j6e"]
+resource_name = "Bleed"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,10 +15,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 0, 1, 2]
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
 }
 
 [sub_resource type="Animation" id="Animation_7misg"]
@@ -69,9 +68,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_a4j6e"]
-resource_name = "Bleed"
-length = 5.0
+[sub_resource type="Animation" id="Animation_t6xwo"]
+resource_name = "Walk"
+length = 1.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,19 +79,19 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
+"values": [0, 1, 2, 0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jjir"]
 _data = {
 "Bleed": SubResource("Animation_a4j6e"),
-"Fly": SubResource("Animation_t6xwo"),
 "RESET": SubResource("Animation_7misg"),
 "Slow": SubResource("Animation_2x8h8"),
-"Stun": SubResource("Animation_mw568")
+"Stun": SubResource("Animation_mw568"),
+"Walk": SubResource("Animation_t6xwo")
 }
 
 [node name="Drake" type="CharacterBody2D"]
@@ -104,16 +104,11 @@ shape = SubResource("CircleShape2D_7lgla")
 texture = ExtResource("2_seo2r")
 hframes = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("2_seo2r")
-hframes = 3
-frame = 2
-
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_6jjir")
 }
-autoplay = "Fly"
+autoplay = "Walk"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
