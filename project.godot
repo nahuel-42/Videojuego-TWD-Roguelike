@@ -23,6 +23,7 @@ Utils="*res://Scripts/Map/utils.gd"
 Parameters="*res://Scripts/Parameters.gd"
 GlobalCardsList="*res://Scripts/Card/Persistence/GlobalCardsList.gd"
 WaveManager="*res://Scripts/WaveManager.gd"
+GameController="*res://Scripts/GameController.gd"
 
 [display]
 

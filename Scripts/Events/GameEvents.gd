@@ -15,3 +15,5 @@ static var OnShowPopCards = Action.new()
 static var OnAddCardsInGame = Action.new()
 static var OnSwapCardsInGame = Action.new()
 static var OnRemoveBoardCards = Action.new()
+############################################################
+static var OnUpdateMana = Action.new()
