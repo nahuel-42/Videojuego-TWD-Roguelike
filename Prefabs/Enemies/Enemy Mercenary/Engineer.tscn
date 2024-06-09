@@ -21,6 +21,10 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_bjlfr"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="Animation" id="Animation_l66lm"]
 resource_name = "Walk"
 length = 0.65
@@ -38,10 +42,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_bjlfr"]
-resource_name = "Slow"
-length = 4.0
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jahk6"]
 _data = {
 "RESET": SubResource("Animation_dlw4w"),
@@ -50,6 +50,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pdmw"]
+radius = 368.989
 
 [node name="Engineer" type="CharacterBody2D"]
 script = ExtResource("1_5u67n")
@@ -84,3 +85,6 @@ offset_bottom = -27.0
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="add_tower"]
+[connection signal="body_exited" from="Area2D" to="." method="delete_tower"]

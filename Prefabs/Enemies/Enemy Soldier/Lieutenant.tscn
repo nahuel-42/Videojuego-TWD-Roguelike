@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5whtvxiauhd2"]
+[gd_scene load_steps=9 format=3 uid="uid://5whtvxiauhd2"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Soldiers/Lieutenant.gd" id="1_ge2qc"]
 [ext_resource type="Texture2D" uid="uid://deli48gdekg36" path="res://Assets/Sprites/Enemies/Liutenant/Walk.png" id="2_15yuu"]
@@ -21,6 +21,10 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_172vy"]
+resource_name = "Slow"
+length = 4.0
+
 [sub_resource type="Animation" id="Animation_b1cth"]
 resource_name = "Walk"
 length = 0.65
@@ -38,16 +42,15 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_172vy"]
-resource_name = "Slow"
-length = 4.0
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_epwbi"]
 _data = {
 "RESET": SubResource("Animation_8pxh7"),
 "Slow": SubResource("Animation_172vy"),
 "Walk": SubResource("Animation_b1cth")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sv4nh"]
+radius = 295.0
 
 [node name="Lieutenant" type="CharacterBody2D"]
 script = ExtResource("1_ge2qc")
@@ -76,3 +79,11 @@ hframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_epwbi")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_sv4nh")
+
+[connection signal="body_entered" from="Area2D" to="." method="add_ally"]
+[connection signal="body_exited" from="Area2D" to="." method="delete_ally"]
