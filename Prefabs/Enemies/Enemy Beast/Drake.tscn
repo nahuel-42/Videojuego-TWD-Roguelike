@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3e7jtsluty0i"]
+[gd_scene load_steps=10 format=3 uid="uid://b3e7jtsluty0i"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Beasts/Drake.gd" id="1_fushe"]
 [ext_resource type="Texture2D" uid="uid://o87mx2qr0ufu" path="res://Assets/Sprites/Enemies/Drake/Dragon.png" id="2_seo2r"]
@@ -40,12 +40,58 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_2x8h8"]
 resource_name = "Slow"
 length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4, 2.1, 2.9, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_mw568"]
+resource_name = "Stun"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_a4j6e"]
+resource_name = "Bleed"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jjir"]
 _data = {
+"Bleed": SubResource("Animation_a4j6e"),
 "Fly": SubResource("Animation_t6xwo"),
 "RESET": SubResource("Animation_7misg"),
-"Slow": SubResource("Animation_2x8h8")
+"Slow": SubResource("Animation_2x8h8"),
+"Stun": SubResource("Animation_mw568")
 }
 
 [node name="Drake" type="CharacterBody2D"]
@@ -57,6 +103,11 @@ shape = SubResource("CircleShape2D_7lgla")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_seo2r")
 hframes = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("2_seo2r")
+hframes = 3
+frame = 2
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
