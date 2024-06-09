@@ -66,7 +66,6 @@ m_hideCards = NodePath("HidePassives")
 m_mainRef = NodePath("MainPassives")
 
 [node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
-visible = false
 z_index = -1
 script = ExtResource("5_jd3hf")
 m_background = NodePath("../MainPassives/Background")

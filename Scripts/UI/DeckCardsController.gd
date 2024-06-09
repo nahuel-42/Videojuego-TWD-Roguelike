@@ -1,5 +1,11 @@
 extends BaseDeck
+var cont:float=0.
+var aux:float=1.
 
+
+func _process(delta):
+	super._process(delta)
+	cont+=aux*delta
 func CreateCards(deck):	
 	for i in deck:
 		var instance = CardFactory.createCard(i)
@@ -16,10 +22,12 @@ func _on_button_button_up():
 	f_state = State_LoadCards
 
 func _on_button_2_button_up():	
-	var newList = RemoveCards(5)
-	GameEvents.OnLoadBoard.Call([newList])
-	m_actualCardIndex = 0
-	f_state = State_LoadCards
+	if (cont>=5.):
+		var newList = RemoveCards(5)
+		GameEvents.OnLoadBoard.Call([newList])
+		m_actualCardIndex = 0
+		f_state = State_LoadCards
+		cont=1
 
 
 func _on_show_pop_button_down():
