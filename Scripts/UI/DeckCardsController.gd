@@ -30,7 +30,7 @@ func StartDeck():
 		AddCardsPosition(c)
 	
 	#Pone N cartas en el board
-	#_on_button_2_button_up()
+	_on_button_2_button_up()
 	
 	#Activa el modo loadcards
 	f_state = State_LoadCards
@@ -41,6 +41,10 @@ func ReceiveCards(cards):
 	for c in cards:
 		c.SetSide(false)
 		AddCardsPosition(c)
+	
+	#Pone N cartas en el board
+	m_restartCount = 0
+	_on_button_2_button_up()
 
 func _on_button_2_button_up():
 	#chequea que el tiempo sea mayor al max time para el discard
@@ -55,7 +59,7 @@ func _on_button_2_button_up():
 		m_timeCont=0.0
 		
 		#Cambiar a 1 para que resetee antes
-		if (m_restartCount == 2):
+		if (m_restartCount == 1):
 			GameEvents.OnRestartDeck.Call([self])
 			m_restartCount = 0
 

@@ -10,8 +10,7 @@ extends BaseDeck
 var m_cardsListInGame = []
 var m_cardsAmount : int = 0
 
-func _ready():
-	super._ready()
+func _init():
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
 	
 	GameEvents.OnAddCardsInGame.AddListener(AddCardsInGame)
