@@ -72,8 +72,6 @@ func randomizeDeck(deck):
 	var rng = RandomNumberGenerator.new()
 	var aux=[]
 	var j
-	#for i in len(deck):
-	#	print("id original"+str(i)+str(deck[i].GetID()))
 	for i in len(deck):
 		vec.append(0)
 		aux.append(null)
@@ -92,8 +90,6 @@ func randomizeDeck(deck):
 			vec[j]=1
 			aux[j]=deck[i]
 	deck=aux
-	#for i in len(deck):
-	#	print("id CAMBIADO"+str(i)+str(deck[i].GetID()))
 	return deck
 func isTower(id):
 	if (id<=2 or id>=11 and id<=13):

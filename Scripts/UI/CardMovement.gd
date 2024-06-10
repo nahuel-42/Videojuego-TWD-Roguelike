@@ -58,7 +58,7 @@ func GetInputEvent(card, event):
 
 func ClickPressed(card):
 	card.SetFront()
-	card.z_index = 10
+	card.setTransparent(45)
 	card.SetTypeDetector(self)
 	m_sizeCard = card.size / 2.0
 	m_relativePosition = card.global_position + m_sizeCard
@@ -71,6 +71,7 @@ func ClickPressed(card):
 	
 func ClickUnPressed(card):
 	card.SetBack()
+	card.setTransparent(255)
 	if (!m_detector.ApplyCard(m_cardSelected)):
 		m_cardUnSelected.append([m_cardSelected, card.get_parent().global_position])
 		
