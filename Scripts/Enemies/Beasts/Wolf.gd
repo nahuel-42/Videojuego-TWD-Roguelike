@@ -4,7 +4,7 @@ class_name EnemyWolf
 #TODO: la probabilidad de acierto disminuya con el
 
 func init_stats():
-	speed = 170
+	speed = 125
 	health = 2
 
 func take_damage(damage):

@@ -90,6 +90,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_b1cth"]
 resource_name = "Walk"
 length = 0.65
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -128,16 +129,16 @@ debug_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.94902, 0, 0, 1)
-offset_left = -15.0
-offset_top = -67.0
-offset_right = 21.0
-offset_bottom = -58.0
+offset_left = -16.0
+offset_top = -83.0
+offset_right = 20.0
+offset_bottom = -74.0
 step = 1.0
 value = 100.0
 show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, -31)
+position = Vector2(5, -57)
 texture = ExtResource("2_15yuu")
 hframes = 7
 
@@ -145,6 +146,7 @@ hframes = 7
 libraries = {
 "": SubResource("AnimationLibrary_epwbi")
 }
+autoplay = "Walk"
 
 [node name="Area2D" type="Area2D" parent="."]
 

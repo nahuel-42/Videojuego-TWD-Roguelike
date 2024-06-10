@@ -121,6 +121,7 @@ script = ExtResource("1_l5wt2")
 shape = SubResource("CircleShape2D_3ii4q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -49)
 texture = ExtResource("2_3acba")
 hframes = 8
 
@@ -135,10 +136,10 @@ debug_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.94902, 0, 0, 1)
-offset_left = -18.0
-offset_top = -36.0
-offset_right = 18.0
-offset_bottom = -27.0
+offset_left = -10.0
+offset_top = -85.0
+offset_right = 26.0
+offset_bottom = -76.0
 step = 1.0
 value = 100.0
 show_percentage = false

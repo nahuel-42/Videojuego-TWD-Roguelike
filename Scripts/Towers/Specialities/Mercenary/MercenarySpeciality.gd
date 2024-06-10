@@ -1,4 +1,4 @@
-class_name Mercenary
+class_name MercenarySpeciality
 extends Speciality
 
 func modify_damage(enemy, damage):

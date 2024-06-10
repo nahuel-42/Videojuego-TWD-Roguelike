@@ -2,8 +2,8 @@ class_name Soldier
 extends Enemy
 
 var is_boosted = false
-var speed_boosted = 140
-var speed_regular = 125
+var speed_boosted = 100
+var original_speed
 var max_health = 5 #vida maxima
 
 func set_group():
@@ -20,8 +20,9 @@ func heal(healing):
 
 func boost_speed():
 	is_boosted = true
+	original_speed = speed
 	speed = speed_boosted
 
 func decrease_speed():
 	is_boosted = false
-	speed = speed_regular
+	speed = original_speed

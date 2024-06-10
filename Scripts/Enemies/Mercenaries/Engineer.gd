@@ -1,5 +1,5 @@
-extends Mercenary
 class_name EnemyEngineer
+extends Mercenary
 
 #TODO: Desactiva torres por cierto tiempo cuando esta al rango de alcance de estas
 var towers_in_range = []

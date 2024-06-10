@@ -1,5 +1,5 @@
-extends Mercenary
 class_name EnemyWizzard
+extends Mercenary
 
 #TODO: bajar la cadencia de disparo de torres cercanas
 var towers_in_range = []

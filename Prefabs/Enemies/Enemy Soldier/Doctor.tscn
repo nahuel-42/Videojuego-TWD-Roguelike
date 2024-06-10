@@ -5,6 +5,22 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p66wp"]
 
+[sub_resource type="Animation" id="Animation_6c1is"]
+resource_name = "Bleed"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 6, 7, 8, 0, 1, 3, 4, 5, 6, 7, 8, 0]
+}
+
 [sub_resource type="Animation" id="Animation_ej87i"]
 length = 0.9
 step = 0.05
@@ -37,9 +53,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_vaghg"]
-resource_name = "Walk"
-length = 2.2
+[sub_resource type="Animation" id="Animation_hyd7c"]
+resource_name = "Stun"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,26 +63,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_6c1is"]
-resource_name = "Bleed"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3, 3.6, 3.9, 4.2, 4.5, 4.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 3, 4, 5, 6, 7, 8, 0, 1, 3, 4, 5, 6, 7, 8, 0]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_eg85s"]
@@ -85,9 +85,10 @@ tracks/0/keys = {
 "values": [0, 1, 3, 4, 5, 6, 7, 8, 0, 1, 3, 4, 5, 6, 7, 8, 0]
 }
 
-[sub_resource type="Animation" id="Animation_hyd7c"]
-resource_name = "Stun"
-length = 2.0
+[sub_resource type="Animation" id="Animation_vaghg"]
+resource_name = "Walk"
+length = 2.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +96,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sry4x"]
@@ -121,6 +122,8 @@ script = ExtResource("1_hu2q6")
 shape = SubResource("CircleShape2D_p66wp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -30)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_353y1")
 hframes = 9
 
@@ -128,6 +131,7 @@ hframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_sry4x")
 }
+autoplay = "Walk"
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -139,10 +143,10 @@ debug_enabled = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.94902, 0, 0, 1)
-offset_left = -18.0
-offset_top = -36.0
-offset_right = 18.0
-offset_bottom = -27.0
+offset_left = -17.0
+offset_top = -83.0
+offset_right = 19.0
+offset_bottom = -74.0
 step = 1.0
 value = 100.0
 show_percentage = false

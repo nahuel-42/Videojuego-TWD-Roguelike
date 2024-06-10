@@ -1,6 +1,5 @@
-extends Mercenary
 class_name EnemyArcher
-
+extends Mercenary
 #TODO: puede disparar con rango al castillo aliado poner un colider
 
 @onready var animation_archer = $AnimationArcher
