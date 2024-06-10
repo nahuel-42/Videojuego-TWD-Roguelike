@@ -2,6 +2,7 @@ class_name AttackMethod
 extends Node2D
 
 @onready var speciality : Speciality = $"../Speciality"
+@onready var animation : AnimationPlayer = $"../Animation"
 
 var collision_shape : CollisionShape2D
 var enemies_in_range = []
@@ -43,24 +44,22 @@ func get_accuracy():
 func get_attack_speed():
 	return attack_speed * attack_speed_mod
 
-@onready var color = get_parent().modulate
 func perform(delta):
 	if cooldown > 0:
-		if cooldown < attack_speed/1.5:
-			get_parent().modulate = color
 		cooldown -= delta
 		return
 	
-	fire()
+	if len(enemies_in_range) != 0:
+		animation.play("Attack")
 
 # Función para detectar cuando un objeto entra en el área
 func add_enemy(body):
-	if body != self:  # Agregar que sea del grupo enemy
+	if body.is_in_group("Enemy"):  # Agregar que sea del grupo enemy
 		enemies_in_range.append(body)
 
 # Función para detectar cuando un objeto sale del área
 func delete_enemy(body):
-	if body != self and body in enemies_in_range:
+	if body.is_in_group("Enemy") and body in enemies_in_range:
 		enemies_in_range.erase(body)
 
 func fire():

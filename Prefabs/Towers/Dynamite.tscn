@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://byu8js8u4mlfg"]
+
+[ext_resource type="Texture2D" uid="uid://cbr4tj30tmwfr" path="res://Assets/Sprites/Towers/Ammo/Dynamite.png" id="1_0vir4"]
+[ext_resource type="Script" path="res://Scripts/Towers/Attacks/Dynamite.gd" id="1_aksob"]
+[ext_resource type="Texture2D" uid="uid://6ptig6vyonph" path="res://Assets/Sprites/Towers/Ammo/Explosions.png" id="2_w40vv"]
+
+[sub_resource type="Animation" id="Animation_rycro"]
+resource_name = "Explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"disable_cs"
+}, {
+"args": [],
+"method": &"enable_cs"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_um6bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cq35p"]
+_data = {
+"Explosion": SubResource("Animation_rycro"),
+"RESET": SubResource("Animation_um6bv")
+}
+
+[node name="Dynamite" type="Node2D"]
+script = ExtResource("1_aksob")
+speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_0vir4")
+hframes = 6
+
+[node name="Explosion" type="Sprite2D" parent="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_w40vv")
+hframes = 9
+
+[node name="ExplosionAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cq35p")
+}

@@ -9,8 +9,6 @@ var attack_method : AttackMethod
 
 func _ready():
 	attack_method = $AttackMethod
-	animation.play("idle")
-	#add_to_group()
 
 func load_stats(stats):
 	attack_method.load_stats(stats)
@@ -46,3 +44,6 @@ func upgrade(damage, range, attack_speed, accuracy):
 	attack_method.upgrade(damage, range, attack_speed, accuracy)
 	draw_radius()
 	
+
+func _on_animation_animation_finished(anim_name):
+	animation.play("Idle")

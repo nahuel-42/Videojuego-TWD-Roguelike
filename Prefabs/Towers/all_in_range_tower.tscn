@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpaqq0omxsn8i"]
+[gd_scene load_steps=15 format=3 uid="uid://cpaqq0omxsn8i"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_1kl2x"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/all_in_range_attack.gd" id="2_fqnvh"]
 [ext_resource type="Texture2D" uid="uid://bnh7yqmbriuwj" path="res://Assets/Sprites/Towers/TowerSlots.png" id="4_wlaew"]
 [ext_resource type="Texture2D" uid="uid://c6r7wbuw0me4b" path="res://Assets/Sprites/Towers/AllInRange.png" id="5_mf6my"]
 [ext_resource type="Script" path="res://Scripts/Towers/Specialities/Speciality.gd" id="5_x4a1w"]
+[ext_resource type="Texture2D" uid="uid://6ptig6vyonph" path="res://Assets/Sprites/Towers/Ammo/Explosions.png" id="6_r2nws"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 90.5538
@@ -40,10 +41,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Explosion:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_kph4k"]
 resource_name = "Attack"
-length = 1.2
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,10 +64,39 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackMethod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"explosion"
+}, {
+"args": [],
+"method": &"fire"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Explosion:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82oli"]
@@ -62,6 +104,67 @@ _data = {
 "Attack": SubResource("Animation_kph4k"),
 "Idle": SubResource("Animation_afmo8"),
 "RESET": SubResource("Animation_63t35")
+}
+
+[sub_resource type="Animation" id="Animation_3l2ar"]
+resource_name = "Explosion"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_kj5hs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7cjl7"]
+_data = {
+"Explosion": SubResource("Animation_3l2ar"),
+"RESET": SubResource("Animation_kj5hs")
 }
 
 [node name="AllInRangeTower" type="Node2D"]
@@ -102,5 +205,16 @@ texture = ExtResource("5_mf6my")
 hframes = 6
 vframes = 6
 
+[node name="Explosion" type="Sprite2D" parent="Sprite2D"]
+scale = Vector2(4.44444, 4.44444)
+texture = ExtResource("6_r2nws")
+hframes = 9
+
+[node name="ExplosionAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7cjl7")
+}
+
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
