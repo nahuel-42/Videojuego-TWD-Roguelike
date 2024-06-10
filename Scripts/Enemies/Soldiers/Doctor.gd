@@ -29,4 +29,4 @@ func delete_ally(body):
 
 func healAlly():
 	for ally in allies_in_range:
-		ally.heal(healing) #Crear Funcion en enemy que lo permita curarse
+		ally.heal(healing)
