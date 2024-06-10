@@ -16,12 +16,11 @@ func LoadDiscard(param):
 			AddCards(c)
 		
 		#GameEvents.OnRemoveBoardCards.Call([cards])
-		RestartCardIndex(len(cards))
 		f_state = State_LoadCards
 
 func RestartDeck(param):
 	var deckCardsController : DeckCards = param[0]
-	deckCardsController.RecieveCards(RemoveCards(len(m_cardsList)))
+	deckCardsController.ReceiveCards(RemoveCards(len(m_cardsList)))
 
 func _on_show_pop_button_down():
 	GameEvents.OnShowPopCards.Call([m_cardsList, false, true])

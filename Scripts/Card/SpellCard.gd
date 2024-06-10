@@ -14,7 +14,7 @@ func use(param):
 	info.append(param[0])
 	info.append(m_refCard["range"])
 	info.append(m_refCard["damage"])
-	info.append(5)
+	info.append(1)
 	
 	GameEvents.OnSpellCardActivated.Call(info)
 	#Se usa y va al descarte

@@ -17,28 +17,40 @@ func StartDeck():
 	#por ahora se crea solo fuego
 	CardsManager.InitUserSave()
 	var deck = CardsManager.CreateReferenceDeck(0)
-	CreateCards(deck)
-	RestartCardIndex(len(deck))
+	
+	#Crea las cartas en la UI para mezclar
+	var temporaryDeck = []
+	for id in deck:
+		temporaryDeck.append(CardFactory.createCard(id))
+	
+	#Se mezclan y se agrega al deck
+	GlobalCardsList.GenerateDeck(temporaryDeck)
+	for c in temporaryDeck:
+		c.SetSide(false)
+		AddCardsPosition(c)
+	
+	#Pone N cartas en el board
+	#_on_button_2_button_up()
+	
+	#Activa el modo loadcards
 	f_state = State_LoadCards
 	
-func CreateCards(deck):
-	for id in deck:
-		var instance = CardFactory.createCard(id)
-		instance.SetSide(false)
-		AddCardsPosition(instance)
-
-func RecieveCards(cards):
+func ReceiveCards(cards):
+	#Recibe las cartas del discard para mezclaras y volverlas a agregar
+	GlobalCardsList.GenerateDeck(cards)
 	for c in cards:
 		c.SetSide(false)
 		AddCardsPosition(c)
 
 func _on_button_2_button_up():
+	#chequea que el tiempo sea mayor al max time para el discard
 	if (m_timeCont>=m_maxTime):
 		if (len(m_cardsList) == 0):
 			m_restartCount += 1
 		var newList = RemoveCards(5)
 		GameEvents.OnLoadBoard.Call([newList])
-		#m_actualCardIndex = 0
+		
+		#Activa el modo loadcards
 		f_state = State_LoadCards
 		m_timeCont=0.0
 		

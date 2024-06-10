@@ -79,8 +79,10 @@ func use(param):
 	#visible = false
 	#SetVisible(false)
 	param.append(self)
-	if (GameController.manaConsumption(m_baseCard.m_refCard["cost"]) and m_baseCard.use(param)):
+	var cost = m_baseCard.m_refCard["cost"]
+	if (GameController.manaCheck(cost) and m_baseCard.use(param)):
 		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
+		GameController.manaConsumption(cost)
 		return true
 	return false
 
