@@ -53,6 +53,7 @@ func Init(baseCard):
 	else:
 		var descr = m_baseCard.m_refCard['desc']
 		get_node('TopSideCard/description').text = descr
+		print(descr)
 	
 func _ready():
 	SetSide(false)

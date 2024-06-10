@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://crqhywu1a32fj"]
+[gd_scene load_steps=4 format=3 uid="uid://crqhywu1a32fj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/Cards/Front.png" id="2_761or"]
 [ext_resource type="Texture2D" uid="uid://drkhj63h86ooh" path="res://Assets/Sprites/Dorso.png" id="3_s28en"]
 
 [sub_resource type="FontVariation" id="FontVariation_lfe6d"]
@@ -41,7 +40,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_761or")
 expand_mode = 1
 
 [node name="name" type="Label" parent="TopSideCard"]
@@ -166,6 +164,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="description" type="Label" parent="TopSideCard"]
+z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
@@ -173,6 +172,11 @@ anchor_top = 0.78
 anchor_right = 0.9
 anchor_bottom = 0.925
 offset_bottom = -3.05176e-05
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BottomSideCard" type="Panel" parent="."]
 visible = false
