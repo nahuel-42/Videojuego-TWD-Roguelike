@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_jd2ey"]
 line_spacing = 0.5
-font_size = 9
+font_size = 10
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2j5yn"]
@@ -59,10 +59,10 @@ z_index = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.11
-anchor_top = 0.07
-anchor_right = 0.693
+anchor_top = 0.065
+anchor_right = 0.69
 anchor_bottom = 0.237
-offset_right = -0.900009
+offset_right = -1.52588e-05
 offset_bottom = -0.800011
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lfe6d")
@@ -156,7 +156,7 @@ anchor_bottom = 0.227
 offset_left = 0.0999756
 offset_bottom = 0.199997
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 10
 text = "Cost"
 horizontal_alignment = 1
 vertical_alignment = 1

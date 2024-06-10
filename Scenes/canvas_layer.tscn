@@ -29,31 +29,43 @@ anchor_bottom = 0.25
 [node name="Background" type="Panel" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 1.784
+anchor_top = 3.633
+anchor_right = 2.279
+anchor_bottom = 4.115
+offset_left = -0.0335999
+offset_top = -0.00421143
+offset_right = -0.081604
+offset_bottom = 0.0351563
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.45
-offset_right = 1.52588e-05
-text = "Start Fire
+anchor_left = 1.806
+anchor_top = 3.672
+anchor_right = 2.023
+anchor_bottom = 4.07
+offset_left = -0.102417
+offset_top = -0.069458
+offset_right = -0.0991821
+offset_bottom = 0.0335693
+text = "Start
 "
 
 [node name="Button2" type="Button" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.55
-anchor_right = 0.9
-anchor_bottom = 0.95
-offset_right = 1.52588e-05
-text = "Load Board"
+anchor_left = 2.041
+anchor_top = 3.675
+anchor_right = 2.258
+anchor_bottom = 4.074
+offset_left = -0.0464783
+offset_top = -0.0160522
+offset_right = -0.0432739
+offset_bottom = -0.0685425
+text = "Load"
 
 [node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -93,10 +105,14 @@ grow_vertical = 2
 [node name="Panel2" type="Panel" parent="Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.07
-anchor_top = 0.11
-anchor_right = 0.42
-anchor_bottom = 0.88
+anchor_left = 0.035
+anchor_top = 0.037
+anchor_right = 0.473
+anchor_bottom = 0.944
+offset_left = -2.064
+offset_top = 0.00600004
+offset_right = 4.02082
+offset_bottom = 3.07199
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -105,12 +121,14 @@ size_flags_vertical = 3
 [node name="Panel3" type="Panel" parent="Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.57
-anchor_top = 0.11
-anchor_right = 0.92
-anchor_bottom = 0.88
-offset_left = -3.05176e-05
-offset_right = -3.05176e-05
+anchor_left = 0.508
+anchor_top = 0.037
+anchor_right = 0.964
+anchor_bottom = 0.938
+offset_left = -1.04317
+offset_top = 0.00600004
+offset_right = 1.89444
+offset_bottom = 3.04399
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -159,10 +177,13 @@ grow_vertical = 2
 
 [node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_left = 0.28
-anchor_top = 0.78
-anchor_right = 0.72
+anchor_left = 0.241
+anchor_top = 0.725
+anchor_right = 0.753
 anchor_bottom = 1.0
+offset_left = 0.367981
+offset_top = 0.199982
+offset_right = -0.456055
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iud0")
@@ -225,6 +246,7 @@ anchor_bottom = 1.75
 [node name="CardsInGame" type="Control" parent="BoardCards"]
 visible = false
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -268,10 +290,14 @@ grow_vertical = 2
 
 [node name="ButtonHideBoardCards" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.85
-anchor_right = 0.25
-anchor_bottom = 0.95
+anchor_left = 0.154
+anchor_top = 0.903
+anchor_right = 0.235
+anchor_bottom = 0.992
+offset_left = -0.40802
+offset_top = -0.144043
+offset_right = 0.279968
+offset_bottom = 0.18396
 text = "Hide board
 cards"
 
