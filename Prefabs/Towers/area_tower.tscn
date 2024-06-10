@@ -127,6 +127,12 @@ texture = ExtResource("5_6nl7l")
 hframes = 7
 vframes = 3
 
+[node name="Label" type="Label" parent="."]
+offset_left = -42.0
+offset_top = 34.6667
+offset_right = 41.0
+offset_bottom = 57.6667
+
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
 [connection signal="body_entered" from="Area2D" to="AttackMethod" method="hit_targets"]

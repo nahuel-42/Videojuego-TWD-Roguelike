@@ -60,3 +60,6 @@ func unglow():
 	
 func has_class():
 	return tower_sprite.frame > 0
+
+func hits():
+	return attack_method.hits()

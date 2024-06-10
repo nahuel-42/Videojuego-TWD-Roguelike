@@ -24,9 +24,12 @@ func apply_card(card):
 		"class":
 			if child != null and !child.has_class():
 				set_class(card.id)
+			else:
+				return -1
 		"delete":
 			delete_tower()
 			current_card_id = -1
+			
 	return previous_card_id
 
 func create_tower(id):
