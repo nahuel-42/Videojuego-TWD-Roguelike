@@ -17,3 +17,4 @@ static var OnSwapCardsInGame = Action.new()
 static var OnRemoveBoardCards = Action.new()
 ############################################################
 static var OnUpdateMana = Action.new()
+static var OnUpdateHealth = Action.new()

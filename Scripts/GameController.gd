@@ -2,8 +2,12 @@ extends Node
 var InitialMana:float=100
 var ActualMana:float=InitialMana
 var DeltaTime:float=10.0
+var InitialHealth:int=100
+var ActualHealth:int=InitialHealth
+
 func _ready():
 	GameEvents.OnUpdateMana.Call([InitialMana/InitialMana])
+	GameEvents.OnUpdateHealth.Call([100])
 	pass # Replace with function body.
 
 func _process(delta):
@@ -20,3 +24,11 @@ func manaConsumption(cant):
 		ActualMana-=cant
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
 		return true
+
+func HealthLoss(cant):
+	if (ActualHealth-cant>0):
+		ActualHealth-=cant
+		GameEvents.OnUpdateHealth.Call([ActualHealth])
+	else:
+		GameEvents.OnUpdateHealth.Call([InitialHealth])
+		pass #aca va el game over

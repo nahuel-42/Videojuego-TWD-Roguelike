@@ -5,7 +5,6 @@ extends Node
 var target
 
 func _ready():
-	health_bar.max_value = health
 	target = $Target
 	Parameters.target = target
 	target.connect("body_entered", lose_health)
@@ -16,11 +15,8 @@ func _on_wave_completed():
 	WaveManager.start_next_wave()
 	
 func lose_health(body):
-	print(body)
-	health -= body.reach_target()
-	health_bar.value = health
-	if health <= 0:
-		game_over()
+	GameController.HealthLoss(10)
+	body.reach_target()
 		
 func game_over():
 	# TODO: En vez de resetear la vida, hacer el Game Over
