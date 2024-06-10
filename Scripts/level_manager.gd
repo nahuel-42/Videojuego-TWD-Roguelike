@@ -36,16 +36,8 @@ func _on_stage_completed():
 	fog.reveal_map(WaveManager.percentage)
 	
 func lose_health(body):
-	print(body)
-	health -= body.reach_target()
-	health_bar.value = health
-	if health <= 0:
-		game_over()
-		
-func game_over():
-	# TODO: En vez de resetear la vida, hacer el Game Over
-	health = 10
-	health_bar.value = health
+	GameController.HealthLoss(10)
+	body.reach_target()
 
 func _on_start_stage_button_pressed():
 	WaveManager.start_next_stage()

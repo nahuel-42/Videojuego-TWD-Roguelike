@@ -1,9 +1,9 @@
 extends Node
 class_name CardFactory
-static var cardScene : String = 'res://Scenes/card.tscn'
+static var cardScene : String 
 
 static func createCard(id):
-
+	cardScene = 'res://Scenes/card.tscn'
 	var scene = load(cardScene)
 	var cardData = GlobalCardsList.find_card(id) #obtiene la linea a partir de la funcion, no accede a la collection directamente
 	var instance = scene.instantiate()		

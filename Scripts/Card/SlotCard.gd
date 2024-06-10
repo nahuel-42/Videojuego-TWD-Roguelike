@@ -14,3 +14,4 @@ class_name SlotCard
 
 func use(param):
 	print("se usa una slotCard")
+	return false

@@ -1,6 +1,7 @@
+class_name BoardCards
 extends BaseDeck
 
-@export var m_cardMovement : Node
+@export var m_cardMovement : CardMovement = null
 @export var m_panels: Array[Panel] = []
 @export var m_locationSpeed : float = 10.0
 
@@ -39,10 +40,12 @@ func State_CardsLocation(delta):
 			f_state = null
 #END
 
-func LoadBoard(cardsList):
+func LoadBoard(param):
+	var cardsList = param[0]
 	for c in m_cardsList:
-		c.SetInputEvent(null)	
-	GameEvents.OnLoadDiscard.Call(m_cardsList)
+		c.SetInputEvent(null)
+		m_cardMovement.ClearAllCards()
+	GameEvents.OnLoadDiscard.Call([m_cardsList])
 	
 	m_cardsList = cardsList
 	m_cardsAmount = len(m_cardsList)
@@ -53,7 +56,7 @@ func LoadBoard(cardsList):
 		c.SetSide(true)
 		
 	f_state = State_CardsLocation
-
+	
 func GetInputEvent(card, event):
 	m_cardMovement.GetInputEvent(card, event)
 
@@ -78,15 +81,16 @@ func SwapCardsInGame(param):
 		i += 1
 			
 	if (i<count):
-		GameEvents.OnLoadDiscard.Call([m_cardsListInGame[i]])
+		GameEvents.OnLoadDiscard.Call([[m_cardsListInGame[i]]])
 		m_cardsListInGame.remove_at(i)
 	else:
 		print("Error Swap")
 	GameEvents.OnAddCardsInGame.Call([-1])
-	
+
 func RemoveBoardCards(param):
-	var list = param
-	for c in param:
+	var list = param[0]
+	m_cardMovement.ClearCards(list)
+	for c in list:
 		var index = m_cardsList.find(c)
 		if (index >= 0):
 			m_cardsList.remove_at(index)

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_cieb2"]
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
-[ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetector.gd" id="5_jd3hf"]
+[ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetectorUI.gd" id="5_jd3hf"]
 [ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="7_y252a"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
@@ -32,31 +32,43 @@ anchor_bottom = 0.25
 [node name="Background" type="Panel" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 1.784
+anchor_top = 3.633
+anchor_right = 2.279
+anchor_bottom = 4.115
+offset_left = -0.0335999
+offset_top = -0.00421143
+offset_right = -0.081604
+offset_bottom = 0.0351563
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.45
-offset_right = 1.52588e-05
-text = "Start Fire
+anchor_left = 1.806
+anchor_top = 3.672
+anchor_right = 2.023
+anchor_bottom = 4.07
+offset_left = -0.102417
+offset_top = -0.069458
+offset_right = -0.0991821
+offset_bottom = 0.0335693
+text = "Start
 "
 
 [node name="Button2" type="Button" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.55
-anchor_right = 0.9
-anchor_bottom = 0.95
-offset_right = 1.52588e-05
-text = "Load Board"
+anchor_left = 2.041
+anchor_top = 3.675
+anchor_right = 2.258
+anchor_bottom = 4.074
+offset_left = -0.0464783
+offset_top = -0.0160522
+offset_right = -0.0432739
+offset_bottom = -0.0685425
+text = "Load"
 
 [node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -69,7 +81,6 @@ m_hideCards = NodePath("HidePassives")
 m_mainRef = NodePath("MainPassives")
 
 [node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
-visible = false
 z_index = -1
 script = ExtResource("5_jd3hf")
 m_background = NodePath("../MainPassives/Background")
@@ -97,10 +108,14 @@ grow_vertical = 2
 [node name="Panel2" type="Panel" parent="Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.07
-anchor_top = 0.11
-anchor_right = 0.42
-anchor_bottom = 0.88
+anchor_left = 0.035
+anchor_top = 0.037
+anchor_right = 0.473
+anchor_bottom = 0.944
+offset_left = -2.064
+offset_top = 0.00600004
+offset_right = 4.02082
+offset_bottom = 3.07199
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -109,12 +124,14 @@ size_flags_vertical = 3
 [node name="Panel3" type="Panel" parent="Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.57
-anchor_top = 0.11
-anchor_right = 0.92
-anchor_bottom = 0.88
-offset_left = -3.05176e-05
-offset_right = -3.05176e-05
+anchor_left = 0.508
+anchor_top = 0.037
+anchor_right = 0.964
+anchor_bottom = 0.938
+offset_left = -1.04317
+offset_top = 0.00600004
+offset_right = 1.89444
+offset_bottom = 3.04399
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -126,14 +143,14 @@ anchor_bottom = 1.0
 
 [node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_top = 0.8
-anchor_right = 0.1
+anchor_top = 0.78
+anchor_right = 0.094
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lax77")
 m_cardOffsetPosition = 5.0
-m_cardLoadSpeed = 50.0
+m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
 m_hideCards = NodePath("HideDeck")
 m_mainRef = NodePath("Deck")
@@ -161,22 +178,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
+[node name="BoardCards" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 0.3
-anchor_top = 0.8
-anchor_right = 0.7
+anchor_left = 0.241
+anchor_top = 0.725
+anchor_right = 0.753
 anchor_bottom = 1.0
+offset_left = 0.367981
+offset_top = 0.199982
+offset_right = -0.456055
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_5iud0")
-m_cardMovement = NodePath("CardMovement")
-m_panels = [NodePath("Board/Panel1"), NodePath("Board/Panel2"), NodePath("Board/Panel3"), NodePath("Board/Panel4"), NodePath("Board/Panel5")]
 m_locationSpeed = 20.0
-m_cardsInGameReference = NodePath("CardsInGame")
 m_cardOffsetPosition = 5.0
-m_hideCards = NodePath("HideBoard")
-m_mainRef = NodePath("Board")
+m_cardLoadSpeed = 5.0
+m_cardMovement = Object(Control,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":0,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":40.0,"offset_bottom":40.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":ExtResource("3_1uow5"))
+
+m_cardsInGameReference = Object(Control,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":1,"anchors_preset":15,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":0.0,"offset_top":0.0,"offset_right":0.0,"offset_bottom":0.0,"grow_horizontal":2,"grow_vertical":2,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":null)
+
+m_hideCards = Object(Control,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":1,"anchors_preset":-1,"anchor_left":0.0,"anchor_top":0.75,"anchor_right":1.0,"anchor_bottom":1.75,"offset_left":0.0,"offset_top":0.0,"offset_right":0.0,"offset_bottom":0.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":null)
+
+m_mainRef = Object(GridContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":1,"anchors_preset":-1,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":0.0,"offset_top":0.0,"offset_right":0.0,"offset_bottom":0.0,"grow_horizontal":2,"grow_vertical":2,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","columns":5,"script":null)
+
 
 [node name="Board" type="GridContainer" parent="BoardCards"]
 layout_mode = 1
@@ -227,22 +251,22 @@ anchor_bottom = 1.75
 
 [node name="CardsInGame" type="Control" parent="BoardCards"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -345.6
-offset_top = -518.4
-offset_right = -305.6
-offset_bottom = -478.4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_left = 0.9
-anchor_top = 0.8
+anchor_left = 0.906
+anchor_top = 0.78
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
 m_cardOffsetPosition = 5.0
-m_cardLoadSpeed = 50.0
+m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
 m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
@@ -272,10 +296,14 @@ grow_vertical = 2
 
 [node name="ButtonHideBoardCards" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.85
-anchor_right = 0.25
-anchor_bottom = 0.95
+anchor_left = 0.154
+anchor_top = 0.903
+anchor_right = 0.235
+anchor_bottom = 0.992
+offset_left = -0.40802
+offset_top = -0.144043
+offset_right = 0.279968
+offset_bottom = 0.18396
 text = "Hide board
 cards"
 
@@ -304,8 +332,9 @@ offset_left = 1.0
 offset_top = 33.0
 offset_right = 222.0
 offset_bottom = 60.0
-step = 1.0
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 1.0
 show_percentage = false
 
 [node name="PopupCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]

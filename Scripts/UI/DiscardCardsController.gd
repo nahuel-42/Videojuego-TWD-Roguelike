@@ -1,14 +1,16 @@
+class_name DiscardCards
 extends BaseDeck
 
 func _ready():
 	super._ready()
 	GameEvents.OnLoadDiscard.AddListener(LoadDiscard)
 
-func LoadDiscard(cards):
+func LoadDiscard(param):
+	var cards = param[0]
 	for c in cards:
 		c.SetVisible(true)
 		AddCards(c)
-		
+	#GameEvents.OnRemoveBoardCards.Call([cards])
 	RestartCardIndex(len(cards))
 	f_state = State_LoadCards
 

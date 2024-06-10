@@ -3,14 +3,17 @@ extends Control
 @export var ManaBar:ProgressBar=null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	GameEvents.OnUpdateMana.AddListener(UpdateMana)
+	GameEvents.OnUpdateHealth.AddListener(UpdateHealth)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
-func _on_health_mana_button_down():
-	HealthBar.value-=10
-	ManaBar.value-=10
+func UpdateMana(param):
+	var ManaActual=param[0]
+	ManaBar.value=ManaActual
+	
+func UpdateHealth(param):
+	var HealthActual=param[0]
+	HealthBar.value=HealthActual
+	pass

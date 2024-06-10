@@ -13,6 +13,7 @@ func use(param):
 		GameEvents.OnAddCardsInGame.Call([id])
 	else:
 		GameEvents.OnSwapCardsInGame.Call([id])
+	return true
 	#se usa la carta y se colocan en un array del mapa
 
 func SetTypeDetector(cardMovement):
