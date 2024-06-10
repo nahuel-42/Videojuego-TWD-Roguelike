@@ -12,7 +12,9 @@ func _ready():
 func apply_card(card):
 	var previous_card_id = current_card_id
 	match card.type:
-		"tower": 
+		"tower":
+			if current_card_id != -1:
+				delete_tower()
 			create_tower(card.id)
 			current_card_id = card.id
 			sprite.visible = false
