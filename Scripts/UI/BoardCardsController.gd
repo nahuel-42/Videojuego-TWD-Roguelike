@@ -1,3 +1,4 @@
+class_name BoardCards
 extends BaseDeck
 
 @export var m_cardMovement : CardMovement = null

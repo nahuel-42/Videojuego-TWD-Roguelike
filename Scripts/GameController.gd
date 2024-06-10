@@ -1,7 +1,7 @@
 extends Node
 var InitialMana:float=100
 var ActualMana:float=InitialMana
-var DeltaTime:float=10.0
+var DeltaTime:float=10000.0#10.0
 func _ready():
 	GameEvents.OnUpdateMana.Call([InitialMana/InitialMana])
 	pass # Replace with function body.
