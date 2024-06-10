@@ -67,27 +67,7 @@ func GenerateDeck(deck):
 	deck=randomizeDeck(deck)
 	return deck
 func randomizeDeck(deck):
-	var cant=0
-	var vec=[]
-	var rng = RandomNumberGenerator.new()
-	var aux
-	var j
-	for i in len(deck)-1:
-		vec[i]=0
-	for i in len(deck)-1:
-		if (isTower(deck[i].getID()) and cant<=3):
-			j=rng.randi_range(0, 2)	
-			while (vec[j]==1):
-				j=rng.randi_range(0, 2)	
-			aux[j]=deck[i]
-			vec[j]=1
-			cant+=1
-		j=rng.randi_range(3, len(deck)-1)	
-		while (vec[j]==1):
-			j=rng.randi_range(3, len(deck)-1)
-		vec[j]=1
-		aux[j]=deck[i]
-		deck=aux
+
 	return deck
 func isTower(id):
 	if (id<=2 or id>=11 and id<=13):
