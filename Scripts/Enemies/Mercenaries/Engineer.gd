@@ -3,7 +3,7 @@ class_name EnemyEngineer
 
 #TODO: Desactiva torres por cierto tiempo cuando esta al rango de alcance de estas
 var towers_in_range = []
-var cooldown_disable #agregar un valor
+var cooldown_disable = 10 #agregar un valor
 
 func _process(delta):
 	perform(delta)

@@ -2,6 +2,8 @@ extends TileMap
 
 const SLOT_PATH = "res://Prefabs/Slots/tower_slot.tscn"
 const BEAST_SPAWNER_PATH = "res://Prefabs/Spawners/BeastSpawner.tscn"
+const SOLDIER_SPAWNER_PATH = "res://Prefabs/Spawners/SoldierSpawner.tscn"
+const MERCENARY_SPAWNER_PATH = "res://Prefabs/Spawners/MercenarySpawner.tscn"
 const CASTLE_PATH = "res://Scenes/castle.tscn"
 const ENEMY_CASTLE_PATH = "res://Scenes/enemy_castle.tscn"
 
@@ -170,7 +172,13 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 			element = chest_scene.instantiate()
 			element._setup(TileType.CHEST,fork[-1])
 		else:
-			element = load(BEAST_SPAWNER_PATH).instantiate()
+			var random = randi() % 3 + 1
+			var prefab_path
+			match random:
+				1: prefab_path = BEAST_SPAWNER_PATH
+				2: prefab_path = SOLDIER_SPAWNER_PATH
+				3: prefab_path = MERCENARY_SPAWNER_PATH
+			element = load(prefab_path).instantiate()
 			element.position = fork[-1] * CELL_DIMENSION
 			add_child(element)
 			

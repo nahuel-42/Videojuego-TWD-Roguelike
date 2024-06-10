@@ -6,7 +6,7 @@ var ARROW_PREFAB : String = "res://Prefabs/Towers/Arrow.tscn"
 @onready var sprite : Sprite2D = $"../Sprite2D"
 
 func fire():
-	if current_target != null and current_target in enemies_in_range:
+	if current_target != null:
 		shoot_arrow()
 		cooldown = 1 / get_attack_speed()
 

@@ -11,12 +11,11 @@ func take_damage(damage):
 	if vulnerable:
 		damage *= 2
 	cooldown = 0.5
-	modulate = Color(1, 0, 0)
 	
 	var rng = RandomNumberGenerator.new()
 	var num = rng.randi_range (1,10)
 	
-	if (num > 5): #Le pega
+	if (num > 3): #Le pega
 		health -= damage
 		health_bar.value -= damage
 
