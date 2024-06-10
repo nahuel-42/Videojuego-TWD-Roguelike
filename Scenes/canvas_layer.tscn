@@ -47,6 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="Debug"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.806
@@ -458,7 +459,6 @@ grow_vertical = 2
 text = "Hide board
 cards"
 
-[connection signal="button_up" from="Debug/Button" to="DeckCards" method="_on_button_button_up"]
 [connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]

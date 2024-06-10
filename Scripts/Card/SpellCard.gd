@@ -8,7 +8,15 @@ class_name SpellCard
 
 func use(param):
 	print("se usa SpellCard")
-	return false
+	
+	var info = []
+	info.append(m_refCard["cardName"])
+	info.append(param[0])
+	info.append(m_refCard["range"])
+	info.append(m_refCard["damage"])
+	info.append(5)
+	
+	GameEvents.OnSpellCardActivated.Call(info)
 	#Se usa y va al descarte
 
 func SetTypeDetector(cardMovement):

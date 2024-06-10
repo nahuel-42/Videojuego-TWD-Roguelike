@@ -15,6 +15,7 @@ func _init():
 func ShowCards(param):
 	var amount = len(param[0])
 	if (amount > 0):
+		GameEvents.OnHideBoard.Call([true])
 		var cardList = param[0]
 		var order : bool = param[1]
 		var repeat : bool = param[2]
@@ -67,6 +68,7 @@ func ShowCards(param):
 
 func _on_exit_button_down():
 	visible = false
+	GameEvents.OnHideBoard.Call([false])
 
 func clear_grid_container_children():
 	for child in m_gridContainer.get_children():
