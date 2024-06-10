@@ -24,7 +24,7 @@ func StartDeck():
 		temporaryDeck.append(CardFactory.createCard(id))
 	
 	#Se mezclan y se agrega al deck
-	GlobalCardsList.GenerateDeck(temporaryDeck)
+	temporaryDeck=GlobalCardsList.GenerateDeck(temporaryDeck)
 	for c in temporaryDeck:
 		c.SetSide(false)
 		AddCardsPosition(c)
@@ -37,7 +37,7 @@ func StartDeck():
 	
 func ReceiveCards(cards):
 	#Recibe las cartas del discard para mezclaras y volverlas a agregar
-	GlobalCardsList.GenerateDeck(cards)
+	cards=GlobalCardsList.GenerateDeck(cards)
 	for c in cards:
 		c.SetSide(false)
 		AddCardsPosition(c)
