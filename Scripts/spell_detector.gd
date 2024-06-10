@@ -12,6 +12,8 @@ func _ready():
 	$Area2D/CollisionShape2D.shape.size = size
 	position = size / 2
 
+	GameEvents.OnSpellCardActivated.AddListener(SpellCardActivated)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -23,3 +25,21 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 		add_child(spell)
 		spell.load_stats(get_global_mouse_position(), map.CELL_DIMENSION)
 
+func SpellCardActivated(param):
+	var type = param[0]
+	var pos = param[1]
+	var range = param[2]
+	var damage = param[3]
+	var amount = param[4]
+	
+	var rng = RandomNumberGenerator.new()
+	
+	for i in range(amount):
+		var prefab = load(FIREBALL_PREFAB if type == "Fireball" else ICEBALL_PREFAB)
+		var spell = prefab.instantiate()
+		add_child(spell)
+		
+		var rx : float = rng.randf_range(-range, range) / 2.0
+		var ry : float = rng.randf_range(-range, range) / 2.0
+ 
+		spell.load_stats(pos + Vector2(rx, ry), map.CELL_DIMENSION)

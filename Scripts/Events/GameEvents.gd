@@ -1,10 +1,17 @@
 class_name GameEvents
 extends RefCounted
 
+#In Game Events
+############################################################
+static var OnSpellCardActivated = Action.new()
+############################################################
+
+############################################################
+#UI EVENTS
 ############################################################
 static var OnLoadBoard = Action.new()
-############################################################
 static var OnLoadDiscard = Action.new()
+static var OnRestartDeck = Action.new()
 ############################################################
 static var OnGetSlotDetectorUI = Func.new()
 static var OnGetSpellDetectorUI = Func.new()
@@ -18,3 +25,5 @@ static var OnRemoveBoardCards = Action.new()
 ############################################################
 static var OnUpdateMana = Action.new()
 static var OnUpdateHealth = Action.new()
+############################################################
+static var OnHideBoard = Action.new()
