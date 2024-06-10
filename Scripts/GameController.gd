@@ -32,3 +32,5 @@ func HealthLoss(cant):
 	else:
 		GameEvents.OnUpdateHealth.Call([InitialHealth])
 		pass #aca va el game over
+func StartWave():
+	WaveManager.start_next_wave()
