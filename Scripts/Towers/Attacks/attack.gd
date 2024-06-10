@@ -69,3 +69,7 @@ func set_speciality(speciality):
 	self.speciality.queue_free()
 	self.speciality = speciality
 	print("Nueva especialidad: " + str(self.speciality))
+
+func hits():
+	var random = randi() % 100 + 1
+	return random > accuracy * 100
