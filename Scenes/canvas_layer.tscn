@@ -128,13 +128,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lax77")
-m_maxTime = 0.0
 m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
 m_hideCards = NodePath("HideDeck")
 m_mainRef = NodePath("Deck")
-m_distanceWaitNextCard = 250.0
 
 [node name="Deck" type="Control" parent="DeckCards"]
 layout_mode = 1
@@ -245,7 +243,6 @@ m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
 m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
-m_distanceWaitNextCard = 350.0
 
 [node name="HideDiscard" type="Control" parent="DiscardCards"]
 layout_mode = 1
