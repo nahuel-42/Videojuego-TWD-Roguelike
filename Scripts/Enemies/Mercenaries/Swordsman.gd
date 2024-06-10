@@ -4,7 +4,7 @@ extends Mercenary
 #TODO: la probabilidad de acierto disminuye con el
 
 func init_stats(): #sujeto a cambios
-	speed = 170
+	speed = 140
 	health = 2
 
 func take_damage(damage):
