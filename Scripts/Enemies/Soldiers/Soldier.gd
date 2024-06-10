@@ -1,11 +1,27 @@
 class_name Soldier
 extends Enemy
 
-var is_boosted
+var is_boosted = false
+var speed_boosted = 140
+var speed_regular = 125
+var max_health = 5 #vida maxima
 
 func set_group():
 	add_to_group(Parameters.GROUPS.SOLDIER)
 
-
 func heal(healing):
-	health += healing
+	var new_health
+	new_health = health + healing
+	
+	if new_health > max_health:
+		health = max_health
+	else:
+		health += healing
+
+func boost_speed():
+	is_boosted = true
+	speed = speed_boosted
+
+func decrease_speed():
+	is_boosted = false
+	speed = speed_regular
