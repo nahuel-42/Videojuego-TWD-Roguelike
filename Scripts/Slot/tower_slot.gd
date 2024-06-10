@@ -19,7 +19,8 @@ func apply_card(card):
 			current_card_id = card.id
 			sprite.visible = false
 		"upgrade":
-			upgrade_tower(card.id)
+			if child != null:
+				upgrade_tower(card.id)
 		"class":
 			if child != null:
 				set_class(card.id)

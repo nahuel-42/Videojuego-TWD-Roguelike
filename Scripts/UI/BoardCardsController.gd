@@ -71,6 +71,7 @@ func AddCardsInGame(param):
 	m_cardsListInGame.append(card)
 	
 	var index = m_cardsList.find(card)
+	m_cardsList[index].SetInputEvent(null)
 	m_cardsList.remove_at(index)
 	
 func SwapCardsInGame(param):
@@ -93,5 +94,6 @@ func RemoveBoardCards(param):
 	for c in list:
 		var index = m_cardsList.find(c)
 		if (index >= 0):
+			m_cardsList[index].SetInputEvent(null)
 			m_cardsList.remove_at(index)
 ###########################################

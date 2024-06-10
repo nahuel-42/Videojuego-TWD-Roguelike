@@ -7,10 +7,11 @@ func _ready():
 	m_sprite2D = $Sprite2D
 	
 func glow_slot():
-	m_sprite2D.flip_v = false
+	padre.glow_slot(m_sprite2D)
+	
 
 func unglow_slot():
-	m_sprite2D.flip_v = true
+	padre.unglow_slot(m_sprite2D)
 
 func apply_card(dictionary):
 	return padre.apply_card(GlobalCardsList.find_card(dictionary))

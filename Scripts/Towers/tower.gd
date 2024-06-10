@@ -49,3 +49,11 @@ func upgrade(damage, range, attack_speed, accuracy):
 
 func _on_animation_animation_finished(anim_name):
 	animation.play("Idle")
+	
+func glow():
+	sprite.modulate = Color(255,255,34)
+	tower_sprite.modulate = Color(255,255,34)
+	
+func unglow():
+	sprite.modulate = Color(1, 1, 1)
+	tower_sprite.modulate = Color(1, 1, 1)
