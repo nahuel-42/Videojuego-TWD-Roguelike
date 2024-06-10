@@ -20,7 +20,7 @@ func perform(delta): #Ver como hacer esto despues
 	healAlly()
 
 func add_ally(body):
-	if body.is_in_group("SOLDIER") and body != self:
+	if body.is_in_group(Parameters.GROUPS.SOLDIER) and body != self:
 		allies_in_range.append(body)
 
 func delete_ally(body):
