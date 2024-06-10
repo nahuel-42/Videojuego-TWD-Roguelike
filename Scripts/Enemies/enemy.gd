@@ -33,7 +33,6 @@ func _ready():
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
 	animation.connect("animation_finished", effect_finished)
-	animation.play("run")
 	add_to_group("Enemy")
 	set_group()
 	init_stats()

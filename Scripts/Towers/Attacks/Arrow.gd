@@ -14,6 +14,8 @@ func _process(delta):
 		global_position += movement
 		
 		sprite.rotation = Vector2(1,0).angle_to(direction)
+	else:
+		queue_free() 
 
 func set_target(target: Enemy):
 	self.target = target

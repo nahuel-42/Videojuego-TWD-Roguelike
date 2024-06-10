@@ -2,7 +2,7 @@ extends Soldier
 class_name EnemyDoctor
 
 #TODO: curar enemigos que estan en rango
-var cooldown_heal = 2 # TODO: cambiar esto pq estaria muy roto
+var cooldown_heal = 5 # TODO: cambiar esto pq estaria muy roto
 var cooldown_status = 0
 var healing = 1
 var allies_in_range = []
@@ -12,8 +12,8 @@ func _process(delta):
 	perform(delta)
 
 func perform(delta): #Ver como hacer esto despues
-	if cooldown_heal > 0:
-		cooldown_heal -= delta
+	if cooldown_status > 0:
+		cooldown_status -= delta
 		return
 	
 	cooldown_status = cooldown_heal

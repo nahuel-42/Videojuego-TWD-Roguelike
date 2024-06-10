@@ -22,7 +22,7 @@ func apply_card(card):
 			if child != null:
 				upgrade_tower(card.id)
 		"class":
-			if child != null:
+			if child != null and !child.has_class():
 				set_class(card.id)
 		"delete":
 			delete_tower()

@@ -57,3 +57,6 @@ func glow():
 func unglow():
 	sprite.modulate = Color(1, 1, 1)
 	tower_sprite.modulate = Color(1, 1, 1)
+	
+func has_class():
+	return tower_sprite.frame > 0
