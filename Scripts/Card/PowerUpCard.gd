@@ -10,6 +10,7 @@ func use(param):
 	print("Se uso PowerCard")
 	var id = slot.apply_card(m_idCard)
 	if (id != -1):
+		GameEvents.OnRemoveBoardCards.Call([[card]])
 		GameEvents.OnLoadDiscard.Call([[card]])
 		return true
 	return false

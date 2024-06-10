@@ -7,10 +7,11 @@ extends Node
 @export var m_hideCards: Control = null
 @export var m_mainRef: Control = null
 
+@export var m_distanceWaitNextCard: float = 100
 
 var m_cardsList = []
+
 var m_screenSize : Vector2
-var m_actualCardIndex = 0
 var m_hide:bool=true
 
 var f_state = null
@@ -18,17 +19,18 @@ var f_state = null
 func _ready():
 	m_screenSize = get_viewport().get_visible_rect().size
 
-func _process(delta):
+func _physics_process(delta):
 	if (f_state != null):
 		f_state.call(delta)
 	
-func AddCards(card : CardControl, keepPosition : bool = false):
+func AddCardsPosition(card : CardControl):
 	m_cardsList.append(card)
-	if (!keepPosition):
-		UI_funcs.LocateCard(m_mainRef, card, keepPosition)
-		card.position -= Vector2(0, m_screenSize.y + 100)
-	else:
-		UI_funcs.SetParent(m_mainRef, card, keepPosition)
+	UI_funcs.LocateCard(m_mainRef, card)
+	card.position -= Vector2(0, m_screenSize.y * 4)
+		
+func AddCards(card : CardControl):
+	m_cardsList.append(card)
+	UI_funcs.SetParent(m_mainRef, card, true)
 	
 func RemoveCards(amount):
 	var list = []
@@ -41,24 +43,35 @@ func RemoveCards(amount):
 	return list
 	
 func State_LoadCards(delta):
-	if (m_actualCardIndex < len(m_cardsList)):
-		var card = m_cardsList[m_actualCardIndex]
-		
-		var a = card.position
-		var cardIndex = clamp(m_actualCardIndex, 0, m_maxCardAmount)
-		var b = Vector2(0, - m_cardOffsetPosition * cardIndex)
-		var t = delta * m_cardLoadSpeed
-		card.position = Mathf.Lerp(a, b, t)
-		
-		if (card.position.distance_to(b) < 1.0):
-			card.position = b
-			m_actualCardIndex += 1
+	var cond : bool = true
+	var index : int = 0
+	while (cond):
+		if (index < len(m_cardsList)):
+			var card = m_cardsList[index]
+			
+			var a : Vector2 = card.position
+			var cardIndex : int = clamp(index, 0, m_maxCardAmount)
+			var b = Vector2(0, - m_cardOffsetPosition * cardIndex)
+			var t : float = delta * m_cardLoadSpeed
+			card.position = Mathf.Lerp(a, b, t)
+			
+			var distance : float = card.position.distance_to(b)
+			
+			if (distance < m_distanceWaitNextCard):
+				if (distance < 1.0):
+					card.position = b
+			else:
+				cond = false
+			index += 1
+		else:
+			cond = false
 
-func RestartCardIndex(i : int):	
-	if (m_actualCardIndex - i < 0):
-		m_actualCardIndex = 0
-	else:
-		m_actualCardIndex -= i
+func RestartCardIndex(i : int):
+	pass#m_actualCardIndex = 0
+	#if (m_actualCardIndex - i < 0):
+	#	m_actualCardIndex = 0
+	#else:
+	#	m_actualCardIndex -= i
 
 func _on_button_hide_board_cards_button_down():
 	if (m_hide==false):
