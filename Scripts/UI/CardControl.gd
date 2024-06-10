@@ -89,3 +89,9 @@ func SetVisible(value):
 	
 func SetTypeDetector(cardMovement):
 	m_baseCard.SetTypeDetector(cardMovement)
+
+func SetFront():
+	self.z_index = 10
+	
+func SetBack():
+	self.z_index = 1

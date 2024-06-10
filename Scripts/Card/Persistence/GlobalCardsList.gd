@@ -38,7 +38,7 @@ var CollectionCard = [
 #static var FireCards = [0,0,1,1]
 #static var IceCards = [0,0,1,1]
 var TypeDeckCards = [
-	[11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
+	[19,18,11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
 	[0,1,2,8,3,14,18],
 	[0,2,1,1]
 ]
@@ -58,5 +58,7 @@ func get_type(id):
 func get_unlocked_cards():
 	var unlocked_cards = []
 	for c in CollectionCard:
-		unlocked_cards.append(c["unlocked"] == 1)
+		var node = [c["id"], c["unlocked"] == 1]
+		unlocked_cards.append(node)
+	print(unlocked_cards)
 	return unlocked_cards

@@ -51,6 +51,7 @@ func ShowCards(param):
 		#Se muestra la lista
 		for card in newCardList:
 			var c = CardFactory.createCard(card)
+			c.SetFront()
 			UI_funcs.LocateCard(m_gridContainer, c)
 			
 			c.position = Vector2(i, j) * cardSize

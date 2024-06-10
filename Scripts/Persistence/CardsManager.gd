@@ -14,11 +14,21 @@ static func InitUserSave():
 static func CreateReferenceDeck(id : int):
 	var typeDeck = GlobalCardsList.TypeDeckCards[id]
 	var referenceDeck = []
-	
+	print(m_user_save)
+	print("__________________________________")
+	print(typeDeck)
 	for t in typeDeck:
-		var card = m_user_save[t]
+		var card = GetUnlocked(t)
 		if (card == true):
 			referenceDeck.append(t)
 
-	print(referenceDeck)	
+	print(referenceDeck)
 	return referenceDeck
+
+static func GetUnlocked(id):
+	var i : int = 0
+	while (i < len(m_user_save)):
+		if (m_user_save[i][0] == id):
+			return m_user_save[i][1]
+		i += 1
+	return false

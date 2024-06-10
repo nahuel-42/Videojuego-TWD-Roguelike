@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=13 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
 [ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetectorUI.gd" id="5_jd3hf"]
 [ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="7_y252a"]
+[ext_resource type="Texture2D" uid="uid://dn8e2rqr4w7nd" path="res://Assets/Menu/lifebarframe.png" id="8_ebcvx"]
+[ext_resource type="Texture2D" uid="uid://djtkw572g5tkb" path="res://Assets/Menu/manabarframe.png" id="9_xrms7"]
+[ext_resource type="Script" path="res://Scripts/UI/HideBoardControl.gd" id="11_a2f30"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
 script/source = "extends Node
@@ -72,10 +75,10 @@ text = "Load"
 
 [node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_left = 0.8
-anchor_top = 0.05
-anchor_right = 1.0
-anchor_bottom = 0.3
+anchor_left = 0.79
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.26
 script = ExtResource("1_7hbfa")
 m_hideCards = NodePath("HidePassives")
 m_mainRef = NodePath("MainPassives")
@@ -137,18 +140,20 @@ size_flags_vertical = 3
 
 [node name="HidePassives" type="Control" parent="Passives"]
 layout_mode = 1
-anchor_left = 0.75
-anchor_right = 1.75
-anchor_bottom = 1.0
+anchor_top = -0.75
+anchor_right = 1.0
+anchor_bottom = 0.25
+rotation = -6.28319
 
 [node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
-anchor_top = 0.78
+anchor_top = 0.725
 anchor_right = 0.094
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lax77")
+m_maxTime = 0.0
 m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
@@ -258,7 +263,7 @@ grow_vertical = 2
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_left = 0.906
-anchor_top = 0.78
+anchor_top = 0.725
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_cieb2")
@@ -291,62 +296,81 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonHideBoardCards" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.154
-anchor_top = 0.903
-anchor_right = 0.235
-anchor_bottom = 0.992
-offset_left = -0.40802
-offset_top = -0.144043
-offset_right = 0.279968
-offset_bottom = 0.18396
-text = "Hide board
-cards"
-
 [node name="Bars" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ManaBar")]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.2
+anchor_bottom = 0.15
 script = ExtResource("5_cued4")
 HealthBar = NodePath("HealthBar")
 ManaBar = NodePath("ManaBar")
 
 [node name="HealthBar" type="ProgressBar" parent="Bars"]
 modulate = Color(0.94902, 0, 0, 1)
-layout_mode = 0
-offset_right = 221.0
-offset_bottom = 27.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.176
+anchor_right = 0.973
+anchor_bottom = 0.309
+offset_left = -0.0851212
+offset_top = 0.0332785
+offset_right = 0.0297394
+offset_bottom = -0.0324821
 step = 1.0
 value = 100.0
 show_percentage = false
 
 [node name="ManaBar" type="ProgressBar" parent="Bars"]
 modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = 1.0
-offset_top = 33.0
-offset_right = 222.0
-offset_bottom = 60.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.728
+anchor_right = 0.973
+anchor_bottom = 0.849
+offset_left = -0.0851212
+offset_top = -0.0441666
+offset_right = 0.0297394
+offset_bottom = -0.021286
 max_value = 1.0
 step = 0.001
 value = 1.0
 show_percentage = false
 
+[node name="Health" type="TextureRect" parent="Bars"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.45
+texture = ExtResource("8_ebcvx")
+expand_mode = 2
+
+[node name="Mana" type="TextureRect" parent="Bars"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("9_xrms7")
+expand_mode = 2
+
 [node name="PopupCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]
 visible = false
 layout_mode = 3
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.85
 script = ExtResource("7_y252a")
 m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
+m_columns = 4
 m_separation = Vector2(10, 10)
 m_speed = 2.0
 
 [node name="background1" type="Panel" parent="PopupCards"]
+z_index = 8
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -355,6 +379,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="background2" type="Panel" parent="PopupCards"]
+z_index = 9
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
@@ -365,6 +390,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PopupCards"]
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
@@ -376,7 +402,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="PopupCards/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(677, 342)
+size = Vector2i(790, 427)
 render_target_update_mode = 0
 
 [node name="parent" type="Control" parent="PopupCards/SubViewportContainer/SubViewport"]
@@ -388,6 +414,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="exit" type="Button" parent="PopupCards"]
+z_index = 9
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
@@ -400,6 +427,7 @@ text = "X"
 
 [node name="detect drag" type="Panel" parent="PopupCards"]
 modulate = Color(1, 1, 1, 0)
+z_index = 11
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
@@ -409,13 +437,31 @@ anchor_bottom = 0.99
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HideBoardCards" type="Control" parent="." node_paths=PackedStringArray("m_panels")]
+layout_mode = 3
+anchor_left = 0.154
+anchor_top = 0.903
+anchor_right = 0.235
+anchor_bottom = 0.992
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_a2f30")
+m_panels = [NodePath("../DeckCards"), NodePath("../BoardCards"), NodePath("../DiscardCards"), NodePath("../Passives")]
+
+[node name="ButtonHideBoardCards" type="Button" parent="HideBoardCards"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hide board
+cards"
+
 [connection signal="button_up" from="Debug/Button" to="DeckCards" method="_on_button_button_up"]
 [connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="ButtonHideBoardCards" to="Passives" method="_on_button_hide_board_cards_button_down"]
-[connection signal="button_down" from="ButtonHideBoardCards" to="DeckCards" method="_on_button_hide_board_cards_button_down"]
-[connection signal="button_down" from="ButtonHideBoardCards" to="BoardCards" method="_on_button_hide_board_cards_button_down"]
-[connection signal="button_down" from="ButtonHideBoardCards" to="DiscardCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="PopupCards/exit" to="PopupCards" method="_on_exit_button_down"]
 [connection signal="gui_input" from="PopupCards/detect drag" to="PopupCards" method="_on_detect_drag_gui_input"]
+[connection signal="button_down" from="HideBoardCards/ButtonHideBoardCards" to="HideBoardCards" method="_on_button_hide_board_cards_button_down"]
