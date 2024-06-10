@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cygcy85mr5d52"
-path="res://.godot/imported/Front.png-5e956cd563da41a3d807b0f0557978d4.ctex"
+uid="uid://2ja8dkh1ek5i"
+path="res://.godot/imported/SiennaBackground.png-2d2becc58917c224d7cbfc8cfba05269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Cards/Front.png"
-dest_files=["res://.godot/imported/Front.png-5e956cd563da41a3d807b0f0557978d4.ctex"]
+source_file="res://Assets/Sprites/Cards/SiennaBackground.png"
+dest_files=["res://.godot/imported/SiennaBackground.png-2d2becc58917c224d7cbfc8cfba05269.ctex"]
 
 [params]
 
