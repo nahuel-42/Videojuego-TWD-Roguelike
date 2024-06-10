@@ -15,7 +15,8 @@ func _process(delta):
 		
 ######Protected####
 func UItoWorld(ui_position):
-	return get_viewport_transform().affine_inverse() * ui_position + m_offset
+	return get_viewport().get_canvas_transform().affine_inverse() * ui_position
+	#return get_viewport_transform().affine_inverse() * ui_position + m_offset
 ###################
 ######Public######
 func Start(card : CardControl):

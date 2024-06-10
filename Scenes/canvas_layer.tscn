@@ -226,12 +226,11 @@ anchor_bottom = 1.75
 
 [node name="CardsInGame" type="Control" parent="BoardCards"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -345.6
-offset_top = -518.4
-offset_right = -305.6
-offset_bottom = -478.4
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
