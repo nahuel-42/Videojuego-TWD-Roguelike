@@ -10,20 +10,19 @@ static func createCard(id):
 	var type = cardData.type
 
 	if(type == 'spell'):
-		instance.Init(SpellCard.new(id, cardData))#GlobalCardsList.CollectionCard[id]))
+		instance.Init(SpellCard.new(id, cardData))
 	elif(type == 'passive'):
-	# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
-		instance.Init(PassiveCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+		instance.Init(PassiveCard.new(id, cardData))
 	elif (type == 'upgrade'):
-	# PowerUpCard: id, cardName, description, sprite, cost, active, type
-		instance.Init(PowerUpCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+		instance.Init(PowerUpCard.new(id, cardData))
 	elif (type == 'tower'):
-	# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
-		instance.Init(TowerCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+		instance.Init(TowerCard.new(id, cardData))
 	elif (type=='class'):
-		instance.Init(ClassCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+		instance.Init(ClassCard.new(id, cardData))
 	elif (type=='speciality'):
-		instance.Init(SpecialityCard.new(id, cardData))# GlobalCardsList.CollectionCard[id]))
+		instance.Init(SpecialityCard.new(id, cardData))
+	elif (type == 'demolitionSpell'):
+		instance.Init(DemolitionSpellCard.new(id, cardData))
 	else: 
 		print("Error type card: "  + str(type))
 	return instance
