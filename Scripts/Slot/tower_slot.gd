@@ -34,8 +34,10 @@ func create_tower(id):
 	var prefab = load(stats["path"])
 	child = prefab.instantiate()
 	add_child(child)
+	child.add_to_group(Parameters.GROUPS.TOWER)
 	child.load_stats(stats)
 	child.position = tower_point.position
+	GameController.apply_passives()
 
 func set_class(id):
 	var stats = GlobalCardsList.find_card(id)

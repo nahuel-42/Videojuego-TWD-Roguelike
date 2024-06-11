@@ -16,6 +16,7 @@ var damage_mod: float = 1
 var range_mod: float = 1
 var attack_speed_mod: float = 1 
 var accuracy_mod: float = 1
+var passive_attack_speed_modifier = 1.0
 
 func load_stats(stats):
 	range = stats["range"] / scale.x
@@ -42,7 +43,7 @@ func get_accuracy():
 	return accuracy * accuracy_mod
 	
 func get_attack_speed():
-	return attack_speed * attack_speed_mod
+	return attack_speed * attack_speed_mod * passive_attack_speed_modifier
 
 func perform(delta):
 	if cooldown > 0:
@@ -50,6 +51,7 @@ func perform(delta):
 		return
 	
 	if len(enemies_in_range) != 0:
+		animation.speed_scale = get_attack_speed()
 		animation.play("Attack")
 
 # Función para detectar cuando un objeto entra en el área
@@ -69,3 +71,6 @@ func set_speciality(speciality):
 	self.speciality.queue_free()
 	self.speciality = speciality
 	print("Nueva especialidad: " + str(self.speciality))
+
+func apply_attack_speed_passive(modifier):
+	passive_attack_speed_modifier = modifier

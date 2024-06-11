@@ -99,7 +99,6 @@ func _ready():
 	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
 	
-	print(initial_pos)
 	camera2D.position= Vector2i(camera2D.get_viewport_rect().size.y/2 + 32, initial_pos.y*32)
 	
 	if seedName:
@@ -226,7 +225,6 @@ func render_grass(width: int, height: int):
 
 func render_border(padding: int):
 	var border_texture = textures[TileType.PASTO]
-	print(border_texture)
 	for p in range(1, padding + 1):
 		if p==5:
 			border_texture = textures[TileType.BORDE]

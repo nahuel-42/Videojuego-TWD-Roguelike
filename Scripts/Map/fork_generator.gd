@@ -61,11 +61,8 @@ func generate_fork(path:Array[Vector2i], forks_initial_pos:Array[Vector2i], padd
 		
 		valid = true
 		
-	print(len(fork))
 	fork.insert(0, initial_pos)
 	fork.append(target_pos)
-	print(len(fork))
-	print(initial_pos in fork)
 	restore_obstacles(initial_pos)
 		
 	return fork

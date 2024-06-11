@@ -53,9 +53,8 @@ func UpdatePosition(ui_position : Vector2):
 		m_indexCollision = index
 
 func ApplyCard(card : CardControl):
-	if (m_indexCollision >= 0):
+	if (m_indexCollision >= 0 and card.use([null])):
 		InsertCard(card, m_indexCollision)
-		card.use([null])
 		m_indexCollision = -1
 		return true
 	return false

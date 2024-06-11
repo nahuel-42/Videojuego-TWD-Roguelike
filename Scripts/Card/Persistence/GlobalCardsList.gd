@@ -31,8 +31,8 @@ var CollectionCard = [
 	{"id":16, "type": "spell", "cardName" : "Fireball", "desc":"Throws a fireball in the selected area", "sprite": "res://Assets/Sprites/Cards/Spells/Fireball.png", "cost":30, "range": 200, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":17, "type": "spell", "cardName" : "Iceball", "desc":"Throws an iceball in the selected area", "sprite": "res://Assets/Sprites/Cards/Spells/Iceball.png", "cost":30, "range": 250, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	################# Passives ####################
-	{"id":18, "type": "passive", "cardName" : "Burning Field", "desc":"Sets the ground on fire, damaging all enemies (by ---) every second", "sprite": "res://Assets/Sprites/Cards/Passive/BurningField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
-	{"id":19, "type": "passive", "cardName" : "Frozen Field", "desc":"Freezes the ground, slowing all enemies (by---)", "sprite": "res://Assets/Sprites/Cards/Passive/FrozenField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''}
+	{"id":18, "type": "passive", "cardName" : "Burning Field", "desc":"Sets the ground on fire, damaging all enemies (by ---) every second", "sprite": "res://Assets/Sprites/Cards/Passive/BurningField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':'', "modifier": 1.2},
+	{"id":19, "type": "passive", "cardName" : "Frozen Field", "desc":"Freezes the ground, slowing all enemies (by---)", "sprite": "res://Assets/Sprites/Cards/Passive/FrozenField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':'', "modifier": 0.8}
 ]
 
 #static var FireCards = [0,0,1,1]
