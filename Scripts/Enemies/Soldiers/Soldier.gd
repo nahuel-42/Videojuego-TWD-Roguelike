@@ -10,13 +10,12 @@ func set_group():
 	add_to_group(Parameters.GROUPS.SOLDIER)
 
 func heal(healing):
-	var new_health
-	new_health = health + healing
-	
-	if new_health > max_health:
+	if health + healing > max_health:
 		health = max_health
+		health_bar.value = max_health
 	else:
 		health += healing
+		health_bar.value = health
 
 func boost_speed():
 	is_boosted = true

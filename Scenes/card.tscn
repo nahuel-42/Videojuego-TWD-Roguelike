@@ -1,22 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://crqhywu1a32fj"]
+[gd_scene load_steps=9 format=3 uid="uid://crqhywu1a32fj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
-[ext_resource type="Texture2D" uid="uid://ca4pyr8v1d8rx" path="res://Assets/Sprites/Cards/BrownBackground.png" id="2_fit4q"]
+[ext_resource type="Texture2D" uid="uid://c0i07e4udybdo" path="res://Assets/Sprites/Cards/BlueBackground.png" id="2_op8s0"]
+[ext_resource type="LabelSettings" uid="uid://det8xlw7u50nf" path="res://fonts/Cards/TopLabels.tres" id="3_4r7rd"]
 [ext_resource type="Texture2D" uid="uid://drkhj63h86ooh" path="res://Assets/Sprites/Dorso.png" id="3_s28en"]
+[ext_resource type="LabelSettings" uid="uid://drqqpv8lujshl" path="res://fonts/Cards/TopLabels--.tres" id="4_8lalf"]
+[ext_resource type="LabelSettings" uid="uid://dp7evflwuqana" path="res://fonts/Cards/InfoLabels.tres" id="4_jppv3"]
 
 [sub_resource type="FontVariation" id="FontVariation_lfe6d"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jd2ey"]
+[sub_resource type="LabelSettings" id="LabelSettings_jucyr"]
 line_spacing = 0.5
-font_size = 10
+font_size = 11
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_2j5yn"]
-line_spacing = 0.5
-font_size = 7
-font_color = Color(0, 0, 0, 1)
-
-[node name="Card" type="Panel" node_paths=PackedStringArray("m_top", "m_bottom")]
+[node name="Card" type="Panel" node_paths=PackedStringArray("m_top", "m_bottom", "m_info")]
 z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,6 +30,7 @@ grow_vertical = 2
 script = ExtResource("1_akigf")
 m_top = NodePath("TopSideCard")
 m_bottom = NodePath("BottomSideCard")
+m_info = NodePath("InfoSideCard")
 
 [node name="TopSideCard" type="Panel" parent="."]
 z_index = 1
@@ -51,24 +50,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fit4q")
+texture = ExtResource("2_op8s0")
 expand_mode = 1
 
 [node name="name" type="Label" parent="TopSideCard"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.11
-anchor_top = 0.065
-anchor_right = 0.69
-anchor_bottom = 0.237
-offset_right = -1.52588e-05
-offset_bottom = -0.800011
+anchor_left = 0.047
+anchor_top = 0.032
+anchor_right = 0.953
+anchor_bottom = 0.15
+offset_left = -0.1
+offset_top = 0.2
+offset_right = 0.0999756
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lfe6d")
 theme_override_font_sizes/font_size = 9
 text = "Nombre"
-label_settings = SubResource("LabelSettings_jd2ey")
+label_settings = ExtResource("3_4r7rd")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -79,16 +79,19 @@ text_direction = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.78
-anchor_right = 0.287
-anchor_bottom = 0.925
-offset_right = -0.0999985
-offset_bottom = -3.05176e-05
+anchor_left = 0.053
+anchor_top = 0.922
+anchor_right = 0.947
+anchor_bottom = 0.967
+offset_left = 0.0999994
+offset_top = 0.199982
+offset_right = -201.1
+offset_bottom = 0.199982
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -97,10 +100,10 @@ autowrap_mode = 2
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.25
-anchor_right = 0.9
-anchor_bottom = 0.767
+anchor_left = 0.047
+anchor_top = 0.2
+anchor_right = 0.953
+anchor_bottom = 0.787
 offset_left = 2.0
 offset_top = 2.0
 offset_right = -2.0
@@ -113,16 +116,16 @@ expand_mode = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.303
-anchor_top = 0.782
-anchor_right = 0.493
-anchor_bottom = 0.925
-offset_left = 0.0999985
+anchor_left = 0.277
+anchor_top = 0.922
+anchor_right = 0.467
+anchor_bottom = 0.965
+offset_left = -0.100006
 offset_top = 0.199982
-offset_right = 0.0999908
-offset_bottom = -3.05176e-05
+offset_right = 9.89999
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -130,16 +133,15 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.51
-anchor_top = 0.782
-anchor_right = 0.693
-anchor_bottom = 0.925
-offset_left = -1.52588e-05
-offset_top = 0.199982
-offset_right = 0.0999908
-offset_bottom = -3.05176e-05
+anchor_left = 0.723
+anchor_top = 0.92
+anchor_right = 0.947
+anchor_bottom = 0.965
+offset_left = 0.0999908
+offset_right = -0.100006
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -147,15 +149,16 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.713
-anchor_top = 0.07
-anchor_right = 0.89
-anchor_bottom = 0.227
-offset_left = 0.0999756
+anchor_left = 0.05
+anchor_top = 0.147
+anchor_right = 0.95
+anchor_bottom = 0.192
+offset_top = 0.200001
 offset_bottom = 0.199997
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Cost"
+label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -163,15 +166,15 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.713
-anchor_top = 0.782
-anchor_right = 0.9
-anchor_bottom = 0.925
-offset_left = 0.0999756
+anchor_left = 0.5
+anchor_top = 0.922
+anchor_right = 0.723
+anchor_bottom = 0.965
 offset_top = 0.199982
-offset_bottom = -3.05176e-05
+offset_right = 0.0999908
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -179,14 +182,183 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.11
-anchor_top = 0.775
-anchor_right = 0.893
-anchor_bottom = 0.925
+anchor_left = 0.053
+anchor_top = 0.797
+anchor_right = 0.947
+anchor_bottom = 0.92
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+label_settings = ExtResource("4_8lalf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
+
+[node name="InfoSideCard" type="Panel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 200)
+
+[node name="TextureRect" type="TextureRect" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_op8s0")
+expand_mode = 1
+
+[node name="name" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.032
+anchor_right = 0.953
+anchor_bottom = 0.15
+offset_left = -0.1
+offset_top = 0.2
 offset_right = 0.0999756
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_lfe6d")
+theme_override_font_sizes/font_size = 9
+text = "Nombre"
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
+text_direction = 1
+
+[node name="damage" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.925
+anchor_right = 0.277
+anchor_bottom = 0.97
+offset_left = 0.0999994
+offset_top = -3.05176e-05
+offset_right = -0.100006
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
-label_settings = SubResource("LabelSettings_2j5yn")
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Figure" type="TextureRect" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.2
+anchor_right = 0.953
+anchor_bottom = 0.787
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="attackSpeed" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.925
+anchor_right = 0.5
+anchor_bottom = 0.97
+offset_left = -0.100006
+offset_top = -3.05176e-05
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="range" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.723
+anchor_top = 0.925
+anchor_right = 0.947
+anchor_bottom = 0.97
+offset_left = 0.0999908
+offset_top = -3.05176e-05
+offset_right = -0.100006
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="cost" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.147
+anchor_right = 0.95
+anchor_bottom = 0.192
+offset_top = 0.200001
+offset_bottom = 0.199997
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Cost"
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="accuracy" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.925
+anchor_right = 0.723
+anchor_bottom = 0.97
+offset_top = -3.05176e-05
+offset_right = 0.0999908
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="description" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.797
+anchor_right = 0.947
+anchor_bottom = 0.92
+offset_left = 2.0
+offset_top = 0.199982
+offset_right = -2.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = SubResource("LabelSettings_jucyr")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

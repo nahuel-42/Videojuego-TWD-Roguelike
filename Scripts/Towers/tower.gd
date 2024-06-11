@@ -61,3 +61,9 @@ func unglow():
 
 func apply_attack_speed_passive(modifier):
 	attack_method.apply_attack_speed_passive(modifier)
+	
+func has_class():
+	return tower_sprite.frame > 0
+
+func hits():
+	return attack_method.hits()

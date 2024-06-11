@@ -10,8 +10,7 @@ extends BaseDeck
 var m_cardsListInGame = []
 var m_cardsAmount : int = 0
 
-func _ready():
-	super._ready()
+func _init():
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
 	
 	GameEvents.OnAddCardsInGame.AddListener(AddCardsInGame)
@@ -53,7 +52,7 @@ func LoadBoard(param):
 		var p = m_panels[i]
 		var c = m_cardsList[i]
 		c.SetInputEvent(GetInputEvent)
-		c.SetSide(true)
+		c.SetSide(0)
 		
 	f_state = State_CardsLocation
 	

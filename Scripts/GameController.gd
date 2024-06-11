@@ -18,6 +18,9 @@ func _process(delta):
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
 	pass
 
+func manaCheck(cant):
+	return cant<=ActualMana
+
 func manaConsumption(cant):
 	if (cant>ActualMana):
 		return false
@@ -55,3 +58,6 @@ func apply_passive(passive):
 func add_passive(passive):
 	passives.append(passive)
 	apply_passives()
+
+func remove_passive(passive):
+	passives.erase(passive)

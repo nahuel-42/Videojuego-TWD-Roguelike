@@ -74,3 +74,7 @@ func set_speciality(speciality):
 
 func apply_attack_speed_passive(modifier):
 	passive_attack_speed_modifier = modifier
+
+func hits():
+	var random = randi() % 100 + 1
+	return random > accuracy * 100
