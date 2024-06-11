@@ -75,7 +75,6 @@ func set_speciality(speciality):
 	self.speciality.queue_free()
 	self.speciality = speciality
 		
-
 func apply_attack_speed_passive(modifier):
 	passive_attack_speed_modifier = modifier
 

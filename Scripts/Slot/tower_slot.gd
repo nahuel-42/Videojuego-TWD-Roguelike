@@ -31,7 +31,9 @@ func apply_speciality(speciality_id):
 			0: path = "res://Prefabs/Specialities/Sapper.tscn"
 			1: path = "res://Prefabs/Specialities/Gas.tscn"
 			2: path = "res://Prefabs/Specialities/Incendiary.tscn"
+	print("La especialidad elegida es: " + path)
 	speciality = load(path).instantiate()
+	print("La especialidad elegida es: " + str(speciality))
 	child.set_speciality(speciality)
 	
 # Si existía una torre, devuelve su ID, sino devuelve -1.
@@ -56,7 +58,8 @@ func apply_card(card):
 			delete_tower()
 			current_card_id = -1
 		"speciality":
-			return child != null and child.has_class() if child.class_id() else -1
+			if child != null:
+				return child.class_id()
 			
 	return previous_card_id
 

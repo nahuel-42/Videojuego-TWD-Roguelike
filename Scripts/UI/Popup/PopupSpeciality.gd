@@ -41,13 +41,13 @@ func _on_exit_button_down():
 	visible = false
 
 func _on_button_down_speciality1():
-	m_specialityCard.UseSpeciality(1)
+	m_specialityCard.UseSpeciality(0)
 	_on_exit_button_down()
 
 func _on_button_down_speciality2():
-	m_specialityCard.UseSpeciality(2)
+	m_specialityCard.UseSpeciality(1)
 	_on_exit_button_down()
 
 func _on_button_down_speciality3():
-	m_specialityCard.UseSpeciality(3)
+	m_specialityCard.UseSpeciality(2)
 	_on_exit_button_down()

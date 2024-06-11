@@ -28,8 +28,9 @@ func set_class(tower_class):
 	attack_method.set_class(tower_class)
 
 func set_speciality(speciality):
-	attack_method.set_speciality(speciality)
+	add_child(speciality)
 	tower_sprite.frame += 1
+	attack_method.set_speciality(speciality)
 
 func draw_radius():
 	var circle_points = []
