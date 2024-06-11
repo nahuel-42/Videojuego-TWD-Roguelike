@@ -12,8 +12,8 @@ var CollectionCard = [
 	{"id":1, "type": "tower", "cardName" : "Area Tower", "desc":"A tower that throws explosive bombs", "sprite": "res://Assets/Sprites/Cards/Tower/FireAreaT.png", "cost":50, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
 	{"id":2, "type": "tower", "cardName" : "Bomb Tower", "desc":"A tower that damages everything in it's range", "sprite": "res://Assets/Sprites/Cards/Tower/FireBombT.png", "cost":35, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/area_tower.tscn'},
 	{"id":11, "type": "tower", "cardName" : "Single Target Tower", "desc":"A tower that shoots piercing arrows", "sprite": "res://Assets/Sprites/Cards/Tower/IceArrowT.png", "cost":20, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
-	{"id":12, "type": "tower", "cardName" : "Area Tower", "desc":"A tower that throws explosive bombs", "sprite": "res://Assets/Sprites/Cards/Tower/IceAreaT.png", "cost":50, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
-	{"id":13, "type": "tower", "cardName" : "Bomb Tower", "desc":"A tower that damages everything in it's range", "sprite": "res://Assets/Sprites/Cards/Tower/IceBombT.png", "cost":35, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/area_tower.tscn'},
+	{"id":12, "type": "tower", "cardName" : "Area Tower", "desc":"A tower that damages everything in it's range", "sprite": "res://Assets/Sprites/Cards/Tower/IceAreaT.png", "cost":50, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
+	{"id":13, "type": "tower", "cardName" : "Bomb Tower", "desc":"A tower that throws explosive bombs", "sprite": "res://Assets/Sprites/Cards/Tower/IceBombT.png", "cost":35, "range": 150, "damage": 1, "attackSpeed": 2, "accuracy": 0.1, "unlocked": 1, 'path':'res://Prefabs/Towers/area_tower.tscn'},
 	################# CLASSES ####################
 	{"id": 3, "type": "class", "cardName": "Hunter class", "desc": "+10% damage to beasts", "sprite": "res://Assets/Sprites/Cards/Class/Hunter.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 30, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
 	{"id": 4, "type": "class", "cardName": "Soldier class", "desc": "+10% damage to ", "sprite": "res://Assets/Sprites/Cards/Class/Soldier.png", "texture": "res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png", "cost": 30, "unlocked": 1, 'path':"res://Prefabs/Specialities/War.tscn"},
@@ -87,9 +87,9 @@ func randomizeDeck(deck):
 			vec[j]=1
 			cant+=1
 		else:
-			j=rng.randi_range(3, len(deck)-1)	
+			j=rng.randi_range(3, len(deck)-1)
 			while (vec[j]==1):
-				j=rng.randi_range(3, len(deck)-1)
+				j=rng.randi_range(3, len(deck)-1) #ERROR EN LOOP
 			vec[j]=1
 			aux[j]=deck[i]
 	deck=aux

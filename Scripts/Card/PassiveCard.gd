@@ -10,7 +10,8 @@ class_name PassiveCard
 #	m_value = value
 
 func use(param):
-	GameController.add_passive(m_refCard)
+	var slotPassive = param[0]
+	GameController.add_passive(m_refCard, slotPassive)
 	#quedan en un array de pasivas en uso o algo similar
 
 func SetTypeDetector(cardMovement):

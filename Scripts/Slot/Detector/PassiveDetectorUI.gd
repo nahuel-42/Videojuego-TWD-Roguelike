@@ -67,7 +67,7 @@ func SetPanelColor(index : int, color : Color):
 		m_panels[index].modulate = color
 
 func ApplyCard(card : CardControl):
-	if (m_indexCollision >= 0 and card.use([null])):
+	if (m_indexCollision >= 0 and card.use([m_indexCollision])):
 		InsertCard(card, m_indexCollision)
 		m_indexCollision = -1
 		return true
