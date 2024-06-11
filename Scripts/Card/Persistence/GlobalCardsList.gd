@@ -19,7 +19,7 @@ var CollectionCard = [
 	{"id": 4, "type": "class", "cardName": "Class: Soldier", "desc": "The tower deals x2 damage to enemy soldiers", "sprite": "res://Assets/Sprites/Cards/Class/Soldier.png", "texture": "res://Assets/Sprites/Heroes/Knight/Idle/Idle-Sheet.png", "cost": 30, "unlocked": 0, 'path':"res://Prefabs/Specialities/War.tscn"},
 	{"id": 5, "type": "class", "cardName": "Class: Mercenary", "desc": "The tower deals x2 damage to enemy mercenaries", "sprite": "res://Assets/Sprites/Cards/Class/Mercenary.png", "texture": "res://Assets/Sprites/Enemy/Skeleton Crew/Skeleton - Mage/Idle/Idle-Sheet.png", "cost": 30, "unlocked": 0, 'path':"res://Prefabs/Specialities/Mercenary.tscn"},
 	################# SPECIALITY ####################
-	{"id": 6, "type": "speciality", "cardName": "Speciality", "desc": "Select between three specialities depending on class", "sprite": "res://Assets/Sprites/Cards/Speciality/Speciality.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 0, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
+	{"id": 6, "type": "speciality", "cardName": "Speciality", "desc": "Select between three specialities depending on class", "sprite": "res://Assets/Sprites/Cards/Speciality/Speciality.png", "texture": "res://Assets/Sprites/Enemy/Orc Crew/Orc - Shaman/Idle/Idle-Sheet.png", "cost": 100, "unlocked": 1, 'path':"res://Prefabs/Specialities/Hunter.tscn"},
 	################# UPGRADES ####################
 	{"id": 7, "type": "upgrade", "cardName": "Damage++", "desc": "Increases tower damage by 10%", "sprite": "res://Assets/Sprites/Cards/Upgrade/Damage.png", "cost": 10, "unlocked": 1, "range": 0, "damage": 0.1, "attack_speed": 0, "accuracy": 0},
 	{"id": 8, "type": "upgrade", "cardName": "Range++", "desc": "Increases tower range by 10%", "sprite": "res://Assets/Sprites/Cards/Upgrade/Range.png", "cost": 10, "unlocked": 1, "range": 0.1, "damage": 0, "attack_speed": 0, "accuracy": 0},
@@ -38,7 +38,7 @@ var CollectionCard = [
 #FireCards, IceCards
 var TypeDeckCards = [
 #	[19,18,11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
-[11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
+[6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
 [0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]	
 ]
 	

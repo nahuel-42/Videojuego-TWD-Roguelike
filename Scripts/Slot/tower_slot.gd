@@ -8,14 +8,13 @@ func _ready():
 	tower_point = $TowerPoint
 	z_index = 2
 
-#Chequea el tipo de slot para aplicar la especialidad
-#Hunter: 0 (Harpoon, Net, Tamer)
-#Soldier: 1 (Boiling iol, Catapult, Sniper)
-#Mercenary: 2 (Sapper, Gas, Incendiary)
-func check_speciality(card):
-	match card.type:
-		"speciality":
-			return 0
+#Aplica el tipo especialidad
+#Devuelve la especialidad (Hunter = 0, Soldier = 1, Mercenary = 2)
+#Y el subtipo:
+#Hunter -> Harpoon = 0, Net = 1, Tamer = 2
+#Soldier -> Boiling = 0, Catapult = 1, Sniper = 2
+#Mercenary -> Sapper = 0, Gas = 1, Incendiary = 2
+func apply_speciality(speciality, sub_speciality):
 	return -1
 	
 # Si existía una torre, devuelve su ID, sino devuelve -1.
@@ -39,6 +38,13 @@ func apply_card(card):
 		"delete":
 			delete_tower()
 			current_card_id = -1
+		"speciality":
+			#Debería chequear si puede aplicarse la especialidad (devuelve -1)
+			#Si se puede aplicar debería devolver un:						
+			#Hunter: 0 (Harpoon, Net, Tamer)
+			#Soldier: 1 (Boiling iol, Catapult, Sniper)
+			#Mercenary: 2 (Sapper, Gas, Incendiary) 
+			return 0
 			
 	return previous_card_id
 

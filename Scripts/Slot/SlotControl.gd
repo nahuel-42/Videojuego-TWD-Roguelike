@@ -16,5 +16,5 @@ func unglow_slot():
 func apply_card(dictionary):
 	return padre.apply_card(GlobalCardsList.find_card(dictionary))
 
-func check_speciality(dictionary):
-	return padre.check_speciality(GlobalCardsList.find_card(dictionary))
+func apply_speciality(m_specialityType : int, type : int):
+	return padre.apply_speciality(m_specialityType, type)
