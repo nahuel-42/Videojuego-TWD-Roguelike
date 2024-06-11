@@ -7,7 +7,7 @@ static var OnSpellCardActivated = Action.new()
 ############################################################
 
 ############################################################
-#UI EVENTS
+################     UI EVENTS     #########################
 ############################################################
 static var OnLoadBoard = Action.new()
 static var OnLoadDiscard = Action.new()
@@ -18,6 +18,7 @@ static var OnGetSpellDetectorUI = Func.new()
 static var OnGetPassiveDetectorUI = Func.new()
 ############################################################
 static var OnShowPopCards = Action.new()
+static var OnShowPopupSpeciality = Action.new()
 ############################################################
 static var OnAddCardsInGame = Action.new()
 static var OnSwapCardsInGame = Action.new()

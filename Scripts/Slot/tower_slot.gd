@@ -8,6 +8,16 @@ func _ready():
 	tower_point = $TowerPoint
 	z_index = 2
 
+#Chequea el tipo de slot para aplicar la especialidad
+#Hunter: 0 (Harpoon, Net, Tamer)
+#Soldier: 1 (Boiling iol, Catapult, Sniper)
+#Mercenary: 2 (Sapper, Gas, Incendiary)
+func check_speciality(card):
+	match card.type:
+		"speciality":
+			return 0
+	return -1
+	
 # Si existía una torre, devuelve su ID, sino devuelve -1.
 func apply_card(card):
 	var previous_card_id = current_card_id
