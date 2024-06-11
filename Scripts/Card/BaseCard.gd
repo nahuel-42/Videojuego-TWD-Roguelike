@@ -1,4 +1,4 @@
-#extends Node
+extends Node
 class_name BaseCard
 
 

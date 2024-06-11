@@ -9,7 +9,9 @@ const GROUPS = {
 	MERCENARY = "Mercenary",
 	DRAKE = "Drake",
 	CAPTAIN = "Captain",
-	TOWER = "Tower"
+	TOWER = "Tower",
+	ENEMY = "Enemy",
+	PASSIVE = "Passive"
 }
 
 const BEAST_TYPES = [
