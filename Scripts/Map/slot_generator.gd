@@ -21,7 +21,6 @@ func _init(width: int, height: int):
 	self.height = height
 
 func generate_slots(n: int, path: Array[Vector2i], padding: int, min_distance: float) -> Array[Vector2i]:
-	print("Generating slots")
 	var start = padding - 1 # inclusive
 	var end = len(path) - padding # exclusive
 	
