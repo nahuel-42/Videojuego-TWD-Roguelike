@@ -28,10 +28,12 @@ func AddCardsPosition(card : CardControl):
 	m_cardsList.append(card)
 	UI_funcs.LocateCard(m_mainRef, card)
 	card.position -= Vector2(0, m_screenSize.y * 4)
+	m_actualIndex = 0
 		
 func AddCards(card : CardControl):
 	m_cardsList.append(card)
 	UI_funcs.SetParent(m_mainRef, card, true)
+	m_actualIndex = 0
 	
 func RemoveCards(amount):
 	var list = []
@@ -62,7 +64,8 @@ func State_LoadCards(delta):
 			if (distance < m_distanceWaitNextCard):
 				if (distance < 1.0):
 					card.position = b
-					m_actualIndex += 1
+					if (index <= m_actualIndex):
+						m_actualIndex += 1
 					GameEvents.OnPlayMovementCard.Call([-1])
 			else:
 				cond = false
