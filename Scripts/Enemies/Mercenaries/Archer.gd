@@ -5,5 +5,6 @@ extends Mercenary
 @onready var animation_archer = $AnimationArcher
 
 func init_stats():
-	# TODO: Poner las stats
-	pass
+	health = 2
+	speed = 90
+	super()

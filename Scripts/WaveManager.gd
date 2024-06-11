@@ -87,3 +87,13 @@ func set_texts(stage, wave):
 	stage_text = stage
 	wave_text = wave
 	stage_text.text = str(stage_index)
+
+func reset():
+	wave_config = []
+	wave_index = 0
+	stages = 5
+	stage_index = 1
+	waves_per_stage = 5  # Número base de oleadas por stage
+	for spawner in spawners:
+		spawner.queue_free()
+	spawners = []

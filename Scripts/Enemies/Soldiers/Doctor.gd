@@ -7,6 +7,11 @@ var cooldown_status = 0
 var healing = 1
 var allies_in_range = []
 
+func init_stats():
+	health = 3
+	speed = 75
+	super()
+
 #sobreescribo funcion process
 func _process(delta):
 	perform(delta)

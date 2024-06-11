@@ -33,6 +33,7 @@ func HealthLoss(cant):
 		ActualHealth-=cant
 		GameEvents.OnUpdateHealth.Call([float(ActualHealth)])
 	else:
+		WaveManager.reset()
 		var change_scene = load("res://Scenes/Menu/gameOver.tscn")
 		#MAXIMA VIDA, OJO
 		ActualHealth = 100

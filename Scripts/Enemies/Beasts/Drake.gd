@@ -6,8 +6,10 @@ extends Beast
 @onready var animationDrake = $AnimationDrake
 
 
-#func init_stats():
-#	pass
+func init_stats():
+	health = 5
+	speed = 75
+	super()
 
 func set_group():
 	add_to_group(Parameters.GROUPS.DRAKE)

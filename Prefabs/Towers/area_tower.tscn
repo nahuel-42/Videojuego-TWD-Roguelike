@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsdbs6fokunev"]
+[gd_scene load_steps=11 format=3 uid="uid://bsdbs6fokunev"]
 
 [ext_resource type="Script" path="res://Scripts/Towers/tower.gd" id="2_8s340"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/area_attack.gd" id="3_dqije"]
@@ -8,9 +8,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kj5wf"]
 radius = 70.0032
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_d3f3a"]
-radius = 25.3684
 
 [sub_resource type="Animation" id="Animation_q4235"]
 resource_name = "Attack"
@@ -101,11 +98,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("3_dqije")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_d3f3a")
-
 [node name="Speciality" type="Node2D" parent="."]
 script = ExtResource("4_x0kyj")
 
@@ -135,5 +127,4 @@ offset_bottom = 57.6667
 
 [connection signal="body_entered" from="Range" to="AttackMethod" method="add_enemy"]
 [connection signal="body_exited" from="Range" to="AttackMethod" method="delete_enemy"]
-[connection signal="body_entered" from="Area2D" to="AttackMethod" method="hit_targets"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

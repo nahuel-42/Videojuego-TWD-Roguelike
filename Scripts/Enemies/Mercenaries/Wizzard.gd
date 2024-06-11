@@ -5,6 +5,11 @@ extends Mercenary
 var towers_in_range = []
 var slow_attack = 0.2
 
+func init_stats():
+	health = 2
+	speed = 75
+	super()
+
 func add_tower(body):
 	if body.is_in_group("TOWER") and body != self: #capaz que la parte de slowed deberia estar aca, consultar esto
 		towers_in_range.append(body)
