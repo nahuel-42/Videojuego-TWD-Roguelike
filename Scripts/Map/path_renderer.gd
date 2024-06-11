@@ -81,6 +81,7 @@ func _ready():
 	
 	setup_level(initial_pos, target_pos)
 	$"../Target".position = initial_pos * CELL_DIMENSION
+	Parameters.boss_position = target_pos * CELL_DIMENSION
 
 func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	clear()
