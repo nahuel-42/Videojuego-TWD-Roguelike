@@ -48,6 +48,9 @@ func explode():
 
 func enable_cs():
 	cs.disabled = false
+	
+func disable_cs():
+	cs.disabled = true
 
 func hit_targets(body):
 	if body.is_in_group("Enemy"):
