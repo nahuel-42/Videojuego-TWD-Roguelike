@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cur3wo0wgg6ql"]
+
+[ext_resource type="Script" path="res://Scenes/gameOver.gd" id="1_lqqex"]
+[ext_resource type="Texture2D" uid="uid://cssbe7tncjrk1" path="res://Assets/Menu/GameOverImage.png" id="2_7dgu5"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqqex")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 145.0
+offset_top = 6.0
+offset_right = 1033.0
+offset_bottom = 894.0
+texture = ExtResource("2_7dgu5")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.852
+anchor_right = 0.252
+anchor_bottom = 0.969
+offset_left = 28.0
+offset_top = 519.0
+offset_right = 242.0
+offset_bottom = 603.0
+text = "Menu principal"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
