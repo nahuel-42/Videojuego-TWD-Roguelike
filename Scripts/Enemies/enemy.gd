@@ -5,7 +5,7 @@ var speed
 var acceleration = 5
 var target
 var health
-var damage_to_health = 1 #deberian especificarse en cada hijo todos los atributos
+var damage_to_health = 10 #deberian especificarse en cada hijo todos los atributos
 var passive_speed_modifier = 1.0
 
 var vulnerable = false

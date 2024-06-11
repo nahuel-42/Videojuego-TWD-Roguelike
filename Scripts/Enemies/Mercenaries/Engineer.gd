@@ -8,6 +8,7 @@ var cooldown_disable = 10 #agregar un valor
 func init_stats():
 	health = 2
 	speed = 75
+	damage_to_health = 9
 	super()
 
 func _process(delta):
@@ -29,7 +30,5 @@ func delete_tower(body):
 		towers_in_range.erase(body)
 
 func disable_tower():
-	#if len(towers_in_range) != 0
-		
 	for tower in towers_in_range:
 		tower.disable() # donde habria que pegarle aca?

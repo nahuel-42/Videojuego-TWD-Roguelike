@@ -9,6 +9,7 @@ extends Beast
 func init_stats():
 	health = 5
 	speed = 75
+	damage_to_health = 13
 	super()
 
 func set_group():
