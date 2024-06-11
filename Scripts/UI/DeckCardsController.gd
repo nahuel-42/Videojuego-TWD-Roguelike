@@ -2,6 +2,7 @@ class_name DeckCards
 extends BaseDeck
 
 @export var m_maxTime : float = 5.
+@export var m_timeOutBar : TimeOutDiscard = null
 var m_timeCont:float=m_maxTime
 var m_restartCount : int = 0
 
@@ -12,6 +13,7 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	m_timeCont = clamp(m_timeCont+delta, 0.0, m_maxTime)
+	m_timeOutBar.SetValue(clamp(m_timeCont / m_maxTime, 0.0, 1.0))
 
 func StartDeck():
 	CardsManager.InitUserSave()

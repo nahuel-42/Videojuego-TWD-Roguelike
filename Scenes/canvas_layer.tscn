@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=19 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
+[ext_resource type="Script" path="res://Scripts/UI/TimeOutDiscard.gd" id="1_7hwgj"]
 [ext_resource type="Texture2D" uid="uid://bmi0tccrjw0u6" path="res://Assets/Menu/draw.png" id="1_cpbcl"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
+[ext_resource type="Texture2D" uid="uid://buu7qduy8xtlk" path="res://Assets/Menu/circle UI/progress-bar-circle.png" id="2_i8xpg"]
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
+[ext_resource type="Texture2D" uid="uid://brjxggdivbtga" path="res://Assets/Menu/circle UI/progress-bar-frame.png" id="3_nxwr2"]
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_cieb2"]
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
 [ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetectorUI.gd" id="5_jd3hf"]
@@ -28,22 +31,50 @@ func _process(delta):
 [node name="CanvasLayer" type="CanvasLayer"]
 script = SubResource("GDScript_4flth")
 
-[node name="Debug" type="Control" parent="."]
+[node name="TimeOut" type="Control" parent="." node_paths=PackedStringArray("m_progressBar")]
 layout_mode = 3
-anchor_left = 0.774
-anchor_top = 0.91
-anchor_right = 0.809
-anchor_bottom = 0.972
+anchor_left = 0.759
+anchor_top = 0.885
+anchor_right = 0.824
+anchor_bottom = 0.997
 offset_left = 0.351929
 offset_top = 0.320007
 offset_right = 0.0319824
 offset_bottom = 0.143982
+script = ExtResource("1_7hwgj")
+m_progressBar = NodePath("TimeOutDiscard")
+m_colorBar = Color(1, 1, 1, 0.392157)
+m_finishColorBar = Color(1, 1, 0, 0.392157)
 
-[node name="Button2" type="TextureButton" parent="Debug"]
+[node name="TimeOutDiscard" type="TextureProgressBar" parent="TimeOut"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+pivot_offset = Vector2(40, 40)
+max_value = 1.0
+step = 0.001
+value = 1.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = ExtResource("2_i8xpg")
+texture_over = ExtResource("3_nxwr2")
+texture_progress = ExtResource("2_i8xpg")
+tint_under = Color(0, 0, 0, 0.392157)
+tint_over = Color(0, 0, 0, 0.392157)
+tint_progress = Color(1, 1, 1, 0.392157)
+
+[node name="Button2" type="TextureButton" parent="TimeOut"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241
+anchor_top = 0.235
+anchor_right = 0.858
+anchor_bottom = 0.773
+offset_left = 0.0310249
+offset_top = -0.0139923
+offset_right = 0.0274658
+offset_bottom = 0.0348244
 texture_normal = ExtResource("1_cpbcl")
 ignore_texture_size = true
 stretch_mode = 4
@@ -120,7 +151,7 @@ anchor_right = 1.0
 anchor_bottom = 0.25
 rotation = -6.28319
 
-[node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
+[node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_timeOutBar", "m_hideCards", "m_mainRef")]
 layout_mode = 3
 anchor_top = 0.725
 anchor_right = 0.094
@@ -128,7 +159,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_lax77")
-m_maxTime = 0.0
+m_maxTime = 2.0
+m_timeOutBar = NodePath("../TimeOut")
 m_cardOffsetPosition = 5.0
 m_cardLoadSpeed = 15.0
 m_maxCardAmount = 10
@@ -442,7 +474,7 @@ texture_pressed = ExtResource("13_vrria")
 ignore_texture_size = true
 stretch_mode = 4
 
-[connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
+[connection signal="button_up" from="TimeOut/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="PopupCards/exit" to="PopupCards" method="_on_exit_button_down"]
