@@ -105,7 +105,7 @@ libraries = {
 shape = SubResource("CircleShape2D_3iy3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.175, 0.175)
 texture = ExtResource("2_2nrtq")
 hframes = 3
 vframes = 2
