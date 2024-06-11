@@ -8,6 +8,7 @@ var cooldown_disable = 10 #agregar un valor
 func init_stats():
 	health = 2
 	speed = 75
+	damage_to_health = 9
 	super()
 
 func _process(delta):

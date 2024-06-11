@@ -10,6 +10,7 @@ var allies_in_range = []
 func init_stats():
 	health = 3
 	speed = 75
+	damage_to_health = 13
 	super()
 
 #sobreescribo funcion process

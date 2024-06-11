@@ -6,4 +6,5 @@ extends Beast
 func init_stats(): # hay que ver como resulta, seguro haya que balancear
 	health = 8
 	speed = 60
+	damage_to_health = 15
 	super()

@@ -7,4 +7,5 @@ extends Mercenary
 func init_stats():
 	health = 2
 	speed = 90
+	damage_to_health = 11
 	super()

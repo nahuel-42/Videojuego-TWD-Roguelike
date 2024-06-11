@@ -8,6 +8,7 @@ var slow_attack = 0.2
 func init_stats():
 	health = 2
 	speed = 75
+	damage_to_health = 11
 	super()
 
 func add_tower(body):

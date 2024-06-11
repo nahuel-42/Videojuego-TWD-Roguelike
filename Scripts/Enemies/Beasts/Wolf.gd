@@ -6,6 +6,7 @@ class_name EnemyWolf
 func init_stats():
 	speed = 125
 	health = 2
+	damage_to_health = 9
 	super()
 
 func take_damage(damage):
