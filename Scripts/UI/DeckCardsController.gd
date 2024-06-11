@@ -37,7 +37,7 @@ func StartDeck():
 	f_state = State_LoadCards
 	
 func ReceiveCards(cards):
-	#Recibe las cartas del discard para mezclaras y volverlas a agregar
+	#Recibe las cartas del discard para mezclaras y volverlas a agregar	
 	cards=GlobalCardsList.GenerateDeck(cards)
 	for c in cards:
 		c.SetSide(1)
@@ -58,6 +58,7 @@ func _on_button_2_button_up(conf : bool = false):
 		#Activa el modo loadcards
 		f_state = State_LoadCards
 		m_timeCont=0.0
+		m_actualIndex = 0
 		
 		#Cambiar a 1 para que resetee antes
 		if (m_restartCount == 1):
