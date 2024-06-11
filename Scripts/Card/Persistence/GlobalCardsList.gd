@@ -71,27 +71,18 @@ func GenerateDeck(deck):
 	return deck
 func randomizeDeck(deck):
 	var cant=0
-	var vec:Array[int]=[]
 	var rng = RandomNumberGenerator.new()
 	var aux=[]
+	var auxTow=[null,null,null]
 	var j
+	
 	for i in len(deck):
-		vec.append(0)
 		aux.append(null)
 	for i in len(deck):
-		if (isTower(deck[i].GetID()) and cant<3):
-			j=rng.randi_range(0, 2)	
-			while (vec[j]==1):
-				j=rng.randi_range(0, 2)	
-			aux[j]=deck[i]
-			vec[j]=1
-			cant+=1
-		else:
-			j=rng.randi_range(3, len(deck)-1)
-			while (vec[j]==1):
-				j=rng.randi_range(3, len(deck)-1) #ERROR EN LOOP
-			vec[j]=1
-			aux[j]=deck[i]
+		j=rng.randi_range(0, len(deck)-1)
+		while (aux[j]!=null):
+			j=rng.randi_range(0, len(deck)-1)
+		aux[j]=deck[i]
 	deck=aux
 	return deck
 func isTower(id):
