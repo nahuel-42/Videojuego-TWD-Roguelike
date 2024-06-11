@@ -8,21 +8,25 @@ var speed : int = 200
 var enemies_in_range = []
 @onready var colision_shape : CollisionShape2D = $CollisionShape2D
 @onready var animation : AnimationPlayer = $Animation
+@onready var explosion_animation : AnimationPlayer = $ExplosionAnimation
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var explosion : Sprite2D = $Explosion
 	
 
 func _ready():
 	connect("body_entered", add_enemy)
 	connect("body_exited", delete_enemy)
+	explosion.visible = false
 	z_index = 5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move(delta)
-	if(global_position.distance_to(destination) < 10):
+	if(global_position.distance_to(destination) < 5):
 		velocity = Vector2.ZERO
+		explosion_animation.play("Explosion")
 		perform()
-		queue_free()
+		sprite.visible = false
 
 func load_stats(animation_destination : Vector2, cell_dimension):
 	global_position = animation_destination - Vector2(2 * cell_dimension, 5 * cell_dimension)

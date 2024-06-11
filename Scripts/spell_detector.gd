@@ -17,12 +17,12 @@ func _ready():
 	position = size / 2
 	
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed and (event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE):
-		var prefab = load(FIREBALL_PREFAB if event.button_index == MOUSE_BUTTON_RIGHT else ICEBALL_PREFAB)
-		var spell = prefab.instantiate()
-		add_child(spell)
-		spell.load_stats(get_global_mouse_position(), map.CELL_DIMENSION)
+#func _on_area_2d_input_event(viewport, event, shape_idx):
+	#if event is InputEventMouseButton and event.pressed and (event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE):
+		#var prefab = load(FIREBALL_PREFAB if event.button_index == MOUSE_BUTTON_RIGHT else ICEBALL_PREFAB)
+		#var spell = prefab.instantiate()
+		#add_child(spell)
+		#spell.load_stats(get_global_mouse_position(), map.CELL_DIMENSION)
 
 func SpellCardActivated(param):
 	var type = param[0]

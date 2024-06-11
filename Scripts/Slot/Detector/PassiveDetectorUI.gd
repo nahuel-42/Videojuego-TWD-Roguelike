@@ -15,6 +15,7 @@ var m_colorTimer : float = 0.0
 
 var m_listCards = [null, null]
 var m_indexCollision : int = -1
+var m_cardSize : Vector2 = Vector2(100, 100)
 
 func _init():
 	GameEvents.OnGetPassiveDetectorUI.AddListener(GetPassiveDetector)
@@ -29,7 +30,9 @@ func Start(card : CardControl):
 	super.Start(card)
 	m_indexCollision = -1
 	m_colorTimer = 0.0
+	m_cardSize = card.size / 2.0
 
+#Desactiva los colores de todos los paneles
 func Exit():
 	super.Exit()
 	m_background.modulate = m_colorStart
@@ -37,6 +40,7 @@ func Exit():
 	for panel in m_panels:
 		panel.modulate = m_panelColor
 
+#Actualiza los colores cuando una carta pasiva es seleccionada
 func Update(delta):
 	m_colorTimer += delta * m_speedColor
 	if (m_colorTimer < 1.0):
@@ -52,15 +56,20 @@ func UpdatePosition(ui_position : Vector2):
 	var distance : float = 0.0
 	
 	for i in range(len(m_panels)):
+		#Verifica si hay colision
 		if (PanelCollision(ui_position, m_panels[i])):
-			var d : float = ui_position.distance_to(m_panels[i].global_position)
+			#Si colisiona con dos paneles, chequea cual esta mas cerca.
+			#Los paneles tienen pivot en la esquina izquierda
+			var d : float = ui_position.distance_to(m_panels[i].global_position + m_panels[i].size / 2.0)
 			if (index == -1 or d < distance):
 				index = i
 				distance = d
-	if (index >= 0):
+	
+	#Si cambia el indice seleccionado, hace el cambio de color
+	if (index != m_indexCollision):
 		SetPanelColor(m_indexCollision, m_panelColor)
 		m_indexCollision = index
-		SetPanelColor(m_indexCollision, m_panelSelectedColor)
+	SetPanelColor(index, m_panelSelectedColor)
 
 func SetPanelColor(index : int, color : Color):
 	if (index >= 0):
@@ -82,11 +91,12 @@ func InsertCard(card, index : int):
 	UI_funcs.SetParent(m_panels[index], card)
 	card.position = Vector2.ZERO
 
-func PanelCollision(pointer, panel : Panel):
-	var p = Vector2.ZERO
-	#if (position.x - panel.size.x <= player.position.x + p.x and position.x + panel.size.x >= player.position.x - p.x and 
-	#	position.y - panel.size.y <= player.position.y + p.y and position.y + panel.size.y >= player.position.y - p.y):	
-	if (panel.global_position.x - panel.size.x <= pointer.x + p.x and panel.global_position.x + panel.size.x >= pointer.x - p.x and 
-		panel.global_position.y - panel.size.y <= pointer.y + p.y and panel.global_position.y + panel.size.y >= pointer.y - p.y):	
+#Detecta colision entre la carta (el pivot es el centro) y el panel (el pivot es la esquina izquierda)
+func PanelCollision(c, panel : Panel):
+	var cs = m_cardSize
+	var p = panel.global_position
+	var ps = panel.size
+	if (p.x <= c.x + cs.x and p.x + ps.x >= c.x - cs.x and 
+		p.y <= c.y + cs.y and p.y + ps.y >= c.y - cs.y):
 		return true
 	return false

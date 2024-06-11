@@ -30,18 +30,13 @@ position = Vector2(715, 339)
 texture_normal = ExtResource("2_t8eyl")
 
 [node name="BotonConfiguracion" type="TouchScreenButton" parent="."]
-position = Vector2(1001, 5)
+position = Vector2(1058, 6)
 scale = Vector2(0.166016, 0.166016)
 texture_normal = ExtResource("4_y7h20")
 
 [node name="BotonJugar" type="TouchScreenButton" parent="."]
 position = Vector2(712, 170)
 texture_normal = ExtResource("3_4ogq2")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]

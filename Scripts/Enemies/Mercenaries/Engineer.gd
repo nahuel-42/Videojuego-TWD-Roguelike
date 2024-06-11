@@ -5,6 +5,11 @@ extends Mercenary
 var towers_in_range = []
 var cooldown_disable = 10 #agregar un valor
 
+func init_stats():
+	health = 2
+	speed = 75
+	super()
+
 func _process(delta):
 	perform(delta)
 

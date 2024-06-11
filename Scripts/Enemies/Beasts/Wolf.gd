@@ -6,6 +6,7 @@ class_name EnemyWolf
 func init_stats():
 	speed = 125
 	health = 2
+	super()
 
 func take_damage(damage):
 	if vulnerable:

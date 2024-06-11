@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byu8js8u4mlfg"]
+[gd_scene load_steps=8 format=3 uid="uid://byu8js8u4mlfg"]
 
 [ext_resource type="Texture2D" uid="uid://cbr4tj30tmwfr" path="res://Assets/Sprites/Towers/Ammo/Dynamite.png" id="1_0vir4"]
 [ext_resource type="Script" path="res://Scripts/Towers/Attacks/Dynamite.gd" id="1_aksob"]
@@ -25,15 +25,9 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"disable_cs"
-}, {
-"args": [],
-"method": &"enable_cs"
-}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -60,6 +54,9 @@ _data = {
 "RESET": SubResource("Animation_um6bv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nur0x"]
+radius = 33.0151
+
 [node name="Dynamite" type="Node2D"]
 script = ExtResource("1_aksob")
 speed = 300.0
@@ -78,3 +75,10 @@ hframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_cq35p")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nur0x")
+
+[connection signal="body_entered" from="Area2D" to="." method="hit_targets"]

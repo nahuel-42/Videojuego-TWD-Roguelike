@@ -5,7 +5,8 @@ extends Mercenary
 
 func init_stats(): #sujeto a cambios
 	speed = 140
-	health = 2
+	health = 1
+	super()
 
 func take_damage(damage):
 	if vulnerable:

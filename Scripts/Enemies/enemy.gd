@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Enemy
 
-var speed = 75
+var speed
 var acceleration = 5
 var target
-var health = 5
+var health
 var damage_to_health = 1 #deberian especificarse en cada hijo todos los atributos
 var passive_speed_modifier = 1.0
 
@@ -25,16 +25,14 @@ func set_group():
 	pass
 	
 func init_stats():
-	pass
+	health_bar.max_value = health
 
 func _ready():
 	z_index = 3
 	target = Parameters.target
-	health_bar.max_value = health
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
 	animation.connect("animation_finished", effect_finished)
-	animation.play("run")
 	add_to_group(Parameters.GROUPS.ENEMY)
 	set_group()
 	init_stats()
