@@ -66,13 +66,6 @@ func State_LoadCards(delta):
 		else:
 			cond = false
 
-func RestartCardIndex(i : int):
-	pass#m_actualCardIndex = 0
-	#if (m_actualCardIndex - i < 0):
-	#	m_actualCardIndex = 0
-	#else:
-	#	m_actualCardIndex -= i
-
 func ChangeHide(hide : bool):
 	m_hide = hide
 	if (m_hide==false):

@@ -1,6 +1,9 @@
 class_name Speciality
 extends Node2D
 
+@onready var tower : Tower = $"../"
+@onready var label : Label = $"../Label"
+
 const GROUPS = {
 	BEAST = "Beast",
 	SOLDIER = "Soldier",
@@ -18,5 +21,7 @@ func modify_damage(enemy, damage):
 func act(enemy, damage):
 	damage = modify_damage(enemy, damage)
 	#print(str(get_parent()) + " hace " + str(damage) + " daño a " + str(enemy.get_groups()))
-	enemy.take_damage(damage)
-	apply_effects(enemy)
+	if (tower.hits()):
+		enemy.take_damage(damage)
+		apply_effects(enemy)
+		

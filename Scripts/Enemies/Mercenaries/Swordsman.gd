@@ -4,14 +4,13 @@ extends Mercenary
 #TODO: la probabilidad de acierto disminuye con el
 
 func init_stats(): #sujeto a cambios
-	speed = 170
+	speed = 140
 	health = 2
 
 func take_damage(damage):
 	if vulnerable:
 		damage *= 2
 	cooldown = 0.5
-	modulate = Color(1, 0, 0)
 	
 	var rng = RandomNumberGenerator.new()
 	var num = rng.randi_range (1,10)

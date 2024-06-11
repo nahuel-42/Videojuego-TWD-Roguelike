@@ -17,6 +17,9 @@ func _process(delta):
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
 	pass
 
+func manaCheck(cant):
+	return cant<=ActualMana
+
 func manaConsumption(cant):
 	if (cant>ActualMana):
 		return false
