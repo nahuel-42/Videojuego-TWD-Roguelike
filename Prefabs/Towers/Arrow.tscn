@@ -8,7 +8,7 @@ radius = 9.00105
 height = 70.0
 
 [node name="Arrow" type="Area2D"]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.15, 0.15)
 script = ExtResource("1_orivs")
 speed = 350.0
 

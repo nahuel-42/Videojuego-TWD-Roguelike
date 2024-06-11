@@ -8,7 +8,7 @@ var speciality : Speciality
 var damage : int
 
 func _process(delta):
-	if target:
+	if target.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
 		var direction = (target.global_position - global_position).normalized()
 		var movement = direction * speed * delta
 		global_position += movement
