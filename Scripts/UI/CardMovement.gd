@@ -51,10 +51,11 @@ func SetClassDetector():
 ###################INPUT##############
 func GetInputEvent(card, event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			ClickPressed(card)
-		else:
-			ClickUnPressed(card)
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				ClickPressed(card)
+			else:
+				ClickUnPressed(card)
 
 func ClickPressed(card):
 	card.SetFront()

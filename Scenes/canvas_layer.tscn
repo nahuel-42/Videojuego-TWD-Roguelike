@@ -23,9 +23,6 @@ script/source = "extends Node
 
 func _ready():
 	pass
-
-func _process(delta):
-	pass
 "
 
 [node name="CanvasLayer" type="CanvasLayer"]
