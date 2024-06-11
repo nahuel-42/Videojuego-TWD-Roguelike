@@ -8,6 +8,9 @@ extends Node2D
 var radius : Line2D
 var attack_method : AttackMethod
 var passive_attack_speed_modifier = 1.0
+var is_disabled = false
+var cooldown_status = 2
+var cooldown_disable = 2
 
 func _ready():
 	attack_method = $AttackMethod
@@ -20,7 +23,14 @@ func get_damage():
 	attack_method.get_damage()
 
 func _process(delta):
-	attack_method.perform(delta)
+	if is_disabled:
+		if cooldown_status > 0:
+			cooldown_status -= delta
+			return
+		cooldown_status = cooldown_disable
+		enable()
+	else: 
+		attack_method.perform(delta)
 
 func set_class(tower_class):
 	add_child(tower_class)
@@ -75,3 +85,9 @@ func hits():
 	
 func class_id():
 	return attack_method.class_id()
+
+func disable():
+	is_disabled = true
+
+func enable():
+	is_disabled = false
