@@ -52,7 +52,7 @@ offset_left = 0.231995
 offset_top = 0.0799866
 offset_right = -0.0800171
 offset_bottom = -0.248016
-text = "~Cargando~"
+text = "Cargando..."
 
 [node name="TextureProgress" type="TextureProgressBar" parent="."]
 layout_mode = 1
