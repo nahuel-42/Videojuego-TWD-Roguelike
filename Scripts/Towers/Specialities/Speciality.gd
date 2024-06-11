@@ -16,7 +16,7 @@ func apply_effects(enemy):
 	pass
 
 func modify_damage(enemy, damage):
-	return damage
+	return 0 if enemy.is_in_group(Parameters.GROUPS.CAPTAIN) || enemy.is_in_group(Parameters.GROUPS.DRAKE) else damage
 
 func act(enemy, damage):
 	damage = modify_damage(enemy, damage)
