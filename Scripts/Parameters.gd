@@ -1,6 +1,7 @@
 extends Node
 
 var target
+var boss_position
 @export var Slot = "res://Scripts/slots/slot.gd"
 
 const GROUPS = {

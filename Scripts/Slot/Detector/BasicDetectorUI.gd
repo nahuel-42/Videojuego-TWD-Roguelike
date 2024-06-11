@@ -20,6 +20,7 @@ func UItoWorld(ui_position):
 ###################
 ######Public######
 func Start(card : CardControl):
+	m_size = max(card.size.x,card.size.y)
 	SetActive(true)
 	
 func Exit():

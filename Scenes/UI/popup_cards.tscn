@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://v2womdl01ext"]
 
-[ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="1_bayjw"]
+[ext_resource type="Script" path="res://Scripts/UI/Popup/PopupCards.gd" id="1_bayjw"]
 
 [node name="PopupCards" type="Control" node_paths=PackedStringArray("m_gridContainer")]
 visible = false
