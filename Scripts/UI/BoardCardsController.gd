@@ -4,7 +4,6 @@ extends BaseDeck
 @export var m_cardMovement : CardMovement = null
 @export var m_panels: Array[Panel] = []
 @export var m_locationSpeed : float = 10.0
-
 @export var m_cardsInGameReference : Node
 
 var m_cardsListInGame = []
@@ -12,7 +11,6 @@ var m_cardsAmount : int = 0
 
 func _init():
 	GameEvents.OnLoadBoard.AddListener(LoadBoard)
-	
 	GameEvents.OnAddCardsInGame.AddListener(AddCardsInGame)
 	GameEvents.OnSwapCardsInGame.AddListener(SwapCardsInGame)
 	GameEvents.OnRemoveBoardCards.AddListener(RemoveBoardCards)
@@ -79,7 +77,7 @@ func SwapCardsInGame(param):
 	var count = len(m_cardsListInGame)
 	while (i < count && m_cardsListInGame[i].GetID() != id ):
 		i += 1
-			
+
 	if (i<count):
 		GameEvents.OnLoadDiscard.Call([[m_cardsListInGame[i]]])
 		m_cardsListInGame.remove_at(i)

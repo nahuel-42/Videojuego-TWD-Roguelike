@@ -68,7 +68,7 @@ func Init(baseCard):
 	get_node("InfoSideCard/range").text = '-'
 	get_node("InfoSideCard/attackSpeed").text = '-'
 	get_node("InfoSideCard/accuracy").text = '-'
-
+	
 	if (type == 'tower'):
 		var damage = m_baseCard.m_refCard["damage"]
 		var range = m_baseCard.m_refCard["range"]
@@ -83,14 +83,10 @@ func Init(baseCard):
 		get_node("InfoSideCard/range").text = str(range)
 		get_node("InfoSideCard/attackSpeed").text = str(attack)
 		get_node("InfoSideCard/accuracy").text = str(accuracy*100)+'%'
-	else:
-		var descr = m_baseCard.m_refCard['desc']
-		get_node('TopSideCard/description').text = descr
-		get_node('InfoSideCard/description').text = descr
+	var descr = m_baseCard.m_refCard['desc']
+	get_node('TopSideCard/description').text = descr
+	get_node('InfoSideCard/description').text = descr
 
-
-
-	
 func _ready():
 	SetSide(1)
 

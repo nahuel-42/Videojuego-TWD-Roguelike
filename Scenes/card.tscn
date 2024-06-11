@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crqhywu1a32fj"]
+[gd_scene load_steps=10 format=3 uid="uid://crqhywu1a32fj"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CardControl.gd" id="1_akigf"]
 [ext_resource type="Texture2D" uid="uid://c0i07e4udybdo" path="res://Assets/Sprites/Cards/BlueBackground.png" id="2_op8s0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drkhj63h86ooh" path="res://Assets/Sprites/Dorso.png" id="3_s28en"]
 [ext_resource type="LabelSettings" uid="uid://drqqpv8lujshl" path="res://fonts/Cards/TopLabels--.tres" id="4_8lalf"]
 [ext_resource type="LabelSettings" uid="uid://dp7evflwuqana" path="res://fonts/Cards/InfoLabels.tres" id="4_jppv3"]
+[ext_resource type="LabelSettings" uid="uid://cw7oknfxddx1l" path="res://fonts/Cards/InfoLabels++.tres" id="5_3pv7m"]
 
 [sub_resource type="FontVariation" id="FontVariation_lfe6d"]
 
@@ -55,6 +56,7 @@ expand_mode = 1
 
 [node name="name" type="Label" parent="TopSideCard"]
 z_index = 1
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.047
@@ -73,77 +75,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 max_lines_visible = 2
+visible_characters = 20
+visible_ratio = 3.33333
 text_direction = 1
-
-[node name="damage" type="Label" parent="TopSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.053
-anchor_top = 0.922
-anchor_right = 0.947
-anchor_bottom = 0.967
-offset_left = 0.0999994
-offset_top = 0.199982
-offset_right = -201.1
-offset_bottom = 0.199982
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = ExtResource("4_8lalf")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Figure" type="TextureRect" parent="TopSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.047
-anchor_top = 0.2
-anchor_right = 0.953
-anchor_bottom = 0.787
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
-[node name="attackSpeed" type="Label" parent="TopSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.277
-anchor_top = 0.922
-anchor_right = 0.467
-anchor_bottom = 0.965
-offset_left = -0.100006
-offset_top = 0.199982
-offset_right = 9.89999
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = ExtResource("4_8lalf")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="range" type="Label" parent="TopSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.723
-anchor_top = 0.92
-anchor_right = 0.947
-anchor_bottom = 0.965
-offset_left = 0.0999908
-offset_right = -0.100006
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = ExtResource("4_8lalf")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="cost" type="Label" parent="TopSideCard"]
 z_index = 1
@@ -162,21 +96,21 @@ label_settings = ExtResource("4_8lalf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="accuracy" type="Label" parent="TopSideCard"]
+[node name="Figure" type="TextureRect" parent="TopSideCard"]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.922
-anchor_right = 0.723
-anchor_bottom = 0.965
-offset_top = 0.199982
-offset_right = 0.0999908
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = ExtResource("4_8lalf")
-horizontal_alignment = 1
-vertical_alignment = 1
+anchor_left = 0.047
+anchor_top = 0.2
+anchor_right = 0.953
+anchor_bottom = 0.787
+offset_left = 2.00001
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
 
 [node name="description" type="Label" parent="TopSideCard"]
 z_index = 1
@@ -185,7 +119,7 @@ anchors_preset = -1
 anchor_left = 0.053
 anchor_top = 0.797
 anchor_right = 0.947
-anchor_bottom = 0.92
+anchor_bottom = 0.917
 offset_left = 2.0
 offset_top = 2.0
 offset_right = -2.0
@@ -196,6 +130,76 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 max_lines_visible = 2
+
+[node name="damage" type="Label" parent="TopSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.925
+anchor_right = 0.277
+anchor_bottom = 0.97
+offset_left = 0.0999994
+offset_top = -3.05176e-05
+offset_right = -0.100006
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="attackSpeed" type="Label" parent="TopSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.277
+anchor_top = 0.922
+anchor_right = 0.5
+anchor_bottom = 0.965
+offset_left = -0.100006
+offset_top = 0.199982
+offset_bottom = 3.05176e-05
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="range" type="Label" parent="TopSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.92
+anchor_right = 0.723
+anchor_bottom = 0.965
+offset_right = 0.0999908
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="accuracy" type="Label" parent="TopSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.723
+anchor_top = 0.922
+anchor_right = 0.947
+anchor_bottom = 0.965
+offset_left = 0.0999908
+offset_top = 0.199982
+offset_right = -0.100006
+offset_bottom = 3.05176e-05
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_8lalf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="InfoSideCard" type="Panel" parent="."]
 z_index = 1
@@ -233,12 +237,66 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lfe6d")
 theme_override_font_sizes/font_size = 9
 text = "Nombre"
-label_settings = ExtResource("4_jppv3")
+label_settings = ExtResource("5_3pv7m")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 max_lines_visible = 2
 text_direction = 1
+
+[node name="cost" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.145
+anchor_right = 0.947
+anchor_bottom = 0.19
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Figure" type="TextureRect" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.2
+anchor_right = 0.953
+anchor_bottom = 0.787
+offset_left = 2.00001
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="description" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.053
+anchor_top = 0.797
+anchor_right = 0.947
+anchor_bottom = 0.917
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = SubResource("LabelSettings_jucyr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
 
 [node name="damage" type="Label" parent="InfoSideCard"]
 z_index = 1
@@ -260,22 +318,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Figure" type="TextureRect" parent="InfoSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.047
-anchor_top = 0.2
-anchor_right = 0.953
-anchor_bottom = 0.787
-offset_left = 2.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
 [node name="attackSpeed" type="Label" parent="InfoSideCard"]
 z_index = 1
 layout_mode = 1
@@ -286,6 +328,9 @@ anchor_right = 0.5
 anchor_bottom = 0.97
 offset_left = -0.100006
 offset_top = -3.05176e-05
+offset_bottom = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
 label_settings = ExtResource("4_jppv3")
@@ -297,6 +342,26 @@ autowrap_mode = 2
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.925
+anchor_right = 0.723
+anchor_bottom = 0.97
+offset_top = -3.05176e-05
+offset_right = 0.0999908
+offset_bottom = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
+label_settings = ExtResource("4_jppv3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="accuracy" type="Label" parent="InfoSideCard"]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.723
 anchor_top = 0.925
 anchor_right = 0.947
@@ -304,65 +369,15 @@ anchor_bottom = 0.97
 offset_left = 0.0999908
 offset_top = -3.05176e-05
 offset_right = -0.100006
+offset_bottom = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
 label_settings = ExtResource("4_jppv3")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="cost" type="Label" parent="InfoSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.147
-anchor_right = 0.95
-anchor_bottom = 0.192
-offset_top = 0.200001
-offset_bottom = 0.199997
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
-text = "Cost"
-label_settings = ExtResource("4_jppv3")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="accuracy" type="Label" parent="InfoSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.925
-anchor_right = 0.723
-anchor_bottom = 0.97
-offset_top = -3.05176e-05
-offset_right = 0.0999908
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = ExtResource("4_jppv3")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="description" type="Label" parent="InfoSideCard"]
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.053
-anchor_top = 0.797
-anchor_right = 0.947
-anchor_bottom = 0.92
-offset_left = 2.0
-offset_top = 0.199982
-offset_right = -2.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-label_settings = SubResource("LabelSettings_jucyr")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-max_lines_visible = 2
 
 [node name="BottomSideCard" type="Panel" parent="."]
 visible = false
