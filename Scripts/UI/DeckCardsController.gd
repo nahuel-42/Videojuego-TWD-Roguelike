@@ -36,8 +36,8 @@ func StartDeck():
 	f_state = State_LoadCards
 	
 func RecieveCards(cards):
-    #Recibe las cartas del discard para mezclaras y volverlas a agregar
-    cards=GlobalCardsList.GenerateDeck(cards)
+	#Recibe las cartas del discard para mezclaras y volverlas a agregar
+	cards=GlobalCardsList.GenerateDeck(cards)
 	for c in cards:
 		c.SetSide(1)
 		AddCardsPosition(c)

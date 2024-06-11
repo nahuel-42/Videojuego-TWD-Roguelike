@@ -144,8 +144,8 @@ func SetBack():
 	self.z_index = 1
 
 func setTransparent(num):
-    if (num==255):
-        self.modulate=Color(1,1,1,1)
-    else:
-        self.modulate=Color(1,1,1,0.3)
-        #self.set_modulate(num)
+	if (num==255):
+		self.modulate=Color(1,1,1,1)
+	else:
+		self.modulate=Color(1,1,1,0.3)
+		#self.set_modulate(num)
