@@ -119,6 +119,7 @@ _data = {
 radius = 295.0
 
 [node name="Lieutenant" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_ge2qc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -5,12 +5,13 @@ func _ready():
 	super()
 	id = -1
 	var stats = {
-		"range": 100,
+		"range": 250,
 		"damage": 5,
 		"attackSpeed": 0.5,
-		"accuracy": 0.1
+		"accuracy": 1
 	}
 	tower.load_stats(stats)
+	label.text = "Sniper (S)"
 
 func apply_effects(enemy):
 	pass

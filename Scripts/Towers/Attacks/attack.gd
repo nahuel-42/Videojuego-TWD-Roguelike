@@ -80,7 +80,7 @@ func apply_attack_speed_passive(modifier):
 
 func hits():
 	var random = randi() % 100 + 1
-	return random > accuracy * 100
+	return random <= accuracy * 100
 
 func class_id():
 	return speciality.class_id()

@@ -115,6 +115,7 @@ _data = {
 }
 
 [node name="Archer" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_l5wt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

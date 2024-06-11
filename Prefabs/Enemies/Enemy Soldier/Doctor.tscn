@@ -116,6 +116,7 @@ _data = {
 radius = 367.0
 
 [node name="Doctor" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_hu2q6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

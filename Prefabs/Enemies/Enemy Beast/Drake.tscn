@@ -112,6 +112,7 @@ _data = {
 }
 
 [node name="Drake" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_fushe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

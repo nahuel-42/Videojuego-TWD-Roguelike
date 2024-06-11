@@ -523,4 +523,5 @@ max_polyphony = 40
 [connection signal="button_down" from="HideBoardCards/ButtonHideBoardCards" to="HideBoardCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality1/image" to="PopupSpeciality" method="_on_button_down_speciality1"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality2/image" to="PopupSpeciality" method="_on_button_down_speciality2"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality3/image" to="PopupSpeciality" method="_on_button_down_speciality3"]
 [connection signal="button_down" from="PopupSpeciality/background/exit" to="PopupSpeciality" method="_on_exit_button_down"]
