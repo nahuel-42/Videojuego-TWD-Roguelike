@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqnl8f4bflhg3"]
+[gd_scene load_steps=7 format=3 uid="uid://bqnl8f4bflhg3"]
 
 [ext_resource type="Texture2D" uid="uid://cjhieew4csu2s" path="res://Assets/Menu/imagen_menuprincipal.jpg" id="1_g8k5a"]
 [ext_resource type="Script" path="res://Scripts/Menu/menuPrincipal.gd" id="1_ndqvk"]
 [ext_resource type="Texture2D" uid="uid://bd1bs7fne6sqh" path="res://Assets/Menu/BotonConfiguracion.png" id="2_t8eyl"]
 [ext_resource type="Texture2D" uid="uid://fmm6th17j1bo" path="res://Assets/Menu/Boton.png" id="3_4ogq2"]
 [ext_resource type="Texture2D" uid="uid://cphcemoi0irw0" path="res://Assets/Menu/Settings-PNG-Image.png" id="4_y7h20"]
+[ext_resource type="Texture2D" uid="uid://bnb257iad35qi" path="res://Assets/Menu/JugarButonPressed.jpeg" id="6_fpq0b"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -37,6 +38,7 @@ texture_normal = ExtResource("4_y7h20")
 [node name="BotonJugar" type="TouchScreenButton" parent="."]
 position = Vector2(712, 170)
 texture_normal = ExtResource("3_4ogq2")
+texture_pressed = ExtResource("6_fpq0b")
 
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]

@@ -57,7 +57,7 @@ func ApplyCard(card : CardControl):
 	return false
 ######End######
 
-######Collider######
+############# Collider ##############
 func _on_area_entered(area):
 	if (!m_slotList.has(area)):
 		m_slotList.append(area)
@@ -65,12 +65,12 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	var index = m_slotList.find(area)
 	if (index >= 0):
-		if (m_slotSelected != null):
+		if (m_slotSelected != null and m_slotList[index] == m_slotSelected):
 			m_slotSelected.unglow_slot()
 		m_slotList.remove_at(index)
 	if (m_slotSelected == area):
 		m_slotSelected = null
-######End######
+################# End ################
 
 func CheckCloseArea():
 	var d1 = global_position.distance_to(m_slotSelected.global_position)
