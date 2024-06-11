@@ -38,7 +38,7 @@ func SpellCardActivated(param):
 		var spell = prefab.instantiate()
 		add_child(spell)
 		
-		var rx : float = rng.randf_range(-range, range) / 2.0
-		var ry : float = rng.randf_range(-range, range) / 2.0
- 
+		var rx : float = 0#rng.randf_range(-range, range) / 2.0
+		var ry : float = 0#rng.randf_range(-range, range) / 2.0
+		
 		spell.load_stats(pos + Vector2(rx, ry), map.CELL_DIMENSION)

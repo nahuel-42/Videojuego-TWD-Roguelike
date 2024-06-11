@@ -31,7 +31,7 @@ func StartDeck():
 		AddCardsPosition(c)
 	
 	#Pone N cartas en el board
-	_on_button_2_button_up()
+	_on_button_2_button_up(true)
 	
 	#Activa el modo loadcards
 	f_state = State_LoadCards
@@ -45,11 +45,11 @@ func ReceiveCards(cards):
 	
 	#Pone N cartas en el board
 	m_restartCount = 0
-	_on_button_2_button_up()
+	_on_button_2_button_up(true)
 
-func _on_button_2_button_up():
+func _on_button_2_button_up(conf : bool = false):
 	#chequea que el tiempo sea mayor al max time para el discard
-	if (m_timeCont>=m_maxTime):
+	if (m_timeCont>=m_maxTime or conf):
 		if (len(m_cardsList) == 0):
 			m_restartCount += 1
 		var newList = RemoveCards(5)

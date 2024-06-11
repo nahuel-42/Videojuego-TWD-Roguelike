@@ -7,6 +7,9 @@ class_name PassiveDetectorUI
 @export var m_colorStart : Color = Color.WHITE
 @export var m_colorEnd : Color = Color.WHITE
 
+@export var m_panelColor : Color = Color.WHITE
+@export var m_panelSelectedColor : Color = Color.YELLOW
+
 @export var m_speedColor : float = 1.0
 var m_colorTimer : float = 0.0
 
@@ -30,6 +33,9 @@ func Start(card : CardControl):
 func Exit():
 	super.Exit()
 	m_background.modulate = m_colorStart
+	
+	for panel in m_panels:
+		panel.modulate = m_panelColor
 
 func Update(delta):
 	m_colorTimer += delta * m_speedColor
@@ -52,7 +58,13 @@ func UpdatePosition(ui_position : Vector2):
 				index = i
 				distance = d
 	if (index >= 0):
+		SetPanelColor(m_indexCollision, m_panelColor)
 		m_indexCollision = index
+		SetPanelColor(m_indexCollision, m_panelSelectedColor)
+
+func SetPanelColor(index : int, color : Color):
+	if (index >= 0):
+		m_panels[index].modulate = color
 
 func ApplyCard(card : CardControl):
 	if (m_indexCollision >= 0 and card.use([null])):
