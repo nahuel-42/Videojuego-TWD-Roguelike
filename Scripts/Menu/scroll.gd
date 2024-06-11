@@ -60,6 +60,7 @@ func _process(delta):
 
 	if _swipe_current_length < _swipe_length:
 		card_current_index = closest_index
-	
-
+		
+	#Setea el tipo para despues cargar con ese valor
+	CardsManager.SetDeckType(closest_index)
 

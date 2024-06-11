@@ -76,6 +76,47 @@ size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_constants/separation = 100
 
+[node name="HBoxContainer8" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "Cargar mazo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect4" type="TextureRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_aocer")
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8/MarginContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+color = Color(0.396078, 0.54902, 0.698039, 1)
+
+[node name="Pasiva" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8/MarginContainer2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "Aumenta el tiempo de retardo 15%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
 [node name="HBoxContainer" type="VBoxContainer" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4

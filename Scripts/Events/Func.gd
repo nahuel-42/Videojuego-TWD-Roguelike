@@ -8,5 +8,9 @@ func AddListener(listener):
 	else:
 		print("Error! Func Event")
 		
+func RemoveListener(listener):
+	if (e_event == listener):
+		e_event = null
+		
 func Call(paramter):
 	return e_event.call(paramter)

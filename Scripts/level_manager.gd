@@ -13,7 +13,7 @@ var target
 func _ready():
 	var tilemap = $TileMap
 	width = tilemap.width * tilemap.CELL_DIMENSION
-	health_bar.max_value = health
+	#health_bar.max_value = health
 	target = $Target
 	Parameters.target = target
 	target.connect("body_entered", lose_health)

@@ -8,15 +8,20 @@ var passives = []
 
 func _ready():
 	GameEvents.OnUpdateMana.Call([InitialMana/InitialMana])
-	GameEvents.OnUpdateHealth.Call([100])
+	GameEvents.OnUpdateHealth.Call([100.0])
 	pass # Replace with function body.
 
+var timer : float = 0.0
 func _process(delta):
+	timer += delta
+	if (timer > 1):
+		timer = 0.0
+		HealthLoss(5.0)
+	
 	if (ActualMana<=100):
 		ActualMana+=DeltaTime*delta
 		#if ((int)(ActualMana) % 2 == 0):
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
-	pass
 
 func manaCheck(cant):
 	return cant<=ActualMana
@@ -32,9 +37,11 @@ func manaConsumption(cant):
 func HealthLoss(cant):
 	if (ActualHealth-cant>0):
 		ActualHealth-=cant
-		GameEvents.OnUpdateHealth.Call([ActualHealth])
+		GameEvents.OnUpdateHealth.Call([float(ActualHealth)])
 	else:
 		var change_scene = load("res://Scenes/Menu/gameOver.tscn")
+		#MAXIMA VIDA, OJO
+		ActualHealth = 100
 		get_tree().change_scene_to_packed(change_scene)
 
 func StartWave():

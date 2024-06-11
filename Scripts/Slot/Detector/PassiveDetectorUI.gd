@@ -15,7 +15,9 @@ var m_indexCollision : int = -1
 
 func _init():
 	GameEvents.OnGetPassiveDetectorUI.AddListener(GetPassiveDetector)
-	
+func _exit_tree():
+	GameEvents.OnGetPassiveDetectorUI.RemoveListener(GetPassiveDetector)
+
 func GetPassiveDetector(param):
 	return self
 	

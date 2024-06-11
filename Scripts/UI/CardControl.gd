@@ -95,6 +95,8 @@ func GetID():
 
 func SetInputEvent(inputEvent):
 	e_inputEvent = inputEvent
+	if (inputEvent != null):
+		set_process_mode(Node.PROCESS_MODE_ALWAYS)
 	
 func _on_panel_gui_input(event):
 	if (e_inputEvent != null):

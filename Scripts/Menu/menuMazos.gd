@@ -6,7 +6,8 @@ var scene_principal = load("res://Scenes/Menu/menuPrincipal.tscn")
 
 
 func _on_touch_screen_button_pressed():
-	get_tree().change_scene_to_packed(scene_map)
+	if (CardsManager.CheckDeckTypeSelected()):
+		get_tree().change_scene_to_packed(scene_map)
 
 
 func _on_boton_atras_pressed():

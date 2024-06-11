@@ -11,6 +11,8 @@ var m_dragActivated : bool = false
 
 func _init():
 	GameEvents.OnShowPopCards.AddListener(ShowCards)
+func _exit_tree():
+	GameEvents.OnShowPopCards.RemoveListener(ShowCards)
 
 func ShowCards(param):
 	var amount = len(param[0])

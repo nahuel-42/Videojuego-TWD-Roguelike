@@ -16,7 +16,7 @@ func _physics_process(delta):
 func StartDeck():
 	#por ahora se crea solo fuego
 	CardsManager.InitUserSave()
-	var deck = CardsManager.CreateReferenceDeck(0)
+	var deck = CardsManager.CreateReferenceDeck()
 	
 	#Crea las cartas en la UI para mezclar
 	var temporaryDeck = []

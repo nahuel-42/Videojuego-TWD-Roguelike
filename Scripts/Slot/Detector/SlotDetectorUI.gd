@@ -10,6 +10,8 @@ var m_slotList = []
 
 func _init():
 	GameEvents.OnGetSlotDetectorUI.AddListener(GetSlotDetector)
+func _exit_tree():
+	GameEvents.OnGetSlotDetectorUI.RemoveListener(GetSlotDetector)
 	
 func _ready():
 	super._ready()

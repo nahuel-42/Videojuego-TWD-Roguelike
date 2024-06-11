@@ -6,17 +6,16 @@ const ICEBALL_PREFAB = "res://Prefabs/Spells/Iceball.tscn"
 var size : Vector2
 @onready var map = $"../TileMap"
 
-# Called when the node enters the scene tree for the first time.
+func _init():
+	GameEvents.OnSpellCardActivated.AddListener(SpellCardActivated)
+func _exit_tree():
+	GameEvents.OnSpellCardActivated.RemoveListener(SpellCardActivated)
+
 func _ready():
 	size = Vector2(map.width * map.CELL_DIMENSION, map.height * map.CELL_DIMENSION)
 	$Area2D/CollisionShape2D.shape.size = size
 	position = size / 2
-
-	GameEvents.OnSpellCardActivated.AddListener(SpellCardActivated)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and (event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE):

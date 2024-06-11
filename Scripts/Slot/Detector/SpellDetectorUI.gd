@@ -9,6 +9,8 @@ var m_sizeY : float = 0.0
 
 func _init():
 	GameEvents.OnGetSpellDetectorUI.AddListener(GetSpellDetector)
+func _exit_tree():
+	GameEvents.OnGetSpellDetectorUI.RemoveListener(GetSpellDetector)
 
 func _ready():
 	m_sizeY = get_viewport_rect().size.y

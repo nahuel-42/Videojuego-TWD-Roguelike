@@ -15,6 +15,12 @@ func _init():
 	GameEvents.OnSwapCardsInGame.AddListener(SwapCardsInGame)
 	GameEvents.OnRemoveBoardCards.AddListener(RemoveBoardCards)
 
+func _exit_tree():
+	GameEvents.OnLoadBoard.RemoveListener(LoadBoard)
+	GameEvents.OnAddCardsInGame.RemoveListener(AddCardsInGame)
+	GameEvents.OnSwapCardsInGame.RemoveListener(SwapCardsInGame)
+	GameEvents.OnRemoveBoardCards.RemoveListener(RemoveBoardCards)
+
 #STATES
 func State_CardsLocation(delta):
 	var ending = false

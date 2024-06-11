@@ -1,10 +1,12 @@
 class_name DiscardCards
 extends BaseDeck
 
-func _ready():
-	super._ready()
+func _init():
 	GameEvents.OnLoadDiscard.AddListener(LoadDiscard)
 	GameEvents.OnRestartDeck.AddListener(RestartDeck)
+func _exit_tree():
+	GameEvents.OnLoadDiscard.RemoveListener(LoadDiscard)
+	GameEvents.OnRestartDeck.RemoveListener(RestartDeck)
 
 func LoadDiscard(param):
 	var cards = param[0]
