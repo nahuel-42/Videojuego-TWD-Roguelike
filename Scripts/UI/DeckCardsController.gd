@@ -26,7 +26,7 @@ func StartDeck():
 	#Se mezclan y se agrega al deck
 	temporaryDeck=GlobalCardsList.GenerateDeck(temporaryDeck)
 	for c in temporaryDeck:
-		c.SetSide(false)
+		c.SetSide(1)
 		AddCardsPosition(c)
 	
 	#Pone N cartas en el board
@@ -35,7 +35,7 @@ func StartDeck():
 	#Activa el modo loadcards
 	f_state = State_LoadCards
 	
-func RecieveCards(cards):
+func ReceiveCards(cards):
 	#Recibe las cartas del discard para mezclaras y volverlas a agregar
 	cards=GlobalCardsList.GenerateDeck(cards)
 	for c in cards:
