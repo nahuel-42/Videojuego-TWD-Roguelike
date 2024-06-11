@@ -144,7 +144,9 @@ func start_vulnerable():
 		return
 		
 	vulnerable = true
-	call_deferred("terminate_vulnerable", 5)
+	animation.play("Vulnerable")
+	sprite.modulate = Color(1, 1, 0)
+	#call_deferred("terminate_vulnerable", 5)
 
 func terminate_vulnerable():
 	vulnerable = false
@@ -153,6 +155,8 @@ func effect_finished(animation_name):
 	match animation_name:
 		"Slow": terminate_slow()
 		"Stun": terminate_stun()
+		"Vulnerable": terminate_vulnerable()
+		"Bleeding": terminate_bleeding()
 	
 	animation.play("Walk")
 
