@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=16 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
+[ext_resource type="Texture2D" uid="uid://bmi0tccrjw0u6" path="res://Assets/Menu/draw.png" id="1_cpbcl"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
 [ext_resource type="Script" path="res://Scripts/UI/CardMovement.gd" id="3_1uow5"]
@@ -11,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dn8e2rqr4w7nd" path="res://Assets/Menu/lifebarframe.png" id="8_ebcvx"]
 [ext_resource type="Texture2D" uid="uid://djtkw572g5tkb" path="res://Assets/Menu/manabarframe.png" id="9_xrms7"]
 [ext_resource type="Script" path="res://Scripts/UI/HideBoardControl.gd" id="11_a2f30"]
+[ext_resource type="Texture2D" uid="uid://fjtio1g7853p" path="res://Assets/Menu/openedeye.png" id="12_g1qqh"]
+[ext_resource type="Texture2D" uid="uid://dqhct78evy5vn" path="res://Assets/Menu/closedeye.png" id="13_vrria"]
 
 [sub_resource type="GDScript" id="GDScript_4flth"]
 script/source = "extends Node
@@ -27,52 +30,23 @@ script = SubResource("GDScript_4flth")
 
 [node name="Debug" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 0.4
-anchor_top = 0.01
-anchor_right = 0.6
-anchor_bottom = 0.25
+anchor_left = 0.774
+anchor_top = 0.91
+anchor_right = 0.809
+anchor_bottom = 0.972
+offset_left = 0.351929
+offset_top = 0.320007
+offset_right = 0.0319824
+offset_bottom = 0.143982
 
-[node name="Background" type="Panel" parent="Debug"]
+[node name="Button2" type="TextureButton" parent="Debug"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.784
-anchor_top = 3.633
-anchor_right = 2.279
-anchor_bottom = 4.115
-offset_left = -0.0335999
-offset_top = -0.00421143
-offset_right = -0.081604
-offset_bottom = 0.0351563
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="Debug"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.806
-anchor_top = 3.672
-anchor_right = 2.023
-anchor_bottom = 4.07
-offset_left = -0.102417
-offset_top = -0.069458
-offset_right = -0.0991821
-offset_bottom = 0.0335693
-text = "Start
-"
-
-[node name="Button2" type="Button" parent="Debug"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 2.041
-anchor_top = 3.675
-anchor_right = 2.258
-anchor_bottom = 4.074
-offset_left = -0.0464783
-offset_top = -0.0160522
-offset_right = -0.0432739
-offset_bottom = -0.0685425
-text = "Load"
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource("1_cpbcl")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
 layout_mode = 3
@@ -248,9 +222,11 @@ script = ExtResource("3_1uow5")
 
 [node name="HideBoard" type="Control" parent="BoardCards"]
 layout_mode = 1
-anchor_top = 0.75
+anchor_top = 0.806
 anchor_right = 1.0
-anchor_bottom = 1.75
+anchor_bottom = 1.806
+offset_top = 0.0319977
+offset_bottom = 0.0319824
 
 [node name="CardsInGame" type="Control" parent="BoardCards"]
 visible = false
@@ -440,24 +416,31 @@ grow_vertical = 2
 
 [node name="HideBoardCards" type="Control" parent="." node_paths=PackedStringArray("m_panels")]
 layout_mode = 3
-anchor_left = 0.154
-anchor_top = 0.903
-anchor_right = 0.235
-anchor_bottom = 0.992
+anchor_left = 0.191
+anchor_top = 0.91
+anchor_right = 0.226
+anchor_bottom = 0.972
+offset_left = -0.0320129
+offset_top = 0.320007
+offset_right = -0.35202
+offset_bottom = 0.143982
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_a2f30")
 m_panels = [NodePath("../DeckCards"), NodePath("../BoardCards"), NodePath("../DiscardCards"), NodePath("../Passives")]
 
-[node name="ButtonHideBoardCards" type="Button" parent="HideBoardCards"]
+[node name="ButtonHideBoardCards" type="TextureButton" parent="HideBoardCards"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hide board
-cards"
+toggle_mode = true
+texture_normal = ExtResource("12_g1qqh")
+texture_pressed = ExtResource("13_vrria")
+ignore_texture_size = true
+stretch_mode = 4
 
 [connection signal="button_up" from="Debug/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
