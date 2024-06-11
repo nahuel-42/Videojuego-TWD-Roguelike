@@ -7,7 +7,7 @@ const ZOOM_SPEED_OUT : float = 1.1
 const MIN_ZOOM : float = 0.3
 const MAX_ZOOM : float = 3.0
 const ZOOM_SPEED : float = 0.05
-const CAM_SPEED : float = 1.1
+const CAM_SPEED : float = 1.3
 
 var target_return_enabled = true
 var target_return_rate = 0.02

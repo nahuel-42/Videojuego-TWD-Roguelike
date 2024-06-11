@@ -21,63 +21,34 @@ var width = 200
 var height
 var last_target_pos = null
 var map
-var borderSize = 10
+var borderSize = 20
+var boss_arena_dimension = Vector2i(10,3)
 
 enum TileType {
-	PASTO,
-	CAMINO,
-	CAMPAMENTO,
-	TORRE,
-	OBSTACULO,
-	CASTILLO,
-	BORDE,
-	SLOT,
+	GRASS,
+	PATH,
+	BORDER,
 	CHEST
 }
 
 # TODO: hacer diccionario de layers (cambiar que layer sea layers.decoracion, por ejemplo o sea digamos)
-# TODO: cambiar a ingles
 var textures = {
-	TileType.PASTO: {
+	TileType.GRASS: {
 		"layer": 1,
 		"source": 1,
 		"atlas": Rect2i(Vector2i(0,0),Vector2i(7,3)),
 		"alternative": 0 
 	},
-	TileType.CAMINO: {
+	TileType.PATH: {
 		"layer": 0,
 		"source": 1,
 		"atlas": Rect2i(0,4,1,3),
 		"alternative": 0 
 	},
-	TileType.CAMPAMENTO: {
-		"layer" : 2,
-		"source" : 3,
-		"atlas" : Rect2i(5,3,0,0),
-		"alternative" : 0
-	},
-	TileType.OBSTACULO: {
-		"layer": 2,
-		"source": 2,
-		"atlas":Rect2i(1,6,0,0),
-		"alternative": 0 
-	},
-	TileType.CASTILLO: {
-		"layer": 2,
-		"source": 3,
-		"atlas": Rect2i(3,1,0,0),
-		"alternative": 0 
-	},
-	TileType.BORDE: {
+	TileType.BORDER: {
 		"layer": 0,
 		"source": 3,
 		"atlas": Rect2i(7,1,0,0),
-		"alternative": 0 
-	},
-	TileType.SLOT: {
-		"layer": 2,
-		"source": 3,
-		"atlas": Rect2i(3,5,0,0),
 		"alternative": 0 
 	},
 	TileType.CHEST: {
@@ -130,20 +101,19 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	ObstacleGenerator.init(width, height,5, height / 2 - 1)
 	
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
-	var path = path_generator.generate_path(initial_pos, target_pos, 2.0)
+	var path = path_generator.generate_path(initial_pos, target_pos-Vector2i(boss_arena_dimension.x,0), 2.0)
+	var arena = generate_boss_path(path[-1])
+	ObstacleGenerator.add_obstacles(arena)
 	ObstacleGenerator.add_obstacles(Utils.add_padding(path))
 	# Add castles to initial obstacles
 	ObstacleGenerator.add_obstacles([initial_pos, target_pos])	
 	
-	for cell in path:
-		map[cell] = TileType.CAMINO
+	for cell in path+arena:
+		map[cell] = TileType.PATH
 
-	# TODO: Agregar los slots como initial_obstacles en obstacle_generator
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
 	for slot in slots:
-		#var new_slot = slot_scene.instantiate() #!
-		#new_slot._setup(TileType.SLOT)
-		var new_slot = load(SLOT_PATH).instantiate() #!
+		var new_slot = load(SLOT_PATH).instantiate()
 		new_slot.position = slot * CELL_DIMENSION
 		add_child(new_slot)
 		map[slot] = new_slot #ahora tiene un objeto, el valor del diccionario #TileType.SLOT
@@ -163,9 +133,9 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		var fork = fork_generator.generate_fork(path, forks_initial_pos, castle_padding)
 		forks_initial_pos.append(fork[0])
 		for cell in fork:
-			map[cell] = TileType.CAMINO
+			map[cell] = TileType.PATH
 		
-		# TODO: elegir un criterio mejor para elegir los campamentos / cofres
+		# TODO: elegir un criterio mejor para elegir los SPAWNERs / cofres
 		var element
 		if i < n_forks / 2:
 			element = chest_scene.instantiate()
@@ -181,7 +151,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 			element.position = fork[-1] * CELL_DIMENSION
 			add_child(element)
 			
-		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/CAMPAMENTO
+		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/SPAWNER
 		ObstacleGenerator.add_obstacles(Utils.add_padding(fork))
 	
 	render_border(borderSize)
@@ -216,7 +186,7 @@ func generate_target():
 	return Vector2i(pos_x, pos_y)
 
 func render_grass(width: int, height: int):
-	var grass_texture = textures[TileType.PASTO]
+	var grass_texture = textures[TileType.GRASS]
 	var rand
 	for i in range(width):
 		for j in range(height):
@@ -224,10 +194,10 @@ func render_grass(width: int, height: int):
 			set_cell(grass_texture.layer, Vector2i(i,j), grass_texture.source, rand)
 
 func render_border(padding: int):
-	var border_texture = textures[TileType.PASTO]
+	var border_texture = textures[TileType.GRASS]
 	for p in range(1, padding + 1):
-		if p==5:
-			border_texture = textures[TileType.BORDE]
+		if p==padding/3:
+			border_texture = textures[TileType.BORDER]
 		for j in range(-p, height + p):
 			set_cell(border_texture.layer, Vector2i(-p, j), border_texture.source, border_texture.atlas.position)
 			set_cell(border_texture.layer, Vector2i(width + p - 1, j), border_texture.source, border_texture.atlas.position)
@@ -239,13 +209,13 @@ func render_border(padding: int):
 var percentage = 0
 func _process(delta):
 	if Input.is_action_just_released("regenerate_level"):
-		print("regenerating level")
 		var initial_pos = get_initial_pos()
 		var target_pos = generate_target()
 		setup_level(initial_pos, target_pos)
 	elif Input.is_action_just_released("reveal_map"):
 		var fog = $"../Fog"
-		percentage += 0.1
+		percentage = 1
+		#percentage += 0.1
 		fog.reveal_map(percentage)
 
 func get_initial_pos():
@@ -255,4 +225,12 @@ func get_initial_pos():
 		return Vector2i(0, last_target_pos.y)
 	else:
 		return Vector2i(width - last_target_pos.x, height - last_target_pos.y - 1)
+	
+func generate_boss_path(last_pos:Vector2i) -> Array[Vector2i]:
+	var arena:Array[Vector2i]
+	arena.append(Vector2i(last_pos.x+1,last_pos.y))
+	for i in range(1,boss_arena_dimension.x+1):
+		for j in range(-boss_arena_dimension.y/2,boss_arena_dimension.y/2+1):
+			arena.append(Vector2i(last_pos.x+i+1,last_pos.y+j))
+	return arena
 	
