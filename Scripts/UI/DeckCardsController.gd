@@ -14,7 +14,6 @@ func _physics_process(delta):
 	m_timeCont = clamp(m_timeCont+delta, 0.0, m_maxTime)
 
 func StartDeck():
-	#por ahora se crea solo fuego
 	CardsManager.InitUserSave()
 	var deck = CardsManager.CreateReferenceDeck()
 	

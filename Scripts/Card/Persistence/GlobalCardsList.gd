@@ -62,7 +62,10 @@ func get_unlocked_cards():
 		unlocked_cards.append(node)
 	print(unlocked_cards)
 	return unlocked_cards
-	
+
+######################################
+###funciones que mezclan las cartas###
+######################################
 func GenerateDeck(deck):
 	deck=randomizeDeck(deck)
 	return deck
@@ -96,3 +99,4 @@ func isTower(id):
 		return true
 	else:
 		return false
+######################################

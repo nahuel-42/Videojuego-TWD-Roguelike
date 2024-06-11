@@ -6,6 +6,7 @@ const ROOT_PATH = "user://"
 static func IfExists(path):
 	return false
 
+#almacena una lista
 static func save_game(path, list):
 	#if (!FileAccess.file_exists(path)):
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -13,7 +14,6 @@ static func save_game(path, list):
 		file.store_line(JSON.stringify(line))
 	file.close()
 	
-
 static func load_game(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if (file != null):

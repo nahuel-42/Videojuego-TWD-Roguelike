@@ -11,13 +11,7 @@ func _ready():
 	GameEvents.OnUpdateHealth.Call([100.0])
 	pass # Replace with function body.
 
-var timer : float = 0.0
 func _process(delta):
-	timer += delta
-	if (timer > 1):
-		timer = 0.0
-		HealthLoss(5.0)
-	
 	if (ActualMana<=100):
 		ActualMana+=DeltaTime*delta
 		#if ((int)(ActualMana) % 2 == 0):

@@ -64,3 +64,4 @@ func _process(delta):
 	#Setea el tipo para despues cargar con ese valor
 	CardsManager.SetDeckType(closest_index)
 
+
