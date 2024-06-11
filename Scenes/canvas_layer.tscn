@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=23 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/TimeOutDiscard.gd" id="1_7hwgj"]
@@ -19,9 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://v2womdl01ext" path="res://Scenes/UI/popup_cards.tscn" id="17_g0buh"]
 [ext_resource type="AudioStream" uid="uid://ce3fdtyidase8" path="res://Assets/Audios/move card.mp3" id="18_1tang"]
 [ext_resource type="Script" path="res://Scripts/UI/Audio/AudioUIController.gd" id="18_frphe"]
-[ext_resource type="Script" path="res://Scripts/UI/PopupSpeciality.gd" id="18_obi2d"]
+[ext_resource type="Script" path="res://Scripts/UI/Popup/PopupSpeciality.gd" id="18_obi2d"]
 [ext_resource type="Texture2D" uid="uid://b5cti7d14eqbx" path="res://Assets/Sprites/Cards/Speciality/Speciality.png" id="18_x3cde"]
-[ext_resource type="Texture2D" uid="uid://fmm6th17j1bo" path="res://Assets/Menu/Boton.png" id="19_mvxtn"]
 [ext_resource type="AudioStream" uid="uid://cndqfm027xe27" path="res://Assets/Audios/used card.mp3" id="20_pvr6y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -390,7 +389,7 @@ stretch_mode = 4
 
 [node name="PopupCards" parent="." instance=ExtResource("17_g0buh")]
 
-[node name="PopupSpeciality" type="Control" parent="."]
+[node name="PopupSpeciality" type="Control" parent="." node_paths=PackedStringArray("m_images")]
 visible = false
 z_index = 50
 layout_mode = 3
@@ -400,13 +399,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("18_obi2d")
+m_images = [NodePath("background/Speciality1/image"), NodePath("background/Speciality2/image"), NodePath("background/Speciality3/image")]
 
 [node name="background" type="Control" parent="PopupSpeciality"]
 layout_mode = 1
 anchor_left = 0.15
-anchor_top = 0.1
+anchor_top = 0.2
 anchor_right = 0.85
-anchor_bottom = 0.85
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -428,24 +428,16 @@ anchor_bottom = 0.95
 offset_right = -1.52588e-05
 offset_bottom = 3.05176e-05
 
-[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality1"]
+[node name="image" type="TextureButton" parent="PopupSpeciality/background/Speciality1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.8
-offset_right = -0.320007
-texture = ExtResource("18_x3cde")
-expand_mode = 1
-
-[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality1"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture_normal = ExtResource("19_mvxtn")
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_x3cde")
 ignore_texture_size = true
-stretch_mode = 5
+stretch_mode = 0
 
 [node name="Speciality2" type="Control" parent="PopupSpeciality/background"]
 layout_mode = 1
@@ -456,23 +448,17 @@ anchor_bottom = 0.95
 offset_right = -3.05176e-05
 offset_bottom = 3.05176e-05
 
-[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality2"]
+[node name="image" type="TextureButton" parent="PopupSpeciality/background/Speciality2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.8
-texture = ExtResource("18_x3cde")
-expand_mode = 1
-
-[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture_normal = ExtResource("19_mvxtn")
+offset_bottom = -0.0400391
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_x3cde")
 ignore_texture_size = true
-stretch_mode = 5
+stretch_mode = 0
 
 [node name="Speciality3" type="Control" parent="PopupSpeciality/background"]
 layout_mode = 1
@@ -483,23 +469,16 @@ anchor_bottom = 0.95
 offset_right = 6.10352e-05
 offset_bottom = 3.05176e-05
 
-[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality3"]
+[node name="image" type="TextureButton" parent="PopupSpeciality/background/Speciality3"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.8
-texture = ExtResource("18_x3cde")
-expand_mode = 1
-
-[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.8
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture_normal = ExtResource("19_mvxtn")
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_x3cde")
 ignore_texture_size = true
-stretch_mode = 5
+stretch_mode = 0
 
 [node name="exit" type="Button" parent="PopupSpeciality/background"]
 z_index = 9
@@ -542,7 +521,6 @@ max_polyphony = 40
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="HideBoardCards/ButtonHideBoardCards" to="HideBoardCards" method="_on_button_hide_board_cards_button_down"]
-[connection signal="button_down" from="PopupSpeciality/background/Speciality1/button" to="PopupSpeciality" method="_on_button_down_speciality1"]
-[connection signal="button_down" from="PopupSpeciality/background/Speciality2/button" to="PopupSpeciality" method="_on_button_down_speciality2"]
-[connection signal="button_down" from="PopupSpeciality/background/Speciality3/button" to="PopupSpeciality" method="_on_button_down_speciality3"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality1/image" to="PopupSpeciality" method="_on_button_down_speciality1"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality2/image" to="PopupSpeciality" method="_on_button_down_speciality2"]
 [connection signal="button_down" from="PopupSpeciality/background/exit" to="PopupSpeciality" method="_on_exit_button_down"]
