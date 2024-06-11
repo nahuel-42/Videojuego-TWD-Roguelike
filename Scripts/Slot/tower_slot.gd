@@ -14,8 +14,25 @@ func _ready():
 #Hunter -> Harpoon = 0, Net = 1, Tamer = 2
 #Soldier -> Boiling = 0, Catapult = 1, Sniper = 2
 #Mercenary -> Sapper = 0, Gas = 1, Incendiary = 2
-func apply_speciality(speciality, sub_speciality):
-	return -1
+func apply_speciality(speciality_id):
+	var speciality
+	var path
+	# TODO: Crear los prefabs y poner sus rutas
+	match child.class_id():
+		0: match speciality_id:
+			0: path = "res://Prefabs/Specialities/Harpoon.tscn"
+			1: path = "res://Prefabs/Specialities/Net.tscn"
+			2: path = "res://Prefabs/Specialities/Tamer.tscn"
+		1: match speciality_id:
+			0: path = "res://Prefabs/Specialities/BoilingOil.tscn"
+			1: path = "res://Prefabs/Specialities/Catapult.tscn"
+			2: path = "res://Prefabs/Specialities/Sniper.tscn"
+		2: match speciality_id:
+			0: path = "res://Prefabs/Specialities/Sapper.tscn"
+			1: path = "res://Prefabs/Specialities/Gas.tscn"
+			2: path = "res://Prefabs/Specialities/Incendiary.tscn"
+	speciality = load(path).instantiate()
+	child.set_speciality(speciality)
 	
 # Si existía una torre, devuelve su ID, sino devuelve -1.
 func apply_card(card):
@@ -39,12 +56,7 @@ func apply_card(card):
 			delete_tower()
 			current_card_id = -1
 		"speciality":
-			#Debería chequear si puede aplicarse la especialidad (devuelve -1)
-			#Si se puede aplicar debería devolver un:						
-			#Hunter: 0 (Harpoon, Net, Tamer)
-			#Soldier: 1 (Boiling iol, Catapult, Sniper)
-			#Mercenary: 2 (Sapper, Gas, Incendiary) 
-			return 0
+			return child != null and child.has_class() if child.class_id() else -1
 			
 	return previous_card_id
 
@@ -61,8 +73,8 @@ func create_tower(id):
 func set_class(id):
 	var stats = GlobalCardsList.find_card(id)
 	var prefab = load(stats["path"])
-	speciality = prefab.instantiate()
-	child.set_speciality(speciality, stats["texture"])
+	tower_class = prefab.instantiate()
+	child.set_class(tower_class)
 
 # TODO: Al momento de setear la especialidad de tier 2, que permita elegir entre los 3 posibles para esa clase.
 # Luego, se deben modificar las stats base (damage, attackSpeed, etc) de la torre sobre la que se aplica la mejora.

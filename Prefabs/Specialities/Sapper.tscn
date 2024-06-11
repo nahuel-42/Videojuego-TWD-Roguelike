@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bldu6tb7jfnxv"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/Mercenary/Sapper.gd" id="1_eoxjt"]
+
+[node name="Sapper" type="Node2D"]
+script = ExtResource("1_eoxjt")

@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var tower : Tower = $"../"
 @onready var label : Label = $"../Label"
+var id
 
 const GROUPS = {
 	BEAST = "Beast",
@@ -11,6 +12,9 @@ const GROUPS = {
 	DRAKE = "Drake",
 	CAPTAIN = "Captain"
 }
+
+func _ready():
+	id = -1
 
 func apply_effects(enemy):
 	pass
@@ -25,3 +29,5 @@ func act(enemy, damage):
 		enemy.take_damage(damage)
 		apply_effects(enemy)
 		
+func class_id():
+	return id

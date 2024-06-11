@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csyydxikh5q71"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/Hunter/Harpoon.gd" id="1_npaem"]
+
+[node name="Harpoon" type="Node2D"]
+script = ExtResource("1_npaem")

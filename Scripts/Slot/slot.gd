@@ -2,7 +2,7 @@ class_name Slot
 extends Node2D
 
 @onready var child = null
-@onready var speciality = null
+@onready var tower_class = null
 var tower_point
 
 const DAMAGE_DECORATOR = "res://prefabs/damage_decorator.tscn"
@@ -21,5 +21,5 @@ func unglow_slot(sprite):
 func apply_card(card):
 	pass
 	
-func apply_speciality(speciality, sub_speciality):
+func apply_speciality(speciality):
 	pass

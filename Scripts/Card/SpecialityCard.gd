@@ -21,7 +21,7 @@ func use(param):
 	#GameEvents.OnLoadDiscard(param)
 
 func UseSpeciality(type : int):
-	m_slot.apply_speciality(m_specialityType, type)
+	m_slot.apply_speciality(type)
 	
 func SetTypeDetector(cardMovement : CardMovement):
 	cardMovement.SetSpecialityDetector()

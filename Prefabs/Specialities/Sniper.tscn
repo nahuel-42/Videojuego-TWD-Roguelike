@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://q10ckegrbprv"]
+
+[ext_resource type="Script" path="res://Scripts/Towers/Specialities/War/Sniper.gd" id="1_nydoy"]
+
+[node name="Sniper" type="Node2D"]
+script = ExtResource("1_nydoy")

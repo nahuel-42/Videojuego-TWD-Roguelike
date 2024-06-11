@@ -22,11 +22,14 @@ func get_damage():
 func _process(delta):
 	attack_method.perform(delta)
 
-func set_speciality(speciality, texture):
-	add_child(speciality)
-	#sprite.texture = load(texture)
+func set_class(tower_class):
+	add_child(tower_class)
 	tower_sprite.frame += 1
+	attack_method.set_class(tower_class)
+
+func set_speciality(speciality):
 	attack_method.set_speciality(speciality)
+	tower_sprite.frame += 1
 
 func draw_radius():
 	var circle_points = []
@@ -63,7 +66,11 @@ func apply_attack_speed_passive(modifier):
 	attack_method.apply_attack_speed_passive(modifier)
 	
 func has_class():
+	print("Torre de nivel " + str(tower_sprite.frame))
 	return tower_sprite.frame > 0
 
 func hits():
 	return attack_method.hits()
+	
+func class_id():
+	return attack_method.class_id()

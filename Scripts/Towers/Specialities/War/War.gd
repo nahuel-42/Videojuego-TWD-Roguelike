@@ -3,6 +3,7 @@ extends Speciality
 
 func _ready():
 	label.text = "Soldier"
+	id = 2
 
 func modify_damage(enemy, damage):
 	if enemy.is_in_group(GROUPS.DRAKE):

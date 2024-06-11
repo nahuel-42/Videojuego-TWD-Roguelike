@@ -67,10 +67,14 @@ func delete_enemy(body):
 func fire():
 	pass
 	
+func set_class(tower_class):
+	self.speciality.queue_free()
+	self.speciality = tower_class
+
 func set_speciality(speciality):
 	self.speciality.queue_free()
 	self.speciality = speciality
-	print("Nueva especialidad: " + str(self.speciality))
+		
 
 func apply_attack_speed_passive(modifier):
 	passive_attack_speed_modifier = modifier
@@ -78,3 +82,6 @@ func apply_attack_speed_passive(modifier):
 func hits():
 	var random = randi() % 100 + 1
 	return random > accuracy * 100
+
+func class_id():
+	return speciality.class_id()
