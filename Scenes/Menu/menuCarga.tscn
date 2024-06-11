@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://tfgknayb26ib"]
+[gd_scene load_steps=7 format=3 uid="uid://tfgknayb26ib"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/menuCarga.gd" id="1_bbfu5"]
+[ext_resource type="Texture2D" uid="uid://ce2gey23k6eq8" path="res://Assets/Menu/LoadingScreen.png" id="2_hagqg"]
 [ext_resource type="Texture2D" uid="uid://0pdpu7id4cjo" path="res://Assets/Menu/bar_front.png" id="2_k1iyq"]
 [ext_resource type="Texture2D" uid="uid://cchuypqody4yq" path="res://Assets/Menu/bar_back.png" id="3_2fq2r"]
 
@@ -34,6 +35,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bbfu5")
+
+[node name="LoadingScreen" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.972973, 0.975904)
+texture = ExtResource("2_hagqg")
 
 [node name="TextureProgress" type="TextureProgressBar" parent="."]
 layout_mode = 1
