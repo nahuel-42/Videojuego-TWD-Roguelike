@@ -1,40 +1,23 @@
 class_name EnemiesSpawner
-extends Node2D
+extends Spawner
 
 signal stage_completed
-
-@onready var timer : Timer = $Timer
-
 var ENEMY_TYPES
-var enemies = []
-var enemies_node
-var last_enemy_index = 0
 var stage_completed_flag = false
 
 func register_spawner():
 	WaveManager.register_spawner(self)
 
 func _ready():
-	enemies_node = $Enemies
+	characters_node = $Enemies
 	WaveManager.connect("activate_spawner", register_spawner)
-	z_index = 2
+	super()
 
-func start_next_wave(enemy_count):
-	last_enemy_index = 0
+func start_next_wave(count):
+	super(count)
 	stage_completed_flag = false
-	load_enemies(enemy_count)
-	timer.start()
 
-func load_enemies(enemy_count):
-	enemies = []
-	for i in range(enemy_count):
-		var enemy_instance = instantiate_enemy()
-		enemies_node.add_child(enemy_instance)
-		enemies.append(enemy_instance)
-		enemy_instance.set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-		enemy_instance.visible = false
-
-func instantiate_enemy():
+func instantiate_character():
 	var random_value = randi() % 100
 	for enemy_type in ENEMY_TYPES:
 		if random_value >= enemy_type["first_percent"] and random_value <= enemy_type["last_percent"]:
@@ -43,29 +26,18 @@ func instantiate_enemy():
 	return null
 
 func _on_timer_timeout():
-	if last_enemy_index < len(enemies):
-		enemies[last_enemy_index].set_process_mode(Node.ProcessMode.PROCESS_MODE_INHERIT)
-		enemies[last_enemy_index].visible = true
-		last_enemy_index += 1
-	else:
-		for enemy in enemies:
-			if enemy.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
+	super()
+	if last_character_index >= len(characters):
+		for character in characters:
+			if character.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
 				return
-		remove_disabled_enemies()
+		remove_disabled_characters()
 		stage_completed_flag = true
 		emit_signal("stage_completed")
 
-func stop():
-	timer.stop()
-
 func is_stage_completed():
 	return stage_completed_flag
-
-func remove_disabled_enemies():
-	var enemies_to_remove = []
-	for enemy in enemies:
-		if enemy.get_process_mode() == Node.ProcessMode.PROCESS_MODE_DISABLED:
-			enemies_to_remove.append(enemy)
-	for enemy in enemies_to_remove:
-		enemies_node.remove_child(enemy)
-		enemies.erase(enemy)
+		
+func demolish():
+	WaveManager.unsuscribe_spawner(self)
+	stop()
