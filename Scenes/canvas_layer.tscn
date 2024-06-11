@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=24 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/TimeOutDiscard.gd" id="1_7hwgj"]
@@ -11,14 +11,17 @@
 [ext_resource type="Script" path="res://Scripts/UI/DiscardCardsController.gd" id="4_cieb2"]
 [ext_resource type="Script" path="res://Scripts/ControlBars.gd" id="5_cued4"]
 [ext_resource type="Script" path="res://Scripts/Slot/Detector/PassiveDetectorUI.gd" id="5_jd3hf"]
-[ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="7_y252a"]
 [ext_resource type="Texture2D" uid="uid://dn8e2rqr4w7nd" path="res://Assets/Menu/lifebarframe.png" id="8_ebcvx"]
 [ext_resource type="Texture2D" uid="uid://djtkw572g5tkb" path="res://Assets/Menu/manabarframe.png" id="9_xrms7"]
 [ext_resource type="Script" path="res://Scripts/UI/HideBoardControl.gd" id="11_a2f30"]
 [ext_resource type="Texture2D" uid="uid://fjtio1g7853p" path="res://Assets/Menu/openedeye.png" id="12_g1qqh"]
 [ext_resource type="Texture2D" uid="uid://dqhct78evy5vn" path="res://Assets/Menu/closedeye.png" id="13_vrria"]
+[ext_resource type="PackedScene" uid="uid://v2womdl01ext" path="res://Scenes/UI/popup_cards.tscn" id="17_g0buh"]
 [ext_resource type="AudioStream" uid="uid://ce3fdtyidase8" path="res://Assets/Audios/move card.mp3" id="18_1tang"]
 [ext_resource type="Script" path="res://Scripts/UI/Audio/AudioUIController.gd" id="18_frphe"]
+[ext_resource type="Script" path="res://Scripts/UI/PopupSpeciality.gd" id="18_obi2d"]
+[ext_resource type="Texture2D" uid="uid://b5cti7d14eqbx" path="res://Assets/Sprites/Cards/Speciality/Speciality.png" id="18_x3cde"]
+[ext_resource type="Texture2D" uid="uid://fmm6th17j1bo" path="res://Assets/Menu/Boton.png" id="19_mvxtn"]
 [ext_resource type="AudioStream" uid="uid://cndqfm027xe27" path="res://Assets/Audios/used card.mp3" id="20_pvr6y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -357,87 +360,6 @@ anchor_bottom = 1.0
 texture = ExtResource("9_xrms7")
 expand_mode = 2
 
-[node name="PopupCards" type="Control" parent="." node_paths=PackedStringArray("m_gridContainer")]
-visible = false
-layout_mode = 3
-anchor_left = 0.15
-anchor_top = 0.1
-anchor_right = 0.85
-anchor_bottom = 0.85
-script = ExtResource("7_y252a")
-m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
-m_columns = 4
-m_separation = Vector2(10, 10)
-m_speed = 2.0
-
-[node name="background1" type="Panel" parent="PopupCards"]
-z_index = 8
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="background2" type="Panel" parent="PopupCards"]
-z_index = 9
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.11
-anchor_right = 0.99
-anchor_bottom = 0.99
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PopupCards"]
-z_index = 10
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.11
-anchor_right = 0.99
-anchor_bottom = 0.99
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="PopupCards/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(790, 427)
-render_target_update_mode = 0
-
-[node name="parent" type="Control" parent="PopupCards/SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="exit" type="Button" parent="PopupCards"]
-z_index = 9
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.9
-anchor_top = 0.01
-anchor_right = 0.99
-anchor_bottom = 0.1
-grow_horizontal = 2
-grow_vertical = 2
-text = "X"
-
-[node name="detect drag" type="Panel" parent="PopupCards"]
-modulate = Color(1, 1, 1, 0)
-z_index = 11
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.11
-anchor_right = 0.99
-anchor_bottom = 0.99
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="HideBoardCards" type="Control" parent="." node_paths=PackedStringArray("m_panels")]
 layout_mode = 3
 anchor_left = 0.191
@@ -465,6 +387,131 @@ texture_normal = ExtResource("12_g1qqh")
 texture_pressed = ExtResource("13_vrria")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="PopupCards" parent="." instance=ExtResource("17_g0buh")]
+
+[node name="PopupSpeciality" type="Control" parent="."]
+visible = false
+z_index = 50
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_obi2d")
+
+[node name="background" type="Control" parent="PopupSpeciality"]
+layout_mode = 1
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="PopupSpeciality/background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speciality1" type="Control" parent="PopupSpeciality/background"]
+layout_mode = 1
+anchor_left = 0.05
+anchor_top = 0.15
+anchor_right = 0.317
+anchor_bottom = 0.95
+offset_right = -1.52588e-05
+offset_bottom = 3.05176e-05
+
+[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+offset_right = -0.320007
+texture = ExtResource("18_x3cde")
+expand_mode = 1
+
+[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource("19_mvxtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Speciality2" type="Control" parent="PopupSpeciality/background"]
+layout_mode = 1
+anchor_left = 0.367
+anchor_top = 0.15
+anchor_right = 0.634
+anchor_bottom = 0.95
+offset_right = -3.05176e-05
+offset_bottom = 3.05176e-05
+
+[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+texture = ExtResource("18_x3cde")
+expand_mode = 1
+
+[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource("19_mvxtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Speciality3" type="Control" parent="PopupSpeciality/background"]
+layout_mode = 1
+anchor_left = 0.684
+anchor_top = 0.15
+anchor_right = 0.951
+anchor_bottom = 0.95
+offset_right = 6.10352e-05
+offset_bottom = 3.05176e-05
+
+[node name="image" type="TextureRect" parent="PopupSpeciality/background/Speciality3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+texture = ExtResource("18_x3cde")
+expand_mode = 1
+
+[node name="button" type="TextureButton" parent="PopupSpeciality/background/Speciality3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource("19_mvxtn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="exit" type="Button" parent="PopupSpeciality/background"]
+z_index = 9
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
 
 [node name="AudioUI" type="Control" parent="." node_paths=PackedStringArray("m_movementCardSound", "m_usedCardSound")]
 layout_mode = 3
@@ -494,6 +541,8 @@ max_polyphony = 40
 [connection signal="button_up" from="TimeOut/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="PopupCards/exit" to="PopupCards" method="_on_exit_button_down"]
-[connection signal="gui_input" from="PopupCards/detect drag" to="PopupCards" method="_on_detect_drag_gui_input"]
 [connection signal="button_down" from="HideBoardCards/ButtonHideBoardCards" to="HideBoardCards" method="_on_button_hide_board_cards_button_down"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality1/button" to="PopupSpeciality" method="_on_button_down_speciality1"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality2/button" to="PopupSpeciality" method="_on_button_down_speciality2"]
+[connection signal="button_down" from="PopupSpeciality/background/Speciality3/button" to="PopupSpeciality" method="_on_button_down_speciality3"]
+[connection signal="button_down" from="PopupSpeciality/background/exit" to="PopupSpeciality" method="_on_exit_button_down"]

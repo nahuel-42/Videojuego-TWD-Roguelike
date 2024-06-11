@@ -20,3 +20,6 @@ func unglow_slot(sprite):
 	
 func apply_card(card):
 	pass
+	
+func check_speciality(card):
+	pass
