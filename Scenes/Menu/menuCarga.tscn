@@ -75,5 +75,3 @@ libraries = {
 "": SubResource("AnimationLibrary_gcvh4")
 }
 autoplay = "cargando"
-
-[connection signal="value_changed" from="TextureProgress" to="." method="_on_texture_progress_value_changed"]
