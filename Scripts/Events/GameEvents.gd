@@ -27,3 +27,7 @@ static var OnUpdateMana = Action.new()
 static var OnUpdateHealth = Action.new()
 ############################################################
 static var OnHideBoard = Action.new()
+############################################################
+static var OnPlayMovementCard = Action.new()
+static var OnPlayUsedCard = Action.new()
+############################################################

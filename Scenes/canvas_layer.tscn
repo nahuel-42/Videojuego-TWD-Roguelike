@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=21 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/TimeOutDiscard.gd" id="1_7hwgj"]
@@ -17,16 +17,11 @@
 [ext_resource type="Script" path="res://Scripts/UI/HideBoardControl.gd" id="11_a2f30"]
 [ext_resource type="Texture2D" uid="uid://fjtio1g7853p" path="res://Assets/Menu/openedeye.png" id="12_g1qqh"]
 [ext_resource type="Texture2D" uid="uid://dqhct78evy5vn" path="res://Assets/Menu/closedeye.png" id="13_vrria"]
-
-[sub_resource type="GDScript" id="GDScript_4flth"]
-script/source = "extends Node
-
-func _ready():
-	pass
-"
+[ext_resource type="AudioStream" uid="uid://ce3fdtyidase8" path="res://Assets/Audios/move card.mp3" id="18_1tang"]
+[ext_resource type="Script" path="res://Scripts/UI/Audio/AudioUIController.gd" id="18_frphe"]
+[ext_resource type="AudioStream" uid="uid://cndqfm027xe27" path="res://Assets/Audios/used card.mp3" id="20_pvr6y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = SubResource("GDScript_4flth")
 
 [node name="TimeOut" type="Control" parent="." node_paths=PackedStringArray("m_progressBar")]
 layout_mode = 3
@@ -470,6 +465,31 @@ texture_normal = ExtResource("12_g1qqh")
 texture_pressed = ExtResource("13_vrria")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="AudioUI" type="Control" parent="." node_paths=PackedStringArray("m_movementCardSound", "m_usedCardSound")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_frphe")
+m_movementCardSound = NodePath("movement")
+m_usedCardSound = NodePath("used")
+
+[node name="movement" type="AudioStreamPlayer" parent="AudioUI"]
+stream = ExtResource("18_1tang")
+max_polyphony = 40
+
+[node name="used" type="AudioStreamPlayer" parent="AudioUI"]
+stream = ExtResource("20_pvr6y")
+max_polyphony = 40
 
 [connection signal="button_up" from="TimeOut/Button2" to="DeckCards" method="_on_button_2_button_up"]
 [connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]

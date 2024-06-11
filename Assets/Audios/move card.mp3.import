@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ce3fdtyidase8"
+path="res://.godot/imported/move card.mp3-d3cdb3f4bed4b25166b74d7cbc5795f0.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audios/move card.mp3"
+dest_files=["res://.godot/imported/move card.mp3-d3cdb3f4bed4b25166b74d7cbc5795f0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

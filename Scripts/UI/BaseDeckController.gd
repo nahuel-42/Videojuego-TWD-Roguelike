@@ -10,6 +10,7 @@ extends Node
 @export var m_distanceWaitNextCard: float = 100
 
 var m_cardsList = []
+var m_actualIndex : int = 0
 
 var m_screenSize : Vector2
 var m_hide:bool=true
@@ -36,15 +37,16 @@ func RemoveCards(amount):
 	var list = []
 	var i = 0
 	var count = len(m_cardsList)
+	m_actualIndex = 0
 	while i < amount and i < count:
 		list.append(m_cardsList[0])
 		m_cardsList.remove_at(0)
 		i += 1
 	return list
-	
+
 func State_LoadCards(delta):
 	var cond : bool = true
-	var index : int = 0
+	var index : int = m_actualIndex
 	while (cond):
 		if (index < len(m_cardsList)):
 			var card = m_cardsList[index]
@@ -60,6 +62,8 @@ func State_LoadCards(delta):
 			if (distance < m_distanceWaitNextCard):
 				if (distance < 1.0):
 					card.position = b
+					m_actualIndex += 1
+					GameEvents.OnPlayMovementCard.Call([-1])
 			else:
 				cond = false
 			index += 1
