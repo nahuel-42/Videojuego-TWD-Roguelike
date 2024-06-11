@@ -53,7 +53,7 @@ func LoadBoard(param):
 		var p = m_panels[i]
 		var c = m_cardsList[i]
 		c.SetInputEvent(GetInputEvent)
-		c.SetSide(true)
+		c.SetSide(0)
 		
 	f_state = State_CardsLocation
 	

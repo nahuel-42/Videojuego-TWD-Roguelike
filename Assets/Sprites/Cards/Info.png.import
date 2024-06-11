@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b65f2rh0mb4bu"
-path="res://.godot/imported/CartaDadaVuelta.png-1dd56a54630daaf90c61959597a24ef5.ctex"
+uid="uid://cstdyt3qpobbf"
+path="res://.godot/imported/Info.png-f3c012e129d8e4dc34a8de1a20da0d48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CartaDadaVuelta.png"
-dest_files=["res://.godot/imported/CartaDadaVuelta.png-1dd56a54630daaf90c61959597a24ef5.ctex"]
+source_file="res://Assets/Sprites/Cards/Info.png"
+dest_files=["res://.godot/imported/Info.png-f3c012e129d8e4dc34a8de1a20da0d48.ctex"]
 
 [params]
 

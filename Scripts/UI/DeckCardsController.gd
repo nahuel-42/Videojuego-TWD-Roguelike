@@ -24,12 +24,12 @@ func StartDeck():
 func CreateCards(deck):
 	for id in deck:
 		var instance = CardFactory.createCard(id)
-		instance.SetSide(false)
+		instance.SetSide(1)
 		AddCardsPosition(instance)
 
 func RecieveCards(cards):
 	for c in cards:
-		c.SetSide(false)
+		c.SetSide(1)
 		AddCardsPosition(c)
 
 func _on_button_2_button_up():
@@ -43,7 +43,7 @@ func _on_button_2_button_up():
 		m_timeCont=0.0
 		
 		#Cambiar a 1 para que resetee antes
-		if (m_restartCount == 2):
+		if (m_restartCount == 1):
 			GameEvents.OnRestartDeck.Call([self])
 			m_restartCount = 0
 

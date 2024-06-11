@@ -58,7 +58,7 @@ func ShowCards(param):
 			c.position = Vector2(i, j) * cardSize
 			c.position += Vector2(i, j) * m_separation + m_separation / 2.0
 			c.size = cardSize
-			c.SetSide(true)
+			c.SetSide(2) #muestra info
 			
 			i += 1
 			if (i >= m_columns):
