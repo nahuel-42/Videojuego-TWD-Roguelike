@@ -6,4 +6,3 @@ extends EnemiesSpawner
 func _ready():
 	ENEMY_TYPES = Parameters.BEAST_TYPES
 	super._ready()
-

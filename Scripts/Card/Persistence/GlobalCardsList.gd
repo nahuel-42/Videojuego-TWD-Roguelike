@@ -25,8 +25,9 @@ var CollectionCard = [
 	{"id": 8, "type": "upgrade", "cardName": "Range++", "desc": "Increases tower range by 10%", "sprite": "res://Assets/Sprites/Cards/Upgrade/Range.png", "cost": 10, "unlocked": 1, "range": 0.1, "damage": 0, "attack_speed": 0, "accuracy": 0},
 	{"id": 9, "type": "upgrade", "cardName": "Attack speed++", "desc": "Increases tower attack speed by 10%", "sprite": "res://Assets/Sprites/Cards/Upgrade/AttackSpeed.png", "cost": 10, "unlocked": 1, "range": 0, "damage": 0, "attack_speed": 0.1, "accuracy": 0},
 	{"id": 10, "type": "upgrade", "cardName": "Accuracy++", "desc": "Increases tower accuracy by 10%", "sprite": "res://Assets/Sprites/Cards/Upgrade/Accuracy.png", "cost": 10, "unlocked": 1, "range": 0, "damage": 0, "attack_speed": 0, "accuracy": 0.1},
-	################# Spell ####################
+	################# demolitionSpell ####################
 	{"id":14, "type": "demolitionSpell", "cardName" : "Demolition", "desc":"Clears an enemy campament", "sprite": "res://Assets/Sprites/Cards/Spells/CampDestruction.png", "cost":30, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
+	################# Spell ####################
 	#{"id":15, "type": "spell", "cardName" : "Tower removal", "desc":"Removes a friendly tower and clears the slot", "sprite": "res://Assets/Sprites/Cards/Spells/TowerRemoval.png", "cost":15, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":16, "type": "spell", "cardName" : "Fireball", "desc":"Throws a fireball in the selected area", "sprite": "res://Assets/Sprites/Cards/Spells/Fireball.png", "cost":30, "range": 200, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	{"id":17, "type": "spell", "cardName" : "Iceball", "desc":"Throws an iceball in the selected area", "sprite": "res://Assets/Sprites/Cards/Spells/Iceball.png", "cost":30, "range": 250, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},

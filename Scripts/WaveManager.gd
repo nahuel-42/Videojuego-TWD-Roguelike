@@ -32,6 +32,8 @@ func register_spawner(spawner):
 func deactivate_spawner(spawner):
 	if is_active(spawner.position.x):
 		spawners.erase(spawner)
+		return true
+	return false
 		#spawner.removeSprite()
 
 func start_next_stage():

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1fflapq4c1vq"]
+[gd_scene load_steps=4 format=3 uid="uid://b1fflapq4c1vq"]
 
 [ext_resource type="Script" path="res://Scripts/Spawners/SoldierSpawner.gd" id="1_ppw3i"]
 [ext_resource type="Texture2D" uid="uid://cw67hgn6logha" path="res://Assets/Sprites/Spawners/SoldierSpawner.png" id="2_nduri"]
 
-[node name="SoldierSpawner" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5aiff"]
+radius = 60.0
+
+[node name="SoldierSpawner" type="Area2D"]
 position = Vector2(0, 2)
+collision_layer = 524288
+collision_mask = 524288
 script = ExtResource("1_ppw3i")
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -17,4 +22,6 @@ autostart = true
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_nduri")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_5aiff")
