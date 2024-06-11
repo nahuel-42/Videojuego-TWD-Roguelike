@@ -10,7 +10,7 @@ func _ready():
 	
 func _process(delta):
 	scene_load_status=ResourceLoader.load_threaded_get_status("res://Scenes/mapa.tscn",progress)
-	$TextureProgress.value= progress[0]*100
+	$TextureProgress.value+= delta*60
 
 func _on_texture_progress_value_changed(value):
 	if value == 100 and scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
