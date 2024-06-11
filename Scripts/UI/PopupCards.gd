@@ -1,3 +1,4 @@
+class_name PopupCards
 extends Control
 
 @export var m_gridContainer : Node = null
