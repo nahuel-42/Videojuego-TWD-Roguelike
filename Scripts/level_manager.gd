@@ -36,8 +36,7 @@ func _on_stage_completed():
 	fog.reveal_map(WaveManager.percentage)
 	
 func lose_health(body):
-	GameController.HealthLoss(10)
-	body.reach_target()
+	GameController.HealthLoss(body.reach_target())
 
 func _on_start_stage_button_pressed():
 	WaveManager.start_next_stage()
