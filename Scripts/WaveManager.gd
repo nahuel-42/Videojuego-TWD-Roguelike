@@ -27,6 +27,12 @@ func register_spawner(spawner):
 		spawner.connect("stage_completed", _on_spawner_stage_completed)
 		spawners.append(spawner)
 
+#para demolition
+func deactivate_spawner(spawner):
+	if is_active(spawner.position.x):
+		spawners.erase(spawner)
+		#spawner.removeSprite()
+
 func start_next_stage():
 	activate_spawners()
 	wave_config = []
