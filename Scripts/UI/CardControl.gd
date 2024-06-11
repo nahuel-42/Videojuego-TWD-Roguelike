@@ -126,6 +126,7 @@ func use(param):
 	if (GameController.manaCheck(cost) and m_baseCard.use(param)):
 		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
 		GameController.manaConsumption(cost)
+		GameEvents.OnPlayUsedCard.Call([null])
 		return true
 	return false
 

@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://v2womdl01ext"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PopupCards.gd" id="1_bayjw"]
+
+[node name="PopupCards" type="Control" node_paths=PackedStringArray("m_gridContainer")]
+visible = false
+layout_mode = 3
+anchor_left = 0.15
+anchor_top = 0.1
+anchor_right = 0.85
+anchor_bottom = 0.85
+script = ExtResource("1_bayjw")
+m_gridContainer = NodePath("")
+m_columns = 4
+m_separation = Vector2(10, 10)
+m_speed = 2.0
+
+[node name="background1" type="Panel" parent="."]
+z_index = 8
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background2" type="Panel" parent="."]
+z_index = 9
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(790, 427)
+render_target_update_mode = 0
+
+[node name="parent" type="Control" parent="SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="exit" type="Button" parent="."]
+z_index = 9
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+text = "X"
+
+[node name="detect drag" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 11
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.11
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="exit" to="." method="_on_exit_button_down"]
+[connection signal="gui_input" from="detect drag" to="." method="_on_detect_drag_gui_input"]
