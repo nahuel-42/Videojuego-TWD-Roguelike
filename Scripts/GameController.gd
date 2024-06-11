@@ -34,8 +34,8 @@ func HealthLoss(cant):
 		ActualHealth-=cant
 		GameEvents.OnUpdateHealth.Call([ActualHealth])
 	else:
-		GameEvents.OnUpdateHealth.Call([InitialHealth])
-		pass #aca va el game over
+		var change_scene = load("res://Scenes/Menu/gameOver.tscn")
+		get_tree().change_scene_to_packed(change_scene)
 
 func StartWave():
 	WaveManager.start_next_wave()

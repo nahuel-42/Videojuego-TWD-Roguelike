@@ -6,9 +6,6 @@ func _ready():
 	GameEvents.OnUpdateMana.AddListener(UpdateMana)
 	GameEvents.OnUpdateHealth.AddListener(UpdateHealth)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func UpdateMana(param):
 	var ManaActual=param[0]
 	ManaBar.value=ManaActual
