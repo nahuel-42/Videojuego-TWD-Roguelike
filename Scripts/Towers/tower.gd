@@ -6,7 +6,8 @@ extends Node2D
 @onready var tower_sprite : Sprite2D = $Tower
 
 var radius : Line2D
-var attack_method : AttackMethod 
+var attack_method : AttackMethod
+var passive_attack_speed_modifier = 1.0
 
 func _ready():
 	attack_method = $AttackMethod
@@ -45,9 +46,9 @@ func draw_radius():
 func upgrade(damage, range, attack_speed, accuracy):
 	attack_method.upgrade(damage, range, attack_speed, accuracy)
 	draw_radius()
-	
 
 func _on_animation_animation_finished(anim_name):
+	animation.speed_scale = 1.0
 	animation.play("Idle")
 	
 func glow():
@@ -57,6 +58,9 @@ func glow():
 func unglow():
 	sprite.modulate = Color(1, 1, 1)
 	tower_sprite.modulate = Color(1, 1, 1)
+
+func apply_attack_speed_passive(modifier):
+	attack_method.apply_attack_speed_passive(modifier)
 	
 func has_class():
 	return tower_sprite.frame > 0

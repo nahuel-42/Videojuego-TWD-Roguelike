@@ -6,6 +6,7 @@ var acceleration = 5
 var target
 var health = 5
 var damage_to_health = 1 #deberian especificarse en cada hijo todos los atributos
+var passive_speed_modifier = 1.0
 
 var vulnerable = false
 var slowed = false
@@ -33,10 +34,12 @@ func _ready():
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
 	animation.connect("animation_finished", effect_finished)
-	add_to_group("Enemy")
+	animation.play("run")
+	add_to_group(Parameters.GROUPS.ENEMY)
 	set_group()
 	init_stats()
 	scale /= 2
+	GameController.apply_passives()
 
 func _process(delta):
 	if cooldown > 0:
@@ -61,7 +64,7 @@ func move(delta):
 	elif direction.x < 0:
 		sprite.flip_h = true
 	
-	velocity = velocity.lerp(direction * speed, acceleration * delta)
+	velocity = velocity.lerp(direction * speed * passive_speed_modifier, acceleration * passive_speed_modifier * delta)
 	
 	move_and_slide()
 	
@@ -154,3 +157,6 @@ func effect_finished(animation_name):
 		"Stun": terminate_stun()
 	
 	animation.play("Walk")
+
+func apply_speed_passive(modifier):
+	passive_speed_modifier = modifier

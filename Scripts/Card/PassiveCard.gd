@@ -8,10 +8,9 @@ class_name PassiveCard
 #	super._init(id, cardName, description, sprite, cost, active, type)
 #	m_effect = effect
 #	m_value = value
-	
+
 func use(param):
-	print("se usa PassiveCard")
-	return false
+	GameController.add_passive(m_refCard)
 	#quedan en un array de pasivas en uso o algo similar
 
 func SetTypeDetector(cardMovement):
