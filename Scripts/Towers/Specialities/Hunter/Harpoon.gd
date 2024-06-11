@@ -6,4 +6,4 @@ func _ready():
 	id = -1
 
 func apply_effects(enemy):
-	pass
+	enemy.start_vulnerable()
