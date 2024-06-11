@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Menu/menuCarga.gd" id="1_bbfu5"]
 [ext_resource type="Texture2D" uid="uid://ce2gey23k6eq8" path="res://Assets/Menu/LoadingScreen.png" id="2_hagqg"]
-[ext_resource type="Texture2D" uid="uid://0pdpu7id4cjo" path="res://Assets/Menu/bar_front.png" id="2_k1iyq"]
-[ext_resource type="Texture2D" uid="uid://cchuypqody4yq" path="res://Assets/Menu/bar_back.png" id="3_2fq2r"]
+[ext_resource type="Texture2D" uid="uid://c88ohbdjafsow" path="res://Assets/Menu/LoadingBarEmpty.png" id="3_gy84e"]
+[ext_resource type="Texture2D" uid="uid://nvtj30fa3mpu" path="res://Assets/Menu/LoadingBarFull.png" id="4_hwn41"]
 
 [sub_resource type="Animation" id="2"]
 resource_name = "cargando"
@@ -12,7 +12,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../TextureProgress/Label:text")
+tracks/0/path = NodePath("../Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,29 +41,34 @@ position = Vector2(576, 324)
 scale = Vector2(0.972973, 0.975904)
 texture = ExtResource("2_hagqg")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.459
+anchor_top = 0.54
+anchor_right = 0.54
+anchor_bottom = 0.576
+offset_left = 0.231995
+offset_top = 0.0799866
+offset_right = -0.0800171
+offset_bottom = -0.248016
+text = "~Cargando~"
+
 [node name="TextureProgress" type="TextureProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -8.5
-offset_right = 80.0
-offset_bottom = 8.5
+anchors_preset = -1
+anchor_left = 0.413
+anchor_top = 0.485
+anchor_right = 0.587
+anchor_bottom = 0.515
+offset_left = 20.224
+offset_top = 1.22
+offset_right = -20.224
+offset_bottom = -1.22003
 grow_horizontal = 2
 grow_vertical = 2
-texture_under = ExtResource("2_k1iyq")
-texture_progress = ExtResource("3_2fq2r")
-
-[node name="Label" type="Label" parent="TextureProgress"]
-layout_mode = 0
-offset_left = 27.0
-offset_top = 69.5
-offset_right = 115.0
-offset_bottom = 92.5
-text = "Cargando..."
+texture_under = ExtResource("3_gy84e")
+texture_progress = ExtResource("4_hwn41")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureProgress"]
 libraries = {
