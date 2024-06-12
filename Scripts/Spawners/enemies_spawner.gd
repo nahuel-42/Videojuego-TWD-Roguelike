@@ -41,11 +41,3 @@ func is_stage_completed():
 func demolish():
 	WaveManager.unsuscribe_spawner(self)
 	stop()
-	
-func glow_slot():
-	var sprite = $Sprite2D
-	sprite.modulate = Color(255,255,34)
-	
-func unglow_slot():
-	var sprite = $Sprite2D
-	sprite.modulate = Color(1, 1, 1)
