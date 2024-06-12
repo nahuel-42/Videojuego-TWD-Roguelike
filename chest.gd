@@ -36,3 +36,9 @@ func open():
 			pass
 	var sprite: Sprite2D = $Area2D/Sprite2D
 	sprite.texture = open_texture
+
+func glow_chest(sprite):
+	sprite.modulate = Color(255,255,34)
+
+func unglow_chest(sprite):
+	sprite.modulate = Color(1, 1, 1)

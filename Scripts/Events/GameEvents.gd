@@ -14,6 +14,7 @@ static var OnLoadDiscard = Action.new()
 static var OnRestartDeck = Action.new()
 ############################################################
 static var OnGetSlotDetectorUI = Func.new()
+static var OnGetChestDetectorUI = Func.new()
 static var OnGetSpellDetectorUI = Func.new()
 static var OnGetPassiveDetectorUI = Func.new()
 ############################################################

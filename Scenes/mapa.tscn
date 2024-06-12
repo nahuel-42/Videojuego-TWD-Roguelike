@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cg2tgamorj7n"]
+[gd_scene load_steps=15 format=3 uid="uid://cg2tgamorj7n"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b8xhp"]
 [ext_resource type="TileSet" uid="uid://c5jcgj56i07ce" path="res://Assets/mapa.tres" id="1_ogef4"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
 [ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
 [ext_resource type="Script" path="res://Scripts/Map/fog.gd" id="13_uk752"]
+[ext_resource type="PackedScene" uid="uid://dre2u2d8gmtvv" path="res://Scenes/chest_detector.tscn" id="14_28lq2"]
 
 [node name="Mapa" type="Node"]
 script = ExtResource("1_b8xhp")
@@ -95,5 +96,7 @@ texture_repeat = 2
 centered = false
 region_enabled = true
 script = ExtResource("13_uk752")
+
+[node name="ChestDetector" parent="." instance=ExtResource("14_28lq2")]
 
 [connection signal="pressed" from="WavesCanvas/NextStageButton" to="." method="_on_start_stage_button_pressed"]
