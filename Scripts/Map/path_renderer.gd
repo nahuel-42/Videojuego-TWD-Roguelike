@@ -140,7 +140,8 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		var element
 		if i < n_forks / 2:
 			element = chest_scene.instantiate()
-			element._setup(TileType.CHEST,fork[-1])
+			if i % 2 == 0:
+				element.open()
 		else:
 			var random = randi() % 3 + 1
 			var prefab_path
@@ -149,8 +150,8 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 				2: prefab_path = SOLDIER_SPAWNER_PATH
 				3: prefab_path = MERCENARY_SPAWNER_PATH
 			element = load(prefab_path).instantiate()
-			element.position = fork[-1] * CELL_DIMENSION
-			add_child(element)
+		element.position = fork[-1] * CELL_DIMENSION
+		add_child(element)
 			
 		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/SPAWNER
 		ObstacleGenerator.add_obstacles(Utils.add_padding(fork))

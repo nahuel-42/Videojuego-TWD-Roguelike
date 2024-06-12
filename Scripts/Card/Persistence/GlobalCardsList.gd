@@ -33,14 +33,16 @@ var CollectionCard = [
 	{"id":17, "type": "spell", "cardName" : "Iceball", "desc":"Throws an iceball in the selected area", "sprite": "res://Assets/Sprites/Cards/Spells/Iceball.png", "cost":30, "range": 250, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':''},
 	################# Passives ####################
 	{"id":18, "type": "passive", "cardName" : "Burning Field", "desc":"The fire enrages your troops, making them shoot faster", "sprite": "res://Assets/Sprites/Cards/Passive/BurningField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':'', "modifier": 1.2},
-	{"id":19, "type": "passive", "cardName" : "Frozen Field", "desc":"Freezes the ground, slowing all enemies", "sprite": "res://Assets/Sprites/Cards/Passive/FrozenField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':'', "modifier": 0.8}
+	{"id":19, "type": "passive", "cardName" : "Frozen Field", "desc":"Freezes the ground, slowing all enemies", "sprite": "res://Assets/Sprites/Cards/Passive/FrozenField.png", "cost":80, "range": 0, "damage": 0, "attackSpeed": 0, "accuracy": 0, "unlocked": 1, 'path':'', "modifier": 0.8},
+	################# Chest ####################
+	{"id": 20, "type": "chest", "cardName": "Chest Key", "desc": "Opens a chest (single use)", "sprite": "res://Assets/Sprites/Cards/Chest/ChestKey.png", "cost": 100, "unlocked": 1}
 ]
 
 #FireCards, IceCards
 var TypeDeckCards = [
 #	[19,18,11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
-[6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
-[0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]	
+[6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19,20,20],
+[0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18,20,20]
 ]
 	
 func find_card(id):

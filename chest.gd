@@ -1,13 +1,38 @@
 extends Node
 
-var pos:Vector2i #no se si es reduntante que guarde la posicion porque la estamos guardando tambien en el map
-var texture:int
+enum RewardType {
+	CARD,
+	COINS
+}
 
-# Called when the node enters the scene tree for the first time.
+var reward
+var reward_type: RewardType
+var opened
+var open_texture = preload("res://Assets/Sprites/Chests/OpenChest.png")
+
 func _ready():
-	pass # Replace with function body.
-
+	opened = false
+	reward_type = RewardType.values().pick_random()
+	match reward_type:
+		RewardType.COINS:
+			reward = randi_range(5, 10)
+		RewardType.CARD:
+			reward = GlobalCardsList.CollectionCard.pick_random()
 
 func _setup(texture:int,pos:Vector2i):
 	self.texture = texture
-	self.pos = pos
+
+# TODO: ejecutar esta función cuando se arrastre la carta
+# TODO: cambiar textura cuando se abre el cofre
+func open():
+	if opened:
+		return
+	match reward_type:
+		RewardType.COINS:
+			# TODO: agregar monedas al usuario
+			pass
+		RewardType.CARD:
+			# TODO: agregar carta al mazo
+			pass
+	var sprite: Sprite2D = $Area2D/Sprite2D
+	sprite.texture = open_texture
