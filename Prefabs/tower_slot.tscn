@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Slot/tower_slot.gd" id="1_3djpv"]
 [ext_resource type="Script" path="res://Scripts/Slot/SlotControl.gd" id="2_0drpi"]
-[ext_resource type="Texture2D" uid="uid://d0vhjwfwmlqnq" path="res://Assets/Sprites/Slot.png" id="3_d1pt4"]
+[ext_resource type="Texture2D" uid="uid://l0pm76vtatf4" path="res://Assets/Sprites/Slot.png" id="3_d1pt4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o46pt"]
 radius = 77.7946

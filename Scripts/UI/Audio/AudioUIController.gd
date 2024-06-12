@@ -7,7 +7,7 @@ func _init():
 	GameEvents.OnPlayMovementCard.AddListener(playMovementCard)
 	GameEvents.OnPlayUsedCard.AddListener(playUsedCard)
 func _exit_tree():
-	GameEvents.OnPlayMovementCard.AddListener(playMovementCard)
+	GameEvents.OnPlayMovementCard.RemoveListener(playMovementCard)
 	GameEvents.OnPlayUsedCard.RemoveListener(playUsedCard)
 	
 func playMovementCard(param):
