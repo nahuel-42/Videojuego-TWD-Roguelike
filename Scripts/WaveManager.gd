@@ -8,7 +8,7 @@ signal enable_boss
 const BOSS_PATH = "res://Prefabs/Enemies/Boss.tscn"
 var wave_config = []
 var wave_index = 0
-var stages = 5
+var stages = 2
 var stage_index = 1
 var waves_per_stage = 1  # Número base de oleadas por stage
 var spawners = []
@@ -55,7 +55,7 @@ func start_next_stage():
 
 func load_stage_config():
 	# Entre 5 y 10 waves por stage
-	for i in range(waves_per_stage + stage_index % 6):
+	for i in range(waves_per_stage): # + stage_index % 6
 		var wave = {
 			"enemy_count": 5 + 2*stage_index + randi() % 15
 		}
