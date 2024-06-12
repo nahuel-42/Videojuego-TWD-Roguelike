@@ -35,7 +35,7 @@ func open():
 			CoinsManager.AddCoins(reward)
 		RewardType.CARD:
 			var card = CardFactory.createCard(reward)
-			# TODO: agregar carta al mazo
+			GameEvents.OnAddDeckCards.Call([[card]])
 	var sprite: Sprite2D = $Area2D/Sprite2D
 	sprite.texture = open_texture
 
