@@ -1,22 +1,100 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7u2x63yrsuh6"]
+[gd_scene load_steps=34 format=3 uid="uid://b7u2x63yrsuh6"]
 
+[ext_resource type="Script" path="res://Scripts/Enemies/Boss.gd" id="1_23gat"]
 [ext_resource type="Texture2D" uid="uid://to07d34avpob" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_000.png" id="2_27cxb"]
+[ext_resource type="Texture2D" uid="uid://bn45mq7gyqd6l" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_000.png" id="2_tc1m2"]
 [ext_resource type="Texture2D" uid="uid://c8evtwarxu0f0" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_001.png" id="3_2lxf4"]
+[ext_resource type="Texture2D" uid="uid://dsho6naghliht" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_001.png" id="3_isa4d"]
+[ext_resource type="Texture2D" uid="uid://bhvek8ye2dm0k" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_002.png" id="4_gdomn"]
 [ext_resource type="Texture2D" uid="uid://cckpy717o6vn2" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_002.png" id="4_vg36c"]
 [ext_resource type="Texture2D" uid="uid://b0o4jy2cubpen" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_003.png" id="5_7lmxy"]
+[ext_resource type="Texture2D" uid="uid://ca3a8x4xiopsj" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_003.png" id="5_10vi4"]
+[ext_resource type="Texture2D" uid="uid://hylqrbu1kxjk" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_004.png" id="6_1rkt3"]
 [ext_resource type="Texture2D" uid="uid://bi3ttl6d1spdk" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_004.png" id="6_kobew"]
 [ext_resource type="Texture2D" uid="uid://cy6w5n11sb6r0" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_005.png" id="7_cwuwx"]
+[ext_resource type="Texture2D" uid="uid://djipx7kulomfm" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_005.png" id="7_hrur3"]
 [ext_resource type="Texture2D" uid="uid://brvlesntma324" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_006.png" id="8_8xars"]
+[ext_resource type="Texture2D" uid="uid://b7uj03tdpobgd" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_006.png" id="8_wnisa"]
+[ext_resource type="Texture2D" uid="uid://b728y4nm80bc0" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_007.png" id="9_654cp"]
 [ext_resource type="Texture2D" uid="uid://x123stsrvb3v" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_007.png" id="9_bpr0f"]
 [ext_resource type="Texture2D" uid="uid://bnov427l2f1tg" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_008.png" id="10_85ov5"]
+[ext_resource type="Texture2D" uid="uid://bt4und7ic13y" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_008.png" id="10_pyl1n"]
 [ext_resource type="Texture2D" uid="uid://b7d7wki88b3nm" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_009.png" id="11_e6xbp"]
+[ext_resource type="Texture2D" uid="uid://dmsbyj03hsvkr" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_009.png" id="11_s1cov"]
 [ext_resource type="Texture2D" uid="uid://bx0vj7wj80vlh" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_010.png" id="12_c5vpi"]
+[ext_resource type="Texture2D" uid="uid://bf4ayy0lpbxyt" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_010.png" id="12_tkbpt"]
 [ext_resource type="Texture2D" uid="uid://cyi30xiu7qmth" path="res://Assets/Sprites/Enemies/Boss/Idle/Golem_01_Idle_011.png" id="13_0qpxv"]
+[ext_resource type="Texture2D" uid="uid://c7kl2lwkp7qtu" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_011.png" id="13_iil3o"]
+[ext_resource type="Texture2D" uid="uid://c8kqys0uudvbb" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_012.png" id="14_mpvfy"]
+[ext_resource type="Texture2D" uid="uid://dr3u0iytwaf4u" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_013.png" id="15_5okxt"]
+[ext_resource type="Texture2D" uid="uid://c1ir5vu80eq08" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_014.png" id="16_ag6o6"]
+[ext_resource type="Texture2D" uid="uid://blg8n26kfvbjl" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_015.png" id="17_pmegm"]
+[ext_resource type="Texture2D" uid="uid://djbhnjuqf0ird" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_016.png" id="18_7hn8c"]
+[ext_resource type="Texture2D" uid="uid://cjrlbajxip50s" path="res://Assets/Sprites/Enemies/Boss/Walking/Golem_01_Walking_017.png" id="19_kofv2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fuoqe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bapgy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tc1m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_isa4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gdomn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_10vi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1rkt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hrur3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wnisa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_654cp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pyl1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s1cov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tkbpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iil3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mpvfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5okxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ag6o6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pmegm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7hn8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_kofv2")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.5,
 "texture": ExtResource("2_27cxb")
@@ -60,24 +138,29 @@ animations = [{
 }]
 
 [node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_23gat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fuoqe")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, -200)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_bapgy")
-animation = &"idle"
+animation = &"Walk"
 autoplay = "idle"
-frame_progress = 0.298088
 flip_h = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 modulate = Color(0.94902, 0, 0, 1)
-offset_left = -18.0
-offset_top = -36.0
-offset_right = 18.0
-offset_bottom = -27.0
+offset_left = -66.0
+offset_top = -423.0
+offset_right = 42.0
+offset_bottom = -405.0
 step = 1.0
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvm4fg8u4qjkg"]
+[gd_scene load_steps=3 format=3 uid="uid://cvm4fg8u4qjkg"]
 
 [ext_resource type="Texture2D" uid="uid://c8qw78hdgy2y0" path="res://Assets/Sprites/Castles/Asset 22.png" id="1_0dop2"]
 [ext_resource type="Script" path="res://Castle.gd" id="2_3c5ta"]
-[ext_resource type="PackedScene" uid="uid://b7u2x63yrsuh6" path="res://Prefabs/Enemies/Boss.tscn" id="4_wt72g"]
 
 [node name="Castle" type="Sprite2D"]
 z_index = 5
@@ -13,7 +12,3 @@ centered = false
 offset = Vector2(70, -750)
 script = ExtResource("2_3c5ta")
 metadata/_edit_group_ = true
-
-[node name="Boss" parent="." instance=ExtResource("4_wt72g")]
-texture_filter = 1
-position = Vector2(0, -150)
