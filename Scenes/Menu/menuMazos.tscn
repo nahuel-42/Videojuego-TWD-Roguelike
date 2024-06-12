@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yq0jvol8adc8" path="res://Assets/Menu/icono_casa.png" id="3_7d5ey"]
 [ext_resource type="Texture2D" uid="uid://bfad6ieiv7342" path="res://Assets/Menu/Dorso2.png" id="4_aocer"]
 [ext_resource type="Texture2D" uid="uid://0r82ormwwrhc" path="res://Assets/Menu/Dorso3.png" id="6_i48ru"]
-[ext_resource type="Texture2D" uid="uid://fmm6th17j1bo" path="res://Assets/Menu/Boton.png" id="6_xwew7"]
+[ext_resource type="Texture2D" uid="uid://bh6kjr2wsqd86" path="res://Assets/Menu/PlayButton.png" id="6_xwew7"]
 
 [sub_resource type="FontVariation" id="FontVariation_aduyc"]
 
