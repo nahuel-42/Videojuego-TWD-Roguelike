@@ -41,7 +41,7 @@ func SetSlotDetector():
 func SetSpellDetector():
 	m_detector = GameEvents.OnGetSpellDetectorUI.Call([2])
 func SetPassiveDetector():
-	m_detector = GameEvents.OnGetPassiveDetectorUI.Call([6])
+	m_detector = GameEvents.OnGetPassiveDetectorUI.Call([2**22])
 func SetSpecialityDetector():
 	m_detector = GameEvents.OnGetSlotDetectorUI.Call([2])
 func SetClassDetector():
