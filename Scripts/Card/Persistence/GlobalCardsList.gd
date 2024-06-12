@@ -41,8 +41,8 @@ var CollectionCard = [
 #FireCards, IceCards
 var TypeDeckCards = [
 #	[19,18,11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
-[6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19,20,20],
-[0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18,20,20]
+[20,20,6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
+[20,20,0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]
 ]
 	
 func find_card(id):
@@ -57,6 +57,9 @@ func find_card(id):
 func get_type(id):
 	return TypeDeckCards[id]
 	
+func get_unlocked_ids():
+	return CollectionCard.filter(func(card): return card["unlocked"] == 1).map(func(card): return card["id"])
+
 func get_unlocked_cards():
 	var unlocked_cards = []
 	for c in CollectionCard:

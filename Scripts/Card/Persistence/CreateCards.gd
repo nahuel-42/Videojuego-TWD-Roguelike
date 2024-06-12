@@ -23,6 +23,8 @@ static func createCard(id):
 		instance.Init(SpecialityCard.new(id, cardData))
 	elif (type == 'demolitionSpell'):
 		instance.Init(DemolitionSpellCard.new(id, cardData))
+	elif (type == 'chest'):
+		instance.Init(ChestCard.new(id, cardData))
 	else: 
 		print("Error type card: "  + str(type))
 	return instance
