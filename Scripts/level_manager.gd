@@ -21,7 +21,7 @@ func _ready():
 	WaveManager.percentage = (1.0 + WaveManager.stage_index) / WaveManager.stages
 	fog.reveal_map(WaveManager.percentage)
 	WaveManager.activation_percentage = (WaveManager.percentage + 1.0 / WaveManager.stages) * width
-
+	Audio.playMusicaMapa()
 func _on_wave_completed():
 	pass
 

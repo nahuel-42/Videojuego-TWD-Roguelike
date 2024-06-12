@@ -24,6 +24,7 @@ Parameters="*res://Scripts/Parameters.gd"
 GlobalCardsList="*res://Scripts/Card/Persistence/GlobalCardsList.gd"
 WaveManager="*res://Scripts/WaveManager.gd"
 GameController="*res://Scripts/GameController.gd"
+Audio="*res://audio.gd"
 
 [display]
 

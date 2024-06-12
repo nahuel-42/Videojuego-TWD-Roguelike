@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmsm3fa7aom0f"
+path="res://.godot/imported/Desolación - Despearate OST (Main Menu).mp3-082f66b803f903a6f6d4e68f6a9bb1ce.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audios/Desolación - Despearate OST (Main Menu).mp3"
+dest_files=["res://.godot/imported/Desolación - Despearate OST (Main Menu).mp3-082f66b803f903a6f6d4e68f6a9bb1ce.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

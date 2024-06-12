@@ -13,6 +13,8 @@ func _process(delta):
 	$TextureProgress.value+= delta*85
 	if ($TextureProgress.value==100 and scene_load_status == ResourceLoader.THREAD_LOAD_LOADED):
 		nextScene()
+		Audio.stopMusicaMenuPrincipal()
+		Audio.playMusicaMapa()
 
 func nextScene():
 	get_tree().call_deferred("change_scene_to_packed", ResourceLoader.load_threaded_get("res://Scenes/mapa.tscn"))
