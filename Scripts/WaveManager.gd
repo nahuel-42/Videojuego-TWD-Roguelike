@@ -51,6 +51,7 @@ func start_next_stage():
 	wave_index = 0
 	load_stage_config()
 	start_next_wave()
+	
 
 func load_stage_config():
 	# Entre 5 y 10 waves por stage
