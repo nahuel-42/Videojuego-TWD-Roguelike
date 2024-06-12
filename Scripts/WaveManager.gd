@@ -28,12 +28,12 @@ func register_spawner(spawner):
 	if is_active(spawner.position.x):
 		spawner.connect("stage_completed", _on_spawner_stage_completed)
 		spawners.append(spawner)
-		print("Se registro " + str(spawner))
 
 #para demolition
 func deactivate_spawner(spawner):
 	if is_active(spawner.position.x):
 		spawners.erase(spawner)
+		spawner.demolish()
 		return true
 	return false
 		#spawner.removeSprite()
