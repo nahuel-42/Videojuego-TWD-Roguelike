@@ -9,6 +9,7 @@ static var OnSpellCardActivated = Action.new()
 ############################################################
 ################     UI EVENTS     #########################
 ############################################################
+static var OnAddDeckCards = Action.new()
 static var OnLoadBoard = Action.new()
 static var OnLoadDiscard = Action.new()
 static var OnRestartDeck = Action.new()

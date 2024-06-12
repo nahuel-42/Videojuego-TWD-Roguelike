@@ -6,6 +6,11 @@ extends BaseDeck
 var m_timeCont:float=m_maxTime
 var m_restartCount : int = 0
 
+func _init():
+	GameEvents.OnAddDeckCards.AddListener(AddCards)
+func _exit_tree():
+	GameEvents.OnAddDeckCards.RemoveListener(AddCards)
+
 func _ready():
 	super._ready()
 	StartDeck()
@@ -29,13 +34,19 @@ func StartDeck():
 	for c in temporaryDeck:
 		c.SetSide(1)
 		AddCardsPosition(c)
-	
+		
 	#Pone N cartas en el board
 	_on_button_2_button_up(true)
 	
 	#Activa el modo loadcards
 	f_state = State_LoadCards
 	
+func AddCards(param):
+	var cards = param[0]
+	for c in cards:
+		c.SetSide(1)
+		AddCardsPosition(c)
+			
 func ReceiveCards(cards):
 	#Recibe las cartas del discard para mezclaras y volverlas a agregar	
 	cards=GlobalCardsList.GenerateDeck(cards)
