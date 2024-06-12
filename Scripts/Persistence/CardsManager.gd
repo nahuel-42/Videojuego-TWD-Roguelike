@@ -9,7 +9,8 @@ static var m_user_loader : int = 1
 
 #Indice 0 : guarda la coleccion de cartas
 #Indice 1 : guarda el tipo de mazo
-static var m_user_profile = [null, -1]
+#Indice 2 : guarda las monedas
+static var m_user_profile = [null, -1, 250]
 
 #Direccion por defecto de la partida guardada
 static var m_user_save_path = "user_save"

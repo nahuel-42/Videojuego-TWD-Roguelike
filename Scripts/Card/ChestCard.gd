@@ -5,7 +5,11 @@ class_name ChestCard
 @export var m_value : float = 0
 
 func use(param):
-	print("chest card used")
+	var area = param[0]
+	area.use()
+	var card = param[1]
+	GameEvents.OnRemoveBoardCards.Call([[card]])
+	GameEvents.OnLoadDiscard.Call([[card]])
 	return true
 
 func SetTypeDetector(cardMovement):

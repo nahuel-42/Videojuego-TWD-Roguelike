@@ -140,8 +140,6 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		var element
 		if i < n_forks / 2:
 			element = chest_scene.instantiate()
-			if i % 2 == 0:
-				element.open()
 		else:
 			var random = randi() % 3 + 1
 			var prefab_path

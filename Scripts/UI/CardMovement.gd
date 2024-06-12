@@ -47,7 +47,7 @@ func SetSpecialityDetector():
 func SetClassDetector():
 	m_detector = GameEvents.OnGetSlotDetectorUI.Call([2])
 func SetChestDetector():
-	m_detector = GameEvents.OnGetChestDetectorUI.Call([3])
+	m_detector = GameEvents.OnGetSlotDetectorUI.Call([2**(21-1)])
 func SetDemolitionDetector():
 	m_detector = GameEvents.OnGetSlotDetectorUI.Call([524288]) #2**19
 ######################################

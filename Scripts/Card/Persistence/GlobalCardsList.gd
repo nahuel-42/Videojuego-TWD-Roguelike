@@ -57,6 +57,9 @@ func find_card(id):
 func get_type(id):
 	return TypeDeckCards[id]
 	
+func get_unlocked_ids():
+	return CollectionCard.filter(func(card): return card["unlocked"] == 1).map(func(card): return card["id"])
+
 func get_unlocked_cards():
 	var unlocked_cards = []
 	for c in CollectionCard:

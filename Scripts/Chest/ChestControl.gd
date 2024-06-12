@@ -6,14 +6,11 @@ extends Node
 func _ready():
 	m_sprite2D = $Sprite2D
 	
-func glow_chest():
+func glow_slot():
 	padre.glow_chest(m_sprite2D)
 
-func unglow_chest():
+func unglow_slot():
 	padre.unglow_chest(m_sprite2D)
 
-func apply_card(dictionary):
-	return padre.apply_card(GlobalCardsList.find_card(dictionary))
-
-func apply_speciality(type : int):
-	return padre.apply_speciality(type)
+func use():
+	padre.open()
