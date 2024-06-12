@@ -38,9 +38,12 @@ func ShowPopupSpeciality(param):
 #		m_images[i].texture_normal = load(m_specialitiesPath[offset + i])
 
 	#botones de eleccion
-	get_node('background/Speciality1/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
-	get_node('background/Speciality2/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
-	get_node('background/Speciality3/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
+#	get_node('background/Speciality1/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
+#	get_node('background/Speciality2/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
+#	get_node('background/Speciality3/image').texture_normal = load('res://Assets/Sprites/Cards/BlueBackground.png')
+	get_node('background/Speciality1/back').texture = load('res://Assets/Sprites/Cards/BlueBackground.png')
+	get_node('background/Speciality2/back').texture = load('res://Assets/Sprites/Cards/BlueBackground.png')
+	get_node('background/Speciality3/back').texture = load('res://Assets/Sprites/Cards/BlueBackground.png')
 	
 	#depende de la clase de la torre
 	if(m_specialityType == 0):#Hunter

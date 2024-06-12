@@ -6,6 +6,7 @@ extends Area2D
 var target : Enemy
 var speciality : Speciality
 var damage : int
+@onready var cs : CollisionShape2D = $Area2D/CollisionShape2D
 
 func _process(delta):
 	if target.get_process_mode() != Node.ProcessMode.PROCESS_MODE_DISABLED:
@@ -15,7 +16,8 @@ func _process(delta):
 		
 		sprite.rotation = Vector2(1,0).angle_to(direction)
 	else:
-		queue_free() 
+		cs.disabled = true
+		queue_free()
 
 func set_target(target: Enemy):
 	self.target = target
