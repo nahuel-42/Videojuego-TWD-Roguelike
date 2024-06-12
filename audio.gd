@@ -1,7 +1,7 @@
 extends Node
 
 var musicaMenuPrincipal = load("res://Assets/Audios/Destino - Despearate OST (1).mp3")
-var musicaMapa= load("res://Assets/Audios/Desolación - Despearate OST (Main Menu).mp3")
+var musicaMapa= load("res://Assets/Audios/Desesperación-Despearate-OST.mp3")
 var audio_player = AudioStreamPlayer.new()
 var audio_player_mapa = AudioStreamPlayer.new()
 func _ready():
