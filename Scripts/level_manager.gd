@@ -22,6 +22,7 @@ func _ready():
 	fog.reveal_map(WaveManager.percentage)
 	WaveManager.activation_percentage = (WaveManager.percentage + 1.0 / WaveManager.stages) * width
 	Audio.playMusicaMapa()
+	
 func _on_wave_completed():
 	pass
 
@@ -29,7 +30,7 @@ func _on_stage_completed():
 	#fog.reset()
 	#WaveManager.percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
 	#fog.reveal_map(WaveManager.percentage)
-	tilemap.setup_level()
+	#tilemap.setup_level()
 	next_stage_button.visible = true
 	WaveManager.percentage = (1.0 + WaveManager.stage_index) / WaveManager.stages
 	fog.reveal_map(WaveManager.percentage)

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cssbe7tncjrk1" path="res://Assets/Menu/GameOverImage.png" id="2_7dgu5"]
 
 [node name="GameOver" type="Control"]
+z_index = 125
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
