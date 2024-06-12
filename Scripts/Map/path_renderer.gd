@@ -69,6 +69,7 @@ func _ready():
 	camera2D = $Camera2D
 	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
+	map = {}
 	
 	camera2D.position= Vector2i(camera2D.get_viewport_rect().size.y/2 + 32, initial_pos.y*32)
 	
@@ -80,11 +81,12 @@ func _ready():
 	print("La seed es ",self.seed)
 	
 	setup_level(initial_pos, target_pos)
-	$"../Target".position = initial_pos * CELL_DIMENSION
-	Parameters.boss_position = target_pos * CELL_DIMENSION
 
 func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
-	clear()
+	if !map.is_empty():
+		clear_map()
+	else:
+		clear()
 	last_target_pos = target_pos
 	render_grass(width, height)
 	map = {}
@@ -158,6 +160,8 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	
 	render_border(borderSize)
 	render_path()
+	$"../Target".position = initial_pos * CELL_DIMENSION
+	Parameters.boss_position = target_pos * CELL_DIMENSION
 	#WaveManager.load_waves()
 
 func render_path():
@@ -219,6 +223,10 @@ func _process(delta):
 		percentage = 1
 		#percentage += 0.1
 		fog.reveal_map(percentage)
+	elif Input.is_action_just_released("new_stage"):
+		var initial_pos = get_initial_pos()
+		var target_pos = generate_target()
+		setup_level(initial_pos,target_pos)
 
 func get_initial_pos():
 	if last_target_pos == null:
@@ -235,4 +243,10 @@ func generate_boss_path(last_pos:Vector2i) -> Array[Vector2i]:
 		for j in range(-boss_arena_dimension.y/2,boss_arena_dimension.y/2+1):
 			arena.append(Vector2i(last_pos.x+i+1,last_pos.y+j))
 	return arena
+	
+func clear_map():
+	for pos in map:
+		if (map[pos] is Node):
+			map[pos].queue_free()
+	clear()
 	
