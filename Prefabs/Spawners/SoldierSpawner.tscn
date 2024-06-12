@@ -22,6 +22,9 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_nduri")
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite")]
+visible = false
+collision_layer = 524288
+collision_mask = 524288
 script = ExtResource("3_r2cis")
 m_parent = NodePath("..")
 m_sprite = NodePath("../Sprite2D")
