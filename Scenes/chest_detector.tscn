@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dre2u2d8gmtvv"]
+
+[ext_resource type="Script" path="res://Scripts/Chest/ChestDetectorUI.gd" id="1_pujtc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7u6n"]
+size = Vector2(1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sikk0"]
+
+[node name="Detector" type="Node2D"]
+
+[node name="Chest" type="Area2D" parent="." node_paths=PackedStringArray("m_collider", "m_sprite", "m_collision")]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_pujtc")
+m_collider = NodePath("CollisionShape2D")
+m_sprite = NodePath("Sprite2D")
+m_collision = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest"]
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_i7u6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Chest"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+self_modulate = Color(1, 1, 1, 0.392157)
+scale = Vector2(100, 100)
+texture = SubResource("CanvasTexture_sikk0")
+
+[connection signal="area_entered" from="Chest" to="Chest" method="_on_area_entered"]
+[connection signal="area_exited" from="Chest" to="Chest" method="_on_area_exited"]

@@ -43,4 +43,3 @@ func _on_start_stage_button_pressed():
 
 func is_revealed(x_pos: int):
 	return x_pos <= WaveManager.percentage * width
-	
