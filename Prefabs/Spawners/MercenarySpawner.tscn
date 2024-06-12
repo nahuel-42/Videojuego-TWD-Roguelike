@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c13h4rwyps1ut"]
+[gd_scene load_steps=4 format=3 uid="uid://c13h4rwyps1ut"]
 
 [ext_resource type="Script" path="res://Scripts/Spawners/MercenarySpawner.gd" id="1_y7h3e"]
 [ext_resource type="Texture2D" uid="uid://b1ijdm2okupe1" path="res://Assets/Sprites/Spawners/MercenarySpawner.png" id="2_fd33f"]
-[ext_resource type="Script" path="res://Scripts/Spawners/SpawnerDetector.gd" id="3_ayn4u"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4sedj"]
-radius = 70.0
+[ext_resource type="PackedScene" uid="uid://c7lhm8vxjhi55" path="res://Prefabs/Spawners/Detector.tscn" id="3_x16dx"]
 
 [node name="MercenarySpawner" type="Node2D"]
 position = Vector2(0, 2)
@@ -21,13 +18,8 @@ autostart = true
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_fd33f")
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite")]
-collision_layer = 524288
-collision_mask = 524288
-script = ExtResource("3_ayn4u")
+[node name="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite") instance=ExtResource("3_x16dx")]
 m_parent = NodePath("..")
 m_sprite = NodePath("../Sprite2D")
 
-[node name="Collision" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1.5, 1.5)
-shape = SubResource("CircleShape2D_4sedj")
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

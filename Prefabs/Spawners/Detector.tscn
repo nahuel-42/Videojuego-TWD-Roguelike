@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7lhm8vxjhi55"]
+
+[ext_resource type="Script" path="res://Scripts/Spawners/SpawnerDetector.gd" id="1_sjo1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sedj"]
+radius = 70.0
+
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("m_parent", "m_sprite")]
+collision_layer = 524288
+collision_mask = 524288
+script = ExtResource("1_sjo1u")
+m_parent = NodePath("")
+m_sprite = NodePath("")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_4sedj")

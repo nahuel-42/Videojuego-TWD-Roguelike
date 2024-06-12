@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5wawy3eu27qx"]
+[gd_scene load_steps=4 format=3 uid="uid://5wawy3eu27qx"]
 
 [ext_resource type="Script" path="res://Scripts/Spawners/BeastSpawner.gd" id="1_biotc"]
 [ext_resource type="Texture2D" uid="uid://blekhgxcqxua3" path="res://Assets/Sprites/Spawners/BeastSpawner.png" id="2_frnkx"]
-[ext_resource type="Script" path="res://Scripts/Spawners/SpawnerDetector.gd" id="3_b7c0y"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_w1k1j"]
-radius = 70.0
+[ext_resource type="PackedScene" uid="uid://c7lhm8vxjhi55" path="res://Prefabs/Spawners/Detector.tscn" id="3_ax7vj"]
 
 [node name="BeastSpawner" type="Node2D"]
 position = Vector2(0, 2)
@@ -20,13 +17,8 @@ wait_time = 2.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_frnkx")
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite")]
-collision_layer = 524288
-collision_mask = 524288
-script = ExtResource("3_b7c0y")
+[node name="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite") instance=ExtResource("3_ax7vj")]
 m_parent = NodePath("..")
 m_sprite = NodePath("../Sprite2D")
 
-[node name="Collision" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(1.5, 1.5)
-shape = SubResource("CircleShape2D_w1k1j")
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
