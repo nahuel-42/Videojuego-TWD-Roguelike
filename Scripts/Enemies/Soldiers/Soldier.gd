@@ -10,9 +10,9 @@ func set_group():
 	add_to_group(Parameters.GROUPS.SOLDIER)
 
 func heal(healing):
-	if health + healing > max_health:
-		health = max_health
-		health_bar.value = max_health
+	if health + healing > health_bar.max_value:
+		health = health_bar.max_value
+		health_bar.value = health_bar.max_value
 	else:
 		health += healing
 		health_bar.value = health
