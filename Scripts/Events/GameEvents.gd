@@ -33,4 +33,4 @@ static var OnHideBoard = Action.new()
 static var OnPlayMovementCard = Action.new()
 static var OnPlayUsedCard = Action.new()
 ############################################################
-static var OnSetNotVisible = Action.new()
+static var OnSetVisible = Action.new()

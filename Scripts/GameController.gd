@@ -33,13 +33,15 @@ func HealthLoss(cant):
 		ActualHealth-=cant
 		GameEvents.OnUpdateHealth.Call([float(ActualHealth)])
 	else:
-		get_tree().paused = true
-		GameEvents.OnSetNotVisible.Call([true])
-		#WaveManager.reset()
-		#var change_scene = load("res://Scenes/Menu/gameOver.tscn")
+		#get_tree().paused = false
+		#GameEvents.OnSetVisible.Call([false])
+		#var gameOver_scene = load("res://Scenes/Menu/gameOver.tscn")
+		#var instance = gameOver_scene.instantiate()
+		var change_scene=load("res://Scenes/Menu/gameOver.tscn")
+		WaveManager.reset()
 		#MAXIMA VIDA, OJO
-		#ActualHealth = 100
-		#get_tree().change_scene_to_packed(change_scene)
+		ActualHealth = 100
+		get_tree().change_scene_to_packed(change_scene)
 
 func StartWave():
 	WaveManager.start_next_wave()
