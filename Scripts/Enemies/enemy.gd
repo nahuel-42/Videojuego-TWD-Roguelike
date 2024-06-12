@@ -17,7 +17,7 @@ var bleeding_damage = 1
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : ProgressBar = $HealthBar
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite = $Sprite2D
 
 var cooldown = 0.5
 
@@ -26,18 +26,22 @@ func set_group():
 	
 func init_stats():
 	health_bar.max_value = health
+	health_bar.value = health
+
+func load_stats():
+	animation.connect("animation_finished", effect_finished)
+	GameController.apply_passives()
 
 func _ready():
 	z_index = 3
 	target = Parameters.target
 	velocity = Vector2.ZERO
 	nav.target_position = target.position
-	animation.connect("animation_finished", effect_finished)
+	load_stats()
 	add_to_group(Parameters.GROUPS.ENEMY)
 	set_group()
 	init_stats()
 	scale /= 2
-	GameController.apply_passives()
 
 func _process(delta):
 	if cooldown > 0:

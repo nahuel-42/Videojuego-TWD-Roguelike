@@ -3,12 +3,14 @@ extends Node
 signal wave_completed
 signal stage_completed
 signal activate_spawner
+signal enable_boss
 
+const BOSS_PATH = "res://Prefabs/Enemies/Boss.tscn"
 var wave_config = []
 var wave_index = 0
-var stages = 5
+var stages = 2
 var stage_index = 1
-var waves_per_stage = 5  # Número base de oleadas por stage
+var waves_per_stage = 1  # Número base de oleadas por stage
 var spawners = []
 var stage_text : RichTextLabel
 var wave_text : RichTextLabel
@@ -37,6 +39,13 @@ func deactivate_spawner(spawner):
 		#spawner.removeSprite()
 
 func start_next_stage():
+	if stage_index == stages:
+		var boss_instance = load(BOSS_PATH).instantiate()
+		add_child(boss_instance)
+		boss_instance.global_position = Parameters.boss_position
+		emit_signal("enable_boss")
+		return
+		
 	activate_spawners()
 	wave_config = []
 	wave_index = 0
