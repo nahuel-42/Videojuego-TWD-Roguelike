@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://kkq74jq8btp0"]
+
+[ext_resource type="Script" path="res://Scripts/Ally.gd" id="1_at73t"]
+[ext_resource type="Texture2D" uid="uid://b2aixsrdqwg1j" path="res://Assets/Sprites/Allies.png" id="2_1xb1o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5tpa"]
+
+[node name="Ally" type="CharacterBody2D"]
+script = ExtResource("1_at73t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p5tpa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -30)
+texture = ExtResource("2_1xb1o")
+hframes = 6
+vframes = 8
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.94902, 0, 0, 1)
+offset_left = -18.0
+offset_top = -99.0
+offset_right = 18.0
+offset_bottom = -90.0
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="Animation" type="AnimationPlayer" parent="."]

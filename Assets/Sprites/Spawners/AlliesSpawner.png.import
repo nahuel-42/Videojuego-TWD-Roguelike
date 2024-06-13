@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhmnf6a75qyqd"
-path="res://.godot/imported/Run-Sheet.png-01f0f10025cb55dba8627ed4a45de139.ctex"
+uid="uid://bo76xd46gsrxb"
+path="res://.godot/imported/AlliesSpawner.png-fdbc6d765d60b475b7ea0232511dc0aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemy/Orc Crew/Orc - Rogue/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-01f0f10025cb55dba8627ed4a45de139.ctex"]
+source_file="res://Assets/Sprites/Spawners/AlliesSpawner.png"
+dest_files=["res://.godot/imported/AlliesSpawner.png-fdbc6d765d60b475b7ea0232511dc0aa.ctex"]
 
 [params]
 

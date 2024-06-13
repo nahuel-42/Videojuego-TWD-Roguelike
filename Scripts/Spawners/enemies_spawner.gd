@@ -4,6 +4,7 @@ extends Spawner
 signal stage_completed
 var ENEMY_TYPES
 var stage_completed_flag = false
+const ALLIES_SPAWNER_SCRIPT_PATH :  String = "res://Scripts/Spawners/AlliesSpawner.gd"
 
 func register_spawner():
 	WaveManager.register_spawner(self)
@@ -39,5 +40,6 @@ func is_stage_completed():
 	return stage_completed_flag
 		
 func demolish():
-	WaveManager.unsuscribe_spawner(self)
 	stop()
+	# TODO: En vez de cambiar el script, abría que eliminar el nodo actual y, en su lugar, instanciar spawner aliado
+	set_script(load(ALLIES_SPAWNER_SCRIPT_PATH))
