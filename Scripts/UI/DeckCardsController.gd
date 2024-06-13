@@ -5,11 +5,14 @@ extends BaseDeck
 @export var m_timeOutBar : TimeOutDiscard = null
 var m_timeCont:float=m_maxTime
 var m_restartCount : int = 0
+var m_timeOutUpdate : bool = false
 
 func _init():
 	GameEvents.OnAddDeckCards.AddListener(AddCards)
+	GameEvents.OnSetTimeOut.AddListener(SetTimeOut)
 func _exit_tree():
 	GameEvents.OnAddDeckCards.RemoveListener(AddCards)
+	GameEvents.OnSetTimeOut.RemoveListener(SetTimeOut)
 
 func _ready():
 	super._ready()
@@ -17,12 +20,12 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	m_timeCont = clamp(m_timeCont+delta, 0.0, m_maxTime)
-	m_timeOutBar.SetValue(clamp(m_timeCont / m_maxTime, 0.0, 1.0))
+	if (m_timeOutUpdate):
+		m_timeCont = clamp(m_timeCont+delta, 0.0, m_maxTime)
+		m_timeOutBar.SetValue(clamp(m_timeCont / m_maxTime, 0.0, 1.0))
 
 func StartDeck():
-	CardsManager.InitUserSave()
-	var deck = CardsManager.CreateReferenceDeck()
+	var deck = CardsManager.GetDeck()
 	
 	#Crea las cartas en la UI para mezclar
 	var temporaryDeck = []
@@ -78,3 +81,9 @@ func _on_button_2_button_up(conf : bool = false):
 
 func _on_show_pop_button_down():
 	GameEvents.OnShowPopCards.Call([m_cardsList, true, false])
+
+func SetTimeOut(param):
+	m_timeOutUpdate = param[0]
+	if (!m_timeOutUpdate):		
+		m_timeCont = 0.0
+		m_timeOutBar.SetValue(0.0)

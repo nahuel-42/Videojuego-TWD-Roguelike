@@ -1,8 +1,11 @@
 class_name GameEvents
 extends RefCounted
 
-#In Game Events
+
 ############################################################
+################   In Game Events     ######################
+############################################################
+static var OnSetTimeOut = Action.new()
 static var OnSpellCardActivated = Action.new()
 ############################################################
 
@@ -35,3 +38,4 @@ static var OnPlayMovementCard = Action.new()
 static var OnPlayUsedCard = Action.new()
 ############################################################
 static var OnSetVisible = Action.new()
+############################################################
