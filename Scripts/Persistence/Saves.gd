@@ -7,14 +7,14 @@ static func IfExists(path):
 	return false
 
 #almacena una lista
-static func save_game(path, list):
+static func save_data(path, list):
 	#if (!FileAccess.file_exists(path)):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	for line in list:
 		file.store_line(JSON.stringify(line))
 	file.close()
 	
-static func load_game(path):
+static func load_data(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if (file != null):
 		var list = []

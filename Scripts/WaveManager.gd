@@ -22,6 +22,7 @@ func is_active(x_pos: int):
 	return x_pos <= activation_percentage
 
 func activate_spawners():
+	GameEvents.OnSetTimeOut.Call([true])
 	emit_signal("activate_spawner")
 	
 func register_spawner(spawner):
@@ -100,6 +101,7 @@ func all_spawners_completed():
 	return true
 	
 func stop_spawners():
+	GameEvents.OnSetTimeOut.Call([false])
 	for spawner in spawners:
 		spawner.stop()
 

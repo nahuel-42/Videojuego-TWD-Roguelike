@@ -1,5 +1,5 @@
-extends Node
 class_name CardsManager
+extends Node
 
 #Sirve como referencia en el menu para saber que cargar
 # 0 = Carga la partida
@@ -10,7 +10,7 @@ static var m_user_loader : int = 1
 #Indice 0 : guarda la coleccion de cartas
 #Indice 1 : guarda el tipo de mazo
 #Indice 2 : guarda las monedas
-static var m_user_profile = [null, -1, 250]
+static var user_profile : UserProfile = UserProfile.new()
 
 #Direccion por defecto de la partida guardada
 static var m_user_save_path = "user_save"
@@ -23,37 +23,21 @@ static func SetDeckType(type : int):
 #O comprueba que el mazo del tipo user loader - 1 exista
 static func CheckDeckTypeSelected():
 	if (m_user_loader == 0):
-		return Save.load_game(m_user_save_path) != null
+		return false
+		#Se carga el stage
+		#return Save.load_data(m_user_save_path) != null
 	else:
 		return m_user_loader - 1 < len(GlobalCardsList.TypeDeckCards)
 
 static func InitUserSave():
+	user_profile.LoadDeck()
+	
 	if (m_user_loader == 0):
-		m_user_profile = Save.load_game(m_user_save_path)
-	else:
-		m_user_profile[0] = GlobalCardsList.get_unlocked_cards()
-		m_user_profile[1] = m_user_loader - 1
-		Save.save_game(m_user_save_path, m_user_profile)
-		m_user_profile = Save.load_game(m_user_save_path)
+		printerr("Deberia cargase el stage con el tipo de mazo!!")
 
-static func CreateReferenceDeck():
-	var typeDeck = GlobalCardsList.TypeDeckCards[m_user_profile[1]]
-	var referenceDeck = []
-	print(m_user_profile)
-	print("__________________________________")
-	print(typeDeck)
-	for t in typeDeck:
-		var card = GetUnlocked(t)
-		if (card == true):
-			referenceDeck.append(t)
+static func GetDeck():
+	return user_profile.GetDeck(m_user_loader - 1)
 
-	print(referenceDeck)
-	return referenceDeck
-
-static func GetUnlocked(id):
-	var i : int = 0
-	while (i < len(m_user_profile[0])):
-		if (m_user_profile[0][i][0] == id):
-			return m_user_profile[0][i][1]
-		i += 1
-	return false
+#Sirve para agregar cantidad al mazo o desbloquear una carta
+static func AddCard(idCard : int):
+	user_profile.AddCard(idCard)
