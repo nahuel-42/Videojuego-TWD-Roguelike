@@ -3,7 +3,7 @@ extends Enemy
 
 var enabled = false
 @onready var cs : CollisionShape2D = $CollisionShape2D
-@onready var animated_sprite : AnimatedSprite2D = $Sprite2D
+var allies_in_range = []
 
 func start_slow():
 	pass
@@ -24,6 +24,8 @@ func _ready():
 	super()
 	WaveManager.connect("enable_boss", enable_boss)
 	cs.disabled = true
+	Parameters.boss = self
+	add_to_group("BOSS")
 	
 
 func init_stats():
@@ -32,11 +34,37 @@ func init_stats():
 	speed = 60
 	super()
 
+func _physics_process(delta):
+	if !enabled:
+		return
+		
+	if allies_in_range.is_empty():
+		move(delta)	
+	else:
+		fight()
+
 func move(delta):
-	if enabled:
-		super(delta)
+	animation.play("Walk")
+	super(delta)
 		
 func enable_boss():
-	animated_sprite.animation = "Walk"
 	cs.disabled = false
 	enabled = true
+
+func fight():
+	if len(allies_in_range) >= 3:
+		animation.play("Attack")
+	else:
+		animation.play("Idle")
+
+func do_damage():
+	for ally in allies_in_range:
+		ally.take_damage(999)
+
+func _on_allies_detector_body_entered(body):
+	if body.is_in_group("ALLIES"):
+		allies_in_range.append(body)
+
+func _on_allies_detector_body_exited(body):
+	if body.is_in_group("ALLIES"):
+		allies_in_range.erase(body)

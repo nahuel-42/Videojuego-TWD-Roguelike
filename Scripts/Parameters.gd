@@ -1,7 +1,8 @@
 extends Node
 
-var target
-var boss_position
+var target : Node2D
+var boss : Node2D
+var boss_position : Vector2
 @export var Slot = "res://Scripts/slots/slot.gd"
 
 const GROUPS = {

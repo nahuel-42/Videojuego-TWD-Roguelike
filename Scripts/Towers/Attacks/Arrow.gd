@@ -4,7 +4,7 @@ extends Area2D
 @export var speed := 200.0
 @onready var sprite : Sprite2D = $Sprite2D
 var target : Enemy
-var speciality : Speciality
+var attack : AttackMethod
 var damage : int
 @onready var cs : CollisionShape2D = $CollisionShape2D
 
@@ -22,8 +22,8 @@ func _process(delta):
 func set_target(target: Enemy):
 	self.target = target
 	
-func set_speciality(speciality: Speciality):
-	self.speciality = speciality
+func set_attack_method(attack: AttackMethod):
+	self.attack = attack
 	
 func set_damage(damage: int):
 	self.damage = damage
@@ -31,5 +31,5 @@ func set_damage(damage: int):
 
 func _on_body_entered(body):
 	if body == target:
-		speciality.act(target, damage)
+		attack.do_damage_to_enemy(target, damage)
 		queue_free() 

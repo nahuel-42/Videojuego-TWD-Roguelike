@@ -80,7 +80,6 @@ func _ready():
 	seed(self.seed)
 	print("La seed es ",self.seed)
 	
-	Parameters.boss_position = target_pos * CELL_DIMENSION
 	$"../Target".position = initial_pos * CELL_DIMENSION
 	setup_level(initial_pos, target_pos)
 

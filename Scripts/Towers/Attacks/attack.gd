@@ -84,3 +84,6 @@ func hits():
 
 func class_id():
 	return speciality.class_id()
+	
+func do_damage_to_enemy(target, damage):
+	speciality.act(target, damage)
