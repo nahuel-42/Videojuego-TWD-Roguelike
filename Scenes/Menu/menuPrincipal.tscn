@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqnl8f4bflhg3"]
+[gd_scene load_steps=9 format=3 uid="uid://bqnl8f4bflhg3"]
 
 [ext_resource type="Texture2D" uid="uid://cjhieew4csu2s" path="res://Assets/Menu/imagen_menuprincipal.jpg" id="1_g8k5a"]
 [ext_resource type="Script" path="res://Scripts/Menu/menuPrincipal.gd" id="1_ndqvk"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cphcemoi0irw0" path="res://Assets/Menu/Settings-PNG-Image.png" id="4_y7h20"]
 [ext_resource type="Texture2D" uid="uid://bh6kjr2wsqd86" path="res://Assets/Menu/PlayButton.png" id="5_d8hkt"]
 [ext_resource type="Texture2D" uid="uid://d1hrc00ju6exx" path="res://Assets/Menu/PlayButtonPressed.png" id="6_xb38b"]
+[ext_resource type="FontFile" uid="uid://cpllvdqkfw1x7" path="res://fonts/MagicSchoolOne.ttf" id="7_vph7g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_14hwo"]
+font = ExtResource("7_vph7g")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -16,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ndqvk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Fondo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,18 +33,32 @@ texture = ExtResource("1_g8k5a")
 expand_mode = 1
 
 [node name="BotonTienda" type="TouchScreenButton" parent="."]
-position = Vector2(715, 339)
+position = Vector2(535, 387)
 texture_normal = ExtResource("2_t8eyl")
 
 [node name="BotonConfiguracion" type="TouchScreenButton" parent="."]
-position = Vector2(1058, 6)
-scale = Vector2(0.166016, 0.166016)
+position = Vector2(1071, 28)
+scale = Vector2(0.0996097, 0.0996094)
 texture_normal = ExtResource("4_y7h20")
 
 [node name="BotonJugar" type="TouchScreenButton" parent="."]
-position = Vector2(712, 170)
+position = Vector2(535, 280)
 texture_normal = ExtResource("5_d8hkt")
 texture_pressed = ExtResource("6_xb38b")
+
+[node name="Nombre" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.404
+anchor_top = 0.198
+anchor_right = 0.804
+anchor_bottom = 0.381
+offset_left = -0.40802
+offset_top = -0.304016
+offset_right = -0.208008
+offset_bottom = 0.112
+text = "Castle Conquest TD"
+label_settings = SubResource("LabelSettings_14hwo")
 
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]
