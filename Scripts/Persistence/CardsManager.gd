@@ -22,12 +22,7 @@ static func SetDeckType(type : int):
 #Comprueba si la partida esta guardada (caso que user loader sea 0)
 #O comprueba que el mazo del tipo user loader - 1 exista
 static func CheckDeckTypeSelected():
-	if (m_user_loader == 0):
-		return false
-		#Se carga el stage
-		#return Save.load_data(m_user_save_path) != null
-	else:
-		return m_user_loader - 1 < len(GlobalCardsList.TypeDeckCards)
+	return m_user_loader - 1 < len(GlobalCardsList.TypeDeckCards)
 
 static func InitUserSave():
 	user_profile.LoadDeck()
@@ -41,3 +36,9 @@ static func GetDeck():
 #Sirve para agregar cantidad al mazo o desbloquear una carta
 static func AddCard(idCard : int):
 	user_profile.AddCard(idCard)
+
+
+static func checkSaveGame():
+	#se lo pedimos al UserPROFILE
+	#
+	return true

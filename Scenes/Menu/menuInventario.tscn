@@ -6,6 +6,7 @@
 
 [node name="Inventory" type="Control" node_paths=PackedStringArray("m_gridContainer")]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_2ri1r")
