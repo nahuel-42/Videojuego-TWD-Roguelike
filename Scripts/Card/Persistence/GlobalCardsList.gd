@@ -6,7 +6,11 @@ extends Node
 # Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
 # PowerUpCard: id, cardName, description, sprite, cost, active, type
 
-var CollectionCard = [
+const COLLECTION_PATH = "collection"
+
+var CollectionCard = load_collection()
+
+const initialCollection = [
 	################# TOWERS ####################
 	{"id":0, "type": "tower", "cardName" : "Single Target Tower", "desc":"A tower that shoots piercing arrows", "sprite": "res://Assets/Sprites/Cards/Tower/FireArrowT.png", "cost":20, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.7, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
 	{"id":1, "type": "tower", "cardName" : "Area Tower", "desc":"A tower that damages everything in it's range", "sprite": "res://Assets/Sprites/Cards/Tower/FireAreaT.png", "cost":50, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.7, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
@@ -44,7 +48,24 @@ var TypeDeckCards = [
 [20,20,6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
 [20,20,0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]
 ]
-	
+
+func unlock(id):
+	for card in CollectionCard:
+		if card["id"] == id:
+			card["unlocked"] = 1
+			save_collection()
+			break
+
+func load_collection():
+	if FileAccess.file_exists(COLLECTION_PATH):
+		return Save.load_data(COLLECTION_PATH)
+	else:
+		Save.save_data(COLLECTION_PATH, initialCollection)
+		return initialCollection
+
+func save_collection():
+	Save.save_data(COLLECTION_PATH, CollectionCard)
+
 func find_card(id):
 	var card = null
 	var i : int = 0
@@ -65,6 +86,9 @@ func isUnlocked(id):
 
 func get_type(id):
 	return TypeDeckCards[id]
+
+func get_locked_ids():
+	return CollectionCard.filter(func(card): return card["unlocked"] == 0).map(func(card): return card["id"])
 	
 func get_unlocked_ids():
 	return CollectionCard.filter(func(card): return card["unlocked"] == 1).map(func(card): return card["id"])

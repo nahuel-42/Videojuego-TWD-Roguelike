@@ -26,7 +26,12 @@ func _ready():
 		RewardType.CARD:
 			reward = GlobalCardsList.get_unlocked_ids().pick_random()
 		RewardType.UNLOCK:
-			pass
+			var locked_cards = GlobalCardsList.get_locked_ids()
+			if (len(locked_cards) == 0):
+				reward_type = RewardType.CARD
+				reward = GlobalCardsList.get_unlocked_ids().pick_random()
+			else:
+				reward = locked_cards.pick_random()
 	$Sprite2D.texture = load(rewardSprites[reward_type])
 	
 func _setup(texture:int):
@@ -36,7 +41,7 @@ func _setup(texture:int):
 func open():
 	if opened:
 		return
-		
+
 	match reward_type:
 		RewardType.COINS:
 			CoinsManager.AddCoins(reward)
@@ -44,7 +49,7 @@ func open():
 			var card = CardFactory.createCard(reward)
 			GameEvents.OnAddDeckCards.Call([[card]])
 		RewardType.UNLOCK:
-			pass
+			GlobalCardsList.unlock(reward)
 	var sprite: Sprite2D = $Area2D/Sprite2D
 	sprite.texture = open_texture
 	$AnimationPlayer.play("give_reward")
