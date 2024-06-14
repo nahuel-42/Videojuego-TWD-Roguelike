@@ -40,10 +40,12 @@ func move(delta):
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 	
+	animation.play("walk")
+	
 	if direction.x > 0:
-		sprite.flip_h = false
+		$AnimatedSprite2D.flip_h = false
 	elif direction.x < 0:
-		sprite.flip_h = true
+		$AnimatedSprite2D.flip_h = true
 	
 	velocity = velocity.lerp(direction * speed, acceleration * delta)
 	
@@ -60,16 +62,23 @@ func take_damage(damage):
 	health -= damage
 	health_bar.value -= damage
 	if health <= 0:
-		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-		visible = false
+		queue_free()
 
 func set_target_position():
 	boss = Parameters.boss
 	nav.target_position = boss.position
 
-func attack():
+func attack(body):
 	var random = randi() % 2 + 1
-	animation.play("Attack" + str(random))
+	var attack_direction
+	if (abs(position.y-body.position.y) <= 30):
+		attack_direction = "side"
+	elif (position.y > body.position.y):
+		attack_direction = "down"
+	else:
+		attack_direction = "up"
+	
+	animation.play("attack_"+attack_direction)
 
 func do_damage():
 	boss.take_damage(damage)
@@ -77,4 +86,4 @@ func do_damage():
 func _on_boss_detector_body_entered(body):
 	if body.is_in_group("BOSS"):
 		target_reached = true
-		attack()
+		attack(body)
