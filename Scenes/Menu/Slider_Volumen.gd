@@ -5,7 +5,6 @@ var bus_name: String
 
 var bus_index=0
 
-
 func _ready() -> void:
 	var variable :HSlider = $"."
 	value_changed.connect(_on_value_changed)

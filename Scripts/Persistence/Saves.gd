@@ -19,8 +19,11 @@ static func LoadProfile():
 static func LoadStore():
 	return ReadKey("store")
 
-static func LoadCastles(castles):
+static func LoadCastles():
 	return ReadKey("castles")
+
+static func LoadVolume():
+	return ReadKey("volume")
 
 # ########## SAVE ##########
 
@@ -38,6 +41,9 @@ static func SaveStore(store):
 
 static func SaveCastles(castles):
 	StoreKey("castles", castles)
+
+static func SaveVolume(volume):
+	return StoreKey("volume", volume)
 
 static func StoreKey(key, value):
 	if not FileAccess.file_exists(SAVE_DATA_PATH):

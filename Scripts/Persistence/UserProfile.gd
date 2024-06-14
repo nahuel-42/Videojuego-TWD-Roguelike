@@ -28,6 +28,7 @@ func GetDeck(type : int):
 	for t in typeDeck:
 		if (_GetUnlocked(t)):
 			referenceDeck.append(t)
+	
 	return referenceDeck
 
 #Agrega una carta al mazo del jugador, si esta desbloqueada agrega una a la cantidad
