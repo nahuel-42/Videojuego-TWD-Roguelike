@@ -11,6 +11,8 @@ var m_height : float
 var m_dragActivated : bool = false
 var val = true
 
+var scene_principal = load("res://Scenes/Menu/menuPrincipal.tscn")
+
 func _init():
 	GameEvents.OnShowInventory.AddListener(ShowCards)
 
@@ -78,3 +80,7 @@ func _on_detect_drag_gui_input(event):
 			m_dragActivated = true
 		else:
 			m_dragActivated = false
+
+
+func _on_menu_pressed():
+	get_tree().change_scene_to_packed(scene_principal)
