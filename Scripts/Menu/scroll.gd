@@ -27,16 +27,15 @@ func _ready():
 	print(card_nodes)
 	get_h_scroll_bar().modulate.a = 0
 	call_deferred("_calculate_card_positions")
-	
+
 func _calculate_card_positions():
 	for _card in card_nodes:
 		var _card_pos_x: float = (margin_r + _card.position.x) - ((size.x - _card.size.x) / 2)
 		_card.pivot_offset = (_card.size / 2)
 		card_x_positions.append(_card_pos_x)
 	scroll_horizontal = card_x_positions[card_current_index]
-	
-	
-func _process(delta):
+
+func get_selected_deck_type():
 	var closest_index = 0
 	var closest_distance = INF
 	var _swipe_current_length: float
@@ -60,8 +59,7 @@ func _process(delta):
 
 	if _swipe_current_length < _swipe_length:
 		card_current_index = closest_index
-		
-	#Setea el tipo para despues cargar con ese valor
-	CardsManager.SetDeckType(closest_index)
 
+	# TODO: hacer que los nodos carta almacenen su tipo
 
+	return closest_index

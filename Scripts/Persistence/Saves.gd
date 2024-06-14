@@ -25,6 +25,12 @@ static func LoadCastles():
 static func LoadVolume():
 	return ReadKey("volume")
 
+static func LoadDeck():
+	return ReadKey("deck")
+
+static func LoadIngame():
+	return ReadKey("ingame")
+
 # ########## SAVE ##########
 
 static func SaveCoins(amount):
@@ -43,7 +49,13 @@ static func SaveCastles(castles):
 	StoreKey("castles", castles)
 
 static func SaveVolume(volume):
-	return StoreKey("volume", volume)
+	StoreKey("volume", volume)
+
+static func SaveDeck(deck):
+	StoreKey("deck", deck)
+
+static func SaveIngame(ingame):
+	StoreKey("ingame", ingame)
 
 static func StoreKey(key, value):
 	if not FileAccess.file_exists(SAVE_DATA_PATH):

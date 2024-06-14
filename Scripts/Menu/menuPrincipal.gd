@@ -7,7 +7,7 @@ var escena_inventario = load("res://Scenes/Menu/menuInventario.tscn")
 var escena_configuracion = preload("res://Scenes/Menu/menuConfiguracion.tscn")
 
 
-func _ready():	
+func _ready():
 	CardsManager.InitUserSave()
 	var db = Save.LoadVolume()
 	if db != null:
