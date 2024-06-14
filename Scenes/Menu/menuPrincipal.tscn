@@ -1,14 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqnl8f4bflhg3"]
+[gd_scene load_steps=9 format=3 uid="uid://bqnl8f4bflhg3"]
 
 [ext_resource type="Texture2D" uid="uid://cjhieew4csu2s" path="res://Assets/Menu/imagen_menuprincipal.jpg" id="1_g8k5a"]
 [ext_resource type="Script" path="res://Scripts/Menu/menuPrincipal.gd" id="1_ndqvk"]
-[ext_resource type="Texture2D" uid="uid://bd1bs7fne6sqh" path="res://Assets/Menu/BotonConfiguracion.png" id="2_t8eyl"]
-[ext_resource type="Texture2D" uid="uid://cphcemoi0irw0" path="res://Assets/Menu/Settings-PNG-Image.png" id="4_y7h20"]
-[ext_resource type="Texture2D" uid="uid://bh6kjr2wsqd86" path="res://Assets/Menu/PlayButton.png" id="5_d8hkt"]
-[ext_resource type="Texture2D" uid="uid://d1hrc00ju6exx" path="res://Assets/Menu/PlayButtonPressed.png" id="6_xb38b"]
+[ext_resource type="Texture2D" uid="uid://cxxbnr1tuaixq" path="res://Assets/Menu/Tienda.png" id="4_eeb4n"]
+[ext_resource type="Texture2D" uid="uid://dis1oame4nh7e" path="res://Assets/Menu/engranaje.png" id="5_16uas"]
+[ext_resource type="Texture2D" uid="uid://b617h6dxqk02i" path="res://Assets/Menu/Jugar.png" id="6_s2ufy"]
+[ext_resource type="Texture2D" uid="uid://bj2efo6ydxc67" path="res://Assets/Menu/Inventario.png" id="7_bfsfw"]
 [ext_resource type="FontFile" uid="uid://cpllvdqkfw1x7" path="res://fonts/MagicSchoolOne.ttf" id="7_vph7g"]
-[ext_resource type="Texture2D" uid="uid://bn8g1yaa5e114" path="res://Assets/Menu/InventoryButton.png" id="8_jc7ul"]
-[ext_resource type="Texture2D" uid="uid://cn5jc00kbhk4o" path="res://Assets/Menu/TiendaButonPressed.jpg" id="9_8mktx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_14hwo"]
 font = ExtResource("7_vph7g")
@@ -38,50 +36,48 @@ expand_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.404
-anchor_top = 0.198
+anchor_top = 0.14
 anchor_right = 0.804
-anchor_bottom = 0.381
+anchor_bottom = 0.324
 offset_left = -0.40802
-offset_top = -37.304
+offset_top = 0.279999
 offset_right = -0.208008
-offset_bottom = -36.888
+offset_bottom = 0.0480042
 text = "Castle Conquest TD"
 label_settings = SubResource("LabelSettings_14hwo")
 
 [node name="BotonTienda" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 535.0
-offset_top = 337.0
-offset_right = 535.0
-offset_bottom = 337.0
-texture_normal = ExtResource("2_t8eyl")
-texture_pressed = ExtResource("9_8mktx")
+offset_left = 561.0
+offset_top = 331.0
+offset_right = 829.0
+offset_bottom = 447.0
+texture_normal = ExtResource("4_eeb4n")
 
 [node name="BotonConfiguracion" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 1071.0
 offset_top = 28.0
-offset_right = 1071.0
-offset_bottom = 28.0
+offset_right = 1454.0
+offset_bottom = 411.0
 scale = Vector2(0.0996097, 0.0996094)
-texture_normal = ExtResource("4_y7h20")
+texture_normal = ExtResource("5_16uas")
 
 [node name="BotonJugar" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 535.0
-offset_top = 239.0
-offset_right = 535.0
-offset_bottom = 239.0
-texture_normal = ExtResource("5_d8hkt")
-texture_pressed = ExtResource("6_xb38b")
+offset_left = 561.0
+offset_top = 214.0
+offset_right = 829.0
+offset_bottom = 330.0
+texture_normal = ExtResource("6_s2ufy")
 
 [node name="BotonInventario" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 535.0
-offset_top = 435.0
-offset_right = 535.0
-offset_bottom = 435.0
-texture_normal = ExtResource("8_jc7ul")
+offset_left = 561.0
+offset_top = 448.0
+offset_right = 829.0
+offset_bottom = 564.0
+texture_normal = ExtResource("7_bfsfw")
 
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonConfiguracion" to="." method="_on_boton_configuracion_pressed"]
