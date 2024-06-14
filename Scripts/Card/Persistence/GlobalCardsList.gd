@@ -54,6 +54,15 @@ func find_card(id):
 		i += 1
 	return card
 
+func isUnlocked(id):
+	var i : int = 0
+	var val = false
+	while (i < len(CollectionCard) && !val):
+		if (CollectionCard[i]["id"] == id):
+			val = CollectionCard[i]["unlocked"]
+		i += 1
+	return val
+
 func get_type(id):
 	return TypeDeckCards[id]
 	

@@ -25,6 +25,8 @@ static var OnGetPassiveDetectorUI = Func.new()
 static var OnShowPopCards = Action.new()
 static var OnShowPopupSpeciality = Action.new()
 ############################################################
+static var OnShowInventory = Action.new()
+############################################################
 static var OnAddCardsInGame = Action.new()
 static var OnSwapCardsInGame = Action.new()
 static var OnRemoveBoardCards = Action.new()
