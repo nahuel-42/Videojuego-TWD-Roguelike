@@ -2,7 +2,14 @@ extends Node
 
 enum RewardType {
 	CARD,
-	COINS
+	COINS,
+	UNLOCK
+}
+
+var rewardSprites = {
+	RewardType.CARD: "res://Assets/Menu/Dorso2.png",
+	RewardType.COINS: "res://Assets/Menu/AdolfoCoins.png",
+	RewardType.UNLOCK: "res://Assets/Menu/Dorso3.png"
 }
 
 var reward
@@ -18,26 +25,26 @@ func _ready():
 			reward = randi_range(5, 10)
 		RewardType.CARD:
 			reward = GlobalCardsList.get_unlocked_ids().pick_random()
-
-func _setup(texture:int,pos:Vector2i):
+	$Sprite2D.texture = load(rewardSprites[reward_type])
+	
+func _setup(texture:int):
 	self.texture = texture
 
-# TODO: ejecutar esta función cuando se arrastre la carta
-# TODO: cambiar textura cuando se abre el cofre
+# TODO: Implementar el premio de desbloquear carta
 func open():
-	# TODO: hacer animacion para la recompensa
-	print("se abre cofre")
-	$AnimationPlayer.play("give_coins")
 	if opened:
 		return
+		
 	match reward_type:
 		RewardType.COINS:
 			CoinsManager.AddCoins(reward)
 		RewardType.CARD:
 			var card = CardFactory.createCard(reward)
 			GameEvents.OnAddDeckCards.Call([[card]])
+			
 	var sprite: Sprite2D = $Area2D/Sprite2D
 	sprite.texture = open_texture
+	$AnimationPlayer.play("give_reward")
 
 func glow_chest(sprite):
 	if not opened:

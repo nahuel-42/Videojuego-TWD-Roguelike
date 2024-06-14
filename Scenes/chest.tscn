@@ -7,41 +7,53 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg7wt"]
 radius = 32.0
 
+[sub_resource type="Animation" id="Animation_fq2v0"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_2uv3a"]
 resource_name = "give_coins"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(1e-05, 1e-05), Vector2(0.26, 0.26)]
 }
-
-[sub_resource type="Animation" id="Animation_fq2v0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(16, 16), Vector2(16, -10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bg6bf"]
 _data = {
 "RESET": SubResource("Animation_fq2v0"),
-"give_coins": SubResource("Animation_2uv3a")
+"give_reward": SubResource("Animation_2uv3a")
 }
 
 [node name="Chest" type="Node2D"]
@@ -65,3 +77,9 @@ centered = false
 libraries = {
 "": SubResource("AnimationLibrary_bg6bf")
 }
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(16, -10)
+scale = Vector2(0.26, 0.26)
