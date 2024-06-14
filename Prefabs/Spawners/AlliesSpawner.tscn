@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2i04kuhvuqw"]
+
+[ext_resource type="Script" path="res://Scripts/Spawners/AlliesSpawner.gd" id="1_cev07"]
+[ext_resource type="Texture2D" uid="uid://bo76xd46gsrxb" path="res://Assets/Sprites/Spawners/AlliesSpawner.png" id="2_8lwhv"]
+[ext_resource type="PackedScene" uid="uid://c7lhm8vxjhi55" path="res://Prefabs/Spawners/Detector.tscn" id="3_xnsbb"]
+
+[node name="AlliesSpawner" type="Node2D"]
+position = Vector2(0, 2)
+script = ExtResource("1_cev07")
+
+[node name="Allies" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_8lwhv")
+
+[node name="Area2D" parent="." node_paths=PackedStringArray("m_parent", "m_sprite") instance=ExtResource("3_xnsbb")]
+m_parent = NodePath("..")
+m_sprite = NodePath("../Sprite2D")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,16 +5,8 @@ var allies_count : int = 10
 const ALLY_PREFAB : String = "res://Prefabs/Ally.tscn"
 
 func _ready():
-	characters_node.queue_free()
-	
-	var new_characters_node = Node2D.new()
-	new_characters_node.name = "Allies"
-	add_child(new_characters_node)
-	
-	characters_node = new_characters_node
-	
+	characters_node = $Allies
 	WaveManager.connect("enable_boss", enable_spawner)
-	
 	super()
 	
 func enable_spawner():

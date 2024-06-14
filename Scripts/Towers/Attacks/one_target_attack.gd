@@ -13,7 +13,7 @@ func fire():
 func shoot_arrow():
 	var arrow : Arrow = load(ARROW_PREFAB).instantiate()
 	arrow.set_target(current_target)
-	arrow.set_speciality(speciality)
+	arrow.set_attack_method(self)
 	arrow.set_damage(get_damage())
 	add_child(arrow)
 

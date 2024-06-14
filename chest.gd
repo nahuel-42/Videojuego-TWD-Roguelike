@@ -25,6 +25,8 @@ func _ready():
 			reward = randi_range(5, 10)
 		RewardType.CARD:
 			reward = GlobalCardsList.get_unlocked_ids().pick_random()
+		RewardType.UNLOCK:
+			pass
 	$Sprite2D.texture = load(rewardSprites[reward_type])
 	
 func _setup(texture:int):
@@ -41,7 +43,8 @@ func open():
 		RewardType.CARD:
 			var card = CardFactory.createCard(reward)
 			GameEvents.OnAddDeckCards.Call([[card]])
-			
+		RewardType.UNLOCK:
+			pass
 	var sprite: Sprite2D = $Area2D/Sprite2D
 	sprite.texture = open_texture
 	$AnimationPlayer.play("give_reward")

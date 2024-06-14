@@ -1,24 +1,26 @@
 extends CharacterBody2D
 class_name Ally
 
-var speed
+var speed = 75
 var acceleration = 5
-var target
+var boss
 var health = 5
+var damage = 3
 
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var health_bar : ProgressBar = $HealthBar
 @onready var sprite : Sprite2D = $Sprite2D
+var target_reached = false
 
 var cooldown = 0.5
 
 func _ready():
 	z_index = 3
-	target = Parameters.boss_position
 	velocity = Vector2.ZERO
-	nav.target_position = target.position
 	scale /= 2
+	set_target_position()
+	add_to_group("ALLIES")
 
 func _process(delta):
 	if cooldown > 0:
@@ -27,6 +29,9 @@ func _process(delta):
 	
 
 func _physics_process(delta):
+	if target_reached:
+		return
+		
 	move(delta)	
 
 func move(delta):
@@ -49,19 +54,27 @@ func get_next_waypoint():
 	
 func get_current_waypoint_index():
 	return nav.get_current_navigation_path_index()
-
-func reach_target():
-	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-	visible = false
-	# TODO: Pelear contra el boss
-	return 
 		
 func take_damage(damage):
 	cooldown = 0.5
 	health -= damage
 	health_bar.value -= damage
-	if health > 0:
-		return
-		
-	set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-	visible = false
+	if health <= 0:
+		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
+		visible = false
+
+func set_target_position():
+	boss = Parameters.boss
+	nav.target_position = boss.position
+
+func attack():
+	var random = randi() % 2 + 1
+	animation.play("Attack" + str(random))
+
+func do_damage():
+	boss.take_damage(damage)
+
+func _on_boss_detector_body_entered(body):
+	if body.is_in_group("BOSS"):
+		target_reached = true
+		attack()
