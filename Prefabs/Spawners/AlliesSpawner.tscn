@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb2i04kuhvuqw"]
+[gd_scene load_steps=4 format=3 uid="uid://m1uedhva8ke8"]
 
 [ext_resource type="Script" path="res://Scripts/Spawners/AlliesSpawner.gd" id="1_cev07"]
 [ext_resource type="Texture2D" uid="uid://bo76xd46gsrxb" path="res://Assets/Sprites/Spawners/AlliesSpawner.png" id="2_8lwhv"]
