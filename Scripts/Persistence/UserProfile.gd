@@ -5,7 +5,6 @@ class_name UserProfile
 # amount : igual a -1 es que esta bloqueado, mayor o igual a 0 desbloqueado y su cantidad
 
 var cardsList = []
-var coins : int = 250
 
 #Direccion por defecto de la partida guardada
 const m_user_save_path = "user_save"
@@ -18,10 +17,9 @@ func LoadDeck():
 	#var profile = null
 	if (profile == null):
 		_CreateDeck()
-		Save.save_data(m_user_save_path, [cardsList, coins])
+		Save.save_data(m_user_save_path, [cardsList])
 	else:
 		cardsList = profile[0]
-		coins = profile[1]
 
 #Devuelve 
 func GetDeck(type : int):
