@@ -3,25 +3,64 @@ class_name Save
 const SAVE_PATH = "user://saves.sav"
 const ROOT_PATH = "user://"
 
-static func IfExists(path):
-	return false
+const SAVE_DATA_PATH = "save_data"
 
-#almacena una lista
-static func save_data(path, list):
-	#if (!FileAccess.file_exists(path)):
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	for line in list:
-		file.store_line(JSON.stringify(line))
-	file.close()
+# ########## LOAD ##########
+
+static func LoadCoins():
+	return ReadKey("coins")
 	
-static func load_data(path):
-	var file = FileAccess.open(path, FileAccess.READ)
-	if (file != null):
-		var list = []
-		var line = 0
-		while (line != null):
-			line = JSON.parse_string(file.get_line())
-			if (line != null):
-				list.append(line)
-		return list
-	return null
+static func LoadCollection():
+	return ReadKey("collection")
+	
+static func LoadProfile():
+	return ReadKey("profile")
+
+static func LoadStore():
+	return ReadKey("store")
+
+static func LoadCastles(castles):
+	return ReadKey("castles")
+
+# ########## SAVE ##########
+
+static func SaveCoins(amount):
+	StoreKey("coins", amount)
+	
+static func SaveCollection(collection):
+	StoreKey("collection", collection)
+	
+static func SaveProfile(deck):
+	StoreKey("profile", deck)
+
+static func SaveStore(store):
+	StoreKey("store", store)
+
+static func SaveCastles(castles):
+	StoreKey("castles", castles)
+
+static func StoreKey(key, value):
+	if not FileAccess.file_exists(SAVE_DATA_PATH):
+		var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.WRITE)
+		var dict = {key: value}
+		file.store_line(JSON.stringify(dict))
+		file.close()
+	else:
+		var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.READ)
+		var dict = JSON.parse_string(file.get_line())
+		file.close()
+		file = FileAccess.open(SAVE_DATA_PATH, FileAccess.WRITE)
+		dict[key] = value
+		file.store_line(JSON.stringify(dict))
+		file.close()
+
+static func ReadKey(key):
+	if not FileAccess.file_exists(SAVE_DATA_PATH):
+		return null
+	var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.READ)
+	var dict = JSON.parse_string(file.get_line())
+	file.close()
+	if key in dict:
+		return dict[key]
+	else:
+		return null

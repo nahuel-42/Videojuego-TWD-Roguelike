@@ -13,11 +13,10 @@ const m_user_save_path = "user_save"
 ############  PUBLIC METHODS  ############
 ##########################################
 func LoadDeck():
-	var profile = Save.load_data(m_user_save_path)
-	#var profile = null
+	var profile = Save.LoadProfile()
 	if (profile == null):
 		_CreateDeck()
-		Save.save_data(m_user_save_path, [cardsList])
+		Save.SaveProfile([cardsList])
 	else:
 		cardsList = profile[0]
 

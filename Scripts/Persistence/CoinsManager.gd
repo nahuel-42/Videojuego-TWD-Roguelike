@@ -16,14 +16,10 @@ static func GetCoins():
 	return coins
 
 static func Persist():
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_32(coins)
-	file.close()
+	Save.SaveCoins(coins)
 
 static func Load():
-	if not FileAccess.file_exists(path):
+	var coins = Save.LoadCoins()
+	if coins == null:
 		return 0
-	var file = FileAccess.open(path, FileAccess.READ)
-	var coins = file.get_32()
-	file.close()
 	return coins

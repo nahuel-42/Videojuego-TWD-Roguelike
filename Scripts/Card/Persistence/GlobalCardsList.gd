@@ -53,18 +53,15 @@ func unlock(id):
 	for card in CollectionCard:
 		if card["id"] == id:
 			card["unlocked"] = 1
-			save_collection()
+			Save.SaveCollection(CollectionCard)
 			break
 
 func load_collection():
-	if FileAccess.file_exists(COLLECTION_PATH):
-		return Save.load_data(COLLECTION_PATH)
-	else:
-		Save.save_data(COLLECTION_PATH, initialCollection)
-		return initialCollection
-
-func save_collection():
-	Save.save_data(COLLECTION_PATH, CollectionCard)
+	var collection = Save.LoadCollection()
+	if collection == null:
+		Save.SaveCollection(initialCollection)
+		collection = initialCollection
+	return initialCollection
 
 func find_card(id):
 	var card = null
