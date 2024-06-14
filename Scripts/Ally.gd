@@ -62,7 +62,8 @@ func take_damage(damage):
 	health -= damage
 	health_bar.value -= damage
 	if health <= 0:
-		queue_free()
+		set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
+		visible = false
 
 func set_target_position():
 	boss = Parameters.boss

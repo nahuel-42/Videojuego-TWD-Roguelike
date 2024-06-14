@@ -22,7 +22,9 @@ func load_characters(count):
 	characters = []
 	for i in range(count):
 		var instance = instantiate_character()
-		characters_node.add_child(instance)
+		#characters_node.add_child(instance)
+		get_parent().add_child(instance)
+		instance.position = position
 		characters.append(instance)
 		instance.set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
 		instance.visible = false
