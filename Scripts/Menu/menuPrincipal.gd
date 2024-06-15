@@ -1,7 +1,7 @@
 extends Control
 
 
-var escena_mazos = load("res://Scenes/Menu/menuMazos.tscn")
+var escena_mazos = load("res://Scenes/Menu/Mazos/menuMazos.tscn")
 var escena_tienda = load("res://Scenes/Menu/menuTienda.tscn")
 var escena_inventario = load("res://Scenes/Menu/menuInventario.tscn")
 var escena_configuracion = preload("res://Scenes/Menu/menuConfiguracion.tscn")
