@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://ce3fdtyidase8" path="res://Assets/Audios/move card.mp3" id="18_1tang"]
 [ext_resource type="Script" path="res://Scripts/UI/Audio/AudioUIController.gd" id="18_frphe"]
 [ext_resource type="Script" path="res://Scripts/UI/Popup/PopupSpeciality.gd" id="18_obi2d"]
-[ext_resource type="LabelSettings" uid="uid://cw7oknfxddx1l" path="res://fonts/Cards/InfoLabels++.tres" id="20_12ukp"]
+[ext_resource type="LabelSettings" path="res://fonts/Cards/InfoLabels++.tres" id="20_12ukp"]
 [ext_resource type="AudioStream" uid="uid://cndqfm027xe27" path="res://Assets/Audios/used card.mp3" id="20_pvr6y"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
