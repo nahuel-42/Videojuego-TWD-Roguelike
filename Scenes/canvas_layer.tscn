@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bfuuqao2omga7"]
+[gd_scene load_steps=24 format=3 uid="uid://bfuuqao2omga7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PassiveCardsController.gd" id="1_7hbfa"]
 [ext_resource type="Script" path="res://Scripts/UI/TimeOutDiscard.gd" id="1_7hwgj"]
 [ext_resource type="Texture2D" uid="uid://bmi0tccrjw0u6" path="res://Assets/Menu/draw.png" id="1_cpbcl"]
+[ext_resource type="Script" path="res://Scenes/canvas_layer.gd" id="1_jl2jg"]
 [ext_resource type="Script" path="res://Scripts/UI/BoardCardsController.gd" id="2_5iud0"]
 [ext_resource type="Texture2D" uid="uid://buu7qduy8xtlk" path="res://Assets/Menu/circle UI/progress-bar-circle.png" id="2_i8xpg"]
 [ext_resource type="Script" path="res://Scripts/UI/DeckCardsController.gd" id="2_lax77"]
@@ -20,13 +21,24 @@
 [ext_resource type="AudioStream" uid="uid://ce3fdtyidase8" path="res://Assets/Audios/move card.mp3" id="18_1tang"]
 [ext_resource type="Script" path="res://Scripts/UI/Audio/AudioUIController.gd" id="18_frphe"]
 [ext_resource type="Script" path="res://Scripts/UI/Popup/PopupSpeciality.gd" id="18_obi2d"]
-[ext_resource type="LabelSettings" uid="uid://cw7oknfxddx1l" path="res://fonts/Cards/InfoLabels++.tres" id="20_12ukp"]
+[ext_resource type="LabelSettings" path="res://fonts/Cards/InfoLabels++.tres" id="20_12ukp"]
 [ext_resource type="AudioStream" uid="uid://cndqfm027xe27" path="res://Assets/Audios/used card.mp3" id="20_pvr6y"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("m_HUD")]
+script = ExtResource("1_jl2jg")
+m_HUD = NodePath("HUD")
 
-[node name="TimeOut" type="Control" parent="." node_paths=PackedStringArray("m_progressBar")]
+[node name="HUD" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TimeOut" type="Control" parent="HUD" node_paths=PackedStringArray("m_progressBar")]
+layout_mode = 1
 anchor_left = 0.759
 anchor_top = 0.885
 anchor_right = 0.824
@@ -40,7 +52,7 @@ m_progressBar = NodePath("TimeOutDiscard")
 m_colorBar = Color(1, 1, 1, 0.392157)
 m_finishColorBar = Color(1, 1, 0, 0.392157)
 
-[node name="TimeOutDiscard" type="TextureProgressBar" parent="TimeOut"]
+[node name="TimeOutDiscard" type="TextureProgressBar" parent="HUD/TimeOut"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -58,7 +70,7 @@ tint_under = Color(0, 0, 0, 0.392157)
 tint_over = Color(0, 0, 0, 0.392157)
 tint_progress = Color(1, 1, 1, 0.392157)
 
-[node name="Button2" type="TextureButton" parent="TimeOut"]
+[node name="Button2" type="TextureButton" parent="HUD/TimeOut"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.241
@@ -73,8 +85,8 @@ texture_normal = ExtResource("1_cpbcl")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="Passives" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
-layout_mode = 3
+[node name="Passives" type="Control" parent="HUD" node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
+layout_mode = 1
 anchor_left = 0.79
 anchor_top = 0.01
 anchor_right = 0.99
@@ -83,7 +95,7 @@ script = ExtResource("1_7hbfa")
 m_hideCards = NodePath("HidePassives")
 m_mainRef = NodePath("MainPassives")
 
-[node name="PassiveDetector" type="Node2D" parent="Passives" node_paths=PackedStringArray("m_background", "m_panels")]
+[node name="PassiveDetector" type="Node2D" parent="HUD/Passives" node_paths=PackedStringArray("m_background", "m_panels")]
 z_index = -1
 script = ExtResource("5_jd3hf")
 m_background = NodePath("../MainPassives/Background")
@@ -91,7 +103,7 @@ m_panels = [NodePath("../MainPassives/Panel2"), NodePath("../MainPassives/Panel3
 m_colorEnd = Color(0.780392, 0.780392, 0, 1)
 m_speedColor = 4.0
 
-[node name="MainPassives" type="Control" parent="Passives"]
+[node name="MainPassives" type="Control" parent="HUD/Passives"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +112,7 @@ offset_left = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="Panel" parent="Passives/MainPassives"]
+[node name="Background" type="Panel" parent="HUD/Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,7 +120,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel2" type="Panel" parent="Passives/MainPassives"]
+[node name="Panel2" type="Panel" parent="HUD/Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.035
@@ -124,7 +136,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel3" type="Panel" parent="Passives/MainPassives"]
+[node name="Panel3" type="Panel" parent="HUD/Passives/MainPassives"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508
@@ -138,15 +150,15 @@ offset_bottom = 3.04399
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HidePassives" type="Control" parent="Passives"]
+[node name="HidePassives" type="Control" parent="HUD/Passives"]
 layout_mode = 1
 anchor_top = -0.75
 anchor_right = 1.0
 anchor_bottom = 0.25
 rotation = -6.28319
 
-[node name="DeckCards" type="Control" parent="." node_paths=PackedStringArray("m_timeOutBar", "m_hideCards", "m_mainRef")]
-layout_mode = 3
+[node name="DeckCards" type="Control" parent="HUD" node_paths=PackedStringArray("m_timeOutBar", "m_hideCards", "m_mainRef")]
+layout_mode = 1
 anchor_top = 0.725
 anchor_right = 0.094
 anchor_bottom = 1.0
@@ -161,7 +173,7 @@ m_maxCardAmount = 10
 m_hideCards = NodePath("HideDeck")
 m_mainRef = NodePath("Deck")
 
-[node name="Deck" type="Control" parent="DeckCards"]
+[node name="Deck" type="Control" parent="HUD/DeckCards"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,13 +181,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HideDeck" type="Control" parent="DeckCards"]
+[node name="HideDeck" type="Control" parent="HUD/DeckCards"]
 layout_mode = 1
 anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
-[node name="ShowPop" type="Button" parent="DeckCards"]
+[node name="ShowPop" type="Button" parent="HUD/DeckCards"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -184,8 +196,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BoardCards" type="Control" parent="." node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
-layout_mode = 3
+[node name="BoardCards" type="Control" parent="HUD" node_paths=PackedStringArray("m_cardMovement", "m_panels", "m_cardsInGameReference", "m_hideCards", "m_mainRef")]
+layout_mode = 1
 anchor_left = 0.241
 anchor_top = 0.725
 anchor_right = 0.753
@@ -205,7 +217,7 @@ m_cardLoadSpeed = 5.0
 m_hideCards = NodePath("HideBoard")
 m_mainRef = NodePath("Board")
 
-[node name="Board" type="GridContainer" parent="BoardCards"]
+[node name="Board" type="GridContainer" parent="HUD/BoardCards"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -214,39 +226,39 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 5
 
-[node name="Panel1" type="Panel" parent="BoardCards/Board"]
+[node name="Panel1" type="Panel" parent="HUD/BoardCards/Board"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel2" type="Panel" parent="BoardCards/Board"]
+[node name="Panel2" type="Panel" parent="HUD/BoardCards/Board"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel3" type="Panel" parent="BoardCards/Board"]
+[node name="Panel3" type="Panel" parent="HUD/BoardCards/Board"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel4" type="Panel" parent="BoardCards/Board"]
+[node name="Panel4" type="Panel" parent="HUD/BoardCards/Board"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel5" type="Panel" parent="BoardCards/Board"]
+[node name="Panel5" type="Panel" parent="HUD/BoardCards/Board"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CardMovement" type="Control" parent="BoardCards"]
+[node name="CardMovement" type="Control" parent="HUD/BoardCards"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_1uow5")
 
-[node name="HideBoard" type="Control" parent="BoardCards"]
+[node name="HideBoard" type="Control" parent="HUD/BoardCards"]
 layout_mode = 1
 anchor_top = 0.806
 anchor_right = 1.0
@@ -254,7 +266,7 @@ anchor_bottom = 1.806
 offset_top = 0.0319977
 offset_bottom = 0.0319824
 
-[node name="CardsInGame" type="Control" parent="BoardCards"]
+[node name="CardsInGame" type="Control" parent="HUD/BoardCards"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -263,8 +275,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DiscardCards" type="Control" parent="." node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
-layout_mode = 3
+[node name="DiscardCards" type="Control" parent="HUD" node_paths=PackedStringArray("m_hideCards", "m_mainRef")]
+layout_mode = 1
 anchor_left = 0.906
 anchor_top = 0.725
 anchor_right = 1.0
@@ -276,13 +288,13 @@ m_maxCardAmount = 10
 m_hideCards = NodePath("HideDiscard")
 m_mainRef = NodePath("Discard")
 
-[node name="HideDiscard" type="Control" parent="DiscardCards"]
+[node name="HideDiscard" type="Control" parent="HUD/DiscardCards"]
 layout_mode = 1
 anchor_top = 0.75
 anchor_right = 1.0
 anchor_bottom = 1.75
 
-[node name="Discard" type="Control" parent="DiscardCards"]
+[node name="Discard" type="Control" parent="HUD/DiscardCards"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -290,7 +302,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ShowPop" type="Button" parent="DiscardCards"]
+[node name="ShowPop" type="Button" parent="HUD/DiscardCards"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -299,8 +311,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Bars" type="Control" parent="." node_paths=PackedStringArray("HealthBar", "ManaBar")]
-layout_mode = 3
+[node name="Bars" type="Control" parent="HUD" node_paths=PackedStringArray("HealthBar", "ManaBar")]
+layout_mode = 1
 anchor_left = 0.01
 anchor_top = 0.01
 anchor_right = 0.2
@@ -309,7 +321,7 @@ script = ExtResource("5_cued4")
 HealthBar = NodePath("HealthBar")
 ManaBar = NodePath("ManaBar")
 
-[node name="HealthBar" type="ProgressBar" parent="Bars"]
+[node name="HealthBar" type="ProgressBar" parent="HUD/Bars"]
 modulate = Color(0.94902, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
@@ -325,7 +337,7 @@ step = 1.0
 value = 100.0
 show_percentage = false
 
-[node name="ManaBar" type="ProgressBar" parent="Bars"]
+[node name="ManaBar" type="ProgressBar" parent="HUD/Bars"]
 modulate = Color(0, 0, 1, 1)
 layout_mode = 1
 anchors_preset = -1
@@ -342,7 +354,7 @@ step = 0.001
 value = 1.0
 show_percentage = false
 
-[node name="Health" type="TextureRect" parent="Bars"]
+[node name="Health" type="TextureRect" parent="HUD/Bars"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -350,7 +362,7 @@ anchor_bottom = 0.45
 texture = ExtResource("8_ebcvx")
 expand_mode = 2
 
-[node name="Mana" type="TextureRect" parent="Bars"]
+[node name="Mana" type="TextureRect" parent="HUD/Bars"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.55
@@ -359,8 +371,8 @@ anchor_bottom = 1.0
 texture = ExtResource("9_xrms7")
 expand_mode = 2
 
-[node name="HideBoardCards" type="Control" parent="." node_paths=PackedStringArray("m_panels")]
-layout_mode = 3
+[node name="HideBoardCards" type="Control" parent="HUD" node_paths=PackedStringArray("m_panels")]
+layout_mode = 1
 anchor_left = 0.191
 anchor_top = 0.91
 anchor_right = 0.226
@@ -374,7 +386,7 @@ grow_vertical = 2
 script = ExtResource("11_a2f30")
 m_panels = [NodePath("../DeckCards"), NodePath("../BoardCards"), NodePath("../DiscardCards"), NodePath("../Passives")]
 
-[node name="ButtonHideBoardCards" type="TextureButton" parent="HideBoardCards"]
+[node name="ButtonHideBoardCards" type="TextureButton" parent="HUD/HideBoardCards"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -634,10 +646,10 @@ max_polyphony = 40
 stream = ExtResource("20_pvr6y")
 max_polyphony = 40
 
-[connection signal="button_up" from="TimeOut/Button2" to="DeckCards" method="_on_button_2_button_up"]
-[connection signal="button_down" from="DeckCards/ShowPop" to="DeckCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="DiscardCards/ShowPop" to="DiscardCards" method="_on_show_pop_button_down"]
-[connection signal="button_down" from="HideBoardCards/ButtonHideBoardCards" to="HideBoardCards" method="_on_button_hide_board_cards_button_down"]
+[connection signal="button_up" from="HUD/TimeOut/Button2" to="HUD/DeckCards" method="_on_button_2_button_up"]
+[connection signal="button_down" from="HUD/DeckCards/ShowPop" to="HUD/DeckCards" method="_on_show_pop_button_down"]
+[connection signal="button_down" from="HUD/DiscardCards/ShowPop" to="HUD/DiscardCards" method="_on_show_pop_button_down"]
+[connection signal="button_down" from="HUD/HideBoardCards/ButtonHideBoardCards" to="HUD/HideBoardCards" method="_on_button_hide_board_cards_button_down"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality1/image" to="PopupSpeciality" method="_on_button_down_speciality1"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality2/image" to="PopupSpeciality" method="_on_button_down_speciality2"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality3/image" to="PopupSpeciality" method="_on_button_down_speciality3"]

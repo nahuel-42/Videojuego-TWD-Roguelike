@@ -28,20 +28,23 @@ func manaConsumption(cant):
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
 		return true
 
+func Resurrect():
+	ActualHealth=InitialHealth	
+	#Mas codigo?
+	
 func HealthLoss(cant):
 	if (ActualHealth-cant>0):
 		ActualHealth-=cant
 		GameEvents.OnUpdateHealth.Call([float(ActualHealth)])
 	else:
-		#GameEvents.OnSetVisible.Call([false])
-		#var gameOver_scene = load("res://Scenes/Menu/gameOver.tscn").instantiate()
-		#get_tree().root.add_child(gameOver_scene)
-		#get_tree().paused = true
-		var change_scene=load("res://Scenes/Menu/gameOver.tscn")
-		WaveManager.reset()
-		#MAXIMA VIDA, OJO
 		ActualHealth = 100
-		get_tree().change_scene_to_packed(change_scene)
+		GameEvents.OnSetVisible.Call([false])
+		GameEvents.OnShowGamerOver.Call([null])
+		#var gameOver_scene = load("res://Scenes/Menu/menuConfiguracion.tscn").instantiate()
+		#var change_scene=load("res://Scenes/Menu/gameOver.tscn")
+		#WaveManager.reset()
+		#MAXIMA VIDA, OJO
+		#get_tree().change_scene_to_packed(change_scene)
 
 func StartWave():
 	WaveManager.start_next_wave()
