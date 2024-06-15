@@ -4,7 +4,7 @@ var scene_map = load("res://Scenes/Menu/menuCarga.tscn")
 var scene_principal = load("res://Scenes/Menu/menuPrincipal.tscn")
 
 func _ready():
-	var continuarPartida: HBoxContainer= $TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8
+	var continuarPartida = $TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer8
 	var ingame = Save.LoadIngame()
 	if ingame == null:
 		ingame = false

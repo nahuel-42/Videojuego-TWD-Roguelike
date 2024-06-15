@@ -63,3 +63,6 @@ func get_selected_deck_type():
 	# TODO: hacer que los nodos carta almacenen su tipo
 
 	return closest_index
+
+func _process(delta):
+	CardsManager.SetDeckType(get_selected_deck_type())

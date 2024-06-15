@@ -64,22 +64,10 @@ func load_collection():
 	return initialCollection
 
 func find_card(id):
-	var card = null
-	var i : int = 0
-	while (i < len(CollectionCard) && card == null):
-		if (CollectionCard[i]["id"] == id):
-			card = CollectionCard[i]
-		i += 1
-	return card
+	return CollectionCard.filter(func (card): return card["id"] == id).front()
 
 func isUnlocked(id):
-	var i : int = 0
-	var val = false
-	while (i < len(CollectionCard) && !val):
-		if (CollectionCard[i]["id"] == id):
-			val = CollectionCard[i]["unlocked"]
-		i += 1
-	return val
+	return find_card(id)["unlocked"] == 1
 
 func get_type(id):
 	return TypeDeckCards[id]
@@ -90,20 +78,13 @@ func get_locked_ids():
 func get_unlocked_ids():
 	return CollectionCard.filter(func(card): return card["unlocked"] == 1).map(func(card): return card["id"])
 
-func get_unlocked_cards():
-	var unlocked_cards = []
-	for c in CollectionCard:
-		var node = [c["id"], c["unlocked"] == 1]
-		unlocked_cards.append(node)
-	print(unlocked_cards)
-	return unlocked_cards
-
 ######################################
 ###funciones que mezclan las cartas###
 ######################################
 func GenerateDeck(deck):
 	deck=randomizeDeck(deck)
 	return deck
+
 func randomizeDeck(deck):
 	var cant=0
 	var rng = RandomNumberGenerator.new()
@@ -120,6 +101,7 @@ func randomizeDeck(deck):
 		aux[j]=deck[i]
 	deck=aux
 	return deck
+
 func isTower(id):
 	if (id<=2 or id>=11 and id<=13):
 		return true
