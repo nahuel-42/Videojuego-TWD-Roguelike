@@ -56,7 +56,7 @@ func AddCards(param):
 			
 func ReceiveCards(cards):
 	#Recibe las cartas del discard para mezclaras y volverlas a agregar	
-	cards=GlobalCardsList.GenerateDeck(cards)
+	cards.shuffle()
 	for c in cards:
 		c.SetSide(1)
 		AddCardsPosition(c)

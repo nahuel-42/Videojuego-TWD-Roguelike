@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://g3uuf1e3g505"]
+[gd_scene load_steps=7 format=3 uid="uid://dm2exhxrln1y7"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/Mazos/menuMazos.gd" id="1_l1hpw"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_5prig"]
