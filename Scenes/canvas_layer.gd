@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var m_HUD : Control = null
+
 var gameOver_scene = preload("res://Scenes/Menu/gameOver.tscn")
 
 func _init():
@@ -12,8 +14,9 @@ func _exit_tree():
 	
 func SetVisible(param):
 	var value=param[0]
-	for node in get_children():
-		node.visible = value
+	m_HUD.visible = value
+	#for node in get_children():
+	#	node.visible = value
 	
 func ShowGamerOver(param):
 	var gm=gameOver_scene.instantiate()

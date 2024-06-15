@@ -28,6 +28,10 @@ func manaConsumption(cant):
 		GameEvents.OnUpdateMana.Call([ActualMana/InitialMana])
 		return true
 
+func Resurrect():
+	ActualHealth=InitialHealth	
+	#Mas codigo?
+	
 func HealthLoss(cant):
 	if (ActualHealth-cant>0):
 		ActualHealth-=cant

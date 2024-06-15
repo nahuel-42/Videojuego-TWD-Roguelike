@@ -47,4 +47,18 @@ offset_right = 242.0
 offset_bottom = 603.0
 text = "Menu principal"
 
+[node name="MainMenu2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.026
+anchor_top = 0.852
+anchor_right = 0.252
+anchor_bottom = 0.969
+offset_left = 28.0
+offset_top = 409.0
+offset_right = 242.0
+offset_bottom = 493.0
+text = "Revivir"
+
 [connection signal="button_down" from="MainMenu" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="MainMenu2" to="." method="_on_main_Resurrect"]
