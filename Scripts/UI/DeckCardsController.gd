@@ -28,13 +28,17 @@ func StartDeck():
 	var deck = CardsManager.GetDeck()
 	
 	#Crea las cartas en la UI para mezclar
-	var temporaryDeck = []
+	var card_nodes = []
 	for id in deck:
-		temporaryDeck.append(CardFactory.createCard(id))
+		card_nodes.append(CardFactory.createCard(id))
 	
-	#Se mezclan y se agrega al deck
-	temporaryDeck=GlobalCardsList.GenerateDeck(temporaryDeck)
-	for c in temporaryDeck:
+	var hasTowers = false
+	var minTowersInHand = 3
+	while not hasTowers:
+		card_nodes.shuffle()
+		hasTowers = len(card_nodes.slice(0,5).filter(func(card): return GlobalCardsList.is_tower(card.GetID()))) >= minTowersInHand
+	
+	for c in card_nodes:
 		c.SetSide(1)
 		AddCardsPosition(c)
 		
