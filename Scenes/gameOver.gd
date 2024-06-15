@@ -10,6 +10,7 @@ func _ready():
 	create_tween().tween_property($Background, "modulate", SignColor, 1)
 	
 func _on_button_button_down():
+	get_tree().paused=false
 	get_tree().change_scene_to_packed(dir_main_menu)
 
 

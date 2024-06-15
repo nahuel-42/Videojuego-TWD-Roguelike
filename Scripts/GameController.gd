@@ -2,7 +2,7 @@ extends Node
 var InitialMana:float=100
 var ActualMana:float=InitialMana
 var DeltaTime:float=10.0
-var InitialHealth:int=100
+var InitialHealth:int=1
 var ActualHealth:int=InitialHealth
 var passives = [ null, null]
 

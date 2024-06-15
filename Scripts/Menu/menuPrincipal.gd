@@ -8,6 +8,7 @@ var escena_configuracion = preload("res://Scenes/Menu/menuConfiguracion.tscn")
 
 
 func _ready():
+	#get_tree().paused=false
 	CardsManager.InitUserSave()
 	var db = Save.LoadVolume()
 	if db != null:
