@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="8_0iwi3"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="9_hcxdh"]
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
-[ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
+[ext_resource type="PackedScene" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
 [ext_resource type="Script" path="res://Scripts/Map/fog.gd" id="13_uk752"]
-[ext_resource type="PackedScene" path="res://Scenes/chest_detector.tscn" id="14_28lq2"]
+[ext_resource type="PackedScene" uid="uid://dre2u2d8gmtvv" path="res://Scenes/chest_detector.tscn" id="14_28lq2"]
 
 [node name="Mapa" type="Node"]
 script = ExtResource("1_b8xhp")
