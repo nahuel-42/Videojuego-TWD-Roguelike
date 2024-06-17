@@ -69,7 +69,7 @@ func take_damage(damage):
 	super.take_damage(damage)
 	if health <= 0:
 		var menu = load("res://Scenes/Menu/menuCambioNivel.tscn")
-		get_tree().change_scene_to_packed(menu)
+		add_child(menu)
 
 func _on_allies_detector_body_entered(body):
 	if body.is_in_group("ALLIES"):

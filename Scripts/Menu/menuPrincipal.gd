@@ -19,6 +19,9 @@ func _ready():
 	var max_castles = Save.LoadMaxCastles()
 	if max_castles == null:
 		Save.SaveMaxCastles(0)
+	var coins = Save.LoadCoins()
+	if coins == null:
+		Save.SaveCoins(0)
 
 func _on_boton_jugar_pressed():
 	get_tree().change_scene_to_packed(escena_mazos)
@@ -39,5 +42,4 @@ func _on_boton_configuracion_pressed():
 		configuracion_popup.set_exclusive(true)  # Hace que el popup sea modal
 	else:
 		add_child(configuracion_popup)
-		print("Hola")
 	

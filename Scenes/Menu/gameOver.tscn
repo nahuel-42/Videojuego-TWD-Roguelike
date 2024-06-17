@@ -1,10 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://cur3wo0wgg6ql"]
+[gd_scene load_steps=10 format=3 uid="uid://cur3wo0wgg6ql"]
 
 [ext_resource type="Script" path="res://Scenes/gameOver.gd" id="1_lqqex"]
 [ext_resource type="Texture2D" uid="uid://cssbe7tncjrk1" path="res://Assets/Menu/GameOverImage.png" id="2_7dgu5"]
 [ext_resource type="Texture2D" uid="uid://o2i08ccl7ffu" path="res://Assets/Menu/Brown.png" id="2_37y6h"]
 [ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="4_26wap"]
 [ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="5_ag5fk"]
+[ext_resource type="Texture2D" uid="uid://caxs6d5i7csf7" path="res://Assets/Menu/AdolfoCoins.png" id="6_8vlda"]
+
+[sub_resource type="Animation" id="Animation_6xxbe"]
+resource_name = "show_error"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uga2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_082uw"]
+_data = {
+"RESET": SubResource("Animation_uga2h"),
+"show_error": SubResource("Animation_6xxbe")
+}
 
 [node name="GameOver" type="Control"]
 process_mode = 3
@@ -37,11 +99,11 @@ texture = ExtResource("2_7dgu5")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="MainMenu" type="TouchScreenButton" parent="."]
+[node name="Revivir" type="TouchScreenButton" parent="."]
 position = Vector2(20, 370)
 texture_normal = ExtResource("4_26wap")
 
-[node name="Label" type="Label" parent="MainMenu"]
+[node name="Label" type="Label" parent="Revivir"]
 anchors_preset = -1
 anchor_left = 0.116
 anchor_top = 0.276
@@ -56,11 +118,11 @@ label_settings = ExtResource("5_ag5fk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainMenu2" type="TouchScreenButton" parent="."]
+[node name="MainMenu" type="TouchScreenButton" parent="."]
 position = Vector2(20, 500)
 texture_normal = ExtResource("4_26wap")
 
-[node name="Label" type="Label" parent="MainMenu2"]
+[node name="Label" type="Label" parent="MainMenu"]
 anchors_preset = -1
 anchor_left = 0.097
 anchor_top = 0.25
@@ -74,5 +136,47 @@ label_settings = ExtResource("5_ag5fk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 881.0
+offset_top = 44.0
+offset_right = 1051.0
+offset_bottom = 110.0
+color = Color(0.72549, 0.666667, 0.67451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 62.0
+offset_bottom = 62.0
+texture = ExtResource("6_8vlda")
+expand_mode = 1
+
+[node name="Coins" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 2.0
+offset_right = 157.0
+offset_bottom = 61.0
+theme_override_font_sizes/font_size = 43
+text = "0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_082uw")
+}
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 298.0
+offset_right = 424.0
+offset_bottom = 415.0
+scale = Vector2(0.7, 0.7)
+text = "Se necesitan 50 A-Coins 
+para revivir"
+label_settings = ExtResource("5_ag5fk")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Revivir" to="." method="_on_revivir_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="MainMenu2" to="." method="_on_main_menu_2_pressed"]

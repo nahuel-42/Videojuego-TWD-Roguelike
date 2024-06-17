@@ -83,7 +83,7 @@ func distribute_enemies(total_enemies):
 		spawner.start_next_wave(count)
 
 func _on_spawner_stage_completed():
-	if all_spawners_completed():
+	if all_spawners_completed():	
 		if wave_index < len(wave_config):
 			emit_signal("wave_completed")
 			start_next_wave()
