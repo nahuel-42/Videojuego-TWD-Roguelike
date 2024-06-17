@@ -98,7 +98,7 @@ static func ReadKey(key):
 	var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.READ)
 	var dict = JSON.parse_string(file.get_line())
 	file.close()
+	if dict == null or not key in dict:
+		return null
 	if key in dict:
 		return dict[key]
-	else:
-		return null
