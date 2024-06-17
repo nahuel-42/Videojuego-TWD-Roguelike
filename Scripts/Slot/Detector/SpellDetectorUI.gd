@@ -43,13 +43,13 @@ func Update(delta):
 	pass
 
 func UpdatePosition(ui_position : Vector2):
-	if (ui_position.y / m_sizeY >= m_hightLimit):
+	global_position = UItoWorld(ui_position)
+	if (ui_position.y / m_sizeY >= m_hightLimit) or not WaveManager.is_visible(global_position.x):
 		m_circle.visible = false
 		m_apply = false
 	else:
 		m_circle.visible = true
 		m_apply = true 
-	global_position = UItoWorld(ui_position)
 	
 func ApplyCard(card : CardControl):
 	if (m_apply):

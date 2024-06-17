@@ -21,6 +21,7 @@ func _ready():
 	WaveManager.set_texts(stage_text, wave_text)
 	nivel_text.text = str(Save.LoadCurrentCastles() + 1)
 	WaveManager.percentage = float(WaveManager.stage_index) / (WaveManager.stages)
+	WaveManager.visible_range = WaveManager.percentage * width
 	fog.reveal_map(WaveManager.percentage)
 	WaveManager.activation_percentage = (WaveManager.percentage + 1.0 / WaveManager.stages) * width
 	Audio.playMusicaMapa()
