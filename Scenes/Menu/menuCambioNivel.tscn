@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://jt6ebd26kmsn"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/menuCambioNivel.gd" id="1_lnu3q"]
+[ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="2_td0ls"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="3_8hd1u"]
+[ext_resource type="LabelSettings" uid="uid://dqr7sbc00jwlb" path="res://fonts/TitleLabel.tres" id="4_a8k5m"]
+
+[node name="MenuCambioNivel" type="Node2D"]
+script = ExtResource("1_lnu3q")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Continuar" type="Button" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Continuar"]
+offset_left = 442.0
+offset_top = 371.0
+offset_right = 710.0
+offset_bottom = 487.0
+texture = ExtResource("2_td0ls")
+
+[node name="Label" type="Label" parent="Continuar"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 401.0
+offset_right = 626.0
+offset_bottom = 458.0
+text = "Continuar"
+label_settings = ExtResource("3_8hd1u")
+
+[node name="Salir" type="Button" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Salir"]
+offset_left = 442.0
+offset_top = 500.0
+offset_right = 710.0
+offset_bottom = 616.0
+texture = ExtResource("2_td0ls")
+
+[node name="Label" type="Label" parent="Salir"]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 533.0
+offset_right = 662.0
+offset_bottom = 590.0
+text = "Guardar y Salir"
+label_settings = ExtResource("3_8hd1u")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 376.0
+offset_top = 126.0
+offset_right = 776.0
+offset_bottom = 245.0
+text = "Nivel Completado!"
+label_settings = ExtResource("4_a8k5m")
+
+[connection signal="pressed" from="Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

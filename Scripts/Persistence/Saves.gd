@@ -19,8 +19,11 @@ static func LoadProfile():
 static func LoadStore():
 	return ReadKey("store")
 
-static func LoadCastles():
-	return ReadKey("castles")
+static func LoadMaxCastles():
+	return ReadKey("max_castles")
+	
+static func LoadCurrentCastles():
+	return ReadKey("current_castles")
 
 static func LoadVolume():
 	return ReadKey("volume")
@@ -30,7 +33,18 @@ static func LoadDeck():
 
 static func LoadIngame():
 	return ReadKey("ingame")
-
+	
+static func LoadLastTargetPos():
+	var value = ReadKey("last_target_pos")
+	
+	if value != null:
+		value = value.erase(0, 1)
+		value = value.erase(value.length() - 1, 1)
+		var array: Array = value.split(", ")
+		value = Vector2(int(array[0]), int(array[1]))
+		
+	return value
+	
 # ########## SAVE ##########
 
 static func SaveCoins(amount):
@@ -45,8 +59,11 @@ static func SaveProfile(deck):
 static func SaveStore(store):
 	StoreKey("store", store)
 
-static func SaveCastles(castles):
-	StoreKey("castles", castles)
+static func SaveMaxCastles(castles):
+	StoreKey("max_castles", castles)
+	
+static func SaveCurrentCastles(castles):
+	StoreKey("current_castles", castles)
 
 static func SaveVolume(volume):
 	StoreKey("volume", volume)
@@ -56,6 +73,9 @@ static func SaveDeck(deck):
 
 static func SaveIngame(ingame):
 	StoreKey("ingame", ingame)
+
+static func SaveLastTargetPos(last_target_pos):
+	StoreKey("last_target_pos", last_target_pos)
 
 static func StoreKey(key, value):
 	if not FileAccess.file_exists(SAVE_DATA_PATH):

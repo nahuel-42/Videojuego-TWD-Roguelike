@@ -19,7 +19,6 @@ var CELL_DIMENSION = 32
 var ASPECT_RATIO = 16.0 / 9.0
 var width = 200
 var height
-var last_target_pos = null
 var map
 var borderSize = 20
 var boss_arena_dimension = Vector2i(10,3)
@@ -89,7 +88,7 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 		clear_map()
 	else:
 		clear()
-	last_target_pos = target_pos
+	Save.SaveLastTargetPos(target_pos)
 	render_grass(width, height)
 	map = {}
 	
@@ -233,6 +232,7 @@ func _process(delta):
 		setup_level(initial_pos,target_pos)
 
 func get_initial_pos():
+	var last_target_pos = Save.LoadLastTargetPos()
 	if last_target_pos == null:
 		return Vector2i(0, height / 2)
 	elif last_target_pos.x == width - 1:
