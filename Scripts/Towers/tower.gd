@@ -29,7 +29,7 @@ func _process(delta):
 			return
 		cooldown_status = cooldown_disable
 		enable()
-	else: 
+	else:
 		attack_method.perform(delta)
 
 func set_class(tower_class):

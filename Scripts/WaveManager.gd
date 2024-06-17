@@ -17,6 +17,10 @@ var wave_text : RichTextLabel
 
 var percentage
 var activation_percentage
+var visible_range
+
+func is_visible(x_pos: int):
+	return x_pos <= visible_range
 
 func is_active(x_pos: int):
 	return x_pos <= activation_percentage
