@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="8_0iwi3"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="9_hcxdh"]
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
-[ext_resource type="PackedScene" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
+[ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
 [ext_resource type="Script" path="res://Scripts/Map/fog.gd" id="13_uk752"]
 [ext_resource type="PackedScene" uid="uid://dre2u2d8gmtvv" path="res://Scenes/chest_detector.tscn" id="14_28lq2"]
 
@@ -56,39 +56,51 @@ position = Vector2(997, 310)
 [node name="WavesCanvas" type="CanvasLayer" parent="."]
 
 [node name="NextStageButton" type="Button" parent="WavesCanvas"]
-offset_left = 265.0
-offset_top = 74.0
-offset_right = 363.0
-offset_bottom = 128.0
+offset_left = 119.0
+offset_top = 570.0
+offset_right = 217.0
+offset_bottom = 624.0
 scale = Vector2(0.905558, 1.13458)
 text = "Start stage"
 
-[node name="Stage" type="RichTextLabel" parent="WavesCanvas"]
-offset_left = 268.0
-offset_top = 8.0
-offset_right = 324.0
-offset_bottom = 41.0
-text = "Stage"
-
 [node name="StageNumber" type="RichTextLabel" parent="WavesCanvas"]
 offset_left = 317.0
-offset_top = 8.0
+offset_top = 39.0
 offset_right = 373.0
-offset_bottom = 41.0
-text = "99"
+offset_bottom = 72.0
+
+[node name="Stage" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 39.0
+offset_right = 324.0
+offset_bottom = 72.0
+text = "Stage"
 
 [node name="WaveNumber" type="RichTextLabel" parent="WavesCanvas"]
 offset_left = 317.0
-offset_top = 40.0
+offset_top = 70.0
 offset_right = 373.0
-offset_bottom = 73.0
+offset_bottom = 103.0
 
 [node name="Wave" type="RichTextLabel" parent="WavesCanvas"]
 offset_left = 268.0
-offset_top = 39.0
+offset_top = 70.0
 offset_right = 320.0
-offset_bottom = 72.0
+offset_bottom = 103.0
 text = "Wave"
+
+[node name="LevelNumber" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 317.0
+offset_top = 8.0
+offset_right = 373.0
+offset_bottom = 41.0
+
+[node name="Level" type="RichTextLabel" parent="WavesCanvas"]
+offset_left = 268.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 41.0
+text = "Level"
 
 [node name="Fog" type="Sprite2D" parent="."]
 z_index = 50
