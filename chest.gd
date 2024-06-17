@@ -39,7 +39,7 @@ func _setup(texture:int):
 
 # TODO: Implementar el premio de desbloquear carta
 func open():
-	if opened:
+	if opened or not WaveManager.is_active($Sprite2D.position.x):
 		return
 
 	match reward_type:
@@ -55,7 +55,7 @@ func open():
 	$AnimationPlayer.play("give_reward")
 
 func glow_chest(sprite):
-	if not opened:
+	if not opened and WaveManager.is_active($Sprite2D.position.x):
 		sprite.modulate = Color(255,255,34)
 
 func unglow_chest(sprite):

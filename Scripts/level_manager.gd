@@ -41,6 +41,3 @@ func lose_health(body):
 func _on_start_stage_button_pressed():
 	WaveManager.start_next_stage()
 	next_stage_button.visible = false
-
-func is_revealed(x_pos: int):
-	return x_pos <= WaveManager.percentage * width
