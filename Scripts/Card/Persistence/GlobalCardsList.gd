@@ -1,12 +1,4 @@
-#class_name GlobalCards
 extends Node
-
-# SpellCard: id, cardName, description, sprite, cost
-# PassiveCard: id, cardName, description, sprite, cost, active, type, effect, value
-# Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
-# PowerUpCard: id, cardName, description, sprite, cost, active, type
-
-const COLLECTION_PATH = "collection"
 
 var CollectionCard = load_collection()
 
@@ -49,7 +41,6 @@ var initialDecks = {
 		[20,20,0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]
 }
 
-# TODO: A veces falla en la linea 55 (metodo unlock) xd o sea digamos
 func unlock(id):
 	for card in CollectionCard:
 		if card["id"] == id:
