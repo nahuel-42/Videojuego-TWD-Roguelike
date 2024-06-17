@@ -33,6 +33,7 @@ func load_stats():
 	GameController.apply_passives()
 
 func _ready():
+	nav.debug_enabled = false
 	z_index = 3
 	target = Parameters.target
 	velocity = Vector2.ZERO
