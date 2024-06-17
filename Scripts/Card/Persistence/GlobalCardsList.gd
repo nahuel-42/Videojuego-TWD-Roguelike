@@ -6,7 +6,11 @@ extends Node
 # Tower: id, type, subtype ,cardName, description, sprite, cost, active, range, damage, attackSpeed, presition
 # PowerUpCard: id, cardName, description, sprite, cost, active, type
 
-var CollectionCard = [
+const COLLECTION_PATH = "collection"
+
+var CollectionCard = load_collection()
+
+const initialCollection = [
 	################# TOWERS ####################
 	{"id":0, "type": "tower", "cardName" : "Single Target Tower", "desc":"A tower that shoots piercing arrows", "sprite": "res://Assets/Sprites/Cards/Tower/FireArrowT.png", "cost":20, "range": 170, "damage": 1, "attackSpeed": 1, "accuracy": 0.7, "unlocked": 1, 'path':'res://Prefabs/Towers/one_target_tower.tscn'},
 	{"id":1, "type": "tower", "cardName" : "Area Tower", "desc":"A tower that damages everything in it's range", "sprite": "res://Assets/Sprites/Cards/Tower/FireAreaT.png", "cost":50, "range": 125, "damage": 1, "attackSpeed": 1, "accuracy": 0.7, "unlocked": 1, 'path':'res://Prefabs/Towers/all_in_range_tower.tscn'},
@@ -38,70 +42,42 @@ var CollectionCard = [
 	{"id": 20, "type": "chest", "cardName": "Chest Key", "desc": "Opens a chest (single use)", "sprite": "res://Assets/Sprites/Cards/Chest/ChestKey.png", "cost": 100, "unlocked": 1}
 ]
 
-#FireCards, IceCards
-var TypeDeckCards = [
-#	[19,18,11,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,17],#para probar todas las cartas
-[20,20,6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
-[20,20,0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]
-]
-	
+var initialDecks = {
+	CardsManager.DeckType.ICE: 
+		[20,20,6,11,11,11,11,12,12,12,13,13,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,17,17,17,19,19],
+	CardsManager.DeckType.FIRE: 
+		[20,20,0,0,0,0,1,1,1,2,2,3,3,4,4,5,5,6,7,7,7,8,8,8,9,9,9,10,10,10,14,14,16,16,16,18,18]
+}
+
+# TODO: A veces falla en la linea 55 (metodo unlock) xd o sea digamos
+func unlock(id):
+	for card in CollectionCard:
+		if card["id"] == id:
+			card["unlocked"] = 1
+			Save.SaveCollection(CollectionCard)
+			break
+
+func load_collection():
+	var collection = Save.LoadCollection()
+	if collection == null:
+		Save.SaveCollection(initialCollection)
+		collection = initialCollection
+	return initialCollection
+
 func find_card(id):
-	var card = null
-	var i : int = 0
-	while (i < len(CollectionCard) && card == null):
-		if (CollectionCard[i]["id"] == id):
-			card = CollectionCard[i]
-		i += 1
-	return card
+	return CollectionCard.filter(func (card): return card["id"] == id).front()
 
 func isUnlocked(id):
-	var i : int = 0
-	var val = false
-	while (i < len(CollectionCard) && !val):
-		if (CollectionCard[i]["id"] == id):
-			val = CollectionCard[i]["unlocked"]
-		i += 1
-	return val
+	return find_card(id)["unlocked"] == 1
 
-func get_type(id):
-	return TypeDeckCards[id]
+func get_initial_deck(deck_type: CardsManager.DeckType):
+	return initialDecks[deck_type]
+
+func get_locked_ids():
+	return CollectionCard.filter(func(card): return card["unlocked"] == 0).map(func(card): return card["id"])
 	
 func get_unlocked_ids():
 	return CollectionCard.filter(func(card): return card["unlocked"] == 1).map(func(card): return card["id"])
-
-func get_unlocked_cards():
-	var unlocked_cards = []
-	for c in CollectionCard:
-		var node = [c["id"], c["unlocked"] == 1]
-		unlocked_cards.append(node)
-	print(unlocked_cards)
-	return unlocked_cards
-
-######################################
-###funciones que mezclan las cartas###
-######################################
-func GenerateDeck(deck):
-	deck=randomizeDeck(deck)
-	return deck
-func randomizeDeck(deck):
-	var cant=0
-	var rng = RandomNumberGenerator.new()
-	var aux=[]
-	var auxTow=[null,null,null]
-	var j
 	
-	for i in len(deck):
-		aux.append(null)
-	for i in len(deck):
-		j=rng.randi_range(0, len(deck)-1)
-		while (aux[j]!=null):
-			j=rng.randi_range(0, len(deck)-1)
-		aux[j]=deck[i]
-	deck=aux
-	return deck
-func isTower(id):
-	if (id<=2 or id>=11 and id<=13):
-		return true
-	else:
-		return false
-######################################
+func is_tower(id):
+	return find_card(id)["type"] == "tower"

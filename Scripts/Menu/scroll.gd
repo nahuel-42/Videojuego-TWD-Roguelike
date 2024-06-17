@@ -1,67 +1,124 @@
 extends ScrollContainer
 
+var deck_scale = 1
+var deck_current_scale = 1.15
+var scroll_duration = 1.3
 
-
-@export var card_scale = 1
-@export  var card_current_scale = 1.3
-@export  var scroll_duration = 1.3
-
-var card_current_index: int = 0
-var card_x_positions: Array = []
+var current_deck_index: int = 0
+var deck_x_positions: Array = []
 
 var scroll_tween: Tween
 var margin_r: int 
-var card_space: int 
-var card_nodes: Array
+var deck_space: int 
+var deck_nodes: Array
+
+var deck_scene = preload("res://Scenes/Menu/Mazos/Mazo.tscn")
+var decks = [
+	{
+		"name": "Continuar Partida",
+		"image_path": "res://Assets/Menu/Dorso2.png",
+		"color": Color(0, 0, 0, 0),
+		"pasive_desc": "",
+		"type": CardsManager.DeckType.CONTINUE
+	},
+	{
+		"name": "Mazo de Hielo",
+		"image_path": "res://Assets/Menu/Dorso2.png",
+		"color": Color(0.39, 0.54, 0.69, 1.0),
+		"pasive_desc": "Aumenta el tiempo de retardo 15%",
+		"type": CardsManager.DeckType.ICE
+	},
+	{
+		"name": "Mazo de Fuego",
+		"image_path": "res://Assets/Menu/Dorso2.png",
+		"color": Color(0.81, 0.25, 0.16, 1.0),
+		"pasive_desc": "Cada torre de fuego aumenta su rango en 30%",
+		"type": CardsManager.DeckType.FIRE
+	},
+	{
+		"name": "????",
+		"image_path": "res://Assets/Menu/Dorso3.png",
+		"color": Color(0.58, 0.58, 0.58, 1.0),
+		"pasive_desc": "Bloqueado",
+		"type": CardsManager.DeckType.BLOCKED
+	},
+	{
+		"name": "????",
+		"image_path": "res://Assets/Menu/Dorso3.png",
+		"color": Color(0.58, 0.58, 0.58, 1.0),
+		"pasive_desc": "Bloqueado",
+		"type": CardsManager.DeckType.BLOCKED
+	},
+	{
+		"name": "????",
+		"image_path": "res://Assets/Menu/Dorso3.png",
+		"color": Color(0.58, 0.58, 0.58, 1.0),
+		"pasive_desc": "Bloqueado",
+		"type": CardsManager.DeckType.BLOCKED
+	},
+	{
+		"name": "????",
+		"image_path": "res://Assets/Menu/Dorso3.png",
+		"color": Color(0.58, 0.58, 0.58, 1.0),
+		"pasive_desc": "Bloqueado",
+		"type": CardsManager.DeckType.BLOCKED
+	},
+	{
+		"name": "????",
+		"image_path": "res://Assets/Menu/Dorso3.png",
+		"color": Color(0.58, 0.58, 0.58, 1.0),
+		"pasive_desc": "Bloqueado",
+		"type": CardsManager.DeckType.BLOCKED
+	}
+]
 
 func _ready():
-	#$CenterContainer/MarginContainer.add_theme_constant_override("margin_right", 100)  setear
-	#var margin_right_value = $CenterContainer/MarginContainer.get_theme_constant("margin_right") obtener una propertie
+	for deck_data in decks:
+		if deck_data["type"] == CardsManager.DeckType.CONTINUE and not Save.LoadIngame():
+			continue
+		var deck = deck_scene.instantiate()
+		deck.init(deck_data)
+		$BoxContainer/MarginContainer/HBoxContainer.add_child(deck)
 	scroll_tween =  get_tree().create_tween()
 
 	margin_r = $BoxContainer/MarginContainer.get_theme_constant("margin_right")
-	card_space = $BoxContainer/MarginContainer/HBoxContainer.get_theme_constant("separation")
-	card_nodes = $BoxContainer/MarginContainer/HBoxContainer.get_children()
-	#add_child(scroll_tween)
-	print(margin_r)
-	print(card_nodes)
+	deck_space = $BoxContainer/MarginContainer/HBoxContainer.get_theme_constant("separation")
+	deck_nodes = $BoxContainer/MarginContainer/HBoxContainer.get_children()
+
 	get_h_scroll_bar().modulate.a = 0
-	call_deferred("_calculate_card_positions")
-	
-func _calculate_card_positions():
-	for _card in card_nodes:
-		var _card_pos_x: float = (margin_r + _card.position.x) - ((size.x - _card.size.x) / 2)
-		_card.pivot_offset = (_card.size / 2)
-		card_x_positions.append(_card_pos_x)
-	scroll_horizontal = card_x_positions[card_current_index]
-	
+	call_deferred("_calculate_deck_positions")
+
+func _calculate_deck_positions():
+	for _deck in deck_nodes:
+		var _deck_pos_x: float = (margin_r + _deck.position.x) - ((size.x - _deck.size.x) / 2)
+		_deck.pivot_offset = (_deck.size / 2)
+		deck_x_positions.append(_deck_pos_x)
+	scroll_horizontal = deck_x_positions[current_deck_index]
+
+func get_selected_deck_type():
+	return deck_nodes[current_deck_index].type
 	
 func _process(delta):
 	var closest_index = 0
 	var closest_distance = INF
 	var _swipe_current_length: float
 	var _swipe_length: float 
-	for _index in range(card_x_positions.size()):
-		var _card_pos_x: float = card_x_positions[_index]
-		_swipe_length= (card_nodes[_index].size.x / 2) + (card_space / 2)
-		_swipe_current_length = abs(_card_pos_x - scroll_horizontal)
-		var _card_scale: float = remap(_swipe_current_length, _swipe_length, 0, card_scale, card_current_scale)
-		var _card_opacity: float = remap(_swipe_current_length, _swipe_length, 0, 0.3, 1)
+	
+	for _index in range(deck_x_positions.size()):
+		var _deck_pos_x: float = deck_x_positions[_index]
+		_swipe_length= (deck_nodes[_index].size.x / 2) + (deck_space / 2)
+		_swipe_current_length = abs(_deck_pos_x - scroll_horizontal)
+		var _deck_scale: float = remap(_swipe_current_length, _swipe_length, 0, deck_scale, deck_current_scale)
+		var _deck_opacity: float = remap(_swipe_current_length, _swipe_length, 0, 0.3, 1)
 
-		_card_scale = clamp(_card_scale, card_scale, card_current_scale)
-		_card_opacity = clamp(_card_opacity, 0.3, 1)
+		_deck_scale = clamp(_deck_scale, deck_scale, deck_current_scale)
+		_deck_opacity = clamp(_deck_opacity, 0.3, 1)
 
-		card_nodes[_index].scale = Vector2(_card_scale, _card_scale)
-		card_nodes[_index].modulate.a = _card_opacity
+		deck_nodes[_index].scale = Vector2(_deck_scale, _deck_scale)
+		deck_nodes[_index].modulate.a = _deck_opacity
 
 		if _swipe_current_length < closest_distance:
 			closest_distance = _swipe_current_length
 			closest_index = _index
 
-	if _swipe_current_length < _swipe_length:
-		card_current_index = closest_index
-		
-	#Setea el tipo para despues cargar con ese valor
-	CardsManager.SetDeckType(closest_index)
-
-
+	current_deck_index = closest_index

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cg2tgamorj7n"]
+[gd_scene load_steps=15 format=3 uid="uid://cg2tgamorj7n"]
 
 [ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_b8xhp"]
 [ext_resource type="TileSet" uid="uid://c5jcgj56i07ce" path="res://Assets/mapa.tres" id="1_ogef4"]
@@ -10,9 +10,8 @@
 [ext_resource type="Script" path="res://Camera2D.gd" id="6_s7dnp"]
 [ext_resource type="PackedScene" uid="uid://bfuuqao2omga7" path="res://Scenes/canvas_layer.tscn" id="8_0iwi3"]
 [ext_resource type="PackedScene" uid="uid://bsevkqk7cl15l" path="res://Scenes/slot_detector.tscn" id="9_hcxdh"]
-[ext_resource type="Script" path="res://Scenes/canvas_layer.gd" id="10_muolh"]
 [ext_resource type="PackedScene" uid="uid://crel0atg4ipct" path="res://Prefabs/target.tscn" id="10_ve2q4"]
-[ext_resource type="PackedScene" uid="uid://c6oii6pq5ubrd" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
+[ext_resource type="PackedScene" path="res://Scenes/spell_detector.tscn" id="12_drqm8"]
 [ext_resource type="Script" path="res://Scripts/Map/fog.gd" id="13_uk752"]
 [ext_resource type="PackedScene" uid="uid://dre2u2d8gmtvv" path="res://Scenes/chest_detector.tscn" id="14_28lq2"]
 
@@ -45,9 +44,7 @@ target = NodePath("TargetCamera")
 
 [node name="TargetCamera" type="Node2D" parent="TileMap/Camera2D"]
 
-[node name="CanvasLayer" parent="." node_paths=PackedStringArray("m_self") instance=ExtResource("8_0iwi3")]
-script = ExtResource("10_muolh")
-m_self = NodePath(".")
+[node name="CanvasLayer" parent="." instance=ExtResource("8_0iwi3")]
 
 [node name="SlotDetector" parent="." instance=ExtResource("9_hcxdh")]
 

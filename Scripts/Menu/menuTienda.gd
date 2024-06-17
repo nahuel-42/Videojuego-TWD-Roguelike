@@ -6,9 +6,7 @@ var scene_principal = load("res://Scenes/Menu/menuPrincipal.tscn")
 @onready var label=$TextureRect/ColorRect/Label
 
 func _ready():
-	var file = FileAccess.open("res://Scripts/Menu/persistenciaTienda.txt", FileAccess.READ)
-	var boton1_visible = file.get_line() == "true"
-	file.close()
+	var boton1_visible = Save.LoadStore() == "true"
 	label.text = str(CoinsManager.GetCoins())
 	$TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/TextureRect4/TextureRect2.visible = boton1_visible
 	$TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/TouchScreenButton.visible = !boton1_visible
@@ -23,9 +21,7 @@ func _on_touch_screen_button_pressed(num_boton):
 			CoinsManager.ConsumeCoins(costo)
 			$TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer2/TouchScreenButton.visible = false
 			$TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer/TextureRect4/TextureRect2.visible=true
-			var file = FileAccess.open("res://Scripts/Menu/persistenciaTienda.txt", FileAccess.WRITE)
-			file.store_string("true")
-			file.close()
+			Save.SaveStore("true")
 	elif num_boton == 2:
 		costo= int($TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2/MarginContainer2/TouchScreenButton/Label.text)	
 		if coins-costo>=0 :

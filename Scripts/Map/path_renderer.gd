@@ -61,6 +61,7 @@ var textures = {
 
 # Configuration
 var padding = 3
+var initial_path_length = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -104,15 +105,19 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	
 	ObstacleGenerator.init(width, height,5, height / 2 - 1)
 	
+	var initial_path:Array[Vector2i]
+	for i in range(1,initial_path_length):
+		initial_path.append(initial_pos+Vector2i(i,0))
+	ObstacleGenerator.add_obstacles(Utils.add_padding(initial_path))
 	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
-	var path = path_generator.generate_path(initial_pos, target_pos-Vector2i(boss_arena_dimension.x,0), 2.0)
+	var path = path_generator.generate_path(initial_pos+Vector2i(initial_path_length,0), target_pos-Vector2i(boss_arena_dimension.x,0), 2.0)
 	var arena = generate_boss_path(path[-1])
 	ObstacleGenerator.add_obstacles(arena)
 	ObstacleGenerator.add_obstacles(Utils.add_padding(path))
 	# Add castles to initial obstacles
 	ObstacleGenerator.add_obstacles([initial_pos, target_pos])	
 	
-	for cell in path+arena:
+	for cell in initial_path+path+arena:
 		map[cell] = TileType.PATH
 
 	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)

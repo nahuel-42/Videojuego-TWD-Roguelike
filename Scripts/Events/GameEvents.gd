@@ -40,4 +40,5 @@ static var OnPlayMovementCard = Action.new()
 static var OnPlayUsedCard = Action.new()
 ############################################################
 static var OnSetVisible = Action.new()
+static var OnShowGamerOver = Action.new()
 ############################################################

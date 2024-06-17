@@ -2,6 +2,7 @@ class_name Boss
 extends Enemy
 
 var enabled = false
+var fight_enabled = false
 @onready var cs : CollisionShape2D = $CollisionShape2D
 var allies_in_range = []
 
@@ -40,6 +41,7 @@ func _physics_process(delta):
 		
 	if allies_in_range.is_empty():
 		move(delta)	
+		fight_enabled = false
 	else:
 		fight()
 
@@ -52,10 +54,12 @@ func enable_boss():
 	enabled = true
 
 func fight():
-	if len(allies_in_range) >= 3:
+	if (len(allies_in_range) >= 3 or fight_enabled):
 		animation.play("Attack")
 	else:
 		animation.play("Idle")
+		await get_tree().create_timer(2).timeout #waits for 2 seconds
+		fight_enabled = true
 
 func do_damage():
 	for ally in allies_in_range:

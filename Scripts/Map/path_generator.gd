@@ -52,7 +52,7 @@ func generate_path(initial_pos:Vector2i, target_pos:Vector2i, curvature: float):
 		if tries > 5000:
 			break
 	
-	path = path.slice(1, -1)
+	#path = path.slice(1, -1)
 	
 	return path
 

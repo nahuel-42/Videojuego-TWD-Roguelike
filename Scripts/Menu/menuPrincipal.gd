@@ -1,14 +1,20 @@
 extends Control
 
 
-var escena_mazos = load("res://Scenes/Menu/menuMazos.tscn")
+var escena_mazos = load("res://Scenes/Menu/Mazos/menuMazos.tscn")
 var escena_tienda = load("res://Scenes/Menu/menuTienda.tscn")
 var escena_inventario = load("res://Scenes/Menu/menuInventario.tscn")
 var escena_configuracion = preload("res://Scenes/Menu/menuConfiguracion.tscn")
 
 
-func _ready():	
+func _ready():
+	#get_tree().paused=false
 	CardsManager.InitUserSave()
+	var db = Save.LoadVolume()
+	if db != null:
+		# solamente usamos el bus 0, ya que solo se puede controlar el volumen en general del juego
+		# y no por canales
+		AudioServer.set_bus_volume_db(0, db)
 
 func _on_boton_jugar_pressed():
 	get_tree().change_scene_to_packed(escena_mazos)

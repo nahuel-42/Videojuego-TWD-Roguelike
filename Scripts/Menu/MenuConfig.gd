@@ -13,3 +13,4 @@ func _process(delta):
 
 func _on_touch_screen_button_pressed():
 	get_tree().change_scene_to_packed(scene_principal)
+	Save.SaveVolume(AudioServer.get_bus_volume_db(0))
