@@ -14,7 +14,7 @@ func _ready():
 	if db != null:
 		# solamente usamos el bus 0, ya que solo se puede controlar el volumen en general del juego
 		# y no por canales
-		AudioServer.set_bus_volume_db(0, db)
+		AudioServer.set_bus_volume_db(0, linear_to_db(db))
 		
 	var max_castles = Save.LoadMaxCastles()
 	if max_castles == null:
