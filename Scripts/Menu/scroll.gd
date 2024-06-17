@@ -15,24 +15,24 @@ var deck_nodes: Array
 var deck_scene = preload("res://Scenes/Menu/Mazos/Mazo.tscn")
 var decks = [
 	{
-		"name": "Continuar Partida",
+		"name": "Continue previous game",
 		"image_path": "res://Assets/Menu/Dorso2.png",
 		"color": Color(0, 0, 0, 0),
 		"pasive_desc": "",
 		"type": CardsManager.DeckType.CONTINUE
 	},
 	{
-		"name": "Mazo de Hielo",
+		"name": "Ice",
 		"image_path": "res://Assets/Menu/Dorso2.png",
 		"color": Color(0.39, 0.54, 0.69, 1.0),
-		"pasive_desc": "Aumenta el tiempo de retardo 15%",
+		"pasive_desc": "Makes your enemies slower by 15%",
 		"type": CardsManager.DeckType.ICE
 	},
 	{
-		"name": "Mazo de Fuego",
+		"name": "Fire",
 		"image_path": "res://Assets/Menu/Dorso2.png",
 		"color": Color(0.81, 0.25, 0.16, 1.0),
-		"pasive_desc": "Cada torre de fuego aumenta su rango en 30%",
+		"pasive_desc": "Each fire tower increases its range by 30%",
 		"type": CardsManager.DeckType.FIRE
 	},
 	{
