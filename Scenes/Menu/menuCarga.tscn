@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://tfgknayb26ib"]
+[gd_scene load_steps=8 format=3 uid="uid://tfgknayb26ib"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/menuCarga.gd" id="1_bbfu5"]
 [ext_resource type="Texture2D" uid="uid://ce2gey23k6eq8" path="res://Assets/Menu/LoadingScreen.png" id="2_hagqg"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="3_ge625"]
 [ext_resource type="Texture2D" uid="uid://c88ohbdjafsow" path="res://Assets/Menu/LoadingBarEmpty.png" id="3_gy84e"]
 [ext_resource type="Texture2D" uid="uid://nvtj30fa3mpu" path="res://Assets/Menu/LoadingBarFull.png" id="4_hwn41"]
 
@@ -45,14 +46,15 @@ texture = ExtResource("2_hagqg")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.459
-anchor_top = 0.54
-anchor_right = 0.54
-anchor_bottom = 0.576
+anchor_top = 0.522
+anchor_right = 0.554
+anchor_bottom = 0.61
 offset_left = 0.231995
-offset_top = 0.0799866
-offset_right = -0.0800171
-offset_bottom = -0.248016
+offset_top = -0.256012
+offset_right = -0.208008
+offset_bottom = -0.279999
 text = "Cargando..."
+label_settings = ExtResource("3_ge625")
 
 [node name="TextureProgress" type="TextureProgressBar" parent="."]
 layout_mode = 1

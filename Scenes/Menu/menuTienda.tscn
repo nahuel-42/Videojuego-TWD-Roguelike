@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp5dwvmwfai6w"]
+[gd_scene load_steps=16 format=3 uid="uid://dp5dwvmwfai6w"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/menuTienda.gd" id="1_5yv6k"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_6vx57"]
 [ext_resource type="Texture2D" uid="uid://yq0jvol8adc8" path="res://Assets/Menu/icono_casa.png" id="3_ckl1o"]
 [ext_resource type="Texture2D" uid="uid://bk2fgil33ud6k" path="res://Assets/Menu/tienda_titulo.png" id="3_ct718"]
+[ext_resource type="LabelSettings" uid="uid://bo2lym2kql22f" path="res://fonts/StoreLabel.tres" id="4_4cs83"]
 [ext_resource type="Texture2D" uid="uid://bjv5qi74g3l3d" path="res://Assets/Sprites/Cards/Front.png" id="5_1dslh"]
 [ext_resource type="Texture2D" uid="uid://douah5qqg7v3r" path="res://Assets/Menu/precio.png" id="6_10h88"]
 [ext_resource type="Texture2D" uid="uid://blpc1m5b4m0ny" path="res://Assets/Sprites/Cards/Speciality/Specialization.png" id="6_eq2y8"]
@@ -74,6 +75,7 @@ size_flags_horizontal = 4
 [node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Carta de la semana"
+label_settings = ExtResource("4_4cs83")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -133,7 +135,8 @@ size_flags_horizontal = 4
 
 [node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Seleccion extra"
+text = "Selección extra"
+label_settings = ExtResource("4_4cs83")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -178,6 +181,7 @@ size_flags_horizontal = 4
 [node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "A-Coins"
+label_settings = ExtResource("4_4cs83")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -214,6 +218,7 @@ size_flags_horizontal = 4
 [node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "A-Coins"
+label_settings = ExtResource("4_4cs83")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -250,6 +255,7 @@ size_flags_horizontal = 4
 [node name="NombreMazo" type="Label" parent="TextureRect/VBoxContainer/ScrollContainer/BoxContainer/MarginContainer/HBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = "A-Coins"
+label_settings = ExtResource("4_4cs83")
 horizontal_alignment = 1
 vertical_alignment = 1
 

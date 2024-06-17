@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dqr7sbc00jwlb"]
+
+[ext_resource type="FontFile" uid="uid://cpllvdqkfw1x7" path="res://fonts/MagicSchoolOne.ttf" id="1_y5org"]
+
+[resource]
+font = ExtResource("1_y5org")
+font_size = 80
+font_color = Color(0, 0, 0, 1)

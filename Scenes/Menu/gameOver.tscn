@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cur3wo0wgg6ql"]
+[gd_scene load_steps=6 format=3 uid="uid://cur3wo0wgg6ql"]
 
 [ext_resource type="Script" path="res://Scenes/gameOver.gd" id="1_lqqex"]
 [ext_resource type="Texture2D" uid="uid://cssbe7tncjrk1" path="res://Assets/Menu/GameOverImage.png" id="2_7dgu5"]
 [ext_resource type="Texture2D" uid="uid://o2i08ccl7ffu" path="res://Assets/Menu/Brown.png" id="2_37y6h"]
+[ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="4_26wap"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="5_ag5fk"]
 
 [node name="GameOver" type="Control"]
 process_mode = 3
@@ -35,31 +37,42 @@ texture = ExtResource("2_7dgu5")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="MainMenu" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.026
-anchor_top = 0.852
-anchor_right = 0.252
-anchor_bottom = 0.969
-offset_left = 28.0
-offset_top = 519.0
-offset_right = 242.0
-offset_bottom = 603.0
-text = "Menu principal"
+[node name="MainMenu" type="TouchScreenButton" parent="."]
+position = Vector2(20, 370)
+texture_normal = ExtResource("4_26wap")
 
-[node name="MainMenu2" type="Button" parent="."]
-layout_mode = 1
+[node name="Label" type="Label" parent="MainMenu"]
 anchors_preset = -1
-anchor_left = 0.026
-anchor_top = 0.852
-anchor_right = 0.252
-anchor_bottom = 0.969
-offset_left = 28.0
-offset_top = 409.0
-offset_right = 242.0
-offset_bottom = 493.0
+anchor_left = 0.116
+anchor_top = 0.276
+anchor_right = 0.892
+anchor_bottom = 0.793
+offset_left = -0.0880013
+offset_top = -0.0160027
+offset_right = -0.0559998
+offset_bottom = 0.0119934
 text = "Revivir"
+label_settings = ExtResource("5_ag5fk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="button_down" from="MainMenu" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="MainMenu2" to="." method="_on_main_Resurrect"]
+[node name="MainMenu2" type="TouchScreenButton" parent="."]
+position = Vector2(20, 500)
+texture_normal = ExtResource("4_26wap")
+
+[node name="Label" type="Label" parent="MainMenu2"]
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.25
+anchor_right = 0.892
+anchor_bottom = 0.793
+offset_left = 0.00399971
+offset_right = -0.0559998
+offset_bottom = 0.0119934
+text = "Volver al menú"
+label_settings = ExtResource("5_ag5fk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MainMenu2" to="." method="_on_main_menu_2_pressed"]

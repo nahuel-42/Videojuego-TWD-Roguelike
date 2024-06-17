@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj60ercqoghor"
-path="res://.godot/imported/cartasicon.png-b3205de6afafcc7860c417eee756e75a.ctex"
+uid="uid://4qbmd71xgdv2"
+path="res://.godot/imported/MenuButton.png-95135fd0fa386d8ef3fe7fada0fe1c50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Menu/cartasicon.png"
-dest_files=["res://.godot/imported/cartasicon.png-b3205de6afafcc7860c417eee756e75a.ctex"]
+source_file="res://Assets/Menu/MenuButton.png"
+dest_files=["res://.godot/imported/MenuButton.png-95135fd0fa386d8ef3fe7fada0fe1c50.ctex"]
 
 [params]
 

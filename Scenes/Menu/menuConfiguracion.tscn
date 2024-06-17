@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://qdi74i10pc0m"]
+[gd_scene load_steps=7 format=3 uid="uid://qdi74i10pc0m"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/MenuConfig.gd" id="1_jvg2m"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_o7ocj"]
-[ext_resource type="Texture2D" uid="uid://bh6kjr2wsqd86" path="res://Assets/Menu/PlayButton.png" id="3_c13pe"]
+[ext_resource type="LabelSettings" uid="uid://dqr7sbc00jwlb" path="res://fonts/TitleLabel.tres" id="3_c83gi"]
 [ext_resource type="Script" path="res://Scenes/Menu/Slider_Volumen.gd" id="3_xlvmj"]
+[ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="5_t10d0"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="6_2lt7h"]
 
 [node name="MenuConfiguracion" type="Control"]
 layout_mode = 3
@@ -33,11 +35,12 @@ expand_mode = 1
 [node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 190.0
-offset_top = 161.0
+offset_top = 138.0
 offset_right = 393.0
-offset_bottom = 216.0
+offset_bottom = 257.0
 theme_override_font_sizes/font_size = 40
 text = "Volumen"
+label_settings = ExtResource("3_c83gi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -53,7 +56,22 @@ value = 1.0
 script = ExtResource("3_xlvmj")
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="TextureRect"]
-position = Vector2(132, 350)
-texture_normal = ExtResource("3_c13pe")
+position = Vector2(169, 308)
+texture_normal = ExtResource("5_t10d0")
+
+[node name="Label" type="Label" parent="TextureRect/TouchScreenButton"]
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.267
+anchor_right = 0.877
+anchor_bottom = 0.784
+offset_left = 0.108
+offset_top = 0.027998
+offset_right = -0.0360107
+offset_bottom = 0.0559921
+text = "Volver al menú"
+label_settings = ExtResource("6_2lt7h")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="TextureRect/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
