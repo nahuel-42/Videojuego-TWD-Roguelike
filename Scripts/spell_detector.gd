@@ -12,7 +12,7 @@ func _exit_tree():
 	GameEvents.OnSpellCardActivated.RemoveListener(SpellCardActivated)
 
 func _ready():
-	size = Vector2(map.width * map.CELL_DIMENSION, map.height * map.CELL_DIMENSION)
+	size = Vector2(map.config.width * map.config.cell_dimension, map.height * map.config.cell_dimension)
 	$Area2D/CollisionShape2D.shape.size = size
 	position = size / 2
 	
@@ -22,7 +22,7 @@ func _ready():
 		#var prefab = load(FIREBALL_PREFAB if event.button_index == MOUSE_BUTTON_RIGHT else ICEBALL_PREFAB)
 		#var spell = prefab.instantiate()
 		#add_child(spell)
-		#spell.load_stats(get_global_mouse_position(), map.CELL_DIMENSION)
+		#spell.load_stats(get_global_mouse_position(), map.config.cell_dimension)
 
 func SpellCardActivated(param):
 	var type = param[0]
@@ -41,4 +41,4 @@ func SpellCardActivated(param):
 		var rx : float = 0#rng.randf_range(-range, range) / 2.0
 		var ry : float = 0#rng.randf_range(-range, range) / 2.0
 		
-		spell.load_stats(pos + Vector2(rx, ry), map.CELL_DIMENSION)
+		spell.load_stats(pos + Vector2(rx, ry), map.config.cell_dimension)

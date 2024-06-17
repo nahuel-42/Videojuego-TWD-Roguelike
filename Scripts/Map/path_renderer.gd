@@ -15,13 +15,8 @@ const ENEMY_CASTLE_PATH = "res://Scenes/enemy_castle.tscn"
 @export var seedName : String = ""
 var seed : int
 var camera2D
-var CELL_DIMENSION = 32
-var ASPECT_RATIO = 16.0 / 9.0
-var width = 200
 var height
 var map
-var borderSize = 20
-var boss_arena_dimension = Vector2i(10,3)
 
 enum TileType {
 	GRASS,
@@ -58,14 +53,27 @@ var textures = {
 	}
 }
 
-# Configuration
-var padding = 3
-var initial_path_length = 5
+const config = {
+	"padding": 3,
+	"initial_path_length": 5,
+	"n_slots": 20,
+	"slot_padding": 10,
+	"slot_min_distance": 5,
+	"n_forks": 8,
+	"fork_min_length": 5,
+	"fork_max_length": 15,
+	"castle_padding": 15,
+	"border_size": 20,
+	"width": 120,
+	"cell_dimension": 32,
+	"aspect_ratio": 16.0 / 9.0,
+	"boss_arena_dimension": Vector2i(10,3)
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var viewport_size = get_viewport().size
-	height = width / ASPECT_RATIO
+	height = config.width / config.aspect_ratio
 	camera2D = $Camera2D
 	var initial_pos = get_initial_pos()
 	var target_pos = generate_target()
@@ -80,7 +88,7 @@ func _ready():
 	seed(self.seed)
 	print("La seed es ",self.seed)
 	
-	$"../Target".position = initial_pos * CELL_DIMENSION
+	$"../Target".position = initial_pos * config.cell_dimension
 	setup_level(initial_pos, target_pos)
 
 func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
@@ -89,27 +97,27 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	else:
 		clear()
 	Save.SaveLastTargetPos(target_pos)
-	render_grass(width, height)
+	render_grass(config.width, height)
 	map = {}
 	
 	var start_castle : Sprite2D = load(CASTLE_PATH).instantiate()
 	var target_castle : Sprite2D = load(ENEMY_CASTLE_PATH).instantiate()
-	start_castle.position  = initial_pos * CELL_DIMENSION
-	target_castle.position = target_pos * CELL_DIMENSION
+	start_castle.position  = initial_pos * config.cell_dimension
+	target_castle.position = target_pos * config.cell_dimension
 	add_child(start_castle)
 	add_child(target_castle)
 	
 	map[initial_pos] = start_castle
 	map[target_pos] = target_castle
 	
-	ObstacleGenerator.init(width, height,5, height / 2 - 1)
+	ObstacleGenerator.init(config.width, height,5, height / 2 - 1)
 	
 	var initial_path:Array[Vector2i]
-	for i in range(1,initial_path_length):
+	for i in range(1, config.initial_path_length):
 		initial_path.append(initial_pos+Vector2i(i,0))
 	ObstacleGenerator.add_obstacles(Utils.add_padding(initial_path))
-	var path_generator = PathGenerator.new(width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
-	var path = path_generator.generate_path(initial_pos+Vector2i(initial_path_length,0), target_pos-Vector2i(boss_arena_dimension.x,0), 2.0)
+	var path_generator = PathGenerator.new(config.width, height, get_tileset().tile_size, get_used_rect().end - get_used_rect().position, 150)
+	var path = path_generator.generate_path(initial_pos+Vector2i(config.initial_path_length,0), target_pos-Vector2i(config.boss_arena_dimension.x,0), 2.0)
 	var arena = generate_boss_path(path[-1])
 	ObstacleGenerator.add_obstacles(arena)
 	ObstacleGenerator.add_obstacles(Utils.add_padding(path))
@@ -119,33 +127,29 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 	for cell in initial_path+path+arena:
 		map[cell] = TileType.PATH
 
-	var slots = SlotGenerator.new(width, height).generate_slots(100, path, 10, 5)
+	var slots = SlotGenerator.new(config.width, height).generate_slots(config.n_slots, path, config.slot_padding, config.slot_min_distance)
 	for slot in slots:
 		var new_slot = load(SLOT_PATH).instantiate()
-		new_slot.position = slot * CELL_DIMENSION
+		new_slot.position = slot * config.cell_dimension
 		add_child(new_slot)
 		map[slot] = new_slot #ahora tiene un objeto, el valor del diccionario #TileType.SLOT
 	ObstacleGenerator.add_obstacles(slots)
 	
-	var castle_padding = 30
-	var n_forks = 15
 	# (path.size() - 2 * castle_padding) es la cantidad de tiles de donde puede salir un fork
 	# / n_forks es la distancia maxima entre el inicio de un fork y otro en el que se pueden generar todos los forks
 	# / 2 para calcular la distancia minima
-	var min_distance = ((path.size() - 2 * castle_padding) / n_forks) / 2
-	var min_fork_lenght = 5
-	var max_fork_lenght = 15
-	var fork_generator = ForkGenerator.new(width, height, min_distance, min_fork_lenght, max_fork_lenght, path_generator)
+	var min_distance = ((path.size() - 2 * config.castle_padding) / config.n_forks) / 2
+	var fork_generator = ForkGenerator.new(config.width, height, min_distance, config.fork_min_length, config.fork_max_length, path_generator)
 	var forks_initial_pos: Array[Vector2i] = []
-	for i in range(n_forks):
-		var fork = fork_generator.generate_fork(path, forks_initial_pos, castle_padding)
+	for i in range(config.n_forks):
+		var fork = fork_generator.generate_fork(path, forks_initial_pos, config.castle_padding)
 		forks_initial_pos.append(fork[0])
 		for cell in fork:
 			map[cell] = TileType.PATH
 		
 		# TODO: elegir un criterio mejor para elegir los SPAWNERs / cofres
 		var element
-		if i < n_forks / 2:
+		if i < config.n_forks / 2:
 			element = chest_scene.instantiate()
 		else:
 			var random = randi() % 3 + 1
@@ -155,16 +159,16 @@ func setup_level(initial_pos: Vector2i, target_pos: Vector2i):
 				2: prefab_path = SOLDIER_SPAWNER_PATH
 				3: prefab_path = MERCENARY_SPAWNER_PATH
 			element = load(prefab_path).instantiate()
-		element.position = fork[-1] * CELL_DIMENSION
+		element.position = fork[-1] * config.cell_dimension
 		add_child(element)
 			
 		map[fork[-1]] = element # EN ESTA LINEA SE INSTANCIA EL COFRE/SPAWNER
 		ObstacleGenerator.add_obstacles(Utils.add_padding(fork))
 	
-	render_border(borderSize)
+	render_border(config.border_size)
 	render_path()
-	$"../Target".position = initial_pos * CELL_DIMENSION
-	Parameters.boss_position = target_pos * CELL_DIMENSION
+	$"../Target".position = initial_pos * config.cell_dimension
+	Parameters.boss_position = target_pos * config.cell_dimension
 	#WaveManager.load_waves()
 
 func render_path():
@@ -183,13 +187,13 @@ func generate_target():
 	var pos_x
 	var pos_y
 	if side == 1: # Up
-		pos_x = randi_range(width * 0.90, width -1)
+		pos_x = randi_range(config.width * 0.90, config.width -1)
 		pos_y = 0
 	if side == 2: # Right
-		pos_x = width - 1
+		pos_x = config.width - 1
 		pos_y = randi_range(0, height - 1)
 	if side == 3: # Bottom
-		pos_x = randi_range(width * 0.90, width -1)
+		pos_x = randi_range(config.width * 0.90, config.width -1)
 		pos_y = height - 1 
 	
 	return Vector2i(pos_x, pos_y)
@@ -209,9 +213,9 @@ func render_border(padding: int):
 			border_texture = textures[TileType.BORDER]
 		for j in range(-p, height + p):
 			set_cell(border_texture.layer, Vector2i(-p, j), border_texture.source, border_texture.atlas.position)
-			set_cell(border_texture.layer, Vector2i(width + p - 1, j), border_texture.source, border_texture.atlas.position)
+			set_cell(border_texture.layer, Vector2i(config.width + p - 1, j), border_texture.source, border_texture.atlas.position)
 		
-		for i in range(-p, width + p):
+		for i in range(-p, config.width + p):
 			set_cell(border_texture.layer, Vector2i(i, -p), border_texture.source, border_texture.atlas.position)
 			set_cell(border_texture.layer, Vector2i(i, height + p - 1), border_texture.source, border_texture.atlas.position)
 
@@ -235,16 +239,16 @@ func get_initial_pos():
 	var last_target_pos = Save.LoadLastTargetPos()
 	if last_target_pos == null:
 		return Vector2i(0, height / 2)
-	elif last_target_pos.x == width - 1:
+	elif last_target_pos.x == config.width - 1:
 		return Vector2i(0, last_target_pos.y)
 	else:
-		return Vector2i(width - last_target_pos.x, height - last_target_pos.y - 1)
+		return Vector2i(config.width - last_target_pos.x, height - last_target_pos.y - 1)
 	
 func generate_boss_path(last_pos:Vector2i) -> Array[Vector2i]:
 	var arena:Array[Vector2i]
 	arena.append(Vector2i(last_pos.x+1,last_pos.y))
-	for i in range(1,boss_arena_dimension.x+1):
-		for j in range(-boss_arena_dimension.y/2,boss_arena_dimension.y/2+1):
+	for i in range(1,config.boss_arena_dimension.x+1):
+		for j in range(-config.boss_arena_dimension.y/2,config.boss_arena_dimension.y/2+1):
 			arena.append(Vector2i(last_pos.x+i+1,last_pos.y+j))
 	return arena
 	

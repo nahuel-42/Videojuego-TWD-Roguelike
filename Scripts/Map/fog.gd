@@ -13,10 +13,10 @@ var fog_texture_path = "res://Assets/fog.png"
 
 func _ready():
 	texture = load(fog_texture_path)
-	width = tilemap.width
+	width = tilemap.config.width
 	height = floor(tilemap.height)
-	border = tilemap.borderSize
-	CELL_DIMENSION = tilemap.CELL_DIMENSION
+	border = tilemap.config.border_size
+	CELL_DIMENSION = tilemap.config.cell_dimension
 	display_width = (width + border * 2) * CELL_DIMENSION
 	display_height = (height + border * 2) * CELL_DIMENSION
 	setup_shader()

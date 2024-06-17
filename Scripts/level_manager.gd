@@ -12,7 +12,7 @@ var width
 var target
 
 func _ready():
-	width = tilemap.width * tilemap.CELL_DIMENSION
+	width = tilemap.config.width * tilemap.config.cell_dimension
 	target = $Target
 	Parameters.target = target
 	target.connect("body_entered", lose_health)

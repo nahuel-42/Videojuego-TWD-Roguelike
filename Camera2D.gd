@@ -34,8 +34,8 @@ func _ready():
 	zoom = Vector2(1, 1)  
 	await get_parent().ready
 	mapa = get_parent()
-	cell_size=mapa.CELL_DIMENSION
-	width = mapa.width* cell_size
+	cell_size=mapa.config.cell_dimension
+	width = mapa.config.width * cell_size
 	height = mapa.height * cell_size
 	
 func _process(delta):
