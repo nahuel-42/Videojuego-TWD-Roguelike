@@ -4,6 +4,7 @@ extends Node
 @onready var next_stage_button : Button = $WavesCanvas/NextStageButton
 @onready var stage_text : RichTextLabel = $WavesCanvas/StageNumber
 @onready var wave_text : RichTextLabel = $WavesCanvas/WaveNumber
+@onready var nivel_text : RichTextLabel = $WavesCanvas/LevelNumber
 @onready var fog = $Fog
 @onready var tilemap = $TileMap
 var width
@@ -18,6 +19,7 @@ func _ready():
 	WaveManager.connect("wave_completed", _on_wave_completed)
 	WaveManager.connect("stage_completed", _on_stage_completed)
 	WaveManager.set_texts(stage_text, wave_text)
+	nivel_text.text = str(Save.LoadCurrentCastles() + 1)
 	WaveManager.percentage = float(WaveManager.stage_index) / (WaveManager.stages)
 	fog.reveal_map(WaveManager.percentage)
 	WaveManager.activation_percentage = (WaveManager.percentage + 1.0 / WaveManager.stages) * width
@@ -27,10 +29,6 @@ func _on_wave_completed():
 	pass
 
 func _on_stage_completed():
-	#fog.reset()
-	#WaveManager.percentage = (1.0 + WaveManager.wave_index) / WaveManager.waves_per_stage
-	#fog.reveal_map(WaveManager.percentage)
-	#tilemap.setup_level()
 	next_stage_button.visible = true
 	WaveManager.percentage = (1.0 + WaveManager.stage_index) / WaveManager.stages
 	fog.reveal_map(WaveManager.percentage)

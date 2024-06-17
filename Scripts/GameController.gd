@@ -37,14 +37,9 @@ func HealthLoss(cant):
 		ActualHealth-=cant
 		GameEvents.OnUpdateHealth.Call([float(ActualHealth)])
 	else:
-		ActualHealth = 100
+		ActualHealth = InitialHealth
 		GameEvents.OnSetVisible.Call([false])
 		GameEvents.OnShowGamerOver.Call([null])
-		#var gameOver_scene = load("res://Scenes/Menu/menuConfiguracion.tscn").instantiate()
-		#var change_scene=load("res://Scenes/Menu/gameOver.tscn")
-		#WaveManager.reset()
-		#MAXIMA VIDA, OJO
-		#get_tree().change_scene_to_packed(change_scene)
 
 func StartWave():
 	WaveManager.start_next_wave()

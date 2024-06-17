@@ -26,6 +26,7 @@ func activate_spawners():
 	emit_signal("activate_spawner")
 	
 func register_spawner(spawner):
+	spawners = spawners.filter(func(spawner): return spawner != null)
 	if is_active(spawner.position.x):
 		spawner.connect("stage_completed", _on_spawner_stage_completed)
 		spawners.append(spawner)

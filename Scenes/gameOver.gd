@@ -7,6 +7,7 @@ var revive_price = 50
 var coins
 
 func _ready():
+	$Label.visible = false
 	get_tree().paused=true
 	create_tween().tween_property($Sign, "position", SignPosition, 1)
 	create_tween().tween_property($Background, "modulate", SignColor, 1)
