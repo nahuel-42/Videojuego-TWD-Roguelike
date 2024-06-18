@@ -117,6 +117,10 @@ func use(param):
 		GameController.manaConsumption(cost)
 		GameEvents.OnPlayUsedCard.Call([null])
 		return true
+	else:
+		var tween = get_tree().create_tween()
+		tween.tween_property(self,"modulate",Color.RED,0.5)
+		tween.tween_property(self,"modulate",Color(1,1,1,1),1.0)
 	return false
 
 func SetVisible(value):
