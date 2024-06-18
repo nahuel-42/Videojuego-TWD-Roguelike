@@ -93,6 +93,8 @@ func showInfo(dictionary,mode):
 	var sizeX : float = m_gridContainer.size.x / m_columns - m_separation.x
 	var cardSize = Vector2(sizeX, sizeX * relationSize)
 	
+	m_height = -cardSize.y * (amount / m_columns)
+
 	
 	var i : int = 0
 	var j : int = 0

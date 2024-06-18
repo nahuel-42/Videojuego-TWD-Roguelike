@@ -17,6 +17,7 @@ script = ExtResource("1_1u6el")
 m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
 m_columns = 4
 m_separation = Vector2(2, 2)
+m_speed = 2.0
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 1
