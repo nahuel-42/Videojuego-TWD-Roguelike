@@ -41,6 +41,8 @@ func move(delta):
 func perform():
 	pass
 
+func explode():
+	pass
 
 # Función para detectar cuando un objeto entra en el área
 func add_enemy(body):
