@@ -53,7 +53,7 @@ func _process(delta):
 	if target and target_return_enabled and events.size() == 0:
 		position = lerp(position, get_node(target).position, target_return_rate)
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			events[event.index] = event
@@ -134,7 +134,6 @@ func _apply_double_tap_zoom(tap_position):
 func _physics_process(delta):
 	if applying_inertia:
 		position -= inertia_velocity * delta*100
-		print(position)
 		# Ajusta este factor para controlar la rapidez con la que disminuye la inercia
 		inertia_velocity = inertia_velocity.lerp(Vector2.ZERO, 0.1)
 		if inertia_velocity.length() < 1:

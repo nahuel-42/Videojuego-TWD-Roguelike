@@ -6,12 +6,12 @@ var scroll_duration = 1.3
 
 var current_deck_index: int = 0
 var deck_x_positions: Array = []
-
+var closest_index
 var scroll_tween: Tween
 var margin_r: int 
 var deck_space: int 
 var deck_nodes: Array
-
+var tween : Tween
 var deck_scene = preload("res://Scenes/Menu/Mazos/Mazo.tscn")
 var decks = [
 	{
@@ -99,7 +99,7 @@ func get_selected_deck_type():
 	return deck_nodes[current_deck_index].type
 	
 func _process(delta):
-	var closest_index = 0
+	closest_index = 0
 	var closest_distance = INF
 	var _swipe_current_length: float
 	var _swipe_length: float 
@@ -122,3 +122,29 @@ func _process(delta):
 			closest_index = _index
 
 	current_deck_index = closest_index
+	
+func _input(event):
+	if event is InputEventMouseButton and not event.is_pressed():
+		_move_to_closest_card()
+	if event is InputEventScreenTouch and event.is_pressed():
+		# Detiene la animación si el usuario toca la pantalla
+		if tween!= null and tween.is_running():
+			tween.stop()
+
+func _move_to_closest_card():
+	var closest_card_position = deck_x_positions[closest_index]
+	# Aquí asumimos que tienes una manera de ajustar scroll_horizontal, por ejemplo, con una animación.
+	# Ajusta esto según cómo estés manejando el desplazamiento en tu carrousel.
+	_animate_scroll_to_position(closest_card_position)
+
+func _animate_scroll_to_position(target_position):
+	tween = create_tween()
+	var uno= tween.tween_property(self, "scroll_horizontal",target_position, 0.5)
+	var dos = uno.set_trans(Tween.TRANS_LINEAR)
+	var tres = dos.set_ease(Tween.EASE_IN_OUT)
+	tween.play()
+	var callable_method = Callable(self, "_on_tween_completed")
+	tween.connect("tween_completed", callable_method)
+
+func _on_tween_completed(tween, key):
+	tween.queue_free()  # Limpia el Tween después de usarlo
