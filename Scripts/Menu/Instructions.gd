@@ -3,7 +3,7 @@ extends Control
 @export var m_gridContainer : Node = null
 @export var m_columns : int = 5
 @export var m_separation : Vector2 = Vector2.ZERO
-@export var m_speed : float = 50.0
+@export var m_speed : float = 1.0
 
 var m_relativePosition : float
 var m_height : float
@@ -94,6 +94,7 @@ func showInfo(dictionary,mode):
 	var cardSize = Vector2(sizeX, sizeX * relationSize)
 	
 	m_height = -cardSize.y * (amount / m_columns)
+
 	
 	var i : int = 0
 	var j : int = 0
@@ -105,6 +106,7 @@ func showInfo(dictionary,mode):
 			eInfo = upgrade_scene.instantiate()
 		eInfo.init(elem)
 	#Se muestra la lista
+		m_height = -originalSize.y * (amount / m_columns)
 	
 		UI_funcs.LocateCard(m_gridContainer, eInfo)
 		

@@ -88,8 +88,9 @@ func _process(delta):
 		
 func _on_detect_drag_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			m_relativePosition = get_viewport().get_mouse_position().y
-			m_dragActivated = true
-		else:
-			m_dragActivated = false
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				m_relativePosition = get_viewport().get_mouse_position().y
+				m_dragActivated = true
+			else:
+				m_dragActivated = false
