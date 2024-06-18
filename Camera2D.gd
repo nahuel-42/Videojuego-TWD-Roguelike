@@ -67,6 +67,7 @@ func _unhandled_input(event):
 			last_tap_time = Time.get_ticks_msec() / 1000.0
 			last_tap_position = event.position
 			events[event.index] = event
+			last_drag_velocity = Vector2.ZERO
 		else:
 			events.erase(event.index)
 	
