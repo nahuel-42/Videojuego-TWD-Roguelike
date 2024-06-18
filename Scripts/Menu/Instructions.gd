@@ -36,15 +36,15 @@ const enemies = [
 	{'type':'Mercenary', 'name':'Wizard', 'description':'Con su magia reducen la velocidad de ataque de todas las torres cercanas.', 'sprite':'res://Assets/Menu/Instrucciones/Wizard.png'}		
 ]
 const specialities = [
-	{'type':'Hunter', 'name':'Harpoon', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Harpoon.png'},
-	{'type':'Hunter', 'name':'Net', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Net.png'},
-	{'type':'Hunter', 'name':'Tamer', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Tamer.png'},
-	{'type':'Soldier', 'name':'Boiling Oil', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/BoilingOil.png'},
-	{'type':'Soldier', 'name':'Catapult', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Catapult.png'},
-	{'type':'Soldier', 'name':'Sniper', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sniper.png'},
-	{'type':'Mercenary', 'name':'Sapper', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sapper.png'},
-	{'type':'Mercenary', 'name':'Gas', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Gas.png'},
-	{'type':'Mercenary', 'name':'Incendiary', 'description':'smt', 'sprite':'res://Assets/Sprites/Cards/Speciality/Incendiary.png'}
+	{'type':'Hunter', 'name':'Harpoon', 'description':'Deja temporalmente VULNERABLES a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Harpoon.png'},
+	{'type':'Hunter', 'name':'Net', 'description':'RALENTIZAN temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Net.png'},
+	{'type':'Hunter', 'name':'Tamer', 'description':'INMOVILIZA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Tamer.png'},
+	{'type':'Soldier', 'name':'Boiling Oil', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/BoilingOil.png'},
+	{'type':'Soldier', 'name':'Catapult', 'description':'RALENTIZAN temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Catapult.png'},
+	{'type':'Soldier', 'name':'Sniper', 'description':'Torre de gran RANGO y excesivo DAÑO a costa de una baja VELOCIDAD DE ATAQUE.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sniper.png'},
+	{'type':'Mercenary', 'name':'Sapper', 'description':'INMOVILIZA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sapper.png'},
+	{'type':'Mercenary', 'name':'Gas', 'description':'Deja temporalmente VULNERABLES a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Gas.png'},
+	{'type':'Mercenary', 'name':'Incendiary', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Incendiary.png'}
 ]
 
 func _init():
