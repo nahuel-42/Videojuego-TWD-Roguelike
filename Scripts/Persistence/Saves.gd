@@ -3,7 +3,7 @@ class_name Save
 const SAVE_PATH = "user://saves.sav"
 const ROOT_PATH = "user://"
 
-const SAVE_DATA_PATH = "save_data"
+const SAVE_DATA_PATH = "user://save_data"
 
 # ########## LOAD ##########
 
