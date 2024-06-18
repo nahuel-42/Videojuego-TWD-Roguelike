@@ -17,12 +17,15 @@ script = ExtResource("1_1u6el")
 m_gridContainer = NodePath("SubViewportContainer/SubViewport/parent")
 m_columns = 4
 m_separation = Vector2(2, 2)
+m_speed = 2.0
 
 [node name="background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Cards" type="TouchScreenButton" parent="."]
 position = Vector2(46, 12)
@@ -102,7 +105,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1010, 455)
+size = Vector2i(1009, 454)
 render_target_update_mode = 4
 
 [node name="parent" type="Control" parent="SubViewportContainer/SubViewport"]

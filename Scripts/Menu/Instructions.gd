@@ -44,7 +44,7 @@ const specialities = [
 	{'type':'Soldier', 'name':'Sniper', 'description':'Torre de gran RANGO y excesivo DAÑO a costa de una baja VELOCIDAD DE ATAQUE.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sniper.png'},
 	{'type':'Mercenary', 'name':'Sapper', 'description':'INMOVILIZA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sapper.png'},
 	{'type':'Mercenary', 'name':'Gas', 'description':'Deja temporalmente VULNERABLES a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Gas.png'},
-	{'type':'Mercenary', 'name':'Incendiary', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Incendiary.png'}
+	{'type':'Mercenary', 'name':'Incendiary', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Flamethrower.png'}
 ]
 
 func _init():
@@ -93,7 +93,7 @@ func showInfo(dictionary,mode):
 	var sizeX : float = m_gridContainer.size.x / m_columns - m_separation.x
 	var cardSize = Vector2(sizeX, sizeX * relationSize)
 	
-#	m_height = -cardSize.y * (amount / m_columns)
+	m_height = -cardSize.y * (amount / m_columns)
 	
 	var i : int = 0
 	var j : int = 0
