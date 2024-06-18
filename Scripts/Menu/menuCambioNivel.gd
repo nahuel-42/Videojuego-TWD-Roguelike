@@ -5,6 +5,7 @@ var map_scene = load("res://Scenes/Menu/menuCarga.tscn")
 var menu_scene = load("res://Scenes/Menu/menuPrincipal.tscn")
 
 func _ready():
+	$BlurredBackground.size = get_viewport_rect().size
 	current_castles = Save.LoadCurrentCastles()
 	current_castles += 1
 	Save.SaveCurrentCastles(current_castles)
