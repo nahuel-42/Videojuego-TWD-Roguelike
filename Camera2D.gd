@@ -81,8 +81,8 @@ func _unhandled_input(event):
 		elif events.size() == 2:
 			var drag_distance = events[0].position.distance_to(events[1].position)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
-				# Invertir la lógica aquí: aumentar el zoom si los dedos se alejan, disminuir si se acercan
-				var new_zoom = (1 - ZOOM_SPEED) if drag_distance > last_drag_distance else (1 + ZOOM_SPEED)
+				# Invertir la lógica aquí: disminuir el zoom si los dedos se alejan, aumentar si se acercan
+				var new_zoom = (1 + ZOOM_SPEED) if drag_distance > last_drag_distance else (1 - ZOOM_SPEED)
 				new_zoom = clamp(zoom.x * new_zoom, MIN_ZOOM, MAX_ZOOM)
 				zoom = Vector2.ONE * new_zoom
 				last_drag_distance = drag_distance
