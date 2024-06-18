@@ -34,8 +34,8 @@ func _ready():
 	zoom = Vector2(1, 1)  
 	await get_parent().ready
 	mapa = get_parent()
-	cell_size=mapa.config.cell_dimension
-	width = mapa.config.width * cell_size
+	cell_size=mapa.CELL_DIMENSION
+	width = mapa.width* cell_size
 	height = mapa.height * cell_size
 	
 func _process(delta):
@@ -45,7 +45,6 @@ func _process(delta):
 	
 	if target and target_return_enabled and events.size() == 0:
 		position = lerp(position, get_node(target).position, target_return_rate)
-
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
@@ -57,41 +56,14 @@ func _unhandled_input(event):
 	if event is InputEventScreenDrag:
 		events[event.index] = event
 		if events.size() == 1:
-			position -= event.relative * zoom.x
+			# Escalar el movimiento por el inverso del nivel de zoom para ajustar la sensibilidad
+			var movement_scale = 1 / zoom.x
+			position -= event.relative * movement_scale
 		elif events.size() == 2:
 			var drag_distance = events[0].position.distance_to(events[1].position)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
-				var new_zoom = (1 + ZOOM_SPEED) if drag_distance < last_drag_distance else (1 - ZOOM_SPEED)
+				# Invertir la lógica aquí: aumentar el zoom si los dedos se alejan, disminuir si se acercan
+				var new_zoom = (1 - ZOOM_SPEED) if drag_distance > last_drag_distance else (1 + ZOOM_SPEED)
 				new_zoom = clamp(zoom.x * new_zoom, MIN_ZOOM, MAX_ZOOM)
 				zoom = Vector2.ONE * new_zoom
 				last_drag_distance = drag_distance
-				
-				
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			get_viewport().set_input_as_handled()
-			if event.is_pressed():
-				previous_pos = event.position
-				move_cam = true
-			else:
-				move_cam = false
-		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			zoom_out()
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			zoom_in()
-	elif event is InputEventMouseMotion and move_cam:
-		get_viewport().set_input_as_handled()
-		position += (previous_pos - event.position) * CAM_SPEED
-		previous_pos = event.position
-
-func zoom_in():
-	if (self.zoom*ZOOM_SPEED_IN <= Vector2.ONE*MIN_ZOOM):
-		self.zoom = Vector2.ONE*MIN_ZOOM
-	else:
-		self.zoom *= ZOOM_SPEED_IN
-	
-func zoom_out():
-	if (self.zoom*ZOOM_SPEED_OUT >= Vector2.ONE*MAX_ZOOM):
-		self.zoom = Vector2.ONE*MAX_ZOOM
-	else:
-		self.zoom *= ZOOM_SPEED_OUT
