@@ -29,7 +29,9 @@ var cell_size
 var last_tap_time = 0
 var double_tap_threshold = 0.3 # 300 ms entre taps
 var last_tap_position = Vector2()
-
+var last_drag_velocity = Vector2.ZERO
+var inertia_velocity = Vector2.ZERO
+var applying_inertia = false
 var previous_pos : Vector2 = Vector2.ZERO
 var move_cam : bool = false
 var tween: Tween
@@ -51,7 +53,7 @@ func _process(delta):
 	if target and target_return_enabled and events.size() == 0:
 		position = lerp(position, get_node(target).position, target_return_rate)
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			events[event.index] = event
@@ -71,9 +73,11 @@ func _unhandled_input(event):
 	if event is InputEventScreenDrag:
 		events[event.index] = event
 		if events.size() == 1:
-			# Escalar el movimiento por el inverso del nivel de zoom para ajustar la sensibilidad
-			var movement_scale = 1 / zoom.x *0.4
+			 # Escalar el movimiento por el inverso del nivel de zoom para ajustar la sensibilidad
+			var movement_scale = 1 / zoom.x * 0.4
 			position -= event.relative * movement_scale
+			# Almacenar la última velocidad de arrastre
+			last_drag_velocity = event.velocity*0.025
 		elif events.size() == 2:
 			var drag_distance = events[0].position.distance_to(events[1].position)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
@@ -82,6 +86,12 @@ func _unhandled_input(event):
 				new_zoom = clamp(zoom.x * new_zoom, MIN_ZOOM, MAX_ZOOM)
 				zoom = Vector2.ONE * new_zoom
 				last_drag_distance = drag_distance
+	if event is InputEventScreenTouch and not event.is_pressed():
+		events.erase(event.index)
+		if events.size() == 0:
+		# Iniciar la inercia con la última velocidad de arrastre
+			inertia_velocity = last_drag_velocity
+			applying_inertia = true
 				
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -113,10 +123,20 @@ func zoom_out():
 		self.zoom *= ZOOM_SPEED_OUT
 				
 func _apply_double_tap_zoom(tap_position):
-	var target_zoom = Vector2(0.5, 0.5) if zoom.x > 1 else Vector2(1.5, 1.5)  # Alternar entre zoom 1x y 2x
+	var target_zoom = Vector2(1.5, 1.5) if zoom.x < 1 else Vector2(0.5, 0.5)  # Alternar entre zoom 1x y 2x
 	tween.stop()  # Detener animaciones anteriores
 	tween = create_tween()
 	var uno= tween.tween_property(self, "zoom", target_zoom, 0.5)
 	var dos = uno.set_trans(Tween.TRANS_LINEAR)
 	var tres = dos.set_ease(Tween.EASE_IN_OUT)
 	tween.play()
+
+func _physics_process(delta):
+	if applying_inertia:
+		position -= inertia_velocity * delta*100
+		print(position)
+		# Ajusta este factor para controlar la rapidez con la que disminuye la inercia
+		inertia_velocity = inertia_velocity.lerp(Vector2.ZERO, 0.1)
+		if inertia_velocity.length() < 1:
+			applying_inertia = false
+			inertia_velocity = Vector2.ZERO
