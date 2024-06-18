@@ -10,7 +10,7 @@ var wave_config = []
 var wave_index = 0
 var stages = 2
 var stage_index = 1
-var waves_per_stage = 1  # Número base de oleadas por stage
+var waves_per_stage = 2  # Número base de oleadas por stage
 var spawners = []
 var stage_text : RichTextLabel
 var wave_text : RichTextLabel
