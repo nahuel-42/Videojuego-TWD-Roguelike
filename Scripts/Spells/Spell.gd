@@ -11,7 +11,7 @@ var enemies_in_range = []
 @onready var explosion_animation : AnimationPlayer = $ExplosionAnimation
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var explosion : Sprite2D = $Explosion
-	
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready():
 	connect("body_entered", add_enemy)
@@ -53,3 +53,7 @@ func add_enemy(body):
 func delete_enemy(body):
 	if body != self and body in enemies_in_range:
 		enemies_in_range.erase(body)
+
+func play_sound(name):
+	audio_player.stream = Audio.getSFX(name)
+	audio_player.play()

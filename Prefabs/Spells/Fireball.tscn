@@ -123,3 +123,5 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_arhyj")
 hframes = 9
 frame = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

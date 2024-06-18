@@ -7,6 +7,7 @@ var explosion_sprite : Sprite2D
 func _ready():
 	explosion_sprite = $"../Sprite2D/Explosion"
 	explosion_sprite.visible = false
+	attack_sound = "fireballExplosion"
 
 func fire():
 	if len(enemies_in_range) != 0:

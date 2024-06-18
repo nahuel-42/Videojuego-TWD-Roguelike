@@ -3,6 +3,9 @@ extends OneTargetAttackMethod
 
 @onready var DYNAMITE_PREFAB : String = "res://Prefabs/Towers/Dynamite.tscn"
 
+func _ready():
+	attack_sound = ""
+
 func fire():
 	if current_target != null and current_target in enemies_in_range:
 		throw_dynamite()

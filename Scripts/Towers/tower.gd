@@ -4,6 +4,7 @@ extends Node2D
 @onready var animation = $Animation
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var tower_sprite : Sprite2D = $Tower
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 var radius : Line2D
 var attack_method : AttackMethod
@@ -14,6 +15,7 @@ var cooldown_disable = 2
 
 func _ready():
 	attack_method = $AttackMethod
+	attack_method.set_audio_player(audio_player)
 
 func load_stats(stats):
 	attack_method.load_stats(stats)

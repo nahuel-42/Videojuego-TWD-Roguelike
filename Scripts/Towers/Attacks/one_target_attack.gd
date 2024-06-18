@@ -5,6 +5,9 @@ var current_target
 var ARROW_PREFAB : String = "res://Prefabs/Towers/Arrow.tscn"
 @onready var sprite : Sprite2D = $"../Sprite2D"
 
+func _ready():
+	attack_sound = "bowShot"
+
 func fire():
 	if current_target != null:
 		shoot_arrow()

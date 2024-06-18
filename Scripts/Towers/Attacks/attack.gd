@@ -11,6 +11,8 @@ var attack_speed = 1
 var cooldown = 0
 var damage: int
 var accuracy: float
+var audio_player : AudioStreamPlayer
+var attack_sound : String
 
 var damage_mod: float = 1
 var range_mod: float = 1
@@ -52,6 +54,7 @@ func perform(delta):
 	
 	if len(enemies_in_range) != 0:
 		animation.speed_scale = get_attack_speed()
+		play_sound(attack_sound)
 		animation.play("Attack")
 
 # Función para detectar cuando un objeto entra en el área
@@ -87,3 +90,12 @@ func class_id():
 	
 func do_damage_to_enemy(target, damage):
 	speciality.act(target, damage)
+	
+func set_audio_player(audio_player):
+	self.audio_player = audio_player
+
+func play_sound(name):
+	if name == "":
+		return 
+	audio_player.stream = Audio.getSFX(name)
+	audio_player.play()
