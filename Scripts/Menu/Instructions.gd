@@ -16,12 +16,12 @@ var upgrade_scene = preload('res://Scenes/Menu/Instrucciones/upgradeInfo.tscn')
 var scene_principal = load("res://Scenes/Menu/menuPrincipal.tscn")
 
 const cards = [
-	{'name': 'Spell', 'description':'smt', 'color':'Green'},
-	{'name': 'Tower', 'description':'smt', 'color':'Purple'},
-	{'name': 'Upgrade', 'description':'smt', 'color':'Aquamarine'},
-	{'name': 'Passive', 'description':'smt', 'color':'Brown'},
-	{'name': 'Speciality', 'description':'smt', 'color':'Blue'},
-	{'name': 'Class', 'description':'smt', 'color':'Red'}
+	{'name': 'Spell', 'description':'Lanza un hechizo sobre un area selecionada', 'color':'Green'},
+	{'name': 'Tower', 'description':'Coloca una torre en la ranura seleccionada', 'color':'Purple'},
+	{'name': 'Upgrade', 'description':'Mejora uno de los atributos de la torre seleccionada', 'color':'Aquamarine'},
+	{'name': 'Passive', 'description':'Activa una bonificacion continua', 'color':'Brown'},
+	{'name': 'Speciality', 'description':'Asigna una especializacion a una torre de clase', 'color':'Blue'},
+	{'name': 'Class', 'description':'Asigna la clase a la torre seleccionada', 'color':'Red'}
 ]
 const enemies = [
 	{'type':'Beast', 'name':'Orcs', 'description':'Criaturas verdes lentas pero con gran resistencia a los ataques de las torres.', 'sprite':'res://Assets/Menu/Instrucciones/Orc.png'},
@@ -44,7 +44,7 @@ const specialities = [
 	{'type':'Soldier', 'name':'Sniper', 'description':'Torre de gran RANGO y excesivo DAÑO a costa de una baja VELOCIDAD DE ATAQUE.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sniper.png'},
 	{'type':'Mercenary', 'name':'Sapper', 'description':'INMOVILIZA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Sapper.png'},
 	{'type':'Mercenary', 'name':'Gas', 'description':'Deja temporalmente VULNERABLES a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Gas.png'},
-	{'type':'Mercenary', 'name':'Incendiary', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Incendiary.png'}
+	{'type':'Mercenary', 'name':'Incendiary', 'description':'Produce QUEMADURA temporalmente a los enemigos impactados.', 'sprite':'res://Assets/Sprites/Cards/Speciality/Flamethrower.png'}
 ]
 
 func _init():
