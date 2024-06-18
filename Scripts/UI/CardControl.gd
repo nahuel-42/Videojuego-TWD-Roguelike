@@ -24,7 +24,7 @@ var pathB = 'res://Assets/Sprites/Cards/BlackBack.png'
 func Init(baseCard):
 	m_baseCard = baseCard
 	#seteo de propiedades en texture y labels
-	get_node("BottomSideCard/TextureRect").texture = load(pathB) #load(m_baseCard.m_refCard["sprite"])
+	get_node("BottomSideCard/TextureRect").texture = load(pathB)
 	get_node("TopSideCard/Figure").texture = load(m_baseCard.m_refCard["sprite"])
 	get_node("TopSideCard/name").text = m_baseCard.m_refCard["cardName"]
 	get_node("TopSideCard/cost").text = str(m_baseCard.m_refCard["cost"])
@@ -110,9 +110,6 @@ func SetSide(side : int):
 		m_info.set_visible(true)
 	
 func use(param):
-	#set_process_mode(Node.ProcessMode.PROCESS_MODE_DISABLED)
-	#visible = false
-	#SetVisible(false)
 	param.append(self)
 	var cost = m_baseCard.m_refCard["cost"]
 	if (GameController.manaCheck(cost) and m_baseCard.use(param)):
@@ -139,4 +136,3 @@ func setTransparent(num):
 		self.modulate=Color(1,1,1,1)
 	else:
 		self.modulate=Color(1,1,1,0.3)
-		#self.set_modulate(num)

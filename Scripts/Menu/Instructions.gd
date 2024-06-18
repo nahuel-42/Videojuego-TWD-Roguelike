@@ -69,7 +69,7 @@ func _on_enemies_pressed():
 		op = 1
 		showInfo(1)	
 
-func _on_upgrades_pressed():
+func _on_specialiy_pressed():
 	if(op != 2):
 		op = 2
 		showInfo(2)	
@@ -77,3 +77,4 @@ func _on_upgrades_pressed():
 
 func _on_menu_pressed():
 	get_tree().change_scene_to_packed(scene_principal)
+
