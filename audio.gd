@@ -49,5 +49,5 @@ func stopMusicaMenuPrincipal():
 		audio_player.stop()
 
 func playSFX(name):
-	print(name)
 	sfx_player.stream = in_game_sounds[sounds_dictionary[name]]
+	sfx_player.play()
