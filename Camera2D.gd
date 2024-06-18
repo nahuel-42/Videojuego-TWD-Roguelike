@@ -6,7 +6,7 @@ const ZOOM_SPEED_IN : float = 0.9
 const ZOOM_SPEED_OUT : float = 1.1
 const MIN_ZOOM : float = 0.4
 const MAX_ZOOM : float = 3.0
-const ZOOM_SPEED : float = 0.05
+const ZOOM_SPEED : float = 0.03
 const CAM_SPEED : float = 1.3
 
 var target_return_enabled = true
@@ -72,7 +72,7 @@ func _unhandled_input(event):
 		events[event.index] = event
 		if events.size() == 1:
 			# Escalar el movimiento por el inverso del nivel de zoom para ajustar la sensibilidad
-			var movement_scale = 1 / zoom.x
+			var movement_scale = 1 / zoom.x *0.4
 			position -= event.relative * movement_scale
 		elif events.size() == 2:
 			var drag_distance = events[0].position.distance_to(events[1].position)
