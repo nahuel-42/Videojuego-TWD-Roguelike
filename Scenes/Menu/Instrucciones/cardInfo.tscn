@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd0ttlmp36vba"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/Instrucciones/cardInfo.gd" id="1_uaxef"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="2_u2og2"]
+[ext_resource type="LabelSettings" uid="uid://cw7oknfxddx1l" path="res://fonts/Cards/InfoLabels++.tres" id="3_i0v0m"]
+
+[node name="CardInfo" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.217
+anchor_bottom = 0.309
+offset_right = 0.0159912
+offset_bottom = -0.23201
+script = ExtResource("1_uaxef")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 200.0
+color = Color(0.847059, 0.831373, 0.854902, 1)
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+anchor_left = 0.02
+anchor_top = 0.025
+anchor_right = 0.98
+anchor_bottom = 0.325
+text = "name"
+label_settings = ExtResource("2_u2og2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 2
+anchor_left = 0.02
+anchor_top = 0.475
+anchor_right = 0.98
+anchor_bottom = 0.975
+text = "Card's description"
+label_settings = ExtResource("3_i0v0m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+text_overrun_behavior = 2
+
+[node name="Color" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 70.0
+offset_right = 245.0
+offset_bottom = 93.0
+text = "color"
+label_settings = ExtResource("3_i0v0m")
+horizontal_alignment = 1
+vertical_alignment = 1

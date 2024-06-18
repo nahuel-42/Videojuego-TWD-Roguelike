@@ -20,13 +20,6 @@ var pathFSp = 'res://Assets/Sprites/Cards/BlueBackground.png'
 var pathFC = 'res://Assets/Sprites/Cards/SiennaBackground.png'
 #back
 var pathB = 'res://Assets/Sprites/Cards/BlackBack.png'
-#info
-var pathFT2 = 'res://Assets/Sprites/Cards/Info.png'
-var pathFS2 = 'res://Assets/Sprites/Cards/Info.png'
-var pathFU2 = 'res://Assets/Sprites/Cards/Info.png'
-var pathFP2 = 'res://Assets/Sprites/Cards/Info.png'
-var pathFSp2 = 'res://Assets/Sprites/Cards/Info.png'
-var pathFC2 = 'res://Assets/Sprites/Cards/Info.png'
 
 func Init(baseCard):
 	m_baseCard = baseCard
@@ -46,7 +39,6 @@ func Init(baseCard):
 	#background
 	if(type == 'tower'):
 		get_node("TopSideCard/TextureRect").texture = load(pathFT)
-		get_node("InfoSideCard/TextureRect").texture = load(pathFT2)
 		get_node("InfoSideCard/TextureRect").texture = load(pathFT)
 	elif (type == 'spell'):
 		get_node("TopSideCard/TextureRect").texture = load(pathFS) 

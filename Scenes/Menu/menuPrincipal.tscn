@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqnl8f4bflhg3"]
+[gd_scene load_steps=8 format=3 uid="uid://bqnl8f4bflhg3"]
 
 [ext_resource type="Texture2D" uid="uid://cjhieew4csu2s" path="res://Assets/Menu/imagen_menuprincipal.jpg" id="1_g8k5a"]
 [ext_resource type="Script" path="res://Scripts/Menu/menuPrincipal.gd" id="1_ndqvk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="4_qsppu"]
 [ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="5_7rssn"]
 [ext_resource type="Texture2D" uid="uid://dis1oame4nh7e" path="res://Assets/Menu/engranaje.png" id="5_16uas"]
+[ext_resource type="Texture2D" uid="uid://cqbpws7kjwq16" path="res://Assets/Menu/signo.png" id="7_odch1"]
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
@@ -121,7 +122,23 @@ label_settings = ExtResource("5_7rssn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BotonInstrucciones" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93
+anchor_top = 0.176
+anchor_right = 0.982
+anchor_bottom = 0.269
+offset_left = -0.360107
+offset_top = -0.0480118
+offset_right = -0.264038
+offset_bottom = -0.312012
+texture_normal = ExtResource("7_odch1")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="BotonTienda" to="." method="_on_boton_tienda_pressed"]
 [connection signal="pressed" from="BotonConfiguracion" to="." method="_on_boton_configuracion_pressed"]
 [connection signal="pressed" from="BotonJugar" to="." method="_on_boton_jugar_pressed"]
 [connection signal="pressed" from="BotonInventario" to="." method="_on_boton_inventario_pressed"]
+[connection signal="pressed" from="BotonInstrucciones" to="." method="_on_boton_instrucciones_pressed"]

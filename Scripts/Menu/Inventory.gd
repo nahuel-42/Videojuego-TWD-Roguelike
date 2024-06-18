@@ -27,7 +27,8 @@ func ShowCards():
 	var amount = len(cardList)
 	m_gridContainer.position = Vector2.ZERO
 	clear_grid_container_children()		
-	
+	loadCastle()
+
 	var originalSize : Vector2 = Vector2(346,533)
 	var relationSize : float = originalSize.y / originalSize.x
 	var sizeX : float = m_gridContainer.size.x / m_columns - m_separation.x
@@ -56,6 +57,13 @@ func ShowCards():
 			i = 0
 			j += 1
 
+func loadCastle():
+	var number = 0
+	number = Save.LoadMaxCastles()
+	print(number)
+	if(number != 0):
+		$Panel.visible = true
+		$Panel/number.text = str(number)
 
 func clear_grid_container_children():
 	for child in m_gridContainer.get_children():

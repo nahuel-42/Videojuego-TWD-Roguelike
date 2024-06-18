@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bma2ltl7j72yy"]
+
+[ext_resource type="FontFile" uid="uid://cpllvdqkfw1x7" path="res://fonts/MagicSchoolOne.ttf" id="1_kjijr"]
+
+[resource]
+font = ExtResource("1_kjijr")
+font_size = 33

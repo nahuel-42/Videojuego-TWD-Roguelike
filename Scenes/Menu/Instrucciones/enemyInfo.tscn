@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c27p2xhxq6icd"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/Instrucciones/enemyInfo.gd" id="1_o3084"]
+
+[node name="EnemyInfo" type="Panel"]
+script = ExtResource("1_o3084")

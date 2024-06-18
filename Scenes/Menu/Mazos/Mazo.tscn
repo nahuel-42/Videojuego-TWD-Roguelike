@@ -13,6 +13,7 @@ text = "Continuar partida
 Anterior"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 2

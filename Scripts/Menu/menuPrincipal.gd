@@ -5,7 +5,7 @@ var escena_mazos = load("res://Scenes/Menu/Mazos/menuMazos.tscn")
 var escena_tienda = load("res://Scenes/Menu/menuTienda.tscn")
 var escena_inventario = load("res://Scenes/Menu/menuInventario.tscn")
 var escena_configuracion = preload("res://Scenes/Menu/menuConfiguracion.tscn")
-
+var escena_instrucciones = preload("res://Scenes/Menu/Instrucciones/menuInstruccion.tscn")
 
 func _ready():
 	#get_tree().paused=false
@@ -43,3 +43,5 @@ func _on_boton_configuracion_pressed():
 	else:
 		add_child(configuracion_popup)
 	
+func _on_boton_instrucciones_pressed():
+	get_tree().change_scene_to_packed(escena_instrucciones)

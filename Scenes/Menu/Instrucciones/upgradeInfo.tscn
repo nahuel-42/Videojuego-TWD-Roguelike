@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs50x0ecqp3a8"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/Instrucciones/upgradeInfo.gd" id="1_vmyio"]
+[ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="2_8sacc"]
+[ext_resource type="LabelSettings" uid="uid://cw7oknfxddx1l" path="res://fonts/Cards/InfoLabels++.tres" id="3_8y5p4"]
+[ext_resource type="Texture2D" uid="uid://52t24hppxe8g" path="res://Assets/Sprites/Cards/Upgrade/Range.png" id="5_o08ig"]
+
+[node name="UpgradeInfo" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.217
+anchor_bottom = 0.617
+offset_right = 0.0159912
+offset_bottom = 0.18396
+script = ExtResource("1_vmyio")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 400.0
+color = Color(0.847059, 0.831373, 0.854902, 1)
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 10.0
+offset_right = 245.0
+offset_bottom = 70.0
+text = "name"
+label_settings = ExtResource("2_8sacc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Type" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 270.0
+offset_right = 205.0
+offset_bottom = 305.0
+rotation = 4.71239
+text = "Type"
+label_settings = ExtResource("3_8y5p4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 287.0
+offset_right = 245.0
+offset_bottom = 393.0
+text = "Description Description Description Description Description Description Description Description "
+label_settings = ExtResource("3_8y5p4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 71.0
+offset_right = 245.0
+offset_bottom = 271.0
+texture = ExtResource("5_o08ig")
+expand_mode = 1

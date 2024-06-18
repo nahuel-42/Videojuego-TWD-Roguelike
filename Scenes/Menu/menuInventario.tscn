@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba4b7hmg8kica"]
+[gd_scene load_steps=6 format=3 uid="uid://ba4b7hmg8kica"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/Inventory.gd" id="1_2ri1r"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_r400n"]
 [ext_resource type="Texture2D" uid="uid://yq0jvol8adc8" path="res://Assets/Menu/icono_casa.png" id="3_d2pe0"]
+[ext_resource type="LabelSettings" uid="uid://bma2ltl7j72yy" path="res://fonts/InventoryLabel.tres" id="3_r3682"]
+[ext_resource type="FontFile" uid="uid://cpllvdqkfw1x7" path="res://fonts/MagicSchoolOne.ttf" id="4_ha7fp"]
 
 [node name="Inventory" type="Control" node_paths=PackedStringArray("m_gridContainer")]
 layout_mode = 3
@@ -30,18 +32,34 @@ offset_top = 88.0
 offset_right = 1051.0
 offset_bottom = 563.0
 
+[node name="title" type="Label" parent="Background2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.021
+anchor_right = 0.613
+anchor_bottom = 0.128
+offset_left = -0.10202
+offset_top = 0.0249996
+offset_right = 0.10199
+offset_bottom = 0.199997
+text = "Inventario de cartas"
+label_settings = ExtResource("3_r3682")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 z_index = 10
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.091
-anchor_top = 0.136
+anchor_top = 0.222
 anchor_right = 0.912
 anchor_bottom = 0.869
 offset_left = 0.167992
-offset_top = -0.128006
+offset_top = 0.143982
 offset_right = 0.375977
-offset_bottom = -0.112
+offset_bottom = 55.888
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -74,6 +92,50 @@ grow_vertical = 2
 position = Vector2(26, 23)
 scale = Vector2(0.0861652, 0.0772235)
 texture_normal = ExtResource("3_d2pe0")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.031
+anchor_right = 0.714
+anchor_bottom = 0.116
+offset_left = 0.527985
+offset_top = -0.0880013
+offset_right = -0.528076
+offset_bottom = 5.832
+
+[node name="castles" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = -0.005
+anchor_right = 0.805
+anchor_bottom = 0.93
+offset_left = 0.175999
+offset_top = 0.0300004
+offset_right = -0.0600281
+offset_bottom = -0.00500488
+theme_override_fonts/font = ExtResource("4_ha7fp")
+theme_override_font_sizes/font_size = 34
+text = "Máxima cantidad de castillos derrotados:"
+label_settings = ExtResource("3_r3682")
+vertical_alignment = 1
+
+[node name="number" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.825
+anchor_top = 0.115
+anchor_right = 0.976
+anchor_bottom = 0.885
+offset_left = 0.0999756
+offset_top = -0.0150003
+offset_right = -0.192047
+offset_bottom = 0.0149956
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="gui_input" from="detect drag" to="." method="_on_detect_drag_gui_input"]
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

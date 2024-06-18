@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm2exhxrln1y7"]
+[gd_scene load_steps=10 format=3 uid="uid://dm2exhxrln1y7"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/Mazos/menuMazos.gd" id="1_l1hpw"]
 [ext_resource type="Texture2D" uid="uid://upvab1bywdjp" path="res://Assets/Menu/imagen_menumazo.jpg" id="2_5prig"]
@@ -7,6 +7,13 @@
 [ext_resource type="Script" path="res://Scripts/Menu/scroll.gd" id="4_vipyd"]
 [ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="5_4pl74"]
 [ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="7_pl4k4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_34hpt"]
+specular_color = Color(0.533333, 0.533333, 0.533333, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a33eh"]
+texture = SubResource("CanvasTexture_34hpt")
+modulate_color = Color(0.8, 0.756863, 0.709804, 1)
 
 [node name="HorizontalContainer" type="BoxContainer"]
 anchors_preset = 15
@@ -40,6 +47,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 25
+
+[node name="Panel" type="Panel" parent="TextureRect/VBoxContainer/MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.670588)
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a33eh")
 
 [node name="Titulo" type="Label" parent="TextureRect/VBoxContainer/MarginContainer"]
 layout_mode = 2
