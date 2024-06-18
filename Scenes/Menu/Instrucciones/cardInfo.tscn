@@ -15,7 +15,7 @@ script = ExtResource("1_uaxef")
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 250.0
-offset_bottom = 200.0
+offset_bottom = 250.0
 color = Color(0.847059, 0.831373, 0.854902, 1)
 
 [node name="Name" type="Label" parent="."]
@@ -34,7 +34,9 @@ layout_mode = 2
 anchor_left = 0.02
 anchor_top = 0.475
 anchor_right = 0.98
-anchor_bottom = 0.975
+anchor_bottom = 1.225
+offset_right = 1.52588e-05
+offset_bottom = 1.52588e-05
 text = "Card's description"
 label_settings = ExtResource("3_i0v0m")
 horizontal_alignment = 1
