@@ -1,50 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://jt6ebd26kmsn"]
+[gd_scene load_steps=7 format=3 uid="uid://jt6ebd26kmsn"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/menuCambioNivel.gd" id="1_lnu3q"]
 [ext_resource type="Texture2D" uid="uid://4qbmd71xgdv2" path="res://Assets/Menu/MenuButton.png" id="2_td0ls"]
+[ext_resource type="Shader" path="res://Assets/blur_shader.gdshader" id="2_v7wwg"]
 [ext_resource type="LabelSettings" uid="uid://d0qoogkaxht5h" path="res://fonts/ButtonLabel.tres" id="3_8hd1u"]
 [ext_resource type="LabelSettings" uid="uid://dqr7sbc00jwlb" path="res://fonts/TitleLabel.tres" id="4_a8k5m"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u28p"]
+shader = ExtResource("2_v7wwg")
+shader_parameter/lod = 0.0
+
 [node name="MenuCambioNivel" type="Node2D"]
+z_index = 1000
 script = ExtResource("1_lnu3q")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="BlurredBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8u28p")
+offset_right = 1151.0
+offset_bottom = 650.0
 
-[node name="Continuar" type="Button" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Continuar"]
+[node name="Continuar" type="TextureButton" parent="."]
 offset_left = 442.0
 offset_top = 371.0
 offset_right = 710.0
 offset_bottom = 487.0
-texture = ExtResource("2_td0ls")
+texture_normal = ExtResource("2_td0ls")
 
 [node name="Label" type="Label" parent="Continuar"]
 layout_mode = 0
-offset_left = 526.0
-offset_top = 401.0
-offset_right = 626.0
-offset_bottom = 458.0
+offset_left = 84.0
+offset_top = 30.0
+offset_right = 184.0
+offset_bottom = 87.0
 text = "Continuar"
 label_settings = ExtResource("3_8hd1u")
 
-[node name="Salir" type="Button" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Salir"]
+[node name="Salir" type="TextureButton" parent="."]
 offset_left = 442.0
 offset_top = 500.0
 offset_right = 710.0
 offset_bottom = 616.0
-texture = ExtResource("2_td0ls")
+texture_normal = ExtResource("2_td0ls")
 
 [node name="Label" type="Label" parent="Salir"]
 layout_mode = 0
-offset_left = 490.0
-offset_top = 533.0
-offset_right = 662.0
-offset_bottom = 590.0
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 220.0
+offset_bottom = 89.0
 text = "Guardar y Salir"
 label_settings = ExtResource("3_8hd1u")
 

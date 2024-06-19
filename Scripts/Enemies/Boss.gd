@@ -68,8 +68,8 @@ func do_damage():
 func take_damage(damage):
 	super.take_damage(damage)
 	if health <= 0:
-		var menu = load("res://Scenes/Menu/menuCambioNivel.tscn")
-		add_child(menu)
+		GameEvents.OnShowContinueMenu.Call([null])
+		GameEvents.OnSetVisible.Call([false])
 
 func _on_allies_detector_body_entered(body):
 	if body.is_in_group("ALLIES"):

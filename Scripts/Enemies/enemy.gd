@@ -12,7 +12,7 @@ var vulnerable = false
 var slowed = false
 var stunned = false
 var bleeding = false
-var bleeding_damage = 1
+var bleeding_damage = 0.25
 
 @onready var animation = $Animation
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
@@ -107,14 +107,9 @@ func start_bleeding():
 	
 	animation.play("Bleed")
 	sprite.modulate = Color(1, 0, 0)
-	#call_deferred("deal_bleeding_damage", 1) #ver
-	#call_deferred("terminate_bleeding", 5)
 
 func deal_bleeding_damage():
-	print("bleeding")
 	take_damage(bleeding_damage)
-	if bleeding:
-		call_deferred("deal_bleeding_damage", 1)
 
 func terminate_bleeding():
 	bleeding = false
@@ -164,7 +159,7 @@ func effect_finished(animation_name):
 		"Slow": terminate_slow()
 		"Stun": terminate_stun()
 		"Vulnerable": terminate_vulnerable()
-		"Bleeding": terminate_bleeding()
+		"Bleed": terminate_bleeding()
 	
 	animation.play("Walk")
 
