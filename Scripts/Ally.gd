@@ -16,6 +16,7 @@ var target_reached = false
 var cooldown = 0.5
 
 func _ready():
+	nav.debug_enabled = false
 	z_index = 3
 	velocity = Vector2.ZERO
 	scale /= 2
