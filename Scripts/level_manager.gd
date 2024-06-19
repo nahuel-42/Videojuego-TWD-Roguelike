@@ -1,10 +1,10 @@
 extends Node
 
 @onready var health_bar : ProgressBar = $CanvasLayer/Bars/HealthBar
-@onready var next_stage_button : Button = $WavesCanvas/NextStageButton
-@onready var stage_text : RichTextLabel = $WavesCanvas/StageNumber
-@onready var wave_text : RichTextLabel = $WavesCanvas/WaveNumber
-@onready var nivel_text : RichTextLabel = $WavesCanvas/LevelNumber
+@onready var next_stage_button : Button = $CanvasLayer/HUD/WavesCanvas/NextStageButton
+@onready var stage_text : RichTextLabel = $CanvasLayer/HUD/WavesCanvas/StageNumber
+@onready var wave_text : RichTextLabel = $CanvasLayer/HUD/WavesCanvas/WaveNumber
+@onready var nivel_text : RichTextLabel = $CanvasLayer/HUD/WavesCanvas/LevelNumber
 @onready var fog = $Fog
 @onready var tilemap = $TileMap
 var width
@@ -36,7 +36,3 @@ func _on_stage_completed():
 	
 func lose_health(body):
 	GameController.HealthLoss(body.reach_target())
-
-func _on_start_stage_button_pressed():
-	WaveManager.start_next_stage()
-	next_stage_button.visible = false

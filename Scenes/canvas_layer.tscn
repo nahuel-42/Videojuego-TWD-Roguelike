@@ -399,6 +399,56 @@ texture_pressed = ExtResource("13_vrria")
 ignore_texture_size = true
 stretch_mode = 4
 
+[node name="WavesCanvas" type="Control" parent="HUD"]
+anchors_preset = 0
+
+[node name="NextStageButton" type="Button" parent="HUD/WavesCanvas"]
+offset_left = 119.0
+offset_top = 570.0
+offset_right = 217.0
+offset_bottom = 624.0
+scale = Vector2(0.905558, 1.13458)
+text = "Start stage"
+
+[node name="StageNumber" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 317.0
+offset_top = 39.0
+offset_right = 373.0
+offset_bottom = 72.0
+
+[node name="Stage" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 268.0
+offset_top = 39.0
+offset_right = 324.0
+offset_bottom = 72.0
+text = "Stage"
+
+[node name="WaveNumber" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 317.0
+offset_top = 70.0
+offset_right = 373.0
+offset_bottom = 103.0
+
+[node name="Wave" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 268.0
+offset_top = 70.0
+offset_right = 320.0
+offset_bottom = 103.0
+text = "Wave"
+
+[node name="LevelNumber" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 317.0
+offset_top = 8.0
+offset_right = 373.0
+offset_bottom = 41.0
+
+[node name="Level" type="RichTextLabel" parent="HUD/WavesCanvas"]
+offset_left = 268.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 41.0
+text = "Level"
+
 [node name="PopupCards" parent="." instance=ExtResource("17_g0buh")]
 
 [node name="PopupSpeciality" type="Control" parent="." node_paths=PackedStringArray("m_images")]
@@ -650,6 +700,7 @@ max_polyphony = 40
 [connection signal="button_down" from="HUD/DeckCards/ShowPop" to="HUD/DeckCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="HUD/DiscardCards/ShowPop" to="HUD/DiscardCards" method="_on_show_pop_button_down"]
 [connection signal="button_down" from="HUD/HideBoardCards/ButtonHideBoardCards" to="HUD/HideBoardCards" method="_on_button_hide_board_cards_button_down"]
+[connection signal="pressed" from="HUD/WavesCanvas/NextStageButton" to="." method="_on_next_stage_button_pressed"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality1/image" to="PopupSpeciality" method="_on_button_down_speciality1"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality2/image" to="PopupSpeciality" method="_on_button_down_speciality2"]
 [connection signal="button_down" from="PopupSpeciality/background/Speciality3/image" to="PopupSpeciality" method="_on_button_down_speciality3"]

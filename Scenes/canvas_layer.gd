@@ -18,14 +18,17 @@ func _exit_tree():
 func SetVisible(param):
 	var value=param[0]
 	m_HUD.visible = value
-	#for node in get_children():
-	#	node.visible = value
+	
 	
 func ShowGamerOver(param):
 	var gm=gameOver_scene.instantiate()
 	add_child(gm)
-	#get_tree().paused = false
 	
 func ShowContinue(param):
 	var menu = continue_scene.instantiate()
 	add_child(menu)
+
+
+func _on_next_stage_button_pressed():
+	WaveManager.start_next_stage()
+	$HUD/WavesCanvas/NextStageButton.visible = false
